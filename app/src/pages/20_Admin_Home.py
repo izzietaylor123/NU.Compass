@@ -10,8 +10,21 @@ st.set_page_config(layout = 'wide')
 SideBarLinks()
 
 st.title('System Admin Home Page')
+st.write('')
+st.write('')
+st.write('### Hello Andy, what would you like to do today?')
 
-if st.button('Update ML Models', 
+if st.button('Current Abroad Programs', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/21_ML_Model_Mgmt.py')
+  st.switch_page('pages/05_Locations.py')
+
+if st.button('View Posts and Replies', 
+             type='primary',
+             use_container_width=True):
+  st.switch_page('pages/13_Classification.py')
+
+if st.button("Current Programs Ratings",
+             type='primary',
+             use_container_width=True):
+  st.switch_page('pages/12_API_Test.py')
