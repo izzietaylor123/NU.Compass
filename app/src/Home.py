@@ -42,6 +42,15 @@ st.write('### Welcome! Which user would you like to log in as?')
 # functionality, we put a button on the screen that the user 
 # can click to MIMIC logging in as that mock user. 
 
+
+if st.button('Act as Tim Walz, an abroad alum student looking to be a mentor', 
+            type = 'primary', 
+            use_container_width=True):
+    st.session_state['authenticated'] = True
+    st.session_state['role'] = 'mentor_student'
+    st.session_state['first_name'] = 'Tim'
+    st.switch_page('pages/10_Mentee.py')
+    
 if st.button("Act as Tom Holland, an incoming abroad student looking to be a mentee", 
             type = 'primary', 
             use_container_width=True):
@@ -57,13 +66,6 @@ if st.button("Act as Tom Holland, an incoming abroad student looking to be a men
     logger.info("Logging in as Mentee Student Persona")
     st.switch_page('pages/00_Mentee_Home.py')
 
-if st.button('Act as Tim Walz, an abroad alum student looking to be a mentor', 
-            type = 'primary', 
-            use_container_width=True):
-    st.session_state['authenticated'] = True
-    st.session_state['role'] = 'mentor_student'
-    st.session_state['first_name'] = 'Tim'
-    st.switch_page('pages/10_Mentee.py')
 
 if st.button('Act as Andy Samberg, a Northeastern IT Administrator', 
             type = 'primary', 
