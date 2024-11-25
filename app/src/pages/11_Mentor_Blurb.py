@@ -15,7 +15,9 @@ st.title(f"About me, Mentor {st.session_state['first_name']}")
 
 st.subheader("Meet Your Mentor")
 
-st.image("assets/Tim_Waltz_headshot.png", width=200)
+left_co, cent_co,last_co = st.columns(3)
+with cent_co:
+    st.image("assets/Tim_Waltz_headshot.png")
 
 st.write("""
 I am a second-year Northeastern student studying Business who recently returned from my 
