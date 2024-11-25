@@ -12,7 +12,7 @@ SideBarLinks()
 st.title('System Admin Home Page')
 st.write('')
 st.write('')
-st.write('### Hello Andy, what would you like to do today?')
+st.write('### Hello {first_name}}, what would you like to do today?')
 
 if st.button('Current Abroad Programs', 
              type='primary',
@@ -28,3 +28,13 @@ if st.button("Current Programs Ratings",
              type='primary',
              use_container_width=True):
   st.switch_page('pages/12_API_Test.py')
+
+if st.button("See Mentee Statuses",
+             type='primary',
+             use_container_width=True):
+  st.switch_page('pages/10_Mentee.py')
+
+if st.button("See Mentor Statuses",
+             type='primary',
+             use_container_width=True):
+  st.switch_page('pages/11_Mentor_Blurb.py')
