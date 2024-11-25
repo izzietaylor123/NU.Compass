@@ -63,7 +63,7 @@ if st.button('Act as Tim Walz, an abroad alum student looking to be a mentor',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'mentor_student'
     st.session_state['first_name'] = 'Tim'
-    st.switch_page('pages/10_USAID_Worker_Home.py')
+    st.switch_page('pages/10_Mentee.py')
 
 if st.button('Act as Andy Samberg, a Northeastern IT Administrator', 
             type = 'primary', 
