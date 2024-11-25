@@ -19,10 +19,10 @@ if st.button('Chat with a Mentor',
              use_container_width=True):
   st.switch_page('pages/03_Simple_Chat_Bot.py')
 
-if st.button('View World Map Demo', 
+if st.button('Contact the Global Experience Office', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/02_Map_Demo.py')
+  st.switch_page('pages/25_Global_experience_office.py')
 
 if st.button('Find location',
              type = 'primary',
