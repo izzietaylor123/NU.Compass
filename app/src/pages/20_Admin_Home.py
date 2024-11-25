@@ -12,7 +12,7 @@ SideBarLinks()
 st.title('System Admin Home Page')
 st.write('')
 st.write('')
-st.write('### Hello {first_name}}, what would you like to do today?')
+st.write(f'Hello {st.session_state['first_name']}, what would you like to do today?')
 
 if st.button('Current Abroad Programs', 
              type='primary',
