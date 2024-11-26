@@ -23,9 +23,14 @@ if st.button('Contact the Global Experience Office',
              type='primary',
              use_container_width=True):
   st.switch_page('pages/20_Admin_Home.py')
-.
+
 if st.button('Find location',
              type = 'primary',
              use_container_width = True) :
   st.switch_page('pages/05_Locations.py')
+
+if st.button("Current Programs Ratings",
+             type='primary',
+             use_container_width=True):
+  st.switch_page('pages/12_API_Test.py')
 
