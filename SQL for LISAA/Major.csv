@@ -1,0 +1,51 @@
+majorID,majorName,Department
+1,Computer Science,Engineering
+2,Mechanical Engineering,Engineering
+3,Psychology,Arts and Sciences
+4,Biology,Science
+5,Business Administration,Business
+6,Economics,Social Sciences
+7,Political Science,Social Sciences
+8,History,Arts and Humanities
+9,English Literature,Arts and Humanities
+10,Physics,Science
+11,Chemistry,Science
+12,Mathematics,Science
+13,Philosophy,Arts and Humanities
+14,Sociology,Social Sciences
+15,Anthropology,Social Sciences
+16,Electrical Engineering,Engineering
+17,Civil Engineering,Engineering
+18,Architecture,Design
+19,Art History,Arts and Humanities
+20,Music,Performing Arts
+21,Theater,Performing Arts
+22,Environmental Science,Science
+23,Nursing,Health Sciences
+24,Public Health,Health Sciences
+25,Communication,Social Sciences
+26,Journalism,Arts and Sciences
+27,Education,Education
+28,Linguistics,Arts and Humanities
+29,Computer Engineering,Engineering
+30,Chemical Engineering,Engineering
+31,Finance,Business
+32,Marketing,Business
+33,Accounting,Business
+34,Human Resource Management,Business
+35,Information Technology,Engineering
+36,Cybersecurity,Science
+37,Biochemistry,Science
+38,Oceanography,Science
+39,Astronomy,Science
+40,Geology,Science
+41,Botany,Science
+42,Zoology,Science
+43,Statistics,Science
+44,Urban Planning,Design
+45,Graphic Design,Design
+46,Film Studies,Arts and Humanities
+47,Fashion Design,Design
+48,International Relations,Social Sciences
+49,Sports Management,Business
+50,Culinary Arts,Arts and Humanities
