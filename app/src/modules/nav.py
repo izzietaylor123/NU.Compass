@@ -75,7 +75,7 @@ def SideBarLinks(show_home=False):
         # If the user role is mentor student 
         if st.session_state["role"] == "mentor_student":
             mentor_student_home()
-            ClassificationNav()
+
 
         # If the user is an IT administrator
         if st.session_state["role"] == "administrator":
