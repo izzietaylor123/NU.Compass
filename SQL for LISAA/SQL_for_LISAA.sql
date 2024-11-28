@@ -10,6 +10,16 @@ DROP DATABASE IF EXISTS `lisaa_sql`;
 CREATE DATABASE `lisaa_sql` DEFAULT CHARACTER SET latin1;
 USE `lisaa_sql`;
 
+DROP TABLE IF EXISTS Location;
+CREATE TABLE IF NOT EXISTS Location
+(
+    locationID  INT(11)     NOT NULL AUTO_INCREMENT,
+    city        VARCHAR(50) NOT NULL,
+    country     VARCHAR(50) NOT NULL,
+    description LONGTEXT    NOT NULL,
+    PRIMARY KEY (locationID)
+);
+
 DROP TABLE IF EXISTS abroadProgram;
 CREATE TABLE IF NOT EXISTS abroadProgram
 (
@@ -19,18 +29,8 @@ CREATE TABLE IF NOT EXISTS abroadProgram
     locationID      INT(11) UNIQUE NOT NULL,
     programType     VARCHAR(100)   NOT NULL,
     empID           INT(11) UNIQUE NOT NULL
-);
-
-DROP TABLE IF EXISTS Location;
-CREATE TABLE IF NOT EXISTS Location
-(
-    locationID  INT(11)     NOT NULL AUTO_INCREMENT,
-    city        VARCHAR(50) NOT NULL,
-    country     VARCHAR(50) NOT NULL,
-    description LONGTEXT    NOT NULL,
-    PRIMARY KEY (locationID),
-    CONSTRAINT location_fk_01 FOREIGN KEY (locationID)
-        REFERENCES abroadProgram (locationID)
+    CONSTRAINT location_fk FOREIGN KEY (locationID)
+        REFERENCES Location (locationID)
         ON UPDATE CASCADE
         ON DELETE RESTRICT
 );
@@ -49,6 +49,8 @@ CREATE TABLE IF NOT EXISTS Rating
     PRIMARY KEY (ratingID),
     CONSTRAINT rating_fk_01 FOREIGN KEY (programID)
         REFERENCES abroadProgram (programID)
+    CONSTRAINT student_rating FOREIGN KEY (sID)
+        REFERENCES Student (sID)
 );
 
 
