@@ -1,101 +1,101 @@
 resourceID,locationID,category,lastUpdated
-1,24,Research and Development,2024-04-16 13:51:15
-2,45,Public Relations,2024-08-23 10:14:53
-3,50,Legal,2024-09-26 07:25:01
-4,57,Marketing,2024-11-05 02:06:33
-5,19,Research and Development,2024-08-20 14:53:01
-6,44,Technology,2024-06-24 21:35:50
-7,35,Finance,2023-12-16 20:52:57
-8,15,Research and Development,2024-08-26 07:48:15
-9,4,Sales,2024-07-15 13:18:32
-10,45,Customer Service,2024-04-12 08:45:52
-11,38,Human Resources,2024-11-27 00:33:39
-12,23,Technology,2024-06-09 22:00:36
-13,60,Operations,2024-01-14 15:33:10
-14,8,Human Resources,2024-02-19 11:15:55
-15,14,Research and Development,2024-05-11 08:13:59
-16,28,Finance,2024-01-05 09:06:54
-17,7,Operations,2024-08-30 19:43:36
-18,46,Customer Service,2023-12-15 11:57:12
-19,3,Human Resources,2024-05-12 05:44:13
-20,28,Human Resources,2024-01-29 02:13:30
-21,11,Research and Development,2024-06-19 14:19:03
-22,34,Legal,2024-01-11 17:55:46
-23,9,Research and Development,2024-08-29 06:16:29
-24,8,Human Resources,2024-11-01 11:21:12
-25,46,Marketing,2024-04-13 10:23:24
-26,56,Sales,2024-01-27 00:40:43
-27,23,Technology,2024-08-26 15:39:24
-28,10,Public Relations,2024-05-22 00:10:50
-29,45,Sales,2024-01-09 11:32:12
-30,29,Finance,2024-03-22 09:13:38
-31,8,Operations,2024-07-12 05:10:40
-32,38,Operations,2024-02-16 06:51:08
-33,14,Customer Service,2024-09-21 09:59:21
-34,18,Customer Service,2024-07-19 00:39:54
-35,39,Finance,2023-12-15 09:23:28
-36,3,Public Relations,2024-04-23 15:51:11
-37,25,Research and Development,2024-04-24 20:52:03
-38,25,Research and Development,2024-06-08 19:05:36
-39,32,Public Relations,2024-05-29 03:15:49
-40,31,Human Resources,2023-12-14 00:06:32
-41,3,Human Resources,2024-04-15 21:13:21
-42,49,Sales,2024-09-21 01:20:52
-43,45,Technology,2024-08-24 05:20:27
-44,46,Human Resources,2024-08-31 14:04:34
-45,12,Legal,2024-02-05 13:59:13
-46,49,Public Relations,2024-09-03 14:27:32
-47,47,Human Resources,2024-01-04 20:29:33
-48,7,Technology,2024-06-30 06:06:32
-49,36,Technology,2024-01-11 03:33:57
-50,8,Customer Service,2024-08-06 11:27:04
-51,42,Customer Service,2024-07-10 18:28:21
-52,38,Technology,2024-04-15 22:16:09
-53,36,Marketing,2024-06-30 12:51:59
-54,53,Finance,2024-10-15 13:31:52
-55,13,Sales,2024-02-11 19:39:11
-56,53,Technology,2024-10-14 05:50:08
-57,9,Research and Development,2024-01-20 01:28:03
-58,48,Technology,2024-09-14 13:45:05
-59,30,Marketing,2024-05-23 15:32:03
-60,55,Legal,2024-10-23 22:44:48
-61,49,Customer Service,2024-09-19 17:32:19
-62,7,Sales,2024-01-06 18:56:04
-63,16,Sales,2024-02-27 09:58:17
-64,14,Operations,2024-02-18 13:08:12
-65,53,Operations,2024-10-12 07:49:25
-66,32,Finance,2024-06-06 15:07:09
-67,34,Legal,2024-06-21 12:08:10
-68,31,Sales,2024-05-30 07:16:53
-69,18,Customer Service,2024-03-15 15:23:01
-70,16,Sales,2024-06-27 03:18:04
-71,35,Human Resources,2024-10-21 22:15:21
-72,42,Marketing,2024-08-07 17:51:55
-73,19,Technology,2024-03-19 20:09:04
-74,6,Legal,2023-12-31 19:49:31
-75,18,Research and Development,2024-03-12 18:41:21
-76,3,Marketing,2024-07-18 14:38:05
-77,39,Technology,2024-11-23 06:15:18
-78,60,Finance,2024-02-09 07:38:57
-79,13,Technology,2024-04-12 20:27:32
-80,23,Operations,2024-01-27 09:54:12
-81,53,Operations,2024-11-15 14:07:59
-82,59,Research and Development,2024-07-02 02:23:46
-83,36,Legal,2024-08-24 13:23:00
-84,45,Marketing,2024-02-13 17:48:17
-85,13,Sales,2024-03-23 06:18:29
-86,20,Operations,2024-11-03 08:34:42
-87,33,Finance,2024-06-10 09:39:02
-88,37,Human Resources,2024-07-05 17:56:29
-89,39,Public Relations,2024-07-19 20:10:44
-90,27,Human Resources,2024-05-09 06:07:43
-91,25,Marketing,2024-04-27 09:08:41
-92,2,Human Resources,2024-06-21 23:05:30
-93,55,Technology,2023-12-07 20:24:26
-94,59,Human Resources,2024-10-25 15:29:51
-95,39,Operations,2024-11-20 17:59:46
-96,31,Legal,2024-07-16 15:22:23
-97,37,Finance,2024-06-01 00:28:22
-98,41,Sales,2024-07-09 22:28:44
-99,30,Legal,2024-01-03 03:51:17
-100,10,Operations,2024-05-23 03:34:23
+1,55,FAQs and Troubleshooting,2024-09-12 18:38:19
+2,32,Academic Information,2024-07-06 20:13:14
+3,57,Post-Study Abroad Resources,2024-04-15 15:16:01
+4,38,Travel and Exploration,2024-03-15 17:30:38
+5,30,Travel and Exploration,2024-04-09 08:12:38
+6,28,Cultural and Social Life,2024-08-26 21:16:01
+7,16,Local Information,2023-12-30 02:45:31
+8,24,Cultural and Social Life,2024-02-26 14:34:52
+9,30,Travel and Exploration,2024-01-11 13:44:14
+10,37,Technology and Communication,2024-07-25 19:02:18
+11,34,Health and Wellbeing,2024-06-23 11:06:44
+12,59,Pre-Departure Information,2024-07-11 18:17:45
+13,11,Health and Wellbeing,2024-06-17 17:00:42
+14,39,Student Services,2024-03-24 12:51:56
+15,58,Technology and Communication,2024-07-24 05:29:27
+16,28,Health and Wellbeing,2024-01-16 18:58:02
+17,32,Post-Study Abroad Resources,2024-04-06 07:18:22
+18,30,Financial Resources,2024-07-26 08:45:26
+19,56,Cultural and Social Life,2024-02-23 18:19:52
+20,47,Cultural and Social Life,2024-06-14 11:50:40
+21,13,Travel and Exploration,2024-08-28 21:15:09
+22,44,Health and Wellbeing,2024-10-25 12:06:18
+23,53,Cultural and Social Life,2023-12-19 08:22:17
+24,49,Technology and Communication,2023-12-30 21:22:24
+25,27,Technology and Communication,2023-12-12 06:05:59
+26,51,Travel and Exploration,2024-08-31 21:42:26
+27,17,Local Information,2024-08-25 08:36:34
+28,54,Travel and Exploration,2024-01-30 02:44:18
+29,53,Housing and Accommodation,2024-01-16 13:09:29
+30,42,Local Information,2024-07-18 20:19:06
+31,22,Pre-Departure Information,2024-10-11 19:02:20
+32,34,Financial Resources,2023-12-13 07:53:01
+33,19,Health and Wellbeing,2024-03-22 01:10:40
+34,47,Local Information,2024-06-29 20:17:43
+35,33,Academic Information,2024-08-30 09:15:24
+36,46,Local Information,2024-05-07 03:14:01
+37,22,FAQs and Troubleshooting,2024-03-16 18:04:47
+38,14,Pre-Departure Information,2024-11-01 17:37:37
+39,48,Travel and Exploration,2024-10-30 15:07:12
+40,8,Student Services,2024-10-01 04:11:38
+41,40,Cultural and Social Life,2023-12-21 01:50:55
+42,11,Academic Information,2023-11-29 03:15:21
+43,46,Pre-Departure Information,2024-07-23 01:09:15
+44,43,FAQs and Troubleshooting,2023-12-01 17:32:22
+45,50,Cultural and Social Life,2024-01-13 10:31:55
+46,8,Pre-Departure Information,2024-09-07 06:31:25
+47,52,Local Information,2024-10-21 13:32:41
+48,60,Health and Wellbeing,2024-06-09 18:52:54
+49,11,Pre-Departure Information,2024-01-27 08:55:33
+50,19,Pre-Departure Information,2024-06-28 10:49:27
+51,38,Financial Resources,2024-06-24 11:18:55
+52,8,Student Services,2024-10-24 03:28:36
+53,49,Cultural and Social Life,2024-07-05 09:53:15
+54,57,Technology and Communication,2024-06-24 22:22:27
+55,40,Housing and Accommodation,2024-10-25 13:51:33
+56,19,Housing and Accommodation,2024-07-28 06:10:33
+57,24,Housing and Accommodation,2024-05-10 00:54:38
+58,1,Technology and Communication,2023-12-04 11:20:35
+59,33,Post-Study Abroad Resources,2023-12-27 23:24:01
+60,43,Technology and Communication,2024-03-09 22:20:21
+61,17,Housing and Accommodation,2024-05-12 03:46:07
+62,59,FAQs and Troubleshooting,2024-10-31 01:11:48
+63,1,Technology and Communication,2024-02-26 18:27:03
+64,53,Local Information,2024-06-06 13:30:35
+65,4,Student Services,2024-09-03 11:02:44
+66,41,Technology and Communication,2024-08-13 02:47:16
+67,55,Technology and Communication,2024-06-06 15:18:03
+68,56,Technology and Communication,2024-04-06 23:14:19
+69,7,Financial Resources,2023-12-18 14:23:25
+70,18,Post-Study Abroad Resources,2024-07-29 18:18:47
+71,26,Financial Resources,2024-03-15 00:58:23
+72,3,Technology and Communication,2024-08-28 07:30:02
+73,46,FAQs and Troubleshooting,2024-03-01 05:14:10
+74,13,Technology and Communication,2023-12-23 22:53:06
+75,41,FAQs and Troubleshooting,2024-10-12 13:41:40
+76,19,Health and Wellbeing,2024-05-29 04:51:37
+77,31,Financial Resources,2024-05-25 02:30:10
+78,47,Local Information,2024-05-19 00:49:49
+79,3,Local Information,2024-04-13 12:14:53
+80,54,Cultural and Social Life,2024-03-17 12:26:14
+81,30,Financial Resources,2024-07-05 04:54:31
+82,12,Student Services,2024-10-22 08:23:52
+83,19,Post-Study Abroad Resources,2024-02-15 22:15:25
+84,59,Technology and Communication,2024-10-23 03:31:34
+85,58,Financial Resources,2023-12-03 08:00:35
+86,7,Health and Wellbeing,2024-04-04 13:47:48
+87,5,Financial Resources,2024-01-11 17:48:01
+88,34,Academic Information,2024-09-19 04:25:41
+89,48,Pre-Departure Information,2024-04-27 11:35:42
+90,14,Local Information,2024-08-01 01:42:47
+91,33,Post-Study Abroad Resources,2024-04-30 09:46:22
+92,19,Health and Wellbeing,2024-01-06 13:09:53
+93,45,Pre-Departure Information,2024-04-07 09:32:45
+94,13,FAQs and Troubleshooting,2024-03-16 04:12:18
+95,44,Post-Study Abroad Resources,2024-11-13 23:32:40
+96,3,Local Information,2024-10-14 16:13:33
+97,10,Local Information,2024-08-22 16:21:25
+98,45,Cultural and Social Life,2024-10-22 13:50:56
+99,58,Academic Information,2024-05-27 19:10:16
+100,35,Local Information,2023-12-26 04:13:32
