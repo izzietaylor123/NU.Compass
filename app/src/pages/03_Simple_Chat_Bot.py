@@ -7,22 +7,19 @@ import random
 import time
 from modules.nav import SideBarLinks
 
+st.set_page_config (page_title="Sample Chat Bot", page_icon="🤖")
+
+logger = logging.getLogger(__name__)
 SideBarLinks()
 
-def response_generator():
-  response = random.choice (
-    [
-      "Hello there! How can I assist you today?",
-      "Hi, human!  Is there anything I can help you with?",
-      "Do you need help?",
-    ]
-  )
+def response_generator(prompt):
+  response = f"Echo: {prompt}"
   for word in response.split():
     yield word + " "
-    time.sleep(0.05)
+    time.sleep(0.01)
 #-----------------------------------------------------------------------
 
-st.set_page_config (page_title="Sample Chat Bot", page_icon="🤖")
+
 add_logo("assets/logo.png", height=400)
 
 st.title("Echo Bot 🤖")
@@ -54,12 +51,12 @@ if prompt := st.chat_input("What is up?"):
   # Add user message to chat history
   st.session_state.messages.append({"role": "user", "content": prompt})
 
-  response = f"Echo: {prompt}"
 
   # Display assistant response in chat message container
   with st.chat_message("assistant"):
-    # st.markdown(response)
-    response = st.write_stream(response_generator())
+    response = st.empty()
+    for word in response_generator(prompt):
+      response.markdown(word)
 
   # Add assistant response to chat history
   st.session_state.messages.append({"role": "assistant", "content": response})
