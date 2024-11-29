@@ -241,9 +241,12 @@ CREATE TABLE IF NOT EXISTS Question
     content    VARCHAR(2000),
     datePosted DATETIME DEFAULT CURRENT_TIMESTAMP,
     isApproved BOOLEAN,
+    abroadProgram INT(11),
     PRIMARY KEY (qID),
     CONSTRAINT question_fk_01 FOREIGN KEY (sID)
-        REFERENCES Student (sID)
+        REFERENCES Student (sID),
+    CONSTRAINT question_program_fk FOREIGN KEY (abroadProgram)
+        REFERENCES abroadProgram (programID)
 );
 
 DROP TABLE IF EXISTS Reply;
