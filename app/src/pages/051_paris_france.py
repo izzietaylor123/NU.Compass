@@ -10,3 +10,5 @@ st.set_page_config(layout = 'wide')
 SideBarLinks()
 
 st.title("Welcome to Paris, France!")
+
+st.write("")
