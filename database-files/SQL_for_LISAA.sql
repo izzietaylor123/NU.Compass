@@ -83,6 +83,21 @@ CREATE TABLE IF NOT EXISTS Resources
         ON DELETE RESTRICT
 );
 
+DROP TABLE IF EXISTS Course;
+CREATE TABLE IF NOT EXISTS Course
+(
+    courseID          INT(11)        NOT NULL AUTO_INCREMENT,
+    courseName        VARCHAR(200)   NOT NULL,
+    courseDescription LONGTEXT       NULL DEFAULT NULL,
+    programID         INT(11)        NOT NULL,
+    professorID       INT(11) UNIQUE NOT NULL,
+    PRIMARY KEY (courseID),
+    CONSTRAINT course_fk_01 FOREIGN KEY (programID)
+        REFERENCES abroadProgram (programID)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
+
 DROP TABLE IF EXISTS adminEmployee;
 CREATE TABLE IF NOT EXISTS adminEmployee
 (
@@ -93,6 +108,10 @@ CREATE TABLE IF NOT EXISTS adminEmployee
     email    VARCHAR(50)    NOT NULL,
     courseID INT(11) UNIQUE NOT NULL,
     UNIQUE(empID)
+    CONSTRAINT course_fk_02 FOREIGN KEY (courseID)
+        REFERENCES Course (courseID)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
 );
 
 DROP TABLE IF EXISTS employeeAbroadProgram;
@@ -123,24 +142,7 @@ CREATE TABLE IF NOT EXISTS engagementAnalytics
 );
 
 
-DROP TABLE IF EXISTS Course;
-CREATE TABLE IF NOT EXISTS Course
-(
-    courseID          INT(11)        NOT NULL AUTO_INCREMENT,
-    courseName        VARCHAR(200)   NOT NULL,
-    courseDescription LONGTEXT       NULL DEFAULT NULL,
-    programID         INT(11)        NOT NULL,
-    professorID       INT(11) UNIQUE NOT NULL,
-    PRIMARY KEY (courseID),
-    CONSTRAINT course_fk_01 FOREIGN KEY (programID)
-        REFERENCES abroadProgram (programID)
-        ON UPDATE CASCADE
-        ON DELETE RESTRICT,
-    CONSTRAINT course_fk_02 FOREIGN KEY (courseID)
-        REFERENCES adminEmployee (courseID)
-        ON UPDATE CASCADE
-        ON DELETE RESTRICT
-);
+
 
 DROP TABLE IF EXISTS Professor;
 CREATE TABLE IF NOT EXISTS Professor

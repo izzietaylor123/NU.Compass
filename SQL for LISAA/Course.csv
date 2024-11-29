@@ -1,101 +1,101 @@
 courseID,courseName,courseDescription,programID,professorID
-71,Business Administration Fundamentals,"Understand the basic principles of business operations, management, and organizational structure.",59,1
-71,Modern World Literature,"Study literary works from the 20th and 21st centuries across various cultures, focusing on themes and narrative forms.",43,2
-7,Modern World Literature,"Study literary works from the 20th and 21st centuries across various cultures, focusing on themes and narrative forms.",43,3
-91,Principles of Economics,"Learn the basics of micro and macroeconomic theory and analysis, focusing on how markets function and economies operate.",4,4
-59,Introduction to Philosophy,"Examine the central questions of existence, knowledge, and ethics from various philosophical perspectives.",50,5
-76,Introduction to Anthropology,"Explore human societies and cultures, their development, and diversity over time.",55,6
-9,Environmental Science,"Understand the interaction between humans and the environment, focusing on ecological processes and sustainability.",35,7
-79,Statistics,"Learn the basic principles of statistical analysis, focusing on data interpretation and probability theory.",46,8
-67,Psychology of Learning,Delve into the theories and applications of how humans learn and retain information.,5,9
-52,Art History: Renaissance to Modern,"Study significant movements in art from the Renaissance to modern times, understanding historical context and artistic techniques.",48,10
-73,Modern World Literature,"Study literary works from the 20th and 21st centuries across various cultures, focusing on themes and narrative forms.",40,11
-91,Introduction to Anthropology,"Explore human societies and cultures, their development, and diversity over time.",3,12
-29,General Chemistry,"Learn the foundational principles of chemistry including atomic structure, chemical bonding, and reactions.",44,13
-32,Statistics,"Learn the basic principles of statistical analysis, focusing on data interpretation and probability theory.",55,14
-78,World History: Ancient to Medieval,"Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.",54,15
-16,Business Administration Fundamentals,"Understand the basic principles of business operations, management, and organizational structure.",18,16
-99,Statistics,"Learn the basic principles of statistical analysis, focusing on data interpretation and probability theory.",20,17
-84,Calculus I,"Study the concepts of limits, derivatives, and integrals, laying the foundation for advanced mathematical courses.",47,18
-75,Introduction to Philosophy,"Examine the central questions of existence, knowledge, and ethics from various philosophical perspectives.",10,19
-77,Introduction to Literature,"Analyze various literary forms, themes, and techniques, exploring works from diverse periods and cultures.",59,20
-12,Physics I: Mechanics,"Explore the basic principles of physics with a focus on motion, forces, and energy.",45,21
-83,Business Administration Fundamentals,"Understand the basic principles of business operations, management, and organizational structure.",46,22
-30,Biology 101,"Discover the principles of biology, covering cell structure, functions, genetics, evolution, and ecology.",7,23
-27,Business Administration Fundamentals,"Understand the basic principles of business operations, management, and organizational structure.",50,24
-35,World History: Ancient to Medieval,"Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.",18,25
-96,Art History: Renaissance to Modern,"Study significant movements in art from the Renaissance to modern times, understanding historical context and artistic techniques.",16,26
-22,General Chemistry,"Learn the foundational principles of chemistry including atomic structure, chemical bonding, and reactions.",21,27
-97,Introduction to Literature,"Analyze various literary forms, themes, and techniques, exploring works from diverse periods and cultures.",26,28
-75,Introduction to Literature,"Analyze various literary forms, themes, and techniques, exploring works from diverse periods and cultures.",21,29
-19,Principles of Economics,"Learn the basics of micro and macroeconomic theory and analysis, focusing on how markets function and economies operate.",60,30
-53,Calculus I,"Study the concepts of limits, derivatives, and integrals, laying the foundation for advanced mathematical courses.",58,31
-59,Environmental Science,"Understand the interaction between humans and the environment, focusing on ecological processes and sustainability.",13,32
-100,General Chemistry,"Learn the foundational principles of chemistry including atomic structure, chemical bonding, and reactions.",58,33
-32,Introduction to Sociology,"Understand the social world and human behavior in a societal context, examining social institutions and relationships.",45,34
-27,Modern World Literature,"Study literary works from the 20th and 21st centuries across various cultures, focusing on themes and narrative forms.",11,35
-28,Business Administration Fundamentals,"Understand the basic principles of business operations, management, and organizational structure.",32,36
-30,Human Anatomy and Physiology,"Study the structure and function of the human body, covering the major systems and organs.",36,37
-65,Introduction to Philosophy,"Examine the central questions of existence, knowledge, and ethics from various philosophical perspectives.",60,38
-8,Introduction to Anthropology,"Explore human societies and cultures, their development, and diversity over time.",19,39
-4,Introduction to Literature,"Analyze various literary forms, themes, and techniques, exploring works from diverse periods and cultures.",16,40
-11,Introduction to Philosophy,"Examine the central questions of existence, knowledge, and ethics from various philosophical perspectives.",17,41
-57,Psychology of Learning,Delve into the theories and applications of how humans learn and retain information.,18,42
-40,General Chemistry,"Learn the foundational principles of chemistry including atomic structure, chemical bonding, and reactions.",39,43
-36,Introduction to Literature,"Analyze various literary forms, themes, and techniques, exploring works from diverse periods and cultures.",5,44
-10,Business Administration Fundamentals,"Understand the basic principles of business operations, management, and organizational structure.",2,45
-71,Introduction to Political Science,"Explore the fundamentals of political systems, theories, and the role of government in society.",7,46
-60,Principles of Economics,"Learn the basics of micro and macroeconomic theory and analysis, focusing on how markets function and economies operate.",34,47
-81,Introduction to Political Science,"Explore the fundamentals of political systems, theories, and the role of government in society.",20,48
-64,Physics I: Mechanics,"Explore the basic principles of physics with a focus on motion, forces, and energy.",24,49
-99,Art History: Renaissance to Modern,"Study significant movements in art from the Renaissance to modern times, understanding historical context and artistic techniques.",22,50
-28,General Chemistry,"Learn the foundational principles of chemistry including atomic structure, chemical bonding, and reactions.",6,51
-81,Introduction to Philosophy,"Examine the central questions of existence, knowledge, and ethics from various philosophical perspectives.",43,52
-66,World History: Ancient to Medieval,"Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.",36,53
-80,Introduction to Sociology,"Understand the social world and human behavior in a societal context, examining social institutions and relationships.",59,54
-31,Introduction to Anthropology,"Explore human societies and cultures, their development, and diversity over time.",52,55
-27,World History: Ancient to Medieval,"Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.",49,56
-96,Introduction to Anthropology,"Explore human societies and cultures, their development, and diversity over time.",38,57
-61,Introduction to Computer Science,"Explore basic programming concepts and algorithms, and understand the fundamental principles of computer science.",60,58
-15,World History: Ancient to Medieval,"Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.",56,59
-7,Environmental Science,"Understand the interaction between humans and the environment, focusing on ecological processes and sustainability.",17,60
-62,Introduction to Sociology,"Understand the social world and human behavior in a societal context, examining social institutions and relationships.",49,61
-44,General Chemistry,"Learn the foundational principles of chemistry including atomic structure, chemical bonding, and reactions.",40,62
-53,Human Anatomy and Physiology,"Study the structure and function of the human body, covering the major systems and organs.",48,63
-5,Calculus I,"Study the concepts of limits, derivatives, and integrals, laying the foundation for advanced mathematical courses.",19,64
-32,World History: Ancient to Medieval,"Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.",16,65
-83,Introduction to Sociology,"Understand the social world and human behavior in a societal context, examining social institutions and relationships.",58,66
-19,Physics I: Mechanics,"Explore the basic principles of physics with a focus on motion, forces, and energy.",37,67
-18,Psychology of Learning,Delve into the theories and applications of how humans learn and retain information.,9,68
-10,Business Administration Fundamentals,"Understand the basic principles of business operations, management, and organizational structure.",27,69
-37,Introduction to Computer Science,"Explore basic programming concepts and algorithms, and understand the fundamental principles of computer science.",5,70
-80,Introduction to Anthropology,"Explore human societies and cultures, their development, and diversity over time.",38,71
-64,Modern World Literature,"Study literary works from the 20th and 21st centuries across various cultures, focusing on themes and narrative forms.",27,72
-17,Calculus I,"Study the concepts of limits, derivatives, and integrals, laying the foundation for advanced mathematical courses.",25,73
-91,Modern World Literature,"Study literary works from the 20th and 21st centuries across various cultures, focusing on themes and narrative forms.",32,74
-47,Introduction to Sociology,"Understand the social world and human behavior in a societal context, examining social institutions and relationships.",3,75
-16,Environmental Science,"Understand the interaction between humans and the environment, focusing on ecological processes and sustainability.",19,76
-65,Modern World Literature,"Study literary works from the 20th and 21st centuries across various cultures, focusing on themes and narrative forms.",50,77
-58,Introduction to Computer Science,"Explore basic programming concepts and algorithms, and understand the fundamental principles of computer science.",11,78
-84,World History: Ancient to Medieval,"Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.",11,79
-38,Introduction to Sociology,"Understand the social world and human behavior in a societal context, examining social institutions and relationships.",6,80
-19,Human Anatomy and Physiology,"Study the structure and function of the human body, covering the major systems and organs.",48,81
-100,Introduction to Anthropology,"Explore human societies and cultures, their development, and diversity over time.",55,82
-32,Business Administration Fundamentals,"Understand the basic principles of business operations, management, and organizational structure.",38,83
-70,Introduction to Sociology,"Understand the social world and human behavior in a societal context, examining social institutions and relationships.",11,84
-74,Principles of Economics,"Learn the basics of micro and macroeconomic theory and analysis, focusing on how markets function and economies operate.",55,85
-54,General Chemistry,"Learn the foundational principles of chemistry including atomic structure, chemical bonding, and reactions.",28,86
-12,Introduction to Anthropology,"Explore human societies and cultures, their development, and diversity over time.",10,87
-17,Introduction to Literature,"Analyze various literary forms, themes, and techniques, exploring works from diverse periods and cultures.",42,88
-65,Environmental Science,"Understand the interaction between humans and the environment, focusing on ecological processes and sustainability.",39,89
-37,Calculus I,"Study the concepts of limits, derivatives, and integrals, laying the foundation for advanced mathematical courses.",35,90
-44,General Chemistry,"Learn the foundational principles of chemistry including atomic structure, chemical bonding, and reactions.",51,91
-67,Introduction to Political Science,"Explore the fundamentals of political systems, theories, and the role of government in society.",23,92
-99,Business Administration Fundamentals,"Understand the basic principles of business operations, management, and organizational structure.",12,93
-98,Art History: Renaissance to Modern,"Study significant movements in art from the Renaissance to modern times, understanding historical context and artistic techniques.",60,94
-40,Psychology of Learning,Delve into the theories and applications of how humans learn and retain information.,19,95
-46,Principles of Economics,"Learn the basics of micro and macroeconomic theory and analysis, focusing on how markets function and economies operate.",42,96
-72,Introduction to Sociology,"Understand the social world and human behavior in a societal context, examining social institutions and relationships.",45,97
-95,Environmental Science,"Understand the interaction between humans and the environment, focusing on ecological processes and sustainability.",21,98
-13,Biology 101,"Discover the principles of biology, covering cell structure, functions, genetics, evolution, and ecology.",52,99
-72,Calculus I,"Study the concepts of limits, derivatives, and integrals, laying the foundation for advanced mathematical courses.",7,100
+1,World History: Ancient to Medieval,"Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.",19,1
+2,Introduction to Literature,"Analyze various literary forms, themes, and techniques, exploring works from diverse periods and cultures.",52,2
+3,Introduction to Psychology,"Explore the fundamentals of human behavior, thought processes, and emotions through scientific research and analysis.",2,3
+4,Introduction to Psychology,"Explore the fundamentals of human behavior, thought processes, and emotions through scientific research and analysis.",20,4
+5,Calculus I,"Study the concepts of limits, derivatives, and integrals, laying the foundation for advanced mathematical courses.",50,5
+6,Principles of Economics,"Learn the basics of micro and macroeconomic theory and analysis, focusing on how markets function and economies operate.",37,6
+7,Physics I: Mechanics,"Explore the basic principles of physics with a focus on motion, forces, and energy.",15,7
+8,Psychology of Learning,Delve into the theories and applications of how humans learn and retain information.,51,8
+9,Introduction to Sociology,"Understand the social world and human behavior in a societal context, examining social institutions and relationships.",43,9
+10,Introduction to Psychology,"Explore the fundamentals of human behavior, thought processes, and emotions through scientific research and analysis.",39,10
+11,Art History: Renaissance to Modern,"Study significant movements in art from the Renaissance to modern times, understanding historical context and artistic techniques.",17,11
+12,Introduction to Political Science,"Explore the fundamentals of political systems, theories, and the role of government in society.",18,12
+13,Human Anatomy and Physiology,"Study the structure and function of the human body, covering the major systems and organs.",41,13
+14,Biology 101,"Discover the principles of biology, covering cell structure, functions, genetics, evolution, and ecology.",7,14
+15,Introduction to Literature,"Analyze various literary forms, themes, and techniques, exploring works from diverse periods and cultures.",48,15
+16,General Chemistry,"Learn the foundational principles of chemistry including atomic structure, chemical bonding, and reactions.",18,16
+17,Introduction to Philosophy,"Examine the central questions of existence, knowledge, and ethics from various philosophical perspectives.",19,17
+18,World History: Ancient to Medieval,"Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.",4,18
+19,Calculus I,"Study the concepts of limits, derivatives, and integrals, laying the foundation for advanced mathematical courses.",13,19
+20,Business Administration Fundamentals,"Understand the basic principles of business operations, management, and organizational structure.",9,20
+21,Human Anatomy and Physiology,"Study the structure and function of the human body, covering the major systems and organs.",16,21
+22,Environmental Science,"Understand the interaction between humans and the environment, focusing on ecological processes and sustainability.",17,22
+23,Modern World Literature,"Study literary works from the 20th and 21st centuries across various cultures, focusing on themes and narrative forms.",12,23
+24,Introduction to Literature,"Analyze various literary forms, themes, and techniques, exploring works from diverse periods and cultures.",42,24
+25,Statistics,"Learn the basic principles of statistical analysis, focusing on data interpretation and probability theory.",32,25
+26,Principles of Economics,"Learn the basics of micro and macroeconomic theory and analysis, focusing on how markets function and economies operate.",51,26
+27,Art History: Renaissance to Modern,"Study significant movements in art from the Renaissance to modern times, understanding historical context and artistic techniques.",24,27
+28,Psychology of Learning,Delve into the theories and applications of how humans learn and retain information.,19,28
+29,Physics I: Mechanics,"Explore the basic principles of physics with a focus on motion, forces, and energy.",40,29
+30,Calculus I,"Study the concepts of limits, derivatives, and integrals, laying the foundation for advanced mathematical courses.",3,30
+31,Business Administration Fundamentals,"Understand the basic principles of business operations, management, and organizational structure.",53,31
+32,Environmental Science,"Understand the interaction between humans and the environment, focusing on ecological processes and sustainability.",14,32
+33,Introduction to Literature,"Analyze various literary forms, themes, and techniques, exploring works from diverse periods and cultures.",42,33
+34,Introduction to Computer Science,"Explore basic programming concepts and algorithms, and understand the fundamental principles of computer science.",30,34
+35,Business Administration Fundamentals,"Understand the basic principles of business operations, management, and organizational structure.",12,35
+36,Introduction to Computer Science,"Explore basic programming concepts and algorithms, and understand the fundamental principles of computer science.",34,36
+37,Statistics,"Learn the basic principles of statistical analysis, focusing on data interpretation and probability theory.",9,37
+38,Biology 101,"Discover the principles of biology, covering cell structure, functions, genetics, evolution, and ecology.",12,38
+39,Introduction to Anthropology,"Explore human societies and cultures, their development, and diversity over time.",29,39
+40,World History: Ancient to Medieval,"Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.",36,40
+41,Environmental Science,"Understand the interaction between humans and the environment, focusing on ecological processes and sustainability.",30,41
+42,Business Administration Fundamentals,"Understand the basic principles of business operations, management, and organizational structure.",56,42
+43,Calculus I,"Study the concepts of limits, derivatives, and integrals, laying the foundation for advanced mathematical courses.",39,43
+44,Introduction to Sociology,"Understand the social world and human behavior in a societal context, examining social institutions and relationships.",53,44
+45,Physics I: Mechanics,"Explore the basic principles of physics with a focus on motion, forces, and energy.",54,45
+46,Principles of Economics,"Learn the basics of micro and macroeconomic theory and analysis, focusing on how markets function and economies operate.",17,46
+47,Environmental Science,"Understand the interaction between humans and the environment, focusing on ecological processes and sustainability.",13,47
+48,Art History: Renaissance to Modern,"Study significant movements in art from the Renaissance to modern times, understanding historical context and artistic techniques.",22,48
+49,Introduction to Anthropology,"Explore human societies and cultures, their development, and diversity over time.",27,49
+50,Introduction to Anthropology,"Explore human societies and cultures, their development, and diversity over time.",40,50
+51,Modern World Literature,"Study literary works from the 20th and 21st centuries across various cultures, focusing on themes and narrative forms.",47,51
+52,Physics I: Mechanics,"Explore the basic principles of physics with a focus on motion, forces, and energy.",47,52
+53,Biology 101,"Discover the principles of biology, covering cell structure, functions, genetics, evolution, and ecology.",8,53
+54,Human Anatomy and Physiology,"Study the structure and function of the human body, covering the major systems and organs.",28,54
+55,Principles of Economics,"Learn the basics of micro and macroeconomic theory and analysis, focusing on how markets function and economies operate.",41,55
+56,Environmental Science,"Understand the interaction between humans and the environment, focusing on ecological processes and sustainability.",40,56
+57,Modern World Literature,"Study literary works from the 20th and 21st centuries across various cultures, focusing on themes and narrative forms.",7,57
+58,Introduction to Political Science,"Explore the fundamentals of political systems, theories, and the role of government in society.",36,58
+59,World History: Ancient to Medieval,"Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.",13,59
+60,Physics I: Mechanics,"Explore the basic principles of physics with a focus on motion, forces, and energy.",52,60
+61,World History: Ancient to Medieval,"Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.",19,61
+62,Introduction to Literature,"Analyze various literary forms, themes, and techniques, exploring works from diverse periods and cultures.",46,62
+63,Introduction to Anthropology,"Explore human societies and cultures, their development, and diversity over time.",33,63
+64,Principles of Economics,"Learn the basics of micro and macroeconomic theory and analysis, focusing on how markets function and economies operate.",12,64
+65,Business Administration Fundamentals,"Understand the basic principles of business operations, management, and organizational structure.",41,65
+66,Psychology of Learning,Delve into the theories and applications of how humans learn and retain information.,22,66
+67,Introduction to Sociology,"Understand the social world and human behavior in a societal context, examining social institutions and relationships.",41,67
+68,General Chemistry,"Learn the foundational principles of chemistry including atomic structure, chemical bonding, and reactions.",14,68
+69,Human Anatomy and Physiology,"Study the structure and function of the human body, covering the major systems and organs.",16,69
+70,World History: Ancient to Medieval,"Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.",19,70
+71,World History: Ancient to Medieval,"Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.",31,71
+72,General Chemistry,"Learn the foundational principles of chemistry including atomic structure, chemical bonding, and reactions.",8,72
+73,Psychology of Learning,Delve into the theories and applications of how humans learn and retain information.,1,73
+74,Art History: Renaissance to Modern,"Study significant movements in art from the Renaissance to modern times, understanding historical context and artistic techniques.",31,74
+75,Environmental Science,"Understand the interaction between humans and the environment, focusing on ecological processes and sustainability.",39,75
+76,Physics I: Mechanics,"Explore the basic principles of physics with a focus on motion, forces, and energy.",5,76
+77,Biology 101,"Discover the principles of biology, covering cell structure, functions, genetics, evolution, and ecology.",43,77
+78,Introduction to Psychology,"Explore the fundamentals of human behavior, thought processes, and emotions through scientific research and analysis.",51,78
+79,Introduction to Philosophy,"Examine the central questions of existence, knowledge, and ethics from various philosophical perspectives.",11,79
+80,Biology 101,"Discover the principles of biology, covering cell structure, functions, genetics, evolution, and ecology.",1,80
+81,Human Anatomy and Physiology,"Study the structure and function of the human body, covering the major systems and organs.",47,81
+82,Introduction to Sociology,"Understand the social world and human behavior in a societal context, examining social institutions and relationships.",41,82
+83,Introduction to Computer Science,"Explore basic programming concepts and algorithms, and understand the fundamental principles of computer science.",38,83
+84,Calculus I,"Study the concepts of limits, derivatives, and integrals, laying the foundation for advanced mathematical courses.",31,84
+85,Psychology of Learning,Delve into the theories and applications of how humans learn and retain information.,50,85
+86,Introduction to Computer Science,"Explore basic programming concepts and algorithms, and understand the fundamental principles of computer science.",45,86
+87,Principles of Economics,"Learn the basics of micro and macroeconomic theory and analysis, focusing on how markets function and economies operate.",34,87
+88,Introduction to Sociology,"Understand the social world and human behavior in a societal context, examining social institutions and relationships.",8,88
+89,Introduction to Psychology,"Explore the fundamentals of human behavior, thought processes, and emotions through scientific research and analysis.",33,89
+90,Introduction to Sociology,"Understand the social world and human behavior in a societal context, examining social institutions and relationships.",15,90
+91,Physics I: Mechanics,"Explore the basic principles of physics with a focus on motion, forces, and energy.",39,91
+92,General Chemistry,"Learn the foundational principles of chemistry including atomic structure, chemical bonding, and reactions.",7,92
+93,Physics I: Mechanics,"Explore the basic principles of physics with a focus on motion, forces, and energy.",51,93
+94,Introduction to Psychology,"Explore the fundamentals of human behavior, thought processes, and emotions through scientific research and analysis.",29,94
+95,Principles of Economics,"Learn the basics of micro and macroeconomic theory and analysis, focusing on how markets function and economies operate.",1,95
+96,Statistics,"Learn the basic principles of statistical analysis, focusing on data interpretation and probability theory.",50,96
+97,Human Anatomy and Physiology,"Study the structure and function of the human body, covering the major systems and organs.",27,97
+98,Introduction to Anthropology,"Explore human societies and cultures, their development, and diversity over time.",41,98
+99,Environmental Science,"Understand the interaction between humans and the environment, focusing on ecological processes and sustainability.",56,99
+100,General Chemistry,"Learn the foundational principles of chemistry including atomic structure, chemical bonding, and reactions.",31,100
