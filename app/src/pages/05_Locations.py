@@ -4,6 +4,7 @@ logger = logging.getLogger(__name__)
 import streamlit as st
 from modules.nav import SideBarLinks
 import requests
+from backend.customers.location_routes import get_locations 
 
 from st_keyup import st_keyup
 
@@ -14,7 +15,7 @@ st.set_page_config(layout = 'wide')
 SideBarLinks()
 
 st.title('Find a location!')
-
+get_locations()
 
 # Function for each page
 def paris_france_page():
