@@ -1,7 +1,6 @@
 USE lisaa_sql;
 
-
-# dump data for Location
+-- Location Data
 INSERT INTO Location (locationID, city, country, description) VALUES
 (1, 'Vienna', 'Austria', 'The capital city known for its cultural events, imperial sites, and coffee houses.'),
 (2, 'Brussels', 'Belgium', 'The heart of the European Union and famous for its chocolates and beers.'),
@@ -35,7 +34,7 @@ INSERT INTO Location (locationID, city, country, description) VALUES
 (30, 'Naples', 'Italy', 'Renowned for its rich history, art, gastronomy, and the nearby Amalfi Coast.');
 
 
-# dump data for abroadProgram 
+-- abroadProgram Data
 INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, programType, empID) VALUES
 (1, 'Vienna', 'Experience innovation in Vienna with a focus on startups, venture capital, and entrepreneurship.', 1, 'Dialogue of Civilizations', 1),
 (2, 'Brussels', 'Immerse yourself in the healthcare system of Brussels, with practical sessions in public health and medical ethics.', 2, 'Semester.in', 2),
@@ -69,8 +68,7 @@ INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, 
 (30, 'Naples', 'Experience the unique blend of tradition and modernity in Naples with courses in history, culture, and politics.', 30, 'Traditional Study Abroad', 30);
 
 
-# for ratings
-
+-- Ratings Data
 INSERT INTO Rating (ratingID, programID, sID, datePosted, locRating, profRating, atmosphereRating, comment) VALUES
 (1, 1, 1, '2024-01-15', 5, 5, 4, 'Great program! The organization and content exceeded my expectations.'),
 (2, 2, 2, '2024-02-10', 4, 3, 4, 'The program was informative but could use more hands-on activities.'),
@@ -104,7 +102,7 @@ INSERT INTO Rating (ratingID, programID, sID, datePosted, locRating, profRating,
 (30, 30, 15, '2025-03-15', 3, 4, 3, 'The program was good but needed more activities.');
 
 
-# inserts for Alerts
+-- Alerts Data 
 INSERT INTO Alerts (alertID, locationID, message, datePosted) VALUES
 (1, 1, 'Water supply interruption scheduled for tomorrow between 9 AM and 4 PM.', '2024-05-04 01:22:10'),
 (2, 2, 'Flash flood warning in effect. Avoid low-lying areas and seek higher ground.', '2024-09-28 00:58:59'),
@@ -137,8 +135,7 @@ INSERT INTO Alerts (alertID, locationID, message, datePosted) VALUES
 (29, 29, 'Transportation strike announced. Expect disruptions in public transit services.', '2024-03-24 16:08:11'),
 (30, 30, 'Reminder: Curfew in place from 11 PM to 5 AM for safety reasons.', '2024-08-11 14:14:48');
 
-# inserts for Resources
-
+-- Resources Data
 INSERT INTO Resources (resourceID, locationID, category, lastUpdated)
 VALUES
 (1, 1, 'FAQs and Troubleshooting', '2024-09-12 18:38:19'),
@@ -173,8 +170,7 @@ VALUES
 (30, 30, 'Local Information', '2024-07-18 20:19:06');
 
 
-
-# inserts for Courses
+-- Courses Data 
 INSERT INTO Courses (courseID, courseName, courseDescription, programID, professorID) VALUES
 (1, 'World History: Ancient to Medieval', 'Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.', 19, 1),
 (2, 'Introduction to Literature', 'Analyze various literary forms, themes, and techniques, exploring works from diverse periods and cultures.', 52, 2),
@@ -209,7 +205,7 @@ INSERT INTO Courses (courseID, courseName, courseDescription, programID, profess
 
 
 
-# inserts for admin employee
+-- adminEmployee Data
 INSERT INTO adminEmployee (empID, title, fName, lName, email, courseID) VALUES
 (1, 'Software Engineer', 'Alaine', 'Hulles', 'alaine.hulles@yahoo.com', 18),
 (2, 'Sales Executive', 'Berna', 'Kerr', 'berna.kerr@hotmail.com', 41),
@@ -243,7 +239,7 @@ INSERT INTO adminEmployee (empID, title, fName, lName, email, courseID) VALUES
 (30, 'Software Engineer', 'Pattie', 'Conor', 'pattie.conor@hotmail.com', 1);
 
 
-# inserts for employeeAbroadProgram bridge table 
+-- employeeAbroadProgram Bridge Inserts
 INSERT INTO employeeAbroadProgram (programID, empID)
 VALUES
 (1, 1),
@@ -362,8 +358,7 @@ VALUES
 (27, 30);
 
 
-# inserts for engagement analytics
-
+-- engagementAnalytics Data
 INSERT INTO engagementAnalytics (featureID, empID, usageCount, date)
 VALUES
 (1, 18, 174, '2024-01-30 14:48:01'),
@@ -408,7 +403,7 @@ VALUES
 (40, 30, 689, '2024-01-12 08:40:07');
 
 
-# inserts for professor 
+-- Professor Data
 INSERT INTO Professor (profID, fName, lName, department, email) VALUES
 (1, 'Gallagher', 'Chalcroft', 'Engineering', 'gallagher.chalcroft@gmail.com'),
 (2, 'Otha', 'Stoakes', 'Biology', 'otha.stoakes@yahoo.com'),
@@ -452,7 +447,7 @@ INSERT INTO Professor (profID, fName, lName, department, email) VALUES
 (40, 'Sibeal', 'Gargett', 'Sociology', 'sibeal.gargett@hotmail.com');
 
 
--- Inserts for Student
+-- Student Data
 INSERT INTO Student (sID, fName, lName, email, majorID, blurb, role) VALUES
 (1, 'Aeriel', 'Sommerton', 'aeriel.sommerton@web.de', 1, 'Dance is my outlet for energy and creativity. I practice various styles and perform in competitions, always striving to learn new choreography.', 'mentor'),
 (2, 'Meaghan', 'Le Ball', 'meaghan.leball@hotmail.com', 2, 'Cooking and experimenting with new recipes is what I love most. I often host dinner parties for my friends to try out new dishes.', 'mentor'),
@@ -485,7 +480,8 @@ INSERT INTO Student (sID, fName, lName, email, majorID, blurb, role) VALUES
 (29, 'Cahra', 'Wooster', 'cahra.wooster@wanadoo.fr', 29,  'Acting is my passion, and I participate in school plays and local theater productions. I thrive on stage and love bringing characters to life.', 'mentee'),
 (30, 'Amy', 'McAviy', 'amy.mcaviy@msn.com', 30, 'Outdoor adventures are what I live for. Whether it is hiking, camping, or rock climbing, being in nature gives me peace and brings out the best in me.', 'mentee');
 
-# inserts for student & abroadProgram bridge table
+
+-- studentAbroadProgram Bridge Inserts
 INSERT INTO studentAbroadProgram (programID, sID) VALUES
 (5, 1),
 (8, 2),
@@ -590,7 +586,7 @@ INSERT INTO studentAbroadProgram (programID, sID) VALUES
 
 
 
-# inserts for mentee-mentor matches 
+-- mentorshipMatch Data 
 INSERT INTO mentorshipMatch (matchID, menteeID, mentorID, dateMatched) VALUES
 (1, 30, 1, '2024-09-08 22:55:29'),
 (2, 30, 1, '2024-05-06 20:16:45'),
@@ -624,7 +620,7 @@ INSERT INTO mentorshipMatch (matchID, menteeID, mentorID, dateMatched) VALUES
 (30, 29, 15, '2024-11-23 14:53:42');
 
 
-# inserts for major
+-- Major Data
 INSERT INTO major (majorID, majorName, Department) VALUES
 (1, 'Computer Science', 'Engineering'),
 (2, 'Mechanical Engineering', 'Engineering'),
@@ -657,7 +653,8 @@ INSERT INTO major (majorID, majorName, Department) VALUES
 (29, 'Computer Engineering', 'Engineering'),
 (30, 'Chemical Engineering', 'Engineering');
 
-# inserts for student-major bridge table
+
+-- studentMajor Bridge Inserts
 INSERT INTO studentMajor (majorID, sID) VALUES
 (1, 1),
 (2, 2),
@@ -764,7 +761,7 @@ INSERT INTO studentMajor (majorID, sID) VALUES
 (17, 19);
 
 
-# inserts for questions
+-- Questions Data
 INSERT INTO questions (qID, sID, content, datePosted, isApproved, abroadProgram) VALUES
 (1, 16, 'What is the culture like in the city, and how can I best integrate into it?', '2024-03-06 03:34:04', 1, 1),
 (2, 16, 'How do I open a bank account as an international student?', '2023-11-30 21:12:47', 1, 2),
@@ -797,7 +794,8 @@ INSERT INTO questions (qID, sID, content, datePosted, isApproved, abroadProgram)
 (29, 30, 'Who is the best professor in the world?', '2024-02-15 19:11:11', 0, 29),
 (30, 30, 'Hello, hello, hello, hello, hello!', '2023-12-11 14:49:55', 0, 30);
 
-# inserts for replies
+
+-- Replies Data
 INSERT INTO replies (replyID, sID, qID, content, datePosted, isApproved) VALUES
 (1, 1, 1, 'The city culture is vibrant and diverse—attend local events, explore community spaces, and connect with locals to integrate smoothly.', '2023-12-21 18:00:01', 1),
 (2, 1, 2, 'To open a bank account, you will need your passport, visa, I-20/DS-2019, proof of address, and sometimes a Social Security number or ITIN.', '2024-04-14 03:54:34', 1),
