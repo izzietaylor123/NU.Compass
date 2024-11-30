@@ -22,7 +22,7 @@ if st.button('Current Abroad Programs',
 if st.button('View Posts and Replies', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/13_Classification.py')
+  st.switch_page('pages/13_Mentorship_Replies.py')
 
 if st.button("Current Programs Ratings",
              type='primary',
