@@ -28,32 +28,31 @@ def get_customers():
     return the_response
 
 #------------------------------------------------------------
-# Update customer info for customer with particular userID
-#   Notice the manner of constructing the query.
-@customers.route('/customers', methods=['PUT'])
-def update_customer():
-    current_app.logger.info('PUT /customers route')
-    cust_info = request.json
-    cust_id = cust_info['id']
-    first = cust_info['first_name']
-    last = cust_info['last_name']
-    company = cust_info['company']
+# Update location info for location with particular locationID
+@locations.route('/locations', methods=['PUT'])
+def update_locations():
+    current_app.logger.info('PUT /locations route')
+    loc_info = request.json
+    loc_id = loc_info['locationID']
+    city = loc_info['city']
+    country = loc_info['country']
+    description = loc_info['description']
 
-    query = 'UPDATE customers SET first_name = %s, last_name = %s, company = %s where id = %s'
-    data = (first, last, company, cust_id)
+    query = 'UPDATE locations SET city = %s, country = %s, description = %s where locationID = %s'
+    data = (city, country, description, loc_id)
     cursor = db.get_db().cursor()
     r = cursor.execute(query, data)
     db.get_db().commit()
-    return 'customer updated!'
+    return 'location updated!'
 
 #------------------------------------------------------------
-# Get customer detail for customer with particular userID
-#   Notice the manner of constructing the query. 
-@customers.route('/customers/<userID>', methods=['GET'])
-def get_customer(userID):
-    current_app.logger.info('GET /customers/<userID> route')
+# Get location details for location with particular locationID
+
+@locations.route('/locations/<locationID>', methods=['GET'])
+def get_customer(locationID):
+    current_app.logger.info('GET /locations/<locationID> route')
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT id, first_name, last_name FROM customers WHERE id = {0}'.format(userID))
+    cursor.execute('SELECT locationID, city, country, description FROM Location WHERE id = {0}'.format(locationID))
     
     theData = cursor.fetchall()
     
@@ -63,7 +62,8 @@ def get_customer(userID):
 
 #------------------------------------------------------------
 # Makes use of the very simple ML model in to predict a value
-# and returns it to the user
+# and returns it to the user - NOT SURE IF WE NEED THIS FOR OUR PROJ
+''''
 @customers.route('/prediction/<var01>/<var02>', methods=['GET'])
 def predict_value(var01, var02):
     current_app.logger.info(f'var01 = {var01}')
@@ -76,3 +76,4 @@ def predict_value(var01, var02):
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
+'''
