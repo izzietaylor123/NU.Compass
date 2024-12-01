@@ -1080,6 +1080,10 @@ INSERT INTO Reply (replyID, sID, qID, content, datePosted, isApproved) VALUES
 (30, 15, 30, 'PlEASE DO NOT BOTHER ME!', '2024-08-13 11:24:25', 0);
 
 
+SELECT avg(locRating)
+FROM Rating
+WHERE programID = 2;
+
 # ## Making the data entries
 # INSERT INTO abroadProgram(programID, programName, prgmDescription, locationID, programType, empID)
 # VALUES ( 00000000001, 'NUin.ROME', 'Embark on a transformative academic journey in the heart of Rome, Italy—a city where history, art, philosophy, and culture converge. The NUIN Rome program offers a curated selection of humanities courses designed to immerse students in the richness of Western civilization while fostering a deep appreciation for global perspectives.

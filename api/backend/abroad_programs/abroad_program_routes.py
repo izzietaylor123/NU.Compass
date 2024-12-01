@@ -29,6 +29,25 @@ def get_all_programs():
 
 
 #------------------------------------------------------------
+# Get programID from city name
+@abroad_programs.route('/abroad_programs', methods=['GET'])
+def get_program_id(cityname):
+
+    cursor = db.get_db().cursor()
+    query = f'''
+        SELECT programID
+        FROM abroadProgram
+        JOIN location ON location.locationID = abroadProgram.locationID
+        WHERE location.city = {str(cityname)}'''
+    cursor.execute(query)
+    
+    locations = cursor.fetchall()
+    
+    the_response = make_response(jsonify(locations))
+    the_response.status_code = 200
+    return the_response
+
+#------------------------------------------------------------
 # Get location rating from the system
 @abroad_programs.route('/abroad_programs', methods=['GET'])
 def get_location_rating(programID):

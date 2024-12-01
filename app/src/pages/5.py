@@ -1,8 +1,9 @@
 import logging
 logger = logging.getLogger(__name__)
-
+import lisaa_sql as lisaa
 import streamlit as st
 from modules.nav import SideBarLinks
+import requests
 
 st.set_page_config(layout = 'wide')
 
@@ -20,3 +21,31 @@ st.write("The Northeastern Paris N.U.in Program offers first-year students\
          including the potential for co-op placements in international companies or organizations based in Paris. \
          Through this experience, students develop not only academic knowledge but also a deep appreciation for French culture\
         and the global context in which they are studying.")
+
+# locationRating = lisaa.get_location_rating(lisaa.get_program_id('Paris'))
+# professorRating = lisaa.get_professor_rating(lisaa.get_program_id('Paris'))
+# atmosphereRating = lisaa.get_atmosphere_rating(lisaa.get_program_id('Paris'))
+
+locationRating = 4.6
+professorRating = 2.5
+atmosphereRating = 3.0
+
+averageRating = (locationRating + professorRating + atmosphereRating) / 3
+
+st.write('')
+st.write('Location rating: ')
+st.write(locationRating)
+for i in range (int(locationRating)):
+    st.write('⭐️')
+
+st.write('')
+st.write('Professor rating: ')
+st.write(professorRating)
+for i in range (int(professorRating)):
+    st.write('⭐️')
+
+st.write('')
+st.write('Atmosphere rating: ')
+st.write(atmosphereRating)
+for i in range (int(atmosphereRating)):
+    st.write('⭐️')

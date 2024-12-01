@@ -4,7 +4,8 @@ logger = logging.getLogger(__name__)
 import streamlit as st
 from modules.nav import SideBarLinks
 import requests
-from backend.customers.location_routes import get_locations 
+
+# from backend.customers.location_routes.py import get_locations 
 
 from st_keyup import st_keyup
 
@@ -15,20 +16,20 @@ st.set_page_config(layout = 'wide')
 SideBarLinks()
 
 st.title('Find a location!')
-get_locations()
+# get_locations()
 
 # Function for each page
 def paris_france_page():
-    st.switch_page('pages/location_pages/5')
+    st.switch_page('pages/5.py')
     
 def london_uk_page():
-    st.switch_page('pages/052_london_uk.py')
+    st.switch_page('pages/location_pages/052_london_uk.py')
     
 def nice_france_page():
-    st.switch_page('pages/053_nice_france.py')
+    st.switch_page('pages/location_pages/053_nice_france.py')
     
 def berlin_germany_page():
-    st.switch_page('pages/054_berlin_germany.py')
+    st.switch_page('pages/location_pages/054_berlin_germany.py')
     
 
 # Mapping each button to its respective page function
