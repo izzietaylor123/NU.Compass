@@ -243,6 +243,9 @@ CREATE TABLE IF NOT EXISTS Reply
         REFERENCES Question (qID)
 );
 
+
+---- INSERT statements for database ------
+
 USE lisaa_sql;
 
 -- Location Data
