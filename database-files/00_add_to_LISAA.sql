@@ -48,7 +48,7 @@ INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, 
 (10, 'Amsterdam', 'Participate in our intensive studies program in Amsterdam, focusing on history, politics, and contemporary culture.', 10, 'Traditional Study Abroad', 10),
 (11, 'Oslo', 'Analyze the economic landscape of Oslo while studying international economics and development.', 11, 'Traditional Study Abroad', 11),
 (12, 'Warsaw', 'Engage with the community development efforts in Warsaw while studying sociology and humanitarian action.', 12, 'Dialogue of Civilizations', 12),
-(13, 'Lisbon', 'Experience the vibrant city life of Lisbon and study Portugese language and culture through hands-on projects.', 13, 'NU.in', 13),
+(13, 'Lisbon', 'Experience the vibrant city life of Lisbon and study Portuguese language and culture through hands-on projects.', 13, 'NU.in', 13),
 (14, 'Madrid', 'Witness the urban evolution of Madrid and study urban planning, real estate, and architecture.', 14, 'Dialogue of Civilizations', 14),
 (15, 'Stockholm', 'Immerse yourself in the healthcare system of Stockholm, with practical sessions in public health and medical ethics.', 15, 'Dialogue of Civilizations', 15),
 (16, 'Bern', 'Participate in wildlife conservation efforts in Bern, focusing on ecosystem management and biology studies.', 16, 'Traditional Study Abroad', 16),
@@ -66,6 +66,40 @@ INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, 
 (28, 'Lyon', 'Dive into the rich cultural scene of Lyon with courses in music, history, and the arts.', 28, 'NU.in', 28),
 (29, 'Marseille', 'Study fashion and culture in the bustling city of Marseille, a global hub for design and creativity.', 29, 'Dialogue of Civilizations', 29),
 (30, 'Naples', 'Experience the unique blend of tradition and modernity in Naples with courses in history, culture, and politics.', 30, 'Traditional Study Abroad', 30);
+
+-- Student Data
+INSERT INTO Student (sID, fName, lName, email, blurb, role) VALUES
+(1, 'Aeriel', 'Sommerton', 'aeriel.sommerton@web.de',  'Dance is my outlet for energy and creativity. I practice various styles and perform in competitions, always striving to learn new choreography.', 'mentor'),
+(2, 'Meaghan', 'Le Ball', 'meaghan.leball@hotmail.com',  'Cooking and experimenting with new recipes is what I love most. I often host dinner parties for my friends to try out new dishes.', 'mentor'),
+(3, 'Ondrea', 'Kinsella', 'ondrea.kinsella@yahoo.co.in',  'Video games are my favorite pastime. I enjoy strategy games that challenge my mind and continuously seek to improve my skills.', 'mentor'),
+(4, 'Kile', 'McPhelimey', 'kile.mcphelimey@libero.it',  'Dance is my outlet for energy and creativity. I practice various styles and perform in competitions, always striving to learn new choreography.', 'mentor'),
+(5, 'Ash', 'Uff', 'ash.uff@hotmail.com',  'Math challenges and numbers are where I find solace. Sudoku and puzzles occupy my free time, alongside participating in national math competitions.', 'mentor'),
+(6, 'Shelli', 'Milius', 'shelli.milius@neuf.fr',  'I have a passion for mathematics and spend most of my time solving complex equations. Outside of academics, I enjoy playing chess and competing in local tournaments.', 'mentor'),
+(7, 'Fayth', 'Sodor', 'fayth.sodor@gmx.de',  'Dance is my outlet for energy and creativity. I practice various styles and perform in competitions, always striving to learn new choreography.', 'mentor'),
+(8, 'Nahum', 'Seeler', 'nahum.seeler@wanadoo.fr',  'Video games are my favorite pastime. I enjoy strategy games that challenge my mind and continuously seek to improve my skills.', 'mentor'),
+(9, 'Scotti', 'Rivallant', 'scotti.rivallant@gmail.com',  'I enjoy writing and have a blog where I share book reviews and personal thoughts. Connecting with readers from around the world is enriching.', 'mentor'),
+(10, 'Cosme', 'Elliot', 'cosme.elliot@yahoo.com',  'Science is my favorite subject, especially biology. Exploring the natural world and understanding how things work piques my interest like nothing else!', 'mentor'),
+(11, 'Goldy', 'Evesque', 'goldy.evesque@gmail.com',  'I am an avid reader and love diving into fantasy novels. When I am not studying, you can find me writing short stories or exploring new coffee shops around town.', 'mentor'),
+(12, 'Court', 'Gildroy', 'court.gildroy@gmail.com', 'Music runs in my family, and I play the guitar in a band with my friends. On weekends, we perform at local gigs, bringing energy to the stage.', 'mentor'),
+(13, 'Mahala', 'Boerderman', 'mahala.boerderman@gmail.com',  'Technology and coding are my main interests. I spend weekends participating in hackathons and building apps to solve everyday problems.', 'mentor'),
+(14, 'Avrom', 'Nilges', 'avrom.nilges@gmail.com',  'Social justice is close to my heart, and I volunteer at a local community center. Advocating for change and helping others drives me.', 'mentor'),
+(15, 'Charin', 'Boggish', 'charin.boggish@yahoo.co.id',  'Video games are my favorite pastime. I enjoy strategy games that challenge my mind and continuously seek to improve my skills.', 'mentor'),
+(16, 'Wallie', 'Sandon', 'wallie.sandon@yahoo.com',  'Outdoor adventures are what I live for. Whether it is hiking, camping, or rock climbing, being in nature gives me peace and brings out the best in me.', 'mentee'),
+(17, 'Ryun', 'Athy', 'ryun.athy@hotmail.com',  'Technology and coding are my main interests. I spend weekends participating in hackathons and building apps to solve everyday problems.', 'mentee'),
+(18, 'Gates', 'Ledeker', 'gates.ledeker@gmail.com',  'Acting is my passion, and I participate in school plays and local theater productions. I thrive on stage and love bringing characters to life.', 'mentee'),
+(19, 'Bliss', 'Conibear', 'bliss.conibear@freenet.de',   'Social justice is close to my heart, and I volunteer at a local community center. Advocating for change and helping others drives me.', 'mentee'),
+(20, 'Carny', 'Huniwall', 'carny.huniwall@gmail.com',  'Cooking and experimenting with new recipes is what I love most. I often host dinner parties for my friends to try out new dishes.', 'mentee'),
+(21, 'Vyky', 'Worsnip', 'vyky.worsnip@hotmail.com',  'I have a passion for mathematics and spend most of my time solving complex equations. Outside of academics, I enjoy playing chess and competing in local tournaments.', 'mentee'),
+(22, 'Trenna', 'Gerbel', 'trenna.gerbel@hotmail.com',  'I am an avid reader and love diving into fantasy novels. When I am not studying, you can find me writing short stories or exploring new coffee shops around town.', 'mentee'),
+(23, 'Ebonee', 'Halkyard', 'ebonee.halkyard@yahoo.com.br',  'Photography helps me capture the world from different perspectives. Whether it is landscapes or portraits, I love finding beauty in everyday life.', 'mentee'),
+(24, 'Keenan', 'Mowson', 'keenan.mowson@yahoo.com',  'I enjoy writing and have a blog where I share book reviews and personal thoughts. Connecting with readers from around the world is enriching.', 'mentee'),
+(25, 'Yorke', 'Bensusan', 'yorke.bensusan@sbcglobal.net',  'Sports are my life! I am the captain of the soccer team and love spending my afternoons practicing or watching matches with friends.', 'mentee'),
+(26, 'Wilton', 'Worsell', 'wilton.worsell@yahoo.fr',  'Math challenges and numbers are where I find solace. Sudoku and puzzles occupy my free time, alongside participating in national math competitions.', 'mentee'),
+(27, 'Alayne', 'Whitnell', 'alayne.whitnell@yahoo.com',  'Math challenges and numbers are where I find solace. Sudoku and puzzles occupy my free time, alongside participating in national math competitions.', 'mentee'),
+(28, 'Fanchon', 'Quarry', 'fanchon.quarry@hotmail.com',  'Video games are my favorite pastime. I enjoy strategy games that challenge my mind and continuously seek to improve my skills.', 'mentee'),
+(29, 'Cahra', 'Wooster', 'cahra.wooster@wanadoo.fr',   'Acting is my passion, and I participate in school plays and local theater productions. I thrive on stage and love bringing characters to life.', 'mentee'),
+(30, 'Amy', 'McAviy', 'amy.mcaviy@msn.com', 'Outdoor adventures are what I live for. Whether it is hiking, camping, or rock climbing, being in nature gives me peace and brings out the best in me.', 'mentee');
+
 
 
 -- Ratings Data
@@ -171,7 +205,7 @@ VALUES
 
 
 -- Courses Data 
-INSERT INTO Courses (courseID, courseName, courseDescription, programID, professorID) VALUES
+INSERT INTO Course (courseID, courseName, courseDescription, programID, professorID) VALUES
 (1, 'World History: Ancient to Medieval', 'Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.', 19, 1),
 (2, 'Introduction to Literature', 'Analyze various literary forms, themes, and techniques, exploring works from diverse periods and cultures.', 52, 2),
 (3, 'Introduction to Psychology', 'Explore the fundamentals of human behavior, thought processes, and emotions through scientific research and analysis.', 2, 3),
@@ -447,38 +481,6 @@ INSERT INTO Professor (profID, fName, lName, department, email) VALUES
 (40, 'Sibeal', 'Gargett', 'Sociology', 'sibeal.gargett@hotmail.com');
 
 
--- Student Data
-INSERT INTO Student (sID, fName, lName, email, majorID, blurb, role) VALUES
-(1, 'Aeriel', 'Sommerton', 'aeriel.sommerton@web.de', 1, 'Dance is my outlet for energy and creativity. I practice various styles and perform in competitions, always striving to learn new choreography.', 'mentor'),
-(2, 'Meaghan', 'Le Ball', 'meaghan.leball@hotmail.com', 2, 'Cooking and experimenting with new recipes is what I love most. I often host dinner parties for my friends to try out new dishes.', 'mentor'),
-(3, 'Ondrea', 'Kinsella', 'ondrea.kinsella@yahoo.co.in', 3, 'Video games are my favorite pastime. I enjoy strategy games that challenge my mind and continuously seek to improve my skills.', 'mentor'),
-(4, 'Kile', 'McPhelimey', 'kile.mcphelimey@libero.it', 4, 'Dance is my outlet for energy and creativity. I practice various styles and perform in competitions, always striving to learn new choreography.', 'mentor'),
-(5, 'Ash', 'Uff', 'ash.uff@hotmail.com', 5, 'Math challenges and numbers are where I find solace. Sudoku and puzzles occupy my free time, alongside participating in national math competitions.', 'mentor'),
-(6, 'Shelli', 'Milius', 'shelli.milius@neuf.fr', 6, 'I have a passion for mathematics and spend most of my time solving complex equations. Outside of academics, I enjoy playing chess and competing in local tournaments.', 'mentor'),
-(7, 'Fayth', 'Sodor', 'fayth.sodor@gmx.de', 7, 'Dance is my outlet for energy and creativity. I practice various styles and perform in competitions, always striving to learn new choreography.', 'mentor'),
-(8, 'Nahum', 'Seeler', 'nahum.seeler@wanadoo.fr', 8, 'Video games are my favorite pastime. I enjoy strategy games that challenge my mind and continuously seek to improve my skills.', 'mentor'),
-(9, 'Scotti', 'Rivallant', 'scotti.rivallant@gmail.com', 9, 'I enjoy writing and have a blog where I share book reviews and personal thoughts. Connecting with readers from around the world is enriching.', 'mentor'),
-(10, 'Cosme', 'Elliot', 'cosme.elliot@yahoo.com', 10, 'Science is my favorite subject, especially biology. Exploring the natural world and understanding how things work piques my interest like nothing else!', 'mentor'),
-(11, 'Goldy', 'Evesque', 'goldy.evesque@gmail.com', 11, 'I am an avid reader and love diving into fantasy novels. When I am not studying, you can find me writing short stories or exploring new coffee shops around town.', 'mentor'),
-(12, 'Court', 'Gildroy', 'court.gildroy@gmail.com', 12, 'Music runs in my family, and I play the guitar in a band with my friends. On weekends, we perform at local gigs, bringing energy to the stage.', 'mentor'),
-(13, 'Mahala', 'Boerderman', 'mahala.boerderman@gmail.com', 13, 'Technology and coding are my main interests. I spend weekends participating in hackathons and building apps to solve everyday problems.', 'mentor'),
-(14, 'Avrom', 'Nilges', 'avrom.nilges@gmail.com', 14, 'Social justice is close to my heart, and I volunteer at a local community center. Advocating for change and helping others drives me.', 'mentor'),
-(15, 'Charin', 'Boggish', 'charin.boggish@yahoo.co.id', 15, 'Video games are my favorite pastime. I enjoy strategy games that challenge my mind and continuously seek to improve my skills.', 'mentor'),
-(16, 'Wallie', 'Sandon', 'wallie.sandon@yahoo.com', 16, 'Outdoor adventures are what I live for. Whether it is hiking, camping, or rock climbing, being in nature gives me peace and brings out the best in me.', 'mentee'),
-(17, 'Ryun', 'Athy', 'ryun.athy@hotmail.com', 17, 'Technology and coding are my main interests. I spend weekends participating in hackathons and building apps to solve everyday problems.', 'mentee'),
-(18, 'Gates', 'Ledeker', 'gates.ledeker@gmail.com', 18, 'Acting is my passion, and I participate in school plays and local theater productions. I thrive on stage and love bringing characters to life.', 'mentee'),
-(19, 'Bliss', 'Conibear', 'bliss.conibear@freenet.de', 19,  'Social justice is close to my heart, and I volunteer at a local community center. Advocating for change and helping others drives me.', 'mentee'),
-(20, 'Carny', 'Huniwall', 'carny.huniwall@gmail.com', 20, 'Cooking and experimenting with new recipes is what I love most. I often host dinner parties for my friends to try out new dishes.', 'mentee'),
-(21, 'Vyky', 'Worsnip', 'vyky.worsnip@hotmail.com', 21, 'I have a passion for mathematics and spend most of my time solving complex equations. Outside of academics, I enjoy playing chess and competing in local tournaments.', 'mentee'),
-(22, 'Trenna', 'Gerbel', 'trenna.gerbel@hotmail.com', 22, 'I am an avid reader and love diving into fantasy novels. When I am not studying, you can find me writing short stories or exploring new coffee shops around town.', 'mentee'),
-(23, 'Ebonee', 'Halkyard', 'ebonee.halkyard@yahoo.com.br', 23, 'Photography helps me capture the world from different perspectives. Whether it is landscapes or portraits, I love finding beauty in everyday life.', 'mentee'),
-(24, 'Keenan', 'Mowson', 'keenan.mowson@yahoo.com', 24, 'I enjoy writing and have a blog where I share book reviews and personal thoughts. Connecting with readers from around the world is enriching.', 'mentee'),
-(25, 'Yorke', 'Bensusan', 'yorke.bensusan@sbcglobal.net', 25, 'Sports are my life! I am the captain of the soccer team and love spending my afternoons practicing or watching matches with friends.', 'mentee'),
-(26, 'Wilton', 'Worsell', 'wilton.worsell@yahoo.fr', 26, 'Math challenges and numbers are where I find solace. Sudoku and puzzles occupy my free time, alongside participating in national math competitions.', 'mentee'),
-(27, 'Alayne', 'Whitnell', 'alayne.whitnell@yahoo.com', 27, 'Math challenges and numbers are where I find solace. Sudoku and puzzles occupy my free time, alongside participating in national math competitions.', 'mentee'),
-(28, 'Fanchon', 'Quarry', 'fanchon.quarry@hotmail.com', 28, 'Video games are my favorite pastime. I enjoy strategy games that challenge my mind and continuously seek to improve my skills.', 'mentee'),
-(29, 'Cahra', 'Wooster', 'cahra.wooster@wanadoo.fr', 29,  'Acting is my passion, and I participate in school plays and local theater productions. I thrive on stage and love bringing characters to life.', 'mentee'),
-(30, 'Amy', 'McAviy', 'amy.mcaviy@msn.com', 30, 'Outdoor adventures are what I live for. Whether it is hiking, camping, or rock climbing, being in nature gives me peace and brings out the best in me.', 'mentee');
 
 
 -- studentAbroadProgram Bridge Inserts
@@ -621,7 +623,7 @@ INSERT INTO mentorshipMatch (matchID, menteeID, mentorID, dateMatched) VALUES
 
 
 -- Major Data
-INSERT INTO major (majorID, majorName, Department) VALUES
+INSERT INTO Major (majorID, majorName, Department) VALUES
 (1, 'Computer Science', 'Engineering'),
 (2, 'Mechanical Engineering', 'Engineering'),
 (3, 'Psychology', 'Arts and Sciences'),
@@ -762,7 +764,7 @@ INSERT INTO studentMajor (majorID, sID) VALUES
 
 
 -- Questions Data
-INSERT INTO questions (qID, sID, content, datePosted, isApproved, abroadProgram) VALUES
+INSERT INTO Question (qID, sID, content, datePosted, isApproved, abroadProgram) VALUES
 (1, 16, 'What is the culture like in the city, and how can I best integrate into it?', '2024-03-06 03:34:04', 1, 1),
 (2, 16, 'How do I open a bank account as an international student?', '2023-11-30 21:12:47', 1, 2),
 (3, 17, 'Are there any cultural differences I should be aware of when studying here?', '2024-11-03 12:04:12', 1, 3),
@@ -796,7 +798,7 @@ INSERT INTO questions (qID, sID, content, datePosted, isApproved, abroadProgram)
 
 
 -- Replies Data
-INSERT INTO replies (replyID, sID, qID, content, datePosted, isApproved) VALUES
+INSERT INTO Reply (replyID, sID, qID, content, datePosted, isApproved) VALUES
 (1, 1, 1, 'The city culture is vibrant and diverse—attend local events, explore community spaces, and connect with locals to integrate smoothly.', '2023-12-21 18:00:01', 1),
 (2, 1, 2, 'To open a bank account, you will need your passport, visa, I-20/DS-2019, proof of address, and sometimes a Social Security number or ITIN.', '2024-04-14 03:54:34', 1),
 (3, 2, 3, 'Yes, cultural norms like punctuality, individualism, and direct communication are common—observing and asking questions can help you adapt.', '2024-10-31 10:17:30', 1),

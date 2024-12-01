@@ -35,6 +35,19 @@ CREATE TABLE IF NOT EXISTS abroadProgram
         ON DELETE RESTRICT
 );
 
+DROP TABLE IF EXISTS Student;
+CREATE TABLE IF NOT EXISTS Student
+(
+    sID       INT(11)      NOT NULL AUTO_INCREMENT,
+    fName     VARCHAR(20)  NOT NULL,
+    lName     VARCHAR(20)  NOT NULL,
+    email     VARCHAR(200) NOT NULL,
+    blurb     VARCHAR(2000),
+    role      VARCHAR(100) NOT NULL,
+    INDEX idx_last_name (lName),
+    PRIMARY KEY (sID)
+);
+
 DROP TABLE IF EXISTS Rating;
 CREATE TABLE IF NOT EXISTS Rating
 (
@@ -159,19 +172,6 @@ CREATE TABLE IF NOT EXISTS Professor
         ON DELETE RESTRICT
 );
 
-
-DROP TABLE IF EXISTS Student;
-CREATE TABLE IF NOT EXISTS Student
-(
-    sID       INT(11)      NOT NULL AUTO_INCREMENT,
-    fName     VARCHAR(20)  NOT NULL,
-    lName     VARCHAR(20)  NOT NULL,
-    email     VARCHAR(200) NOT NULL,
-    blurb     VARCHAR(2000),
-    role      VARCHAR(100) NOT NULL,
-    INDEX idx_last_name (lName),
-    PRIMARY KEY (sID)
-);
 
 DROP TABLE IF EXISTS studentAbroadProgram;
 CREATE TABLE IF NOT EXISTS studentAbroadProgram
