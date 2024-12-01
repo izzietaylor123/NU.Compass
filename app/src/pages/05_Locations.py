@@ -19,7 +19,7 @@ get_locations()
 
 # Function for each page
 def paris_france_page():
-    st.switch_page('pages/051_paris_france.py')
+    st.switch_page('pages/location_pages/5')
     
 def london_uk_page():
     st.switch_page('pages/052_london_uk.py')
