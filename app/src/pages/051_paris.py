@@ -67,34 +67,3 @@ st.write("The Northeastern Paris N.U.in Program offers first-year students\
 # locationRating = lisaa.get_location_rating(lisaa.get_program_id('Paris'))
 # professorRating = lisaa.get_professor_rating(lisaa.get_program_id('Paris'))
 # atmosphereRating = lisaa.get_atmosphere_rating(lisaa.get_program_id('Paris'))
-
-locationRating = 4.6
-professorRating = 2.5
-atmosphereRating = 3.0
-
-averageRating = round(((locationRating + professorRating + atmosphereRating) / 3), 2)
-
-st.write('')
-avgR = 'Average rating: ' + str(averageRating) + ' '
-for i in range (int(averageRating)):
-    avgR = avgR + '⭐️'
-st.write('###', avgR)
-
-st.write('')
-lr = 'Location rating: ' + str(round(locationRating, 2)) + ' '
-for i in range (int(locationRating)):
-    lr = lr + '⭐️'
-st.write(lr)
-
-st.write('')
-
-pr = 'Professor rating: ' + str(round(professorRating, 2)) + ' '
-for i in range (int(professorRating)):
-    pr = pr + '⭐️'
-st.write(pr)
-
-st.write('')
-ar = 'Atmosphere rating: ' + str(round(atmosphereRating, 2)) + ' '
-for i in range (int(atmosphereRating)):
-    ar = ar + '⭐️'
-st.write(ar)
