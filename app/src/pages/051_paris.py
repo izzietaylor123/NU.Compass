@@ -1,6 +1,6 @@
 import logging
 logger = logging.getLogger(__name__)
-import lisaa_sql as lisaa
+# import lisaa_sql as lisaa
 import streamlit as st
 from modules.nav import SideBarLinks
 import requests
@@ -11,6 +11,48 @@ st.set_page_config(layout = 'wide')
 SideBarLinks()
 
 st.title("Welcome to Paris, France!")
+st.write('')
+
+left_co, cent_co = st.columns((1, 2))
+with left_co:
+    st.image("assets/eiffel_tower.png")
+
+with cent_co:
+
+    st.write(' ')
+    st.write(' ')
+    st.write(' ')
+
+    locationRating = 4.6
+    professorRating = 2.5
+    atmosphereRating = 3.0
+
+    averageRating = round(((locationRating + professorRating + atmosphereRating) / 3), 2)
+
+    st.write('')
+    avgR = 'Average rating: ' + str(averageRating) + ' '
+    for i in range (int(averageRating)):
+        avgR = avgR + '⭐️'
+    st.write('###', avgR)
+
+    st.write('')
+    lr = 'Location rating: ' + str(round(locationRating, 2)) + ' '
+    for i in range (int(locationRating)):
+        lr = lr + '⭐️'
+    st.write(lr)
+
+    st.write('')
+
+    pr = 'Professor rating: ' + str(round(professorRating, 2)) + ' '
+    for i in range (int(professorRating)):
+        pr = pr + '⭐️'
+    st.write(pr)
+
+    st.write('')
+    ar = 'Atmosphere rating: ' + str(round(atmosphereRating, 2)) + ' '
+    for i in range (int(atmosphereRating)):
+        ar = ar + '⭐️'
+    st.write(ar)
 
 st.write("The Northeastern Paris N.U.in Program offers first-year students\
          the chance to study abroad in one of the world’s most iconic cities. \
@@ -30,22 +72,29 @@ locationRating = 4.6
 professorRating = 2.5
 atmosphereRating = 3.0
 
-averageRating = (locationRating + professorRating + atmosphereRating) / 3
+averageRating = round(((locationRating + professorRating + atmosphereRating) / 3), 2)
 
 st.write('')
-st.write('Location rating: ')
-st.write(locationRating)
+avgR = 'Average rating: ' + str(averageRating) + ' '
+for i in range (int(averageRating)):
+    avgR = avgR + '⭐️'
+st.write('###', avgR)
+
+st.write('')
+lr = 'Location rating: ' + str(round(locationRating, 2)) + ' '
 for i in range (int(locationRating)):
-    st.write('⭐️')
+    lr = lr + '⭐️'
+st.write(lr)
 
 st.write('')
-st.write('Professor rating: ')
-st.write(professorRating)
+
+pr = 'Professor rating: ' + str(round(professorRating, 2)) + ' '
 for i in range (int(professorRating)):
-    st.write('⭐️')
+    pr = pr + '⭐️'
+st.write(pr)
 
 st.write('')
-st.write('Atmosphere rating: ')
-st.write(atmosphereRating)
+ar = 'Atmosphere rating: ' + str(round(atmosphereRating, 2)) + ' '
 for i in range (int(atmosphereRating)):
-    st.write('⭐️')
+    ar = ar + '⭐️'
+st.write(ar)

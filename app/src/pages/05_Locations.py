@@ -20,7 +20,7 @@ st.title('Find a location!')
 
 # Function for each page
 def paris_france_page():
-    st.switch_page('pages/5.py')
+    st.switch_page('pages/051_paris.py')
     
 def london_uk_page():
     st.switch_page('pages/location_pages/052_london_uk.py')
