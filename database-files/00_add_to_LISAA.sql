@@ -136,7 +136,7 @@ INSERT INTO Rating (ratingID, programID, sID, datePosted, locRating, profRating,
 (30, 30, 15, '2025-03-15', 3, 4, 3, 'The program was good but needed more activities.');
 
 
--- Alerts Data 
+-- Alerts Data
 INSERT INTO Alerts (alertID, locationID, message, datePosted) VALUES
 (1, 1, 'Water supply interruption scheduled for tomorrow between 9 AM and 4 PM.', '2024-05-04 01:22:10'),
 (2, 2, 'Flash flood warning in effect. Avoid low-lying areas and seek higher ground.', '2024-09-28 00:58:59'),
@@ -203,8 +203,51 @@ VALUES
 (29, 29, 'Housing and Accommodation', '2024-01-16 13:09:29'),
 (30, 30, 'Local Information', '2024-07-18 20:19:06');
 
+-- Professor Data
+INSERT INTO Professor (profID, fName, lName, department, email) VALUES
+(1, 'Gallagher', 'Chalcroft', 'Engineering', 'gallagher.chalcroft@gmail.com'),
+(2, 'Otha', 'Stoakes', 'Biology', 'otha.stoakes@yahoo.com'),
+(3, 'Pearce', 'Fiddymont', 'History', 'pearce.fiddymont@yahoo.com'),
+(4, 'Teador', 'Brim', 'History', 'teador.brim@gmail.com'),
+(5, 'Diana', 'Greenroyd', 'Mathematics', 'diana.greenroyd@yahoo.com'),
+(6, 'Ignacio', 'Mapplethorpe', 'Physics', 'ignacio.mapplethorpe@t-online.de'),
+(7, 'Lonnard', 'Cristofolini', 'Computer Science', 'lonnard.cristofolini@yahoo.com'),
+(8, 'Cecilio', 'Dowbekin', 'Political Science', 'cecilio.dowbekin@yahoo.fr'),
+(9, 'Trisha', 'Bernot', 'Chemistry', 'trisha.bernot@hotmail.fr'),
+(10, 'Ariana', 'Jobbins', 'Psychology', 'ariana.jobbins@yahoo.com.br'),
+(11, 'Norton', 'Fahy', 'Mathematics', 'norton.fahy@yahoo.com'),
+(12, 'Nanci', 'Snowling', 'Mathematics', 'nanci.snowling@yahoo.com'),
+(13, 'Koren', 'Ramelot', 'History', 'koren.ramelot@yahoo.com'),
+(14, 'Lester', 'Domnin', 'Art History', 'lester.domnin@hotmail.com'),
+(15, 'Maridel', 'Pinke', 'Computer Science', 'maridel.pinke@gmail.com'),
+(16, 'Margaretha', 'Worsfold', 'History', 'margaretha.worsfold@yahoo.com'),
+(17, 'Timi', 'Scirman', 'Psychology', 'timi.scirman@yahoo.com'),
+(18, 'Lucais', 'Schankelborg', 'Sociology', 'lucais.schankelborg@gmail.com'),
+(19, 'Donnajean', 'Grumble', 'Art History', 'donnajean.grumble@wanadoo.fr'),
+(20, 'Jonah', 'Westerman', 'Economics', 'jonah.westerman@gmail.com'),
+(21, 'Judah', 'Elintune', 'Psychology', 'judah.elintune@gmail.com'),
+(22, 'Ricard', 'Woolveridge', 'English', 'ricard.woolveridge@hotmail.com'),
+(23, 'Briney', 'Marvelley', 'Architecture', 'briney.marvelley@yahoo.com'),
+(24, 'Stanford', 'Ledster', 'Architecture', 'stanford.ledster@hotmail.com'),
+(25, 'Normy', 'Davidowich', 'Architecture', 'normy.davidowich@live.com'),
+(26, 'Addison', 'de Bullion', 'Biology', 'addison.debullion@yahoo.com'),
+(27, 'Almeria', 'Goodridge', 'Sociology', 'almeria.goodridge@yahoo.es'),
+(28, 'Cherrita', 'Alelsandrowicz', 'Chemistry', 'cherrita.alelsandrowicz@gmail.com'),
+(29, 'Linc', 'Reynoollds', 'History', 'linc.reynoollds@gmail.com'),
+(30, 'Averyl', 'Harmer', 'English', 'averyl.harmer@yahoo.com.br'),
+(31, 'Janene', 'Bramhall', 'Mathematics', 'janene.bramhall@yahoo.fr'),
+(32, 'Meggi', 'Ackrill', 'Economics', 'meggi.ackrill@yahoo.de'),
+(33, 'Christos', 'Immins', 'Computer Science', 'christos.immins@hotmail.com'),
+(34, 'Elias', 'Lepoidevin', 'Economics', 'elias.lepoidevin@hotmail.com'),
+(35, 'Drucy', 'Howey', 'Computer Science', 'drucy.howey@gmail.com'),
+(36, 'Brandon', 'Doore', 'Economics', 'brandon.doore@yahoo.com'),
+(37, 'Marleah', 'Parton', 'Architecture', 'marleah.parton@yahoo.com'),
+(38, 'Niel', 'Shelsher', 'Psychology', 'niel.shelsher@yahoo.fr'),
+(39, 'Abby', 'Hubbucks', 'English', 'abby.hubbucks@gmail.com'),
+(40, 'Sibeal', 'Gargett', 'Sociology', 'sibeal.gargett@hotmail.com');
 
--- Courses Data 
+
+-- Courses Data
 INSERT INTO Course (courseID, courseName, courseDescription, programID, professorID) VALUES
 (1, 'World History: Ancient to Medieval', 'Examine the major civilizations, events, and cultural developments from the ancient world to the medieval period.', 1, 1),
 (2, 'Introduction to Literature', 'Analyze various literary forms, themes, and techniques, exploring works from diverse periods and cultures.', 2, 2),
@@ -437,48 +480,6 @@ VALUES
 (40, 30, 689, '2024-01-12 08:40:07');
 
 
--- Professor Data
-INSERT INTO Professor (profID, fName, lName, department, email) VALUES
-(1, 'Gallagher', 'Chalcroft', 'Engineering', 'gallagher.chalcroft@gmail.com'),
-(2, 'Otha', 'Stoakes', 'Biology', 'otha.stoakes@yahoo.com'),
-(3, 'Pearce', 'Fiddymont', 'History', 'pearce.fiddymont@yahoo.com'),
-(4, 'Teador', 'Brim', 'History', 'teador.brim@gmail.com'),
-(5, 'Diana', 'Greenroyd', 'Mathematics', 'diana.greenroyd@yahoo.com'),
-(6, 'Ignacio', 'Mapplethorpe', 'Physics', 'ignacio.mapplethorpe@t-online.de'),
-(7, 'Lonnard', 'Cristofolini', 'Computer Science', 'lonnard.cristofolini@yahoo.com'),
-(8, 'Cecilio', 'Dowbekin', 'Political Science', 'cecilio.dowbekin@yahoo.fr'),
-(9, 'Trisha', 'Bernot', 'Chemistry', 'trisha.bernot@hotmail.fr'),
-(10, 'Ariana', 'Jobbins', 'Psychology', 'ariana.jobbins@yahoo.com.br'),
-(11, 'Norton', 'Fahy', 'Mathematics', 'norton.fahy@yahoo.com'),
-(12, 'Nanci', 'Snowling', 'Mathematics', 'nanci.snowling@yahoo.com'),
-(13, 'Koren', 'Ramelot', 'History', 'koren.ramelot@yahoo.com'),
-(14, 'Lester', 'Domnin', 'Art History', 'lester.domnin@hotmail.com'),
-(15, 'Maridel', 'Pinke', 'Computer Science', 'maridel.pinke@gmail.com'),
-(16, 'Margaretha', 'Worsfold', 'History', 'margaretha.worsfold@yahoo.com'),
-(17, 'Timi', 'Scirman', 'Psychology', 'timi.scirman@yahoo.com'),
-(18, 'Lucais', 'Schankelborg', 'Sociology', 'lucais.schankelborg@gmail.com'),
-(19, 'Donnajean', 'Grumble', 'Art History', 'donnajean.grumble@wanadoo.fr'),
-(20, 'Jonah', 'Westerman', 'Economics', 'jonah.westerman@gmail.com'),
-(21, 'Judah', 'Elintune', 'Psychology', 'judah.elintune@gmail.com'),
-(22, 'Ricard', 'Woolveridge', 'English', 'ricard.woolveridge@hotmail.com'),
-(23, 'Briney', 'Marvelley', 'Architecture', 'briney.marvelley@yahoo.com'),
-(24, 'Stanford', 'Ledster', 'Architecture', 'stanford.ledster@hotmail.com'),
-(25, 'Normy', 'Davidowich', 'Architecture', 'normy.davidowich@live.com'),
-(26, 'Addison', 'de Bullion', 'Biology', 'addison.debullion@yahoo.com'),
-(27, 'Almeria', 'Goodridge', 'Sociology', 'almeria.goodridge@yahoo.es'),
-(28, 'Cherrita', 'Alelsandrowicz', 'Chemistry', 'cherrita.alelsandrowicz@gmail.com'),
-(29, 'Linc', 'Reynoollds', 'History', 'linc.reynoollds@gmail.com'),
-(30, 'Averyl', 'Harmer', 'English', 'averyl.harmer@yahoo.com.br'),
-(31, 'Janene', 'Bramhall', 'Mathematics', 'janene.bramhall@yahoo.fr'),
-(32, 'Meggi', 'Ackrill', 'Economics', 'meggi.ackrill@yahoo.de'),
-(33, 'Christos', 'Immins', 'Computer Science', 'christos.immins@hotmail.com'),
-(34, 'Elias', 'Lepoidevin', 'Economics', 'elias.lepoidevin@hotmail.com'),
-(35, 'Drucy', 'Howey', 'Computer Science', 'drucy.howey@gmail.com'),
-(36, 'Brandon', 'Doore', 'Economics', 'brandon.doore@yahoo.com'),
-(37, 'Marleah', 'Parton', 'Architecture', 'marleah.parton@yahoo.com'),
-(38, 'Niel', 'Shelsher', 'Psychology', 'niel.shelsher@yahoo.fr'),
-(39, 'Abby', 'Hubbucks', 'English', 'abby.hubbucks@gmail.com'),
-(40, 'Sibeal', 'Gargett', 'Sociology', 'sibeal.gargett@hotmail.com');
 
 
 
@@ -588,7 +589,7 @@ INSERT INTO studentAbroadProgram (programID, sID) VALUES
 
 
 
--- mentorshipMatch Data 
+-- mentorshipMatch Data
 INSERT INTO mentorshipMatch (matchID, menteeID, mentorID, dateMatched) VALUES
 (1, 30, 1, '2024-09-08 22:55:29'),
 (2, 30, 1, '2024-05-06 20:16:45'),
