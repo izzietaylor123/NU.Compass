@@ -32,5 +32,5 @@ if st.button('Find Program',
 if st.button("Current Programs Ratings",
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/12_API_Test.py')
+  st.switch_page('pages/06_Display_Program_Location.py/12_API_Test.py')
 

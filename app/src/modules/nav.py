@@ -24,7 +24,7 @@ def menteeHomeNav():
 
 ## ------------------------ Examples for Role of mentor_student ------------------------
 def mentor_student_home():
-    st.sidebar.page_link("pages/12_API_Test.py", label="Mentor Student Home", icon="👤")
+    st.sidebar.page_link("pages/10_Mentor.py", label="Mentor Student Home", icon="👤")
 
 
 def PredictionNav():
