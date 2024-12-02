@@ -113,8 +113,24 @@ def get_all_programs():
 
 
 #------------------------------------------------------------
+# Get all program names from the system
+@abroad_programs.route('/get_all_program_ids', methods=['GET'])
+def get_all_program_ids():
+
+    cursor = db.get_db().cursor()
+    query = '''SELECT programID FROM abroadProgram'''
+    cursor.execute(query)
+    
+    locations = cursor.fetchall()
+    
+    the_response = make_response(jsonify(locations))
+    the_response.status_code = 200
+    return the_response
+
+
+#------------------------------------------------------------
 # Get location rating from the system
-@abroad_programs.route('/location_rating/{programID}', methods=['GET'])
+@abroad_programs.route('/location_rating/<programID>', methods=['GET'])
 def get_location_rating(programID):
 
     cursor = db.get_db().cursor()
@@ -133,7 +149,7 @@ def get_location_rating(programID):
 
 #------------------------------------------------------------
 # Get professor rating from the system
-@abroad_programs.route('/professor_rating/{programID}', methods=['GET'])
+@abroad_programs.route('/professor_rating/<programID>', methods=['GET'])
 def get_professor_rating(programID):
 
     cursor = db.get_db().cursor()
@@ -152,13 +168,53 @@ def get_professor_rating(programID):
 
 #------------------------------------------------------------
 # Get atmosphere rating from the system
-@abroad_programs.route('/abroad_programs', methods=['GET'])
+@abroad_programs.route('/atmosphereRating/<programID>', methods=['GET'])
 def get_atmosphere_rating(programID):
 
     cursor = db.get_db().cursor()
     query = f'''
         SELECT AVG(atmosphereRating) 
         FROM Rating
+        WHERE programID = str{programID}'''
+    cursor.execute(query)
+    
+    locations = cursor.fetchall()
+    
+    the_response = make_response(jsonify(locations))
+    the_response.status_code = 200
+    return the_response
+
+#------------------------------------------------------------
+# Get city from programID
+@abroad_programs.route('/get_city/<programID>', methods=['GET'])
+def get_city(programID):
+
+    cursor = db.get_db().cursor()
+    query = f'''
+        SELECT Location.city 
+        FROM AbroadProgram
+        JOIN Location
+        ON Location.locationID = abroadProgram.locationID
+        WHERE programID = str{programID}'''
+    cursor.execute(query)
+    
+    locations = cursor.fetchall()
+    
+    the_response = make_response(jsonify(locations))
+    the_response.status_code = 200
+    return the_response
+
+#------------------------------------------------------------
+# Get city from programID
+@abroad_programs.route('/get_country/<programID>', methods=['GET'])
+def get_country(programID):
+
+    cursor = db.get_db().cursor()
+    query = f'''
+        SELECT Location.country 
+        FROM AbroadProgram
+        JOIN Location
+        ON Location.locationID = abroadProgram.locationID
         WHERE programID = str{programID}'''
     cursor.execute(query)
     

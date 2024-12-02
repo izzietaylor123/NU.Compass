@@ -16,8 +16,8 @@ SideBarLinks()
 
 programID = st.session_state.program
 
-city = lisaa.get_city(programID)
-country = lisaa.get_country(programID)
+city = requests.get('http://api:4000/ap/get_city/<programID>').json()
+country = requests.get('http://api:4000/ap/get_country/<programID>').json()
 
 title = "Welcome to " + str(city) +  ", " + str(country) + "!"
 
