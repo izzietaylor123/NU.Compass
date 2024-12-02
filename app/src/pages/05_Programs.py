@@ -24,7 +24,7 @@ st.title('Find a location!')
 location_list = lisaa.get_all_programs
 
 button_names = []
-for programID in locationList:
+for programID in location_list:
     title = str(lisaa.get_city(programID)) + ', ' + str(lisaa.get_country(programID))
     button_names.append(title)
 
@@ -41,7 +41,7 @@ for title in filtered_titles:
         # If the button is clicked, set the program session_state variable to the programID of 
         # that program (found with the get method from the first word of the title)
         # then switch to the generic page that will display relevant info
-        st.session_state.program = lisaa.get_program_id(title.split(',', 1)[0])
+        st.session_state['program'] = lisaa.get_program_id(title.split(',', 1)[0])
         st.switch_page('06_Display_Program_Location.py')
 
 # Making manual pages for each location     
