@@ -9,11 +9,11 @@ from backend.ml_models.model01 import predict
 #------------------------------------------------------------
 # Create a new Blueprint object, which is a collection of 
 # routes.
-abroad_programs = Blueprint('questions_and_replies', __name__)
+questions_replies = Blueprint('questions_and_replies', __name__)
 
 #------------------------------------------------------------
 # Get all approved questions from the system
-@abroad_programs.route('/questions_and_replies/questions', methods=['GET'])
+@questions_replies.route('/questions_and_replies/questions', methods=['GET'])
 def get_approved_questions():
 
     cursor = db.get_db().cursor()
@@ -31,7 +31,7 @@ def get_approved_questions():
 
 #------------------------------------------------------------
 # Get all approved replies from the system
-@abroad_programs.route('/questions_and_replies/replies', methods=['GET'])
+@questions_replies.route('/questions_and_replies/replies', methods=['GET'])
 def get_approved_replies():
 
     cursor = db.get_db().cursor()

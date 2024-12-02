@@ -240,8 +240,6 @@ CREATE TABLE IF NOT EXISTS Reply
 );
 
 
---INSERT statements for database
-
 -- Location Data
 INSERT INTO Location (locationID, city, country, description) VALUES
 (1, 'Vienna', 'Austria', 'The capital city known for its cultural events, imperial sites, and coffee houses.'),
