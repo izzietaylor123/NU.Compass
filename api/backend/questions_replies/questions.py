@@ -13,7 +13,7 @@ abroad_programs = Blueprint('questions_and_replies', __name__)
 
 #------------------------------------------------------------
 # Get all approved questions from the system
-@abroad_programs.route('/questions_and_replies', methods=['GET'])
+@abroad_programs.route('/questions_and_replies/questions', methods=['GET'])
 def get_approved_questions():
 
     cursor = db.get_db().cursor()
@@ -31,7 +31,7 @@ def get_approved_questions():
 
 #------------------------------------------------------------
 # Get all approved replies from the system
-@abroad_programs.route('/questions_and_replies', methods=['GET'])
+@abroad_programs.route('/questions_and_replies/replies', methods=['GET'])
 def get_approved_replies():
 
     cursor = db.get_db().cursor()
