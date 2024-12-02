@@ -20,9 +20,9 @@ def get_all_students():
     query = '''SELECT fName, lName, email, majorID, blurb, role, programID FROM Student'''
     cursor.execute(query)
     
-    locations = cursor.fetchall()
+    theData = cursor.fetchall()
     
-    the_response = make_response(jsonify(locations))
+    the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
 
@@ -38,9 +38,9 @@ def get_all_mentors():
         WHERE role = 'mentor' '''
     cursor.execute(query)
     
-    locations = cursor.fetchall()
+    theData = cursor.fetchall()
     
-    the_response = make_response(jsonify(locations))
+    the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
 
@@ -56,9 +56,9 @@ def get_all_mentees():
         WHERE role = 'mentee' '''
     cursor.execute(query)
     
-    locations = cursor.fetchall()
+    theData = cursor.fetchall()
     
-    the_response = make_response(jsonify(locations))
+    the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
 
