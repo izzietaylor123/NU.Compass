@@ -18,7 +18,7 @@ location = st.text_input("Location:", "")
 if st.button("Get Ratings"):
     if location.strip():
         try:
-            response = requests.get(f"http://127.0.0.1:5000/abroad_programs")
+            response = requests.get(f"http://api:4000/abroad_programs")
             
             if response.status_code == 200:
                 ratings = response.json()

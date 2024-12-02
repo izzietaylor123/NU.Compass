@@ -6,10 +6,6 @@ DROP DATABASE IF EXISTS `lisaa_sql`;
 CREATE DATABASE `lisaa_sql` DEFAULT CHARACTER SET latin1;
 USE `lisaa_sql`;
 
-DROP DATABASE IF EXISTS `lisaa_sql`;
-CREATE DATABASE `lisaa_sql` DEFAULT CHARACTER SET latin1;
-USE `lisaa_sql`;
-
 DROP TABLE IF EXISTS Location;
 CREATE TABLE IF NOT EXISTS Location
 (
@@ -244,9 +240,7 @@ CREATE TABLE IF NOT EXISTS Reply
 );
 
 
--- -- INSERT statements for database ------
-
-USE lisaa_sql;
+--INSERT statements for database
 
 -- Location Data
 INSERT INTO Location (locationID, city, country, description) VALUES
