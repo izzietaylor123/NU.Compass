@@ -1,7 +1,7 @@
 from flask import Flask
 
 from backend.db_connection import db
-from api.backend.customers.location_routes import locations
+from backend.abroad_programs.abroad_program_routes import abroad_programs
 from backend.products.products_routes import products
 from backend.simple.simple_routes import simple_routes
 import os
@@ -40,7 +40,7 @@ def create_app():
     # and give a url prefix to each
     app.logger.info('current_app(): registering blueprints with Flask app object.')   
     app.register_blueprint(simple_routes)
-    app.register_blueprint(locations,   url_prefix='/l')
+    app.register_blueprint(abroad_programs,   url_prefix='/l')
     app.register_blueprint(products,    url_prefix='/p')
 
     # Don't forget to return the app object
