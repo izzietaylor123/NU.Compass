@@ -5,6 +5,7 @@
 
 # Set up basic logging infrastructure
 import logging
+import requests
 logging.basicConfig(format='%(filename)s:%(lineno)s:%(levelname)s -- %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -84,3 +85,6 @@ if st.button('Act as Adam Brody, a Northeastern Global Experience Staff Member a
     st.session_state['first_name'] = 'Adam'
     st.switch_page('pages/20_Admin_Home.py');
 
+
+
+st.dataframe(requests.get('http://api:4000/ap/abroad_programs').json())

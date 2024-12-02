@@ -114,7 +114,7 @@ def get_all_programs():
 
 #------------------------------------------------------------
 # Get location rating from the system
-@abroad_programs.route('/abroad_programs', methods=['GET'])
+@abroad_programs.route('/location_rating/{programID}', methods=['GET'])
 def get_location_rating(programID):
 
     cursor = db.get_db().cursor()
@@ -133,7 +133,7 @@ def get_location_rating(programID):
 
 #------------------------------------------------------------
 # Get professor rating from the system
-@abroad_programs.route('/abroad_programs', methods=['GET'])
+@abroad_programs.route('/professor_rating/{programID}', methods=['GET'])
 def get_professor_rating(programID):
 
     cursor = db.get_db().cursor()
