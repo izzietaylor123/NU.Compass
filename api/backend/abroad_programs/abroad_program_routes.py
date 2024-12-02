@@ -18,7 +18,7 @@ abroad_programs = Blueprint('abroad_programs', __name__)
 def get_all_programs():
 
     cursor = db.get_db().cursor()
-    query = '''SELECT programID FROM abroadProgram'''
+    query = '''SELECT programID, programName, prgmDescription, locationID, programType FROM abroadProgram'''
     cursor.execute(query)
     
     locations = cursor.fetchall()
@@ -103,60 +103,3 @@ def get_atmosphere_rating(programID):
     the_response.status_code = 200
     return the_response
 
-#------------------------------------------------------------
-# Get city from programID
-@abroad_programs.route('/abroad_programs', methods=['GET'])
-def get_city(programID):
-
-    cursor = db.get_db().cursor()
-    query = f'''
-        SELECT Location.city 
-        FROM AbroadProgram
-        JOIN Location
-        ON Location.locationID = abroadProgram.locationID
-        WHERE programID = str{programID}'''
-    cursor.execute(query)
-    
-    locations = cursor.fetchall()
-    
-    the_response = make_response(jsonify(locations))
-    the_response.status_code = 200
-    return the_response
-
-#------------------------------------------------------------
-# Get city from programID
-@abroad_programs.route('/abroad_programs', methods=['GET'])
-def get_country(programID):
-
-    cursor = db.get_db().cursor()
-    query = f'''
-        SELECT Location.country 
-        FROM AbroadProgram
-        JOIN Location
-        ON Location.locationID = abroadProgram.locationID
-        WHERE programID = str{programID}'''
-    cursor.execute(query)
-    
-    locations = cursor.fetchall()
-    
-    the_response = make_response(jsonify(locations))
-    the_response.status_code = 200
-    return the_response
-
-#------------------------------------------------------------
-# Get program description from programID
-@abroad_programs.route('/abroad_programs', methods=['GET'])
-def get_program_description(programID):
-
-    cursor = db.get_db().cursor()
-    query = f'''
-        SELECT programDescription 
-        FROM AbroadProgram
-        WHERE programID = str{programID}'''
-    cursor.execute(query)
-    
-    locations = cursor.fetchall()
-    
-    the_response = make_response(jsonify(locations))
-    the_response.status_code = 200
-    return the_response
