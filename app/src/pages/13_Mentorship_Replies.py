@@ -15,8 +15,8 @@ st.title("My Replies to Mentee Questions")
 st.header(f"Replies for: Tom")
 
 
-flask_api_url_questions = "http://127.0.0.1:5000/questions_and_replies/questions"
-flask_api_url_replies = "http://127.0.0.1:5000/questions_and_replies/replies"
+flask_api_url_questions = "http://api:4000/questions_and_replies/questions"
+flask_api_url_replies = "http://api:4000/qr/questions_and_replies/replies"
 
 mentee_name = "Jane Doe"
 
