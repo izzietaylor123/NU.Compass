@@ -41,3 +41,4 @@ for title in filtered_titles:
         # then switch to the generic page that will display relevant info
         st.session_state['mentor'] = buttons[title]
         st.switch_page('pages/27_Display_Mentor_Info.py')
+
