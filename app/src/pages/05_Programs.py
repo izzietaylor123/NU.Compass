@@ -18,7 +18,6 @@ st.set_page_config(layout = 'wide')
 SideBarLinks()
 
 st.title('Find a location!')
-# get_locations()
 
 # Dynamic Method
 

@@ -6,12 +6,12 @@ from flask import current_app
 from backend.db_connection import db
 from backend.ml_models.model01 import predict
 
-abroad_programs = Blueprint('abroad_programs', __name__)
+mentors = Blueprint('mentors', __name__)
 
 
 #------------------------------------------------------------
 # Get all mentors from the system
-@abroad_programs.route('/mentors', methods=['GET'])
+@mentors.route('/mentors', methods=['GET'])
 def get_all_mentors():
 
     cursor = db.get_db().cursor()

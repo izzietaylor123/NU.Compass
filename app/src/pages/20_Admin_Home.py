@@ -32,4 +32,4 @@ if st.button("See Mentee Statuses",
 if st.button("See Mentor Statuses",
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/11_Mentor_Blurb.py')
+  st.switch_page('pages/25_Mentor_Management.py')

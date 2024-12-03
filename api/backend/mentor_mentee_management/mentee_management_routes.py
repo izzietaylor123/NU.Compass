@@ -6,21 +6,21 @@ from flask import current_app
 from backend.db_connection import db
 from backend.ml_models.model01 import predict
 
-abroad_programs = Blueprint('abroad_programs', __name__)
+mentees = Blueprint('mentees', __name__)
 
 
 #------------------------------------------------------------
 # Get all mentors from the system
-@abroad_programs.route('/mentors', methods=['GET'])
-def get_all_mentors():
+@mentees.route('/mentees', methods=['GET'])
+def get_all_mentees():
 
     cursor = db.get_db().cursor()
     query = '''SELECT sID, fName, lName, email, blurb, role FROM Students
-    WHERE role = mentor'''
+    WHERE role = mentee'''
     cursor.execute(query)
     
-    mentors = cursor.fetchall()
+    mentees = cursor.fetchall()
     
-    the_response = make_response(jsonify(mentors))
+    the_response = make_response(jsonify(mentees))
     the_response.status_code = 200
     return the_response
