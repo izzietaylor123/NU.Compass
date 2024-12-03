@@ -11,29 +11,20 @@ SideBarLinks()
 
 st.title("Mentor Tim Ratings")
 
-response = requests.get("http://api:4000/ap/abroad_programs").json()
+locRatRoute = f'http://api:4000/ap/location_rating/{programID}'
+locationRating = requests.get(locRatRoute).json()
+locationRating = locationRating[0]['AVG(locRating)']
+
+profRatRoute = f'http://api:4000/ap/professor_rating/{programID}'
+professorRating = requests.get(profRatRoute).json()
+professorRating = professorRating[0]['AVG(profRating)']
+
+atmRatRoute = f'http://api:4000/ap/atmosphereRating/{programID}'
+atmosphereRating = requests.get(atmRatRoute).json()
+atmosphereRating = atmosphereRating[0]['AVG(atmosphereRating)']
+
 
 try:
     st.dataframe(response)
 except:
     st.write("Could not connect to database to retrive abroad programs")
-
-            
-    #         if response.status_code == 200:
-    #             ratings = response.json()
-    #             if not ratings:
-    #                 st.write(f"Sorry! I don't have any ratings for: {location}.")
-    #             else:
-    #                 st.write(f"Mentor Ratings for {location}:")
-    #                 for rating in ratings:
-    #                     st.write(f"""
-    #                     **Location Rating**: {rating['mentor']}  
-    #                     **Atmosphere Rating**: {rating['rating']}  
-    #                     **Professor Rating**: {rating['comment']}  
-    #                     """)
-    #         else:
-    #             st.error(f"Failed to fetch ratings: {response.status_code}")
-    #     except requests.ConnectionError:
-    #         st.error("Unable to connect to the Flask API. Make sure it's running.")
-    # else:
-    #     st.error("Sorry! I don't have any ratings for this location.")
