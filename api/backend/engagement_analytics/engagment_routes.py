@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask import request, jsonify, make_response, current_app
 from backend.db_connection import db
 
-# Create a Blueprint for engagement analytics
+# create a blueprint for engagement analytics
 engagement_analytics = Blueprint('engagement_analytics', __name__)
 
 # ------------------------------------------------------------
@@ -26,7 +26,7 @@ def get_all_engagement_analytics():
     return response
 
 # ------------------------------------------------------------
-# Get engagement analytics for a specific feature
+# get engagement analytics for a specific feature
 @engagement_analytics.route('/engagementAnalytics/feature/<feature>', methods=['GET'])
 def get_analytics_by_feature(feature):
     query = f'''
@@ -48,7 +48,7 @@ def get_analytics_by_feature(feature):
     return response
 
 # ------------------------------------------------------------
-# Get engagement analytics for a specific date range
+# get engagement analytics for a specific date range
 @engagement_analytics.route('/engagementAnalytics/date', methods=['GET'])
 def get_analytics_by_date():
     start_date = request.args.get('start_date')
@@ -77,7 +77,7 @@ def get_analytics_by_date():
     return response
 
 # ------------------------------------------------------------
-# Add a new engagement analytics record
+# add a new engagement analytics record
 @engagement_analytics.route('/engagementAnalytics', methods=['POST'])
 def add_engagement_analytics():
     the_data = request.json
@@ -101,7 +101,7 @@ def add_engagement_analytics():
     return response
 
 # ------------------------------------------------------------
-# Update an engagement analytics record
+# update an engagement analytics record
 @engagement_analytics.route('/engagementAnalytics/<analytics_id>', methods=['PUT'])
 def update_engagement_analytics(analytics_id):
     the_data = request.json
@@ -138,7 +138,7 @@ def update_engagement_analytics(analytics_id):
     return response
 
 # ------------------------------------------------------------
-# Delete an engagement analytics record
+# delete an engagement analytics record
 @engagement_analytics.route('/engagementAnalytics/<analytics_id>', methods=['DELETE'])
 def delete_engagement_analytics(analytics_id):
     query = f'''

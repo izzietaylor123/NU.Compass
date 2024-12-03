@@ -6,6 +6,7 @@ from backend.questions_replies.questions import questions_replies
 from backend.students.students_routes import students
 from backend.products.products_routes import products
 from backend.simple.simple_routes import simple_routes
+from backend.engagement_analytics.engagment_routes import engagement_analytics
 import os
 from dotenv import load_dotenv
 
