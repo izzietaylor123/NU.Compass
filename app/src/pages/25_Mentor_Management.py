@@ -21,7 +21,7 @@ for mentor in mentor_data:
     sID = mentor['sID']
     last_name = mentor['lName']
     first_name = mentor['fName']
-    title = str(last_name) + "," + str(first_name)
+    title = str(last_name) + ", " + str(first_name)
     buttons[title] = sID
 
 # Search bar to filter buttons
@@ -36,8 +36,8 @@ filtered_titles = [title for title in button_titles if search_query.lower() in t
 # Display filtered buttons
 for title in filtered_titles:
     if st.button(title):
-        # If the button is clicked, set the program session_state variable to the programID of 
-        # that program (found with the get method from the first word of the title)
+        # If the button is clicked, set the mentor session_state variable to the sID of 
+        # that student (found with the get method from the first word of the title)
         # then switch to the generic page that will display relevant info
         st.session_state['mentor'] = buttons[title]
         st.switch_page('pages/27_Display_Mentor_Info.py')
