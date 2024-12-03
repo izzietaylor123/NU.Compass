@@ -48,7 +48,7 @@ def create_app():
     app.register_blueprint(questions_replies,   url_prefix='/qr')
     app.register_blueprint(students,   url_prefix='/s')
     app.register_blueprint(mentees,    url_prefix='/me')
-    app.register_blueprint(mentees,    url_prefix='/mr')
+    app.register_blueprint(mentors,    url_prefix='/mr')
 
     # Don't forget to return the app object
     return app

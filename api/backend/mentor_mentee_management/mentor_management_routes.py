@@ -8,7 +8,6 @@ from backend.ml_models.model01 import predict
 
 mentors = Blueprint('mentors', __name__)
 
-
 #------------------------------------------------------------
 # Get all mentors from the system
 @mentors.route('/mentors', methods=['GET'])
@@ -16,7 +15,7 @@ def get_all_mentors():
 
     cursor = db.get_db().cursor()
     query = '''SELECT sID, fName, lName, email, blurb, role FROM Students
-    WHERE role = mentor'''
+    WHERE role = 'mentor' '''
     cursor.execute(query)
     
     mentors = cursor.fetchall()
