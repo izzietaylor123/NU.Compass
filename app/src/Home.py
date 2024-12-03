@@ -83,7 +83,7 @@ if st.button('Act as Adam Brody, a Northeastern Global Experience Staff Member a
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'GESM'
     st.session_state['first_name'] = 'Adam'
-    st.switch_page('pages/20_Admin_Home.py');
+    st.switch_page('pages/26_GEOAdmin.py');
 
 
 
