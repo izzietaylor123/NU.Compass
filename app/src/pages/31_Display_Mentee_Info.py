@@ -46,7 +46,7 @@ selected_replies = [reply for reply in mentee_replies if reply.get('sID') == sID
 if selected_replies:
     st.write(f"Here are {first_name}'s replies:")
     for reply in selected_replies:
-        st.write(f"- {reply['content']}")
+        st.write(f"- {reply['replyID']}: {reply['content']}")
 else:
     st.write(f"{first_name} has not written any replies yet.")
 
@@ -58,6 +58,6 @@ selected_questions = [question for question in mentee_questions if question.get(
 if selected_questions:
     st.write(f"Here are {first_name}'s questions:")
     for question in selected_replies:
-        st.write(f"- {question['content']}")
+        st.write(f"- {question['qID']}: {question['content']}")
 else:
     st.write(f"{first_name} has not written any questions yet.")
