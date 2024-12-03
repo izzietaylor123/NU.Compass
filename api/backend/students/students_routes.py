@@ -62,4 +62,40 @@ def get_all_mentees():
     the_response.status_code = 200
     return the_response
 
+#------------------------------------------------------------
+# Get tim mentor from the system
+@students.route('/tim', methods=['GET'])
+def tim():
+
+    cursor = db.get_db().cursor()
+    query = '''
+        SELECT fName, lName, email, blurb
+        FROM Student
+        WHERE sID = 31 '''
+    cursor.execute(query)
+    
+    theData = cursor.fetchall()
+    
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
+
+#------------------------------------------------------------
+# Get tom mentee from the system
+@students.route('/tom', methods=['GET'])
+def tom():
+
+    cursor = db.get_db().cursor()
+    query = '''
+        SELECT fName, lName, email, blurb
+        FROM Student
+        WHERE sID = 32 '''
+    cursor.execute(query)
+    
+    theData = cursor.fetchall()
+    
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
+
 

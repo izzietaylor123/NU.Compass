@@ -20,8 +20,17 @@ replies = requests.get(repliesRoute).json()
 questionsRoute = "http://api:4000/qr/tom/questions"
 questions = requests.get(questionsRoute).json()
 
-flask_api_url_tom = "http://api:4000/qr/tom"
-tom_name = requests.get(flask_api_url_tom)
+logger.info(replies)
+
+st.write('')
+st.header("Mentee Questions:")
+st.dataframe(questions)
+
+st.write('')
+st.header("My Replies:")
+st.dataframe(replies)
+
+
 
 # # Iterate through the questions and replies
 # for idx, qa in enumerate(questions):
