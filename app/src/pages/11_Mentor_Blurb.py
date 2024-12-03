@@ -11,7 +11,7 @@ st.set_page_config(page_title="About Me: Mentor", layout="centered")
 # Display the appropriate sidebar links for the role of the logged in user
 SideBarLinks()
 
-st.title(f"About me, Mentor {st.session_state['first_name']}")
+st.title(f"About me, Mentor Tim")
 
 st.subheader("Meet Your Mentor")
 
