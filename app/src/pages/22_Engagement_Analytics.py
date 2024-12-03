@@ -1,34 +1,50 @@
 import logging
-logger = logging.getLogger(__name__)
-
-import streamlit as st
-from modules.nav import SideBarLinks
+import requests
 import pandas as pd
 import matplotlib.pyplot as plt
+import streamlit as st
+from modules.nav import SideBarLinks
+
+logger = logging.getLogger(__name__)
 
 st.set_page_config(layout='wide')
 
-# Display the appropriate sidebar links for the role of the logged-in user
 SideBarLinks()
 
 st.title('Engagement Analytics')
 
-# load engagement analytics Data
+# API base URL
+API_BASE_URL = "http://localhost:4000"
+
+# Load Engagement Analytics Data from API
 @st.cache_data
 def load_engagement_data():
-    # load data from CSV file ??*************
-    return pd.read_csv("SQL for LISAA csv files/engagementAnalytics.csv")
+    try:
+        response = requests.get(f"{API_BASE_URL}/engagementAnalytics")
+        response.raise_for_status()  # Raise an exception for HTTP errors
+        data = response.json()
+        return pd.DataFrame(data)  # Convert JSON data to pandas DataFrame
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Failed to fetch engagement analytics data: {e}")
+        st.error("Failed to load data from the server. Please try again later.")
+        return pd.DataFrame()  # Return an empty DataFrame as fallback
 
+# Load data
 data = load_engagement_data()
 
-# raw data for debugging purposes
-if st.checkbox("raw Data"):
+# Debug: Show raw data
+if st.checkbox("Show Raw Data"):
     st.dataframe(data)
 
-# unique features to filter by
+# Ensure the DataFrame is not empty
+if data.empty:
+    st.error("No data available. Please check your backend or database.")
+    st.stop()
+
+# Extract unique features for filtering
 features = data['Feature'].unique()
 
-# filters for engagement data
+# Sidebar Filters
 st.sidebar.subheader("Filters")
 selected_feature = st.sidebar.selectbox("Select Feature", features, index=0)
 selected_date_range = st.sidebar.date_input(
@@ -39,21 +55,21 @@ selected_date_range = st.sidebar.date_input(
     ]
 )
 
-# filter data
+# Filter data based on user selections
 filtered_data = data[
     (data['Feature'] == selected_feature) &
     (pd.to_datetime(data['Date']) >= pd.to_datetime(selected_date_range[0])) &
     (pd.to_datetime(data['Date']) <= pd.to_datetime(selected_date_range[1]))
 ]
 
-# display filtered data
+# Display filtered data
 st.subheader(f"Filtered Engagement Data for '{selected_feature}'")
 if not filtered_data.empty:
     st.dataframe(filtered_data)
 else:
     st.warning("No data found for the selected filters.")
 
-# visualize engagement trends
+# Visualize engagement trends
 st.subheader("Engagement Trends")
 if not filtered_data.empty:
     plt.figure(figsize=(10, 5))
@@ -72,11 +88,11 @@ if not filtered_data.empty:
 else:
     st.warning("No data to visualize for the selected filters.")
 
-# search for Features
+# Search for Features
 st.subheader("Search Feature Engagement")
 search_query = st.text_input("Search Features: ")
 
-# filter feature buttons based on the search query
+# Filter features based on the search query
 filtered_features = [feature for feature in features if search_query.lower() in feature.lower()]
 for feature in filtered_features:
     if st.button(f"View Analytics for {feature}"):
