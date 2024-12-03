@@ -23,6 +23,8 @@ st.set_page_config(layout = 'wide')
 # in the streamlit session_state to false. 
 st.session_state['authenticated'] = False
 
+st.session_state['program'] = -1
+
 # Use the SideBarLinks function from src/modules/nav.py to control
 # the links displayed on the left-side panel. 
 # IMPORTANT: ensure src/.streamlit/config.toml sets

@@ -17,7 +17,7 @@ st.write(f"Hello {st.session_state['first_name']}, what would you like to do tod
 if st.button('Current Abroad Programs', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/05_Locations.py')
+  st.switch_page('pages/05_Programs.py')
 
 if st.button('View Posts and Replies', 
              type='primary',
@@ -27,7 +27,7 @@ if st.button('View Posts and Replies',
 if st.button("Current Programs Ratings",
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/06_Display_Program_Location.py')
+  st.switch_page('pages/05_Programs.py')
 
 if st.button("See Mentee Statuses",
              type='primary',
