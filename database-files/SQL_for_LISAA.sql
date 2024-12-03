@@ -860,7 +860,7 @@ INSERT INTO mentorshipMatch (matchID, menteeID, mentorID, dateMatched) VALUES
 (28, 28, 14, '2024-06-25 11:18:28'),
 (29, 29, 15, '2024-11-12 17:42:34'),
 (30, 29, 15, '2024-11-23 14:53:42'),
-(31, 31, 32, '2024-11-23 14:53:42');
+(31, 32, 31, '2024-11-23 14:53:42');
 
 
 -- Major Data
@@ -1030,10 +1030,10 @@ INSERT INTO Question (qID, sID, content, datePosted, isApproved, abroadProgram) 
 (20, 25, 'What are the main safety concerns in this city or country?', '2024-09-26 12:01:50', 1, 20),
 (21, 26, 'What is the procedure for enrolling in courses as an international student?', '2024-08-19 23:52:13', 1, 21),
 (22, 26, 'How safe is the neighborhood around the university for international students?', '2024-11-12 05:43:41', 1, 22),
-(23, 31, 'Are there any local networking or career events for international students?', '2024-11-08 00:39:47', 1, 23),
-(24, 31, 'What is the culture like in the city, and how can I best integrate into it?', '2024-11-09 18:55:52', 1, 24),
-(25, 31, 'Are there scholarships available for international students?', '2023-12-14 15:45:50', 1, 25),
-(26, 31, 'How can I stay updated on events and activities on campus?', '2024-07-20 00:42:18', 1, 26),
+(23, 32, 'Are there any local networking or career events for international students?', '2024-11-08 00:39:47', 1, 23),
+(24, 32, 'What is the culture like in the city, and how can I best integrate into it?', '2024-11-09 18:55:52', 1, 24),
+(25, 32, 'Are there scholarships available for international students?', '2023-12-14 15:45:50', 1, 25),
+(26, 32, 'How can I stay updated on events and activities on campus?', '2024-07-20 00:42:18', 1, 26),
 (27, 29, 'What color is the sky?', '2024-03-26 22:31:39', 0, 27),
 (28, 29, 'Where can I find some lions?', '2024-09-08 11:25:42', 0, 28),
 (29, 30, 'Who is the best professor in the world?', '2024-02-15 19:11:11', 0, 29),
@@ -1064,10 +1064,10 @@ INSERT INTO Reply (replyID, sID, qID, content, datePosted, isApproved) VALUES
 (20, 10, 20, 'Main safety concerns may include petty theft, especially in tourist areas, traffic accidents, and natural disasters—staying aware of your surroundings and following local safety advice can help mitigate risks.', '2024-02-17 00:56:47', 1),
 (21, 11, 21, 'To enroll in courses, international students typically need to register through the Northeastern online portal, meet with an academic advisor, and ensure compliance with visa requirements for full-time enrollment.', '2024-01-11 07:35:20', 1),
 (22, 11, 22, 'The safety of a neighborhood varies, but most university areas are generally safe. It is recommended to stay informed about local conditions, follow safety tips, and avoid risky areas at night.', '2024-09-13 13:19:57', 1),
-(23, 12, 32, 'Yes, many cities offer networking events, career fairs, and workshops for international students, typically organized by universities, embassies, and local organizations.', '2024-10-18 09:47:35', 1),
-(24, 12, 32, 'The city culture is vibrant and diverse—attend local events, explore community spaces, and connect with locals to integrate smoothly.', '2024-04-05 06:01:09', 1),
-(25, 13, 32, 'Yes, many universities and external organizations offer scholarships for international students, based on merit or need.', '2024-11-14 11:39:22', 1),
-(26, 13, 32, 'You can stay updated on campus events by following university social media accounts, subscribing to newsletters, and regularly checking bulletin boards or online event calendars.', '2024-10-14 14:26:03', 1),
+(23, 12, 31, 'Yes, many cities offer networking events, career fairs, and workshops for international students, typically organized by universities, embassies, and local organizations.', '2024-10-18 09:47:35', 1),
+(24, 12, 31, 'The city culture is vibrant and diverse—attend local events, explore community spaces, and connect with locals to integrate smoothly.', '2024-04-05 06:01:09', 1),
+(25, 13, 31, 'Yes, many universities and external organizations offer scholarships for international students, based on merit or need.', '2024-11-14 11:39:22', 1),
+(26, 13, 31, 'You can stay updated on campus events by following university social media accounts, subscribing to newsletters, and regularly checking bulletin boards or online event calendars.', '2024-10-14 14:26:03', 1),
 (27, 14, 27, 'BAD QUESTION!!!', '2024-08-04 04:31:53', 0),
 (28, 14, 28, 'I have no idea.', '2024-01-02 15:48:21', 0),
 (29, 15, 29, 'Yo Mama!', '2023-12-21 21:11:44', 0),
