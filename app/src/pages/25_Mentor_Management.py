@@ -9,7 +9,7 @@ st.set_page_config(layout = 'wide')
 
 SideBarLinks()
 
-st.title('System Admin Home Page')
+st.title('GEO Admin Home Page')
 st.write('')
 st.write('')
 st.write(f"Hello {st.session_state['first_name']}, what would you like to do today?")
