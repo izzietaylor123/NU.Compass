@@ -4,6 +4,8 @@ from backend.db_connection import db
 from backend.abroad_programs.abroad_program_routes import abroad_programs
 from backend.questions_replies.questions import questions_replies
 from backend.students.students_routes import students
+from backend.mentor_mentee_management.mentee_management_routes import mentees
+from backend.mentor_mentee_management.mentor_management_routes import mentors
 from backend.products.products_routes import products
 from backend.simple.simple_routes import simple_routes
 from backend.engagement_analytics.engagment_routes import engagement_analytics
@@ -48,7 +50,6 @@ def create_app():
     app.register_blueprint(students,   url_prefix='/s')
     app.register_blueprint(products,    url_prefix='/p')
     app.register_blueprint(engagement_analytics,    url_prefix='/ea')
-
 
     # Don't forget to return the app object
     return app

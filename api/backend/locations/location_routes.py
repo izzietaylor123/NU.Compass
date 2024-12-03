@@ -15,7 +15,7 @@ locations = Blueprint('locations', __name__)
 #------------------------------------------------------------
 # Get all locations from the system
 @locations.route('/locations', methods=['GET'])
-def get_customers():
+def get_all_locations():
 
     cursor = db.get_db().cursor()
     query = '''SELECT locationID, city, country, description FROM Location'''
@@ -49,7 +49,7 @@ def update_locations():
 # Get location details for location with particular locationID
 
 @locations.route('/locations/<locationID>', methods=['GET'])
-def get_customer(locationID):
+def get_locations(locationID):
     current_app.logger.info('GET /locations/<locationID> route')
     cursor = db.get_db().cursor()
     cursor.execute('SELECT locationID, city, country, description FROM Location WHERE id = {0}'.format(locationID))

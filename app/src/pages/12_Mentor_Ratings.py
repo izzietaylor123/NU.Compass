@@ -9,31 +9,43 @@ st.set_page_config(layout = 'wide')
 # Show appropriate sidebar links for the role of the currently logged in user
 SideBarLinks()
 
-st.title("Mentor Tim Ratings")
+st.title("Mentor Tim Ratings for Rome Dialoge of Civilations")
 
-response = requests.get("http://api:4000/ap/abroad_programs").json()
+programID = 9
 
-try:
-    st.dataframe(response)
-except:
-    st.write("Could not connect to database to retrive abroad programs")
+locRatRoute = f'http://api:4000/ap/location_rating/{programID}'
+locationRating = requests.get(locRatRoute).json()
+locationRating = locationRating[0]['AVG(locRating)']
 
-            
-    #         if response.status_code == 200:
-    #             ratings = response.json()
-    #             if not ratings:
-    #                 st.write(f"Sorry! I don't have any ratings for: {location}.")
-    #             else:
-    #                 st.write(f"Mentor Ratings for {location}:")
-    #                 for rating in ratings:
-    #                     st.write(f"""
-    #                     **Location Rating**: {rating['mentor']}  
-    #                     **Atmosphere Rating**: {rating['rating']}  
-    #                     **Professor Rating**: {rating['comment']}  
-    #                     """)
-    #         else:
-    #             st.error(f"Failed to fetch ratings: {response.status_code}")
-    #     except requests.ConnectionError:
-    #         st.error("Unable to connect to the Flask API. Make sure it's running.")
-    # else:
-    #     st.error("Sorry! I don't have any ratings for this location.")
+
+profRatRoute = f'http://api:4000/ap/professor_rating/{programID}'
+professorRating = requests.get(profRatRoute).json()
+professorRating = professorRating[0]['AVG(profRating)']
+
+
+atmRatRoute = f'http://api:4000/ap/atmosphereRating/{programID}'
+atmosphereRating = requests.get(atmRatRoute).json()
+atmosphereRating = atmosphereRating[0]['AVG(atmosphereRating)']
+
+atmosphereRating = float(atmosphereRating)
+locationRating = float(locationRating)
+professorRating = float(professorRating)
+
+st.write('')
+lr = 'Location rating: ' + str(round((locationRating), 2)) + ' '
+for i in range (int(locationRating)):
+    lr = lr + '⭐️'
+st.write(lr)
+
+st.write('')
+
+pr = 'Professor rating: ' + str(round((professorRating), 2)) + ' '
+for i in range (int(professorRating)):
+    pr = pr + '⭐️'
+st.write(pr)
+
+st.write('')
+ar = 'Atmosphere rating: ' + str(round((atmosphereRating), 2)) + ' '
+for i in range (int(atmosphereRating)):
+    ar = ar + '⭐️'
+st.write(ar)

@@ -14,10 +14,10 @@ SideBarLinks()
 st.title('Engagement Analytics')
 
 # API base URL
-API_BASE_URL = "http://localhost:4000"
+API_BASE_URL = "http://api:4000/ea"
 
 # Load Engagement Analytics Data from API
-@st.cache_data
+
 def load_engagement_data():
     try:
         response = requests.get(f"{API_BASE_URL}/engagementAnalytics")

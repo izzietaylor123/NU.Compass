@@ -5,8 +5,6 @@ import streamlit as st
 from modules.nav import SideBarLinks
 import requests
 
-# from backend.customers.location_routes.py import get_locations 
-
 from st_keyup import st_keyup
 
 st.set_page_config(layout = 'wide')

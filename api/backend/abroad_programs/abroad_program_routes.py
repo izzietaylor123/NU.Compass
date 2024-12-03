@@ -97,7 +97,7 @@ abroad_programs = Blueprint('abroad_programs', __name__)
 
 
 #------------------------------------------------------------
-# Get all locations from the system
+# Get all programs from the system
 @abroad_programs.route('/abroad_programs', methods=['GET'])
 def get_all_programs():
 
