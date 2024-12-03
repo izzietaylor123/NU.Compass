@@ -16,8 +16,15 @@ SideBarLinks()
 
 programID = st.session_state.program
 
-city = requests.get('http://api:4000/ap/get_city/<programID>').json()
-country = requests.get('http://api:4000/ap/get_country/<programID>').json()
+
+cityroute = f'http://api:4000/ap/get_city/{programID}'
+city = requests.get(cityroute).json()
+city = city[0]['city']
+countryroute = f'http://api:4000/ap/get_country/{programID}'
+country = requests.get(countryroute).json()
+country = country[0]['country']
+
+
 
 title = "Welcome to " + str(city) +  ", " + str(country) + "!"
 
@@ -34,11 +41,25 @@ with cent_co:
     st.write(' ')
     st.write(' ')
 
-    locationRating = lisaa.get_location_rating(programID)
-    professorRating = lisaa.get_professor_rating(programID)
-    atmosphereRating = lisaa.get_atmosphere_rating(programID)
+    locRatRoute = f'http://api:4000/ap/location_rating/{programID}'
+    locationRating = requests.get(locRatRoute).json()
+    locationRating = locationRating[0]['AVG(locRating)']
 
-    averageRating = round(((locationRating + professorRating + atmosphereRating) / 3), 2)
+    profRatRoute = f'http://api:4000/ap/professor_rating/{programID}'
+    professorRating = requests.get(profRatRoute).json()
+    professorRating = professorRating[0]['AVG(profRating)']
+
+    atmRatRoute = f'http://api:4000/ap/atmosphereRating/{programID}'
+    atmosphereRating = requests.get(atmRatRoute).json()
+    atmosphereRating = atmosphereRating[0]['AVG(atmosphereRating)']
+
+
+
+    averageRating = round(((float(locationRating) + float(professorRating) + float(atmosphereRating)) / 3), 2)
+
+    atmosphereRating = float(atmosphereRating)
+    locationRating = float(locationRating)
+    professorRating = float(professorRating)
 
     st.write('')
     avgR = 'Average rating: ' + str(averageRating) + ' '
@@ -47,24 +68,27 @@ with cent_co:
     st.write('###', avgR)
 
     st.write('')
-    lr = 'Location rating: ' + str(round(locationRating, 2)) + ' '
+    lr = 'Location rating: ' + str(round((locationRating), 2)) + ' '
     for i in range (int(locationRating)):
         lr = lr + '⭐️'
     st.write(lr)
 
     st.write('')
 
-    pr = 'Professor rating: ' + str(round(professorRating, 2)) + ' '
+    pr = 'Professor rating: ' + str(round((professorRating), 2)) + ' '
     for i in range (int(professorRating)):
         pr = pr + '⭐️'
     st.write(pr)
 
     st.write('')
-    ar = 'Atmosphere rating: ' + str(round(atmosphereRating, 2)) + ' '
+    ar = 'Atmosphere rating: ' + str(round((atmosphereRating), 2)) + ' '
     for i in range (int(atmosphereRating)):
         ar = ar + '⭐️'
     st.write(ar)
 
 # Accesses and writes the program description based on the programID of the session_state
-st.write(lisaa.get_program_description(programID))
+descriptionRoute = f'http://api:4000/ap/program_description/{programID}'
+description = requests.get(descriptionRoute).json()
+description = description[0]['prgmDescription']
+st.write(description)
 

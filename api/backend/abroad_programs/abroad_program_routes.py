@@ -137,7 +137,7 @@ def get_location_rating(programID):
     query = f'''
         SELECT AVG(locRating) 
         FROM Rating
-        WHERE programID = str{programID}'''
+        WHERE programID = {str(programID)}'''
     cursor.execute(query)
     
     locations = cursor.fetchall()
@@ -156,7 +156,7 @@ def get_professor_rating(programID):
     query = f'''
         SELECT AVG(profRating) 
         FROM Rating
-        WHERE programID = str{programID}'''
+        WHERE programID = {str(programID)}'''
     cursor.execute(query)
     
     locations = cursor.fetchall()
@@ -175,7 +175,7 @@ def get_atmosphere_rating(programID):
     query = f'''
         SELECT AVG(atmosphereRating) 
         FROM Rating
-        WHERE programID = str{programID}'''
+        WHERE programID = {str(programID)}'''
     cursor.execute(query)
     
     locations = cursor.fetchall()
@@ -192,10 +192,10 @@ def get_city(programID):
     cursor = db.get_db().cursor()
     query = f'''
         SELECT Location.city 
-        FROM AbroadProgram
+        FROM abroadProgram
         JOIN Location
         ON Location.locationID = abroadProgram.locationID
-        WHERE programID = str{programID}'''
+        WHERE programID = {str(programID)}'''
     cursor.execute(query)
     
     locations = cursor.fetchall()
@@ -212,10 +212,28 @@ def get_country(programID):
     cursor = db.get_db().cursor()
     query = f'''
         SELECT Location.country 
-        FROM AbroadProgram
+        FROM abroadProgram
         JOIN Location
         ON Location.locationID = abroadProgram.locationID
-        WHERE programID = str{programID}'''
+        WHERE programID = {str(programID)}'''
+    cursor.execute(query)
+    
+    locations = cursor.fetchall()
+    
+    the_response = make_response(jsonify(locations))
+    the_response.status_code = 200
+    return the_response
+
+#------------------------------------------------------------
+# Get program description from programID
+@abroad_programs.route('/program_description/<programID>', methods=['GET'])
+def get_program_description(programID):
+
+    cursor = db.get_db().cursor()
+    query = f'''
+        SELECT prgmDescription 
+        FROM abroadProgram
+        WHERE programID = {str(programID)}'''
     cursor.execute(query)
     
     locations = cursor.fetchall()
