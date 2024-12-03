@@ -14,10 +14,18 @@ st.set_page_config(layout = 'wide')
 # Show appropriate sidebar links for the role of the currently logged in user
 SideBarLinks()
 
-programID = st.session_state.program
+# programID = st.session_state.program
+
+'''
+programID = requests.get('http://api:4000/ap/get_all_program_ids').json()
 
 city = requests.get('http://api:4000/ap/get_city/<programID>').json()
 country = requests.get('http://api:4000/ap/get_country/<programID>').json()
+'''
+
+location_data = requests.get('http://api:4000/ap/abroad_programs')
+print(location_data)
+
 
 title = "Welcome to " + str(city) +  ", " + str(country) + "!"
 
