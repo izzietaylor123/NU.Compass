@@ -22,7 +22,7 @@ for mentor in mentor_data:
         selected_mentor = mentor
         break
 
-
+# Provide personal information for the specified mentor
 if selected_mentor:
     last_name = selected_mentor['lName']
     first_name = selected_mentor['fName']
@@ -36,5 +36,18 @@ if selected_mentor:
     st.write(f"Student ID: {selected_mentor['sID']}")
     st.write(f"Full Name: {first_name} {last_name}")
     st.write(f"Email: {email}")
-    st.write(f"Here is {first_name}'s blurb:")
+    st.write(f"Here is {first_name}'s blurb: {blurb}")
         
+# Find replies or questions associated with this mentor
+mentor_replies = requests.get('http://api:4000/qr//questions_and_replies/replies')
+mentor_questions = requests.get('http://api:4000/qr//questions_and_replies/questions')
+mentor_replies = mentor_replies.json()
+
+selected_replies = [reply for reply in mentor_replies if reply.get('sID') == sID]
+if selected_replies:
+    st.write(f"Here are {first_name}'s replies:")
+    for reply in selected_replies:
+        st.write(f"- {reply['content']}")
+else:
+    st.write(f"{first_name} has not written any replies yet.")
+
