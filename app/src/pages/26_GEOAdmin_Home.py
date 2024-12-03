@@ -24,10 +24,10 @@ if st.button('Engagement Analytics',
              use_container_width=True):
   st.switch_page('pages/22_Engagement_Analytics.py')
 
-if st.button("Current Programs Ratings",
-             type='primary',
-             use_container_width=True):
-  st.switch_page('pages/06_Display_Program_Location.py')
+#if st.button("Current Programs Ratings",
+             #type='primary',
+             #use_container_width=True):
+ # st.switch_page('pages/_API_Test.py')
 
 if st.button("Manage Mentors",
              type='primary',
@@ -37,6 +37,4 @@ if st.button("Manage Mentors",
 if st.button("Manage Alerts",
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/24_Manage_Alerts.py')
-
-#test
+  st.switch_page('pages/24_Alerts_Management.py')
