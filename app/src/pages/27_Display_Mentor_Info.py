@@ -33,14 +33,13 @@ if selected_mentor:
     pg_title = f"Welcome to {last_name}, {first_name}'s Profile:"
 
     st.title(pg_title)
-    st.write(f"Student ID: {selected_mentor['sID']}")
-    st.write(f"Full Name: {first_name} {last_name}")
-    st.write(f"Email: {email}")
-    st.write(f"Here is {first_name}'s blurb: {blurb}")
+    st.write(f"**Student ID**: {selected_mentor['sID']}")
+    st.write(f"**Full Name**: {first_name} {last_name}")
+    st.write(f"**Email**: {email}")
+    st.write(f"**Here is {first_name}'s blurb**: {blurb}")
         
-# Find replies or questions associated with this mentor
+# Find replies associated with this mentor
 mentor_replies = requests.get('http://api:4000/qr//questions_and_replies/replies')
-mentor_questions = requests.get('http://api:4000/qr//questions_and_replies/questions')
 mentor_replies = mentor_replies.json()
 
 selected_replies = [reply for reply in mentor_replies if reply.get('sID') == sID]
@@ -51,3 +50,14 @@ if selected_replies:
 else:
     st.write(f"{first_name} has not written any replies yet.")
 
+# Find questions associated with this mentor
+mentor_questions = requests.get('http://api:4000/qr//questions_and_replies/questions')
+mentor_questions = mentor_questions.json()
+
+selected_questions = [question for question in mentor_questions if question.get('sID') == sID]
+if selected_questions:
+    st.write(f"Here are {first_name}'s questions:")
+    for question in selected_replies:
+        st.write(f"- {question['content']}")
+else:
+    st.write(f"{first_name} has not written any questions yet.")
