@@ -331,7 +331,7 @@ INSERT INTO Student (sID, fName, lName, email, blurb, role) VALUES
 (20, 'Carny', 'Huniwall', 'carny.huniwall@gmail.com',  'Cooking and experimenting with new recipes is what I love most. I often host dinner parties for my friends to try out new dishes.', 'mentee'),
 (21, 'Vyky', 'Worsnip', 'vyky.worsnip@hotmail.com',  'I have a passion for mathematics and spend most of my time solving complex equations. Outside of academics, I enjoy playing chess and competing in local tournaments.', 'mentee'),
 (22, 'Trenna', 'Gerbel', 'trenna.gerbel@hotmail.com',  'I am an avid reader and love diving into fantasy novels. When I am not studying, you can find me writing short stories or exploring new coffee shops around town.', 'mentee'),
-(23, 'Ebonee', 'Halkyard', 'ebonee.halkyard@yahoo.com.br',  'Photography helps me capture the world from different perspectives. Whether it is landscapes or portraits, I love finding beauty in everyday life.', 'mentee'),
+(23, 'Ebonee', 'Halkyard', 'ebonee.halkyard@yahoo.com.br',  'Photography helps me capture the world from different perspectives. Whether it is landscagit pes or portraits, I love finding beauty in everyday life.', 'mentee'),
 (24, 'Keenan', 'Mowson', 'keenan.mowson@yahoo.com',  'I enjoy writing and have a blog where I share book reviews and personal thoughts. Connecting with readers from around the world is enriching.', 'mentee'),
 (25, 'Yorke', 'Bensusan', 'yorke.bensusan@sbcglobal.net',  'Sports are my life! I am the captain of the soccer team and love spending my afternoons practicing or watching matches with friends.', 'mentee'),
 (26, 'Wilton', 'Worsell', 'wilton.worsell@yahoo.fr',  'Math challenges and numbers are where I find solace. Sudoku and puzzles occupy my free time, alongside participating in national math competitions.', 'mentee'),
@@ -339,7 +339,7 @@ INSERT INTO Student (sID, fName, lName, email, blurb, role) VALUES
 (28, 'Fanchon', 'Quarry', 'fanchon.quarry@hotmail.com',  'Video games are my favorite pastime. I enjoy strategy games that challenge my mind and continuously seek to improve my skills.', 'mentee'),
 (29, 'Cahra', 'Wooster', 'cahra.wooster@wanadoo.fr',   'Acting is my passion, and I participate in school plays and local theater productions. I thrive on stage and love bringing characters to life.', 'mentee'),
 (30, 'Amy', 'McAviy', 'amy.mcaviy@msn.com', 'Outdoor adventures are what I live for. Whether it is hiking, camping, or rock climbing, being in nature gives me peace and brings out the best in me.', 'mentee'),
-(31, 'Tim', 'Waltz, t.waltz@northeastern.edu, I am a second-year Northeastern student studying Business who recently returned from my transformative Dialogue of Civilizations in Rome. I’m eager to mentor incoming students and help them navigate their global journeys. I aim to share practical advice, leave a positive impact, and stay connected with the Dialogue of Civilizations community.My passion lies in guiding others to unlock their potential. Together, we’ll work on building skills, overcoming challenges, and exploring new opportunities. When I’m not mentoring, I enjoy tennis, Stardew Valley, chocolate chip cookies, and I’m always on the lookout for new ways to inspire and grow with others. I look forward to connecting with you, feel free to reach out to me at w.tim@northeastern.edu!', 'mentor'),
+(31, 'Tim', 'Waltz', 't.waltz@northeastern.edu', 'I am a second-year Northeastern student studying Business who recently returned from my transformative Dialogue of Civilizations in Rome. When I am not mentoring, I enjoy tennis, Stardew Valley, and chocolate chip cookies.  I look forward to connecting with you, feel free to reach out to me at w.tim@northeastern.edu!', 'mentor'),
 (32, 'Tom', 'Holland', 't.holland@northeastern.edu', 'I am a Northeastern Business student looking to go on a Dialogue of Civilations for business! Looking for mentors!', 'mentee');
 
 
@@ -1001,9 +1001,8 @@ INSERT INTO studentMajor (majorID, sID) VALUES
 (14, 6),
 (15, 5),
 (16, 6),
-(17, 19),
-(31, 5),
-(32, 5);
+(17, 19);
+
 
 
 -- Questions Data
@@ -1064,10 +1063,10 @@ INSERT INTO Reply (replyID, sID, qID, content, datePosted, isApproved) VALUES
 (20, 10, 20, 'Main safety concerns may include petty theft, especially in tourist areas, traffic accidents, and natural disasters—staying aware of your surroundings and following local safety advice can help mitigate risks.', '2024-02-17 00:56:47', 1),
 (21, 11, 21, 'To enroll in courses, international students typically need to register through the Northeastern online portal, meet with an academic advisor, and ensure compliance with visa requirements for full-time enrollment.', '2024-01-11 07:35:20', 1),
 (22, 11, 22, 'The safety of a neighborhood varies, but most university areas are generally safe. It is recommended to stay informed about local conditions, follow safety tips, and avoid risky areas at night.', '2024-09-13 13:19:57', 1),
-(23, 12, 31, 'Yes, many cities offer networking events, career fairs, and workshops for international students, typically organized by universities, embassies, and local organizations.', '2024-10-18 09:47:35', 1),
-(24, 12, 31, 'The city culture is vibrant and diverse—attend local events, explore community spaces, and connect with locals to integrate smoothly.', '2024-04-05 06:01:09', 1),
-(25, 13, 31, 'Yes, many universities and external organizations offer scholarships for international students, based on merit or need.', '2024-11-14 11:39:22', 1),
-(26, 13, 31, 'You can stay updated on campus events by following university social media accounts, subscribing to newsletters, and regularly checking bulletin boards or online event calendars.', '2024-10-14 14:26:03', 1),
+(23, 31, 23, 'Yes, many cities offer networking events, career fairs, and workshops for international students, typically organized by universities, embassies, and local organizations.', '2024-10-18 09:47:35', 1),
+(24, 31, 24, 'The city culture is vibrant and diverse—attend local events, explore community spaces, and connect with locals to integrate smoothly.', '2024-04-05 06:01:09', 1),
+(25, 31, 25, 'Yes, many universities and external organizations offer scholarships for international students, based on merit or need.', '2024-11-14 11:39:22', 1),
+(26, 31, 26, 'You can stay updated on campus events by following university social media accounts, subscribing to newsletters, and regularly checking bulletin boards or online event calendars.', '2024-10-14 14:26:03', 1),
 (27, 14, 27, 'BAD QUESTION!!!', '2024-08-04 04:31:53', 0),
 (28, 14, 28, 'I have no idea.', '2024-01-02 15:48:21', 0),
 (29, 15, 29, 'Yo Mama!', '2023-12-21 21:11:44', 0),
