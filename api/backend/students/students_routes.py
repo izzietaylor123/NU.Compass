@@ -69,7 +69,7 @@ def tim():
 
     cursor = db.get_db().cursor()
     query = '''
-        SELECT fName, lName, email, blurb
+        SELECT blurb
         FROM Student
         WHERE sID = 31 '''
     cursor.execute(query)

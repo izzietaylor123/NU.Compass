@@ -32,4 +32,4 @@ if st.button("Take a look at my mentorship replies!",
 if st.button("Take a look at my personal mentor view.",
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/13_Mentorship_Replies.py')
+  st.switch_page('pages/14_Mentorship_View.py')

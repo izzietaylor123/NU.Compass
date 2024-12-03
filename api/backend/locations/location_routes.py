@@ -61,23 +61,6 @@ def get_locations(locationID):
     return the_response
 
 #------------------------------------------------------------
-# Get location details for italy
-
-@locations.route('/locations/<locationID>', methods=['GET'])
-def get_locations(locationID):
-    current_app.logger.info('GET /locations/<locationID> route')
-    cursor = db.get_db().cursor()
-    cursor.execute('SELECT locationID, city, country, description FROM Location WHERE id = {0}'.format(locationID))
-    
-    theData = cursor.fetchall()
-    
-    the_response = make_response(jsonify(theData))
-    the_response.status_code = 200
-    return the_response
-
-
-
-#------------------------------------------------------------
 # Makes use of the very simple ML model in to predict a value
 # and returns it to the user - NOT SURE IF WE NEED THIS FOR OUR PROJ
 ''''
