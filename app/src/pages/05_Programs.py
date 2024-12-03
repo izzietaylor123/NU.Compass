@@ -10,6 +10,7 @@ import requests
 
 from st_keyup import st_keyup
 
+st.session_state['program'] = -1
 
 st.set_page_config(layout = 'wide')
 
@@ -55,40 +56,3 @@ for title in filtered_titles:
         # then switch to the generic page that will display relevant info
         st.session_state['program'] = buttons[title]
         st.switch_page('pages/06_Display_Program_Location.py')
-
-# # Making manual pages for each location     
-# def paris_france_page():
-#     st.switch_page('pages/051_paris.py')  
-
-# def london_uk_page():
-#     st.switch_page('pages/location_pages/052_london_uk.py')
-    
-# def nice_france_page():
-#     st.switch_page('pages/location_pages/053_nice_france.py')
-    
-# def berlin_germany_page():
-#     st.switch_page('pages/location_pages/054_berlin_germany.py')
-    
-
-# # Mapping each button to its respective page function
-# location_functions = {
-#     "Paris, France": paris_france_page,
-#     "London, United Kingdom": london_uk_page,
-#     "Nice, France": nice_france_page,
-#     "Berlin, Germany": berlin_germany_page
-# }
-
-# # Sample list of button titles
-# button_titles = list(location_functions.keys())
-
-# # Search bar to filter buttons
-# search_query = st.text_input("Search programs: ")
-
-# # Filter buttons based on search query (case-insensitive)
-# filtered_titles = [title for title in button_titles if search_query.lower() in title.lower()]
-
-# # Display filtered buttons
-# for title in filtered_titles:
-#     if st.button(title):
-#         # Call the function associated with the button title
-#         location_functions[title]()
