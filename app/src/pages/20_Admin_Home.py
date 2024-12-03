@@ -24,11 +24,6 @@ if st.button('View Posts and Replies',
              use_container_width=True):
   st.switch_page('pages/13_Mentorship_Replies.py')
 
-if st.button("Current Programs Ratings",
-             type='primary',
-             use_container_width=True):
-  st.switch_page('pages/12_Mentor_Ratings.py')
-
 if st.button("See Mentee Statuses",
              type='primary',
              use_container_width=True):
