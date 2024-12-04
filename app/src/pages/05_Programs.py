@@ -55,3 +55,26 @@ for title in filtered_titles:
         # then switch to the generic page that will display relevant info
         st.session_state['program'] = buttons[title]
         st.switch_page('pages/06_Display_Program_Location.py')
+
+def submit_location():
+    st.write("Enter new location information below:")
+
+    location_id = st.text_input("Location ID", "")
+    city = st.text_input("City", "")
+    country = st.text_input("Country", "")
+    description = st.text_area("Description", "")
+
+    if st.button("Submit Location"):
+        location_data = {
+            "locationID": location_id, "city": city, 
+            "country": country, "description": description       
+        }
+        try:
+            response = requests.post("http://api:4000/l/locations", json=location_data)
+            
+            if response.status_code == 200:
+                st.success("Location added successfully!")
+            else:
+                st.error(f"Error: {response.status_code}, {response.text}")
+        except requests.exceptions.RequestException as e:
+            st.error(f"Request failed: {e}")
