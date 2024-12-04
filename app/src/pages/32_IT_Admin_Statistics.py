@@ -37,13 +37,14 @@ with st.expander("View Data on User Counts"):
      for mentee in mentee_data:
           user_counts["Mentee"] += 1
 
-     with st.container():
-          st.write(f"Number of Mentees: {user_counts['Mentee']}, Number of Mentors: {user_counts['Mentor']}")
-          plt.bar(user_counts.keys(), user_counts.values(), color=['blue', 'red'])
-          plt.title('Mentor vs Mentee')
-          plt.xlabel('Category')
-          plt.ylabel('Count')
-          st.pyplot(plt)
+     st.write(f"Number of Mentees: {user_counts['Mentee']}, Number of Mentors: {user_counts['Mentor']}")
+     plt.bar(user_counts.keys(), user_counts.values(), color=['blue', 'red'])
+     plt.title('Mentor vs Mentee')
+     plt.xlabel('Category')
+     plt.ylabel('Count')
+     st.pyplot(plt)
+     plt.close()
+
 
 # Make a pie chart of abroad programs separated by country
 col1, col2 = st.columns(2)
@@ -59,8 +60,16 @@ with col1:
           labels = location_counts.keys()
           sizes = location_counts.values()
           fig, ax = plt.subplots()
-          ax.pie(sizes, labels=labels, autopct='%1.1f%%', pctdistance=.85, labeldistance=1.4)
-          st.pyplot(plt)
+          wedges, texts, autotexts = ax.pie(sizes, labels=labels, autopct='%1.1f%%', pctdistance=1.1, labeldistance=1.25, rotatelabels=True)
+
+          # making the percentages angled to avoid overlap
+          for i, autotext in enumerate(autotexts):
+               angle = (i * 360) / len(autotexts)
+               autotext.set_rotation(angle)
+          
+          ax.set(aspect="equal")
+          st.pyplot(fig)
+          plt.close(fig)
 
 # Make a bar chart comparing the number of different types of abroad programs
 with col2: 
@@ -72,8 +81,9 @@ with col2:
                     program_type_counts[type] = program_type_counts.get(type, 0) + 1
 
 
-          plt.bar(program_type_counts.keys(), program_type_counts.values(), color=["green", "purple"])
+          plt.bar(program_type_counts.keys(), program_type_counts.values(), color=["green", "purple", "yellow", "orange"])
           plt.title('Count per Abroad Program Type')
+          plt.xticks(rotation=45)
           plt.xlabel('Program Type')
           plt.ylabel('Count')
           st.pyplot(plt)
