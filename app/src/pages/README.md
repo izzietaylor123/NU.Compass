@@ -34,10 +34,10 @@ Set up instructions:
     1. Clone the repository
         git clone https://github.com/izzietaylor123/SQL_for_LISAA
     2. Create .env file (need to  add password stuff) 
-        DB_HOST = localhost 
+        DB_HOST = db 
         DB_USER = root 
         DB_PASSWORD = 
-        DB_NAME 
+        DB_NAME = lisaa_sql
 
 Running the application 
     1. Build and run the containers. 
