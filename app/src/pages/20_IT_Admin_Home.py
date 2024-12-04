@@ -19,10 +19,10 @@ if st.button('Current Abroad Programs',
              use_container_width=True):
   st.switch_page('pages/05_Programs.py')
 
-if st.button('View Posts and Replies', 
+if st.button('View User Statistics', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/13_Mentorship_Replies.py')
+  st.switch_page('pages/32_IT_Admin_Statistics.py')
 
 if st.button("See Mentee Statuses",
              type='primary',

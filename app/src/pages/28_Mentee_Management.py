@@ -5,28 +5,28 @@ import streamlit as st
 from modules.nav import SideBarLinks
 import requests
 
-st.session_state['mentor'] = -1
+st.session_state['mentee'] = -1
 st.set_page_config(layout = 'wide')
 
 SideBarLinks()
 
 st.title('Admin Home Page')
-st.title('View Current Abroad Mentors')
+st.title('View Current Mentee Students')
 st.write('')
 
 # Use request to obtain all mentor data 
-mentor_data = requests.get('http://api:4000/s/mentors').json()
+mentee_data = requests.get('http://api:4000/s/mentees').json()
 
 buttons = {}
-for mentor in mentor_data: 
-    sID = mentor['sID']
-    last_name = mentor['lName']
-    first_name = mentor['fName']
+for mentee in mentee_data: 
+    sID = mentee['sID']
+    last_name = mentee['lName']
+    first_name = mentee['fName']
     title = str(last_name) + ", " + str(first_name)
     buttons[title] = sID
 
 # Search bar to filter buttons
-search_query = st.text_input("Search program mentors: ")
+search_query = st.text_input("Search program mentees: ")
 
 # Sample list of button titles
 button_titles = list(buttons.keys())
@@ -40,6 +40,6 @@ for title in filtered_titles:
         # If the button is clicked, set the mentor session_state variable to the sID of 
         # that student (found with the get method from the first word of the title)
         # then switch to the generic page that will display relevant info
-        st.session_state['mentor'] = buttons[title]
-        st.switch_page('pages/27_Display_Mentor_Info.py')
+        st.session_state['mentee'] = buttons[title]
+        st.switch_page('pages/27_Display_Mentee_Info.py')
 

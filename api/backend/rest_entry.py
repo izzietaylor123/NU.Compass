@@ -7,6 +7,7 @@ from backend.students.students_routes import students
 from backend.mentor_mentee_management.mentee_management_routes import mentees
 from backend.mentor_mentee_management.mentor_management_routes import mentors
 from backend.products.products_routes import products
+from backend.locations.location_routes import locations
 from backend.simple.simple_routes import simple_routes
 from backend.engagement_analytics.engagment_routes import engagement_analytics
 import os
@@ -46,6 +47,7 @@ def create_app():
     app.logger.info('current_app(): registering blueprints with Flask app object.')   
     app.register_blueprint(simple_routes)
     app.register_blueprint(abroad_programs,   url_prefix='/ap')
+    app.register_blueprint(locations,   url_prefix='/l')
     app.register_blueprint(questions_replies,   url_prefix='/qr')
     app.register_blueprint(students,   url_prefix='/s')
     app.register_blueprint(products,    url_prefix='/p')

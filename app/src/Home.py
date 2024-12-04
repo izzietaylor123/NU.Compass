@@ -76,7 +76,7 @@ if st.button('Act as Andy Samberg, a Northeastern IT Administrator',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
     st.session_state['first_name'] = 'Andy'
-    st.switch_page('pages/20_Admin_Home.py')
+    st.switch_page('pages/20_IT_Admin_Home.py')
 
 
 if st.button('Act as Adam Brody, a Northeastern Global Experience Staff Member and Data Analyst',
@@ -85,4 +85,4 @@ if st.button('Act as Adam Brody, a Northeastern Global Experience Staff Member a
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'GESM'
     st.session_state['first_name'] = 'Adam'
-    st.switch_page('pages/26_GEOAdmin_Home.py');
+    st.switch_page('pages/26_GEOAdmin_Home.py')
