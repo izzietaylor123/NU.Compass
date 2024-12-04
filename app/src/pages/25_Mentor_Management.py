@@ -5,7 +5,7 @@ import requests
 
 logger = logging.getLogger(__name__)
 
-# Initialize session state for mentor if not already set
+# initialize session state for mentor if not already set
 if 'mentor' not in st.session_state:
     st.session_state['mentor'] = -1
 
@@ -15,9 +15,9 @@ SideBarLinks()
 
 st.title('Mentor Management')
 
-# Fetch mentor data from the backend
+# fetch mentor data from the backend
 try:
-    mentor_data = requests.get('http://api:4000/s/mentors').json()  # Adjust URL to match your API
+    mentor_data = requests.get('http://localhost:4000/s/mentors').json()  # Adjust URL to match your API
     if not mentor_data:
         st.warning("No mentors found.")
 except Exception as e:
@@ -25,45 +25,44 @@ except Exception as e:
     logger.error(f"Error fetching mentors: {e}")
     mentor_data = []
 
-# Build a dictionary for mentor buttons
+# build a dictionary for mentor buttons
 buttons = {}
 for mentor in mentor_data:
-    mentor_id = mentor['MentorID']
-    name = mentor['Name']
-    email = mentor['Email']
-    # Expertise and Availability are placeholders unless implemented in the backend
-    expertise = mentor.get('Expertise', 'N/A')
-    availability = mentor.get('Availability', 'N/A')
-    buttons[name] = {
+    mentor_id = mentor['sID']
+    first_name = mentor['fName']
+    last_name = mentor['lName']
+    full_name = f"{last_name}, {first_name}"
+    email = mentor['email']
+    blurb = mentor.get('blurb', 'No blurb provided')
+    buttons[full_name] = {
         "mentor_id": mentor_id,
         "email": email,
-        "expertise": expertise,
-        "availability": availability
+        "blurb": blurb
     }
 
-# Search bar for mentors
+# search bar for mentors
 st.subheader("Search Mentors")
 search_query = st.text_input("Type to search mentors:")
 
-# Filter mentor list based on search query (case-insensitive)
+# filter mentor list based on search query (case-insensitive)
 button_titles = list(buttons.keys())
 filtered_titles = [title for title in button_titles if search_query.lower() in title.lower()]
 
-# Display filtered mentor buttons
+# display filtered mentor buttons
 st.subheader("View/Edit Mentors")
 if filtered_titles:
     for title in filtered_titles:
         if st.button(title):
-            # Set the mentor session state and navigate to the details page
+            # set the mentor session state and navigate to the details page
             st.session_state['mentor'] = buttons[title]["mentor_id"]
             st.switch_page('pages/27_Display_Mentor_Info.py')
 else:
     st.info("No mentors match your search.")
 
-# Add a new mentor
+# add a new mentor
 st.subheader("Add New Mentor")
 with st.form("add_mentor_form"):
-    name = st.text_input("Mentor Name")
+    name = st.text_input("Mentor Name (First Last)")
     email = st.text_input("Mentor Email")
     blurb = st.text_area("Blurb (optional)")
     submit = st.form_submit_button("Add Mentor")
@@ -76,7 +75,7 @@ with st.form("add_mentor_form"):
                 "Blurb": blurb
             }
             try:
-                response = requests.post('http://localhost:4000/mentors', json=payload)
+                response = requests.post('http://localhost:4000/s/mentors', json=payload)
                 if response.status_code == 201:
                     st.success("Mentor added successfully!")
                     st.experimental_rerun()  # Refresh the page to show the new mentor
@@ -88,7 +87,7 @@ with st.form("add_mentor_form"):
         else:
             st.error("Name and Email are required to add a mentor.")
 
-# Edit or Delete Mentors
+# edit / delete mentors
 st.subheader("Edit or Delete Mentors")
 for title in filtered_titles:
     mentor_details = buttons[title]
@@ -96,11 +95,11 @@ for title in filtered_titles:
     with st.expander(f"Manage Mentor: {title}"):
         col1, col2 = st.columns(2)
 
-        # Edit mentor details
+        # edit mentor details
         with col1:
             new_name = st.text_input(f"Edit Name (ID: {mentor_id})", value=title)
             new_email = st.text_input(f"Edit Email (ID: {mentor_id})", value=mentor_details["email"])
-            new_blurb = st.text_area(f"Edit Blurb (ID: {mentor_id})", value="Update mentor details here.")
+            new_blurb = st.text_area(f"Edit Blurb (ID: {mentor_id})", value=mentor_details["blurb"])
             if st.button(f"Save Changes (ID: {mentor_id})"):
                 payload = {
                     "Name": new_name,
@@ -108,7 +107,7 @@ for title in filtered_titles:
                     "Blurb": new_blurb
                 }
                 try:
-                    response = requests.put(f'http://localhost:4000/mentors/{mentor_id}', json=payload)
+                    response = requests.put(f'http://localhost:4000/s/mentors/{mentor_id}', json=payload)
                     if response.status_code == 200:
                         st.success("Mentor updated successfully!")
                         st.experimental_rerun()
@@ -118,11 +117,11 @@ for title in filtered_titles:
                     st.error("Error updating mentor. Please check the logs.")
                     logger.error(f"Error updating mentor: {e}")
 
-        # Delete mentor
+        # delete mentor
         with col2:
             if st.button(f"Delete Mentor (ID: {mentor_id})"):
                 try:
-                    response = requests.delete(f'http://localhost:4000/mentors/{mentor_id}')
+                    response = requests.delete(f'http://localhost:4000/s/mentors/{mentor_id}')
                     if response.status_code == 200:
                         st.success("Mentor deleted successfully!")
                         st.experimental_rerun()
