@@ -59,7 +59,7 @@ def add_locations():
     country = loc_data['country']
     description = loc_data['description']
 
-    query = '''INSERT INTO locations (locationID, city, country, description)
+    query = '''INSERT INTO Location (locationID, city, country, description)
     VALUES (%s, %s, %s, %s)'''
 
     current_app.logger.info('Inserting location with ID: %s', loc_id)
