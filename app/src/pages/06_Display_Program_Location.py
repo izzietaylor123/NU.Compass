@@ -84,6 +84,11 @@ with cent_co:
         st.write(ar)
     else:
         st.write("This program hasn't been rated yet!")
+    
+    if st.button('View Alerts for this Program', 
+                    type='secondary',
+                    use_container_width=True):
+            st.switch_page('pages/08_Display_Alerts.py')
 
 # Accesses and writes the program description based on the programID of the session_state
 descriptionRoute = f'http://api:4000/ap/program_description/{programID}'
