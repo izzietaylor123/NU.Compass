@@ -95,17 +95,20 @@ st.subheader("Program FAQs")
 # get all questions
 questionsroute = f'http://api:4000/ap/all_questions/{programID}'
 
-# try: 
-question_list = requests.get(questionsroute).json()
-# except JSON.JSONDecodeError:
-# st.write("No questions asked yet!")
+try: 
+    question_list = requests.get(questionsroute).json()
+except:
+    question_list = {}
 
 for question in question_list: 
     question_content = question['content']
     st.write(question_content)
     qID = question['qID']
     replies_route = f'http://api:4000/ap/replies/{qID}'
-    replies_list = requests.get(replies_route).json()
+    try:
+        replies_list = requests.get(replies_route).json()
+    except: 
+        replies_list = {}
     for replies in replies_list:
         reply = ">>>>>>>   " + str(replies['content'])
         st.text(reply)

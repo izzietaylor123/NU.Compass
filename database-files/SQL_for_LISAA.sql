@@ -273,7 +273,7 @@ INSERT INTO Location (locationID, city, country, description) VALUES
 (28, 'Lyon', 'France', 'Known for its historical and architectural landmarks and gastronomy.'),
 (29, 'Marseille', 'France', 'A port city with a rich maritime history and multicultural vibe.'),
 (30, 'Naples', 'Italy', 'Renowned for its rich history, art, gastronomy, and the nearby Amalfi Coast.');
-(31, 'Oakland', 'United States', 'Nestled between the coast and Silicon Valley, Oakland is the perfect mix of business and pleasure.');
+-- (31, 'Oakland', 'United States', 'Nestled between the coast and Silicon Valley, Oakland is the perfect mix of business and pleasure.');
 
 -- abroadProgram Data
 INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, programType, empID) VALUES

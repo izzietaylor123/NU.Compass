@@ -20,7 +20,9 @@ SideBarLinks()
 st.title('Find a location!')
 
 # get all locations
+
 location_list = requests.get('http://api:4000/ap/get_all_program_ids').json()
+
 
 
 buttons = {}
