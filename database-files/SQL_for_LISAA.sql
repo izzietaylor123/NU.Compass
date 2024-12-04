@@ -1113,7 +1113,7 @@ WHERE programID = 2;
 #
 # INSERT INTO engagementAnalytics(featureID, empID, usageCount, feature)
 # VALUES (00000000001, 00000000002, 3, 'Login'),
-#        (00000000002, 00000000001, 8, 'Dashboard');
+#        (00000000002, 00000000001, 8, 'Mentorship Forum');
 #
 # INSERT INTO Course(courseID, courseName, courseDescription, programID, professorID)
 # VALUES (00000000001, 'Introduction to Databases',

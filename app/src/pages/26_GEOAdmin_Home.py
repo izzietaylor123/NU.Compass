@@ -17,7 +17,7 @@ st.write(f"Hello {st.session_state['first_name']}, what would you like to do tod
 if st.button('Current Abroad Programs', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/05_Locations.py')
+  st.switch_page('pages/05_Programs.py')
 
 if st.button('Engagement Analytics', 
              type='primary',

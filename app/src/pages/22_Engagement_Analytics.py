@@ -13,8 +13,6 @@ SideBarLinks()
 
 st.title('Engagement Analytics')
 
-# API base URL
-API_BASE_URL = "http://api:4000/ea"
 engagement_data = requests.get('http://api:4000/ea/engagementAnalytics')
 
 st.dataframe(engagement_data)
@@ -22,7 +20,7 @@ st.dataframe(engagement_data)
 
 def load_engagement_data():
     try:
-        response = requests.get(f"{API_BASE_URL}/engagementAnalytics")
+        response = requests.get('http://api:4000/ea/engagementAnalytics')
         response.raise_for_status()  # Raise an exception for HTTP errors
         data = response.json()
         return pd.DataFrame(data)  # Convert JSON data to pandas DataFrame
@@ -48,7 +46,7 @@ features = data['feature'].unique()
 
 # Sidebar Filters
 st.sidebar.subheader("Filters")
-selected_feature = st.sidebar.selectbox("Select Feature", feature, index=0)
+selected_feature = st.sidebar.selectbox("Select Feature", features, index=0)
 selected_date_range = st.sidebar.date_input(
     "Select Date Range",
     value=[

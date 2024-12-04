@@ -14,7 +14,8 @@ def get_all_engagement_analytics():
         SELECT featureID, 
                empID, 
                usageCount, 
-               date 
+               date,
+               feature 
         FROM engagementAnalytics
     '''
     
@@ -34,7 +35,8 @@ def get_analytics_by_feature(feature):
         SELECT featureID, 
                empID, 
                usageCount, 
-               date 
+               date,
+               feature 
         FROM engagementAnalytics
         WHERE featureID = '{feature}'
     '''
@@ -63,7 +65,8 @@ def get_analytics_by_date():
        SELECT featureID, 
                empID, 
                usageCount, 
-               date 
+               date,
+               feature 
         FROM engagementAnalytics
         WHERE date BETWEEN '{start_date}' AND '{end_date}'
     '''
@@ -84,12 +87,12 @@ def add_engagement_analytics():
     the_data = request.json
     current_app.logger.info(the_data)
 
-    feature = the_data['Feature']
-    date = the_data['Date']
-    usage_count = the_data['UsageCount']
+    feature = the_data['feature']
+    date = the_data['date']
+    usage_count = the_data['usageCount']
     
     query = f'''
-        INSERT INTO engagementAnalytics (Feature, Date, UsageCount)
+        INSERT INTO engagementAnalytics (feature, date, usageCount)
         VALUES ('{feature}', '{date}', {usage_count})
     '''
     
@@ -108,17 +111,17 @@ def update_engagement_analytics(analytics_id):
     the_data = request.json
     current_app.logger.info(the_data)
     
-    feature = the_data.get('Feature')
-    date = the_data.get('Date')
-    usage_count = the_data.get('UsageCount')
+    feature = the_data.get('feature')
+    date = the_data.get('date')
+    usage_count = the_data.get('usageCount')
     
     updates = []
     if feature:
-        updates.append(f"Feature = '{feature}'")
+        updates.append(f"feature = '{feature}'")
     if date:
-        updates.append(f"Date = '{date}'")
+        updates.append(f"date = '{date}'")
     if usage_count:
-        updates.append(f"UsageCount = {usage_count}")
+        updates.append(f"usageCount = {usage_count}")
     
     if not updates:
         response = make_response("No fields provided for update", 400)
