@@ -41,7 +41,32 @@ st.title("Location Form")
 st.write("Fill in the details below and submit to add a new location.")
 submit_location()
 
-
+# Add a section to add a new program to the database
 def submit_abroad_program():
     st.write("Enter new program information below:")
+
+    prog_ID = st.text_input("Program ID", "")
+    name = st.text_input("Program Name", "")
+    description = st.text_input("Program Description", "")
+    loc_ID = st.text_input("Location ID", "")
+    ptype = st.text_input("Program Type", "")
+    emp_ID = st.text_input("Employee ID", "")
     
+    if st.button("Submit Abroad Program"):
+        program_data = {
+            "programID": prog_ID, "programName": name, "prgmDescription": description, 
+            "locationID": loc_ID, "programType": ptype, "empID": emp_ID
+        }
+        try:
+            response = requests.post("http://api:4000/ap/abroad_programs", json=program_data)
+            
+            if response.status_code == 200:
+                st.success("Program added successfully!")
+            else:
+                st.error(f"Error: {response.status_code}, {response.text}")
+        except requests.exceptions.RequestException as e:
+            st.error(f"Request failed: {e}")
+
+st.title("Abroad Program Form")
+st.write("Fill in the details below and submit to add a new program.")
+submit_abroad_program()
