@@ -55,7 +55,8 @@ if filtered_titles:
     for title in filtered_titles:
         if st.button(title):
             # Set the mentor session state and navigate to the details page
-            st.session_state['mentor'] = buttons[title]["mentor_id"]
+            mentor_id = buttons[title]["mentor_id"]
+            st.session_state['mentor'] = mentor_id
             st.switch_page('pages/27_Display_Mentor_Info.py')
 else:
     st.info("No mentors match your search.")
