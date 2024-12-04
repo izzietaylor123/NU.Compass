@@ -18,13 +18,17 @@ def AboutPageNav():
 
 def menteeHomeNav():
     st.sidebar.page_link(
-        "pages/00_Mentee_Home.py", label="Mentee Student Home", icon="👤"
-)
+        "pages/00_Mentee_Home.py", label="Mentee Student Home", icon="👤")
+    if st.session_state['program'] != -1:
+        st.sidebar.page_link("pages/05_Programs.py", label="Back to Search", icon="🔍")
+
 
 
 ## ------------------------ Examples for Role of mentor_student ------------------------
 def mentor_student_home():
     st.sidebar.page_link("pages/10_Mentor.py", label="Mentor Student Home", icon="👤")
+    if st.session_state['program'] != -1:
+        st.sidebar.page_link("pages/05_Programs.py", label="Back to Search", icon="🔍")
 
 
 def PredictionNav():

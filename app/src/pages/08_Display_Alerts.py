@@ -34,3 +34,5 @@ alerts_list = requests.get(alertsroute).json()
 if alerts_list:
     for alert in alerts_list:
         st.write("- (", alert['datePosted'], ")", alert['message'])
+else:
+    st.write("No alerts yet!")
