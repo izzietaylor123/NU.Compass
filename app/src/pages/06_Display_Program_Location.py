@@ -153,7 +153,7 @@ with st.form("add_question_form"):
             # file found in api/backend/products folder. 
             response = requests.post('http://api:4000/ap/postAQuestion', json=question_data)
             if response.status_code == 200:
-                st.success("Product added successfully!")
+                st.success("Question added successfully!")
             else:
                 st.error(f"Error adding product: {response.text}")
         except requests.exceptions.RequestException as e:
