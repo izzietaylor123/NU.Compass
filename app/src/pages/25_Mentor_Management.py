@@ -28,9 +28,9 @@ except Exception as e:
 # Build a dictionary for mentor buttons
 buttons = {}
 for mentor in mentor_data:
-    mentor_id = mentor['MentorID']
-    name = mentor['Name']
-    email = mentor['Email']
+    mentor_id = mentor['sID']
+    name = mentor['fName']
+    email = mentor['email']
     # Expertise and Availability are placeholders unless implemented in the backend
     expertise = mentor.get('Expertise', 'N/A')
     availability = mentor.get('Availability', 'N/A')

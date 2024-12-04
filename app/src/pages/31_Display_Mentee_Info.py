@@ -51,7 +51,7 @@ else:
     st.write(f"{first_name} has not written any replies yet.")
 
 # Find questions associated with this mentor
-mentee_questions = requests.get('http://api:4000/qr//questions_and_replies/questions')
+mentee_questions = requests.get('http://api:4000/qr/questions_and_replies/questions')
 mentee_questions = mentee_questions.json()
 
 selected_questions = [question for question in mentee_questions if question.get('sID') == sID]
