@@ -272,7 +272,7 @@ INSERT INTO Location (locationID, city, country, description) VALUES
 (27, 'Nice', 'France', 'Known for its beautiful Mediterranean beaches and vibrant cultural life.'),
 (28, 'Lyon', 'France', 'Known for its historical and architectural landmarks and gastronomy.'),
 (29, 'Marseille', 'France', 'A port city with a rich maritime history and multicultural vibe.'),
-(30, 'Naples', 'Italy', 'Renowned for its rich history, art, gastronomy, and the nearby Amalfi Coast.'),
+(30, 'Naples', 'Italy', 'Renowned for its rich history, art, gastronomy, and the nearby Amalfi Coast.');
 (31, 'Oakland', 'United States', 'Nestled between the coast and Silicon Valley, Oakland is the perfect mix of business and pleasure.');
 
 -- abroadProgram Data
@@ -306,9 +306,9 @@ INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, 
 (27, 'Nice', 'Explore Nice''s approach to sustainability with courses in renewable energy and environmental management.', 27, 'Traditional Study Abroad', 27),
 (28, 'Lyon', 'Dive into the rich cultural scene of Lyon with courses in music, history, and the arts.', 28, 'NU.in', 28),
 (29, 'Marseille', 'Study fashion and culture in the bustling city of Marseille, a global hub for design and creativity.', 29, 'Dialogue of Civilizations', 29),
-(30, 'Naples', 'Experience the unique blend of tradition and modernity in Naples with courses in history, culture, and politics.', 30, 'Traditional Study Abroad', 30),
+(30, 'Naples', 'Experience the unique blend of tradition and modernity in Naples with courses in history, culture, and politics.', 30, 'Traditional Study Abroad', 30);
 -- abroadProgram #31 should not have any connected ratings or questions, and will test how the program reacts to empty json calls
-(31, 'Oakland', 'Explore your academic interests on our sunny California campus!', 31, 'Semester.in', 30);
+-- (31, 'Oakland', 'Explore your academic interests on our sunny California campus!', 31, 'Semester.in', 30);
 
 -- Student Data
 INSERT INTO Student (sID, fName, lName, email, blurb, role) VALUES
