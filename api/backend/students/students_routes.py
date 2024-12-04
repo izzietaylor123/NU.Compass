@@ -100,7 +100,20 @@ def tom():
     the_response.status_code = 200
     return the_response
 
+# Get mentor-mentee match data 
+@students.route('/mmMatch', methods=['GET'])
+def mentor_mentee_match():
 
+    cursor = db.get_db().cursor()
+    query = '''SELECT matchID, menteeID, mentorID, dateMatched
+    FROM mentorshipMatch'''
+    cursor.execute(query)
+    
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
 
 # #------------------------------------------------------------
 # # Get all of tim's mentees from the system
