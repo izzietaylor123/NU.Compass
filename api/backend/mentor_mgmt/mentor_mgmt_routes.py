@@ -3,33 +3,60 @@ from backend.db_connection import db
 
 mentors = Blueprint('mentors', __name__)
 
-# get all mentors
+# Get all mentors
 @mentors.route('/mentors', methods=['GET'])
 def get_all_mentors():
     query = '''
-        SELECT MentorID, Name, Email, Expertise, Availability
-        FROM mentors
+        SELECT sID AS MentorID, 
+               CONCAT(fName, ' ', lName) AS Name, 
+               email AS Email, 
+               'Expertise Placeholder' AS Expertise, 
+               'Availability Placeholder' AS Availability
+        FROM Student
+        WHERE role = 'mentor'
     '''
     cursor = db.get_db().cursor()
     cursor.execute(query)
     mentors_data = cursor.fetchall()
 
+    current_app.logger.info(f"Mentor data fetched: {mentors_data}")  # Add this line to log data
+
     response = make_response(jsonify(mentors_data))
     response.status_code = 200
     return response
 
-# add a new mentor
+
+# @mentors.route('/mentors', methods=['GET'])
+# def get_all_mentors():
+#     query = '''
+#         SELECT sID AS MentorID, 
+#                CONCAT(fName, ' ', lName) AS Name, 
+#                email AS Email, 
+#                'Expertise Placeholder' AS Expertise, 
+#                'Availability Placeholder' AS Availability
+#         FROM Student
+#         WHERE role = 'mentor'
+#     '''
+#     cursor = db.get_db().cursor()
+#     cursor.execute(query)
+#     mentors_data = cursor.fetchall()
+
+#     response = make_response(jsonify(mentors_data))
+#     response.status_code = 200
+#     return response
+
+# Add a new mentor
 @mentors.route('/mentors', methods=['POST'])
 def add_mentor():
     data = request.json
-    name = data['Name']
+    fName, lName = data['Name'].split(' ', 1)
     email = data['Email']
-    expertise = data['Expertise']
-    availability = data['Availability']
+    role = 'mentor'  # Hardcode role as 'mentor'
+    blurb = data.get('Blurb', 'No blurb provided')  # Optional field
 
     query = f'''
-        INSERT INTO mentors (Name, Email, Expertise, Availability)
-        VALUES ('{name}', '{email}', '{expertise}', '{availability}')
+        INSERT INTO Student (fName, lName, email, role, blurb)
+        VALUES ('{fName}', '{lName}', '{email}', '{role}', '{blurb}')
     '''
     cursor = db.get_db().cursor()
     cursor.execute(query)
@@ -38,27 +65,27 @@ def add_mentor():
     response = make_response("Mentor added successfully", 201)
     return response
 
-# update mentor
+# Update mentor
 @mentors.route('/mentors/<mentor_id>', methods=['PUT'])
 def update_mentor(mentor_id):
     data = request.json
     updates = []
     if 'Name' in data:
-        updates.append(f"Name = '{data['Name']}'")
+        fName, lName = data['Name'].split(' ', 1)
+        updates.append(f"fName = '{fName}'")
+        updates.append(f"lName = '{lName}'")
     if 'Email' in data:
-        updates.append(f"Email = '{data['Email']}'")
-    if 'Expertise' in data:
-        updates.append(f"Expertise = '{data['Expertise']}'")
-    if 'Availability' in data:
-        updates.append(f"Availability = '{data['Availability']}'")
+        updates.append(f"email = '{data['Email']}'")
+    if 'Blurb' in data:
+        updates.append(f"blurb = '{data['Blurb']}'")
 
     if not updates:
         return make_response("No fields provided for update", 400)
 
     query = f'''
-        UPDATE mentors
+        UPDATE Student
         SET {", ".join(updates)}
-        WHERE MentorID = {mentor_id}
+        WHERE sID = {mentor_id} AND role = 'mentor'
     '''
     cursor = db.get_db().cursor()
     cursor.execute(query)
@@ -67,12 +94,12 @@ def update_mentor(mentor_id):
     response = make_response("Mentor updated successfully", 200)
     return response
 
-# delete a mentor
+# Delete a mentor
 @mentors.route('/mentors/<mentor_id>', methods=['DELETE'])
 def delete_mentor(mentor_id):
     query = f'''
-        DELETE FROM mentors
-        WHERE MentorID = {mentor_id}
+        DELETE FROM Student
+        WHERE sID = {mentor_id} AND role = 'mentor'
     '''
     cursor = db.get_db().cursor()
     cursor.execute(query)
