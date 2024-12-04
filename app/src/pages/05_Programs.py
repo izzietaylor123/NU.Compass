@@ -24,7 +24,6 @@ st.title('Find a location!')
 location_list = requests.get('http://api:4000/ap/get_all_program_ids').json()
 
 
-
 buttons = {}
 for programID in location_list: 
     programID = programID['programID']
