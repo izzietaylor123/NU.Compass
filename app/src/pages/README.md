@@ -41,7 +41,7 @@ Set up instructions:
 
 Running the application 
     1. Build and run the containers. 
-        Run the following command: docker- compose up -d 
+        Run the following command: docker compose up db -d 
     2. Verify containers are running 
         docker ps 
     3. Access the Application 
@@ -56,7 +56,7 @@ Team Members
 
 Additional Notes 
     1. Docker  Errors: 
-        Ensure that Docker is running, so try running docker-compose down followed by docker- compose up -d
+        Ensure that Docker is running, so try running docker compose down db followed by docker compose up db -d
     2.Rebuilding Containers: 
         If  you make changes to the Dockerfile, rebuild the containers with: docker-compose up --build -d
 

@@ -22,15 +22,10 @@ if st.button('Reach Out to Your Mentor',
 if st.button('Contact the Global Experience Office', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/20_Admin_Home.py')
+  st.switch_page('pages/26_GEOAdmin_Home.py')
 
 if st.button('Find Program',
              type = 'primary',
              use_container_width = True) :
   st.switch_page('pages/05_Programs.py')
-
-if st.button("Current Programs Ratings",
-             type='primary',
-             use_container_width=True):
-  st.switch_page('pages/06_Display_Program_Location.py/12_API_Test.py')
 
