@@ -38,7 +38,7 @@ def update_locations():
     country = loc_info['country']
     description = loc_info['description']
 
-    query = 'UPDATE locations SET city = %s, country = %s, description = %s where locationID = %s'
+    query = 'UPDATE Location SET city = %s, country = %s, description = %s where locationID = %s'
     data = (city, country, description, loc_id)
     cursor = db.get_db().cursor()
     r = cursor.execute(query, data)
