@@ -27,7 +27,7 @@ if st.button('View User Statistics',
 if st.button("See Mentee Statuses",
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/10_Mentee.py')
+  st.switch_page('pages/28_Mentee_Management.py')
 
 if st.button("See Mentor Statuses",
              type='primary',

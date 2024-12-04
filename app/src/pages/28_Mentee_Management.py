@@ -41,5 +41,5 @@ for title in filtered_titles:
         # that student (found with the get method from the first word of the title)
         # then switch to the generic page that will display relevant info
         st.session_state['mentee'] = buttons[title]
-        st.switch_page('pages/27_Display_Mentee_Info.py')
+        st.switch_page('pages/31_Display_Mentee_Info.py')
 
