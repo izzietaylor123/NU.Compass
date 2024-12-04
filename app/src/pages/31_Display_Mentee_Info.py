@@ -57,7 +57,7 @@ mentee_questions = mentee_questions.json()
 selected_questions = [question for question in mentee_questions if question.get('sID') == sID]
 if selected_questions:
     st.write(f"Here are {first_name}'s questions:")
-    for question in selected_replies:
+    for question in selected_questions:
         st.write(f"- {question['qID']}: {question['content']}")
 else:
     st.write(f"{first_name} has not written any questions yet.")
