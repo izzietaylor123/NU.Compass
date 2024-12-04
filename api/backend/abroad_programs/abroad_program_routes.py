@@ -45,6 +45,35 @@ def get_all_program_ids():
 
 
 #------------------------------------------------------------
+# Add a new abroad program to the database
+
+@abroad_programs.route('/abroad_programs', methods=['POST'])
+def add_programs():
+
+    program_data = request.json
+
+    # extract variables
+    prog_ID = program_data['programID']
+    name = program_data['programName']
+    description = program_data['prgmDescription']
+    loc_ID = program_data['locationID']
+    ptype = program_data['programType']
+    emp_ID = program_data['empID']
+
+    query = '''INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, programType, empID)
+    VALUES (%s, %s, %s, %s, %s, %s, %s)'''
+
+    current_app.logger.info('Inserting location with ID: %s', prog_ID)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (prog_ID, name, description, loc_ID, ptype, emp_ID))
+    db.get_db().commit()
+
+    response = make_response("Successfully added new abroad program")
+    response.status_code = 200
+    return 'abroad program created!'
+
+#------------------------------------------------------------
 # Get location rating from the system
 @abroad_programs.route('/location_rating/<programID>', methods=['GET'])
 def get_location_rating(programID):

@@ -40,3 +40,8 @@ def submit_location():
 st.title("Location Form")
 st.write("Fill in the details below and submit to add a new location.")
 submit_location()
+
+
+def submit_abroad_program():
+    st.write("Enter new program information below:")
+    
