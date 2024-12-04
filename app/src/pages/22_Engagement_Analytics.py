@@ -15,7 +15,9 @@ st.title('Engagement Analytics')
 
 # API base URL
 API_BASE_URL = "http://api:4000/ea"
+engagement_data = requests.get('http://api:4000/ea/engagementAnalytics')
 
+st.dataframe(engagement_data)
 # Load Engagement Analytics Data from API
 
 def load_engagement_data():
@@ -42,24 +44,24 @@ if data.empty:
     st.stop()
 
 # Extract unique features for filtering
-features = data['Feature'].unique()
+features = data['feature'].unique()
 
 # Sidebar Filters
 st.sidebar.subheader("Filters")
-selected_feature = st.sidebar.selectbox("Select Feature", features, index=0)
+selected_feature = st.sidebar.selectbox("Select Feature", feature, index=0)
 selected_date_range = st.sidebar.date_input(
     "Select Date Range",
     value=[
-        pd.to_datetime(data['Date']).min(),
-        pd.to_datetime(data['Date']).max()
+        pd.to_datetime(data['date']).min(),
+        pd.to_datetime(data['date']).max()
     ]
 )
 
 # Filter data based on user selections
 filtered_data = data[
-    (data['Feature'] == selected_feature) &
-    (pd.to_datetime(data['Date']) >= pd.to_datetime(selected_date_range[0])) &
-    (pd.to_datetime(data['Date']) <= pd.to_datetime(selected_date_range[1]))
+    (data['feature'] == selected_feature) &
+    (pd.to_datetime(data['date']) >= pd.to_datetime(selected_date_range[0])) &
+    (pd.to_datetime(data['date']) <= pd.to_datetime(selected_date_range[1]))
 ]
 
 # Display filtered data
@@ -74,8 +76,8 @@ st.subheader("Engagement Trends")
 if not filtered_data.empty:
     plt.figure(figsize=(10, 5))
     plt.plot(
-        pd.to_datetime(filtered_data['Date']),
-        filtered_data['UsageCount'],
+        pd.to_datetime(filtered_data['date']),
+        filtered_data['usageCount'],
         marker='o',
         linestyle='-',
         label=selected_feature
@@ -92,9 +94,16 @@ else:
 st.subheader("Search Feature Engagement")
 search_query = st.text_input("Search Features: ")
 
-# Filter features based on the search query
-filtered_features = [feature for feature in features if search_query.lower() in feature.lower()]
-for feature in filtered_features:
-    if st.button(f"View Analytics for {feature}"):
-        st.session_state['selected_feature'] = feature
+# filter features based on the search query
+# extract unique features from the 'feature' column in the data
+features = data['feature'].unique()
+
+# filter features based on the search query
+filtered_features = [f for f in features if search_query.lower() in f.lower()]
+
+# display matching features as buttons
+for f in filtered_features:
+    if st.button(f"View Analytics for {f}"):
+        st.session_state['selected_feature'] = f
         st.experimental_rerun()
+

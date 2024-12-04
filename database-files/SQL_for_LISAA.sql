@@ -145,6 +145,7 @@ CREATE TABLE IF NOT EXISTS engagementAnalytics
     empID      INT(11)  NOT NULL,
     usageCount INT      NOT NULL,
     date       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    feature VARCHAR(50),
     CONSTRAINT eng_analytics_fk_01 FOREIGN KEY (empID)
         REFERENCES adminEmployee (empID)
 );
@@ -677,48 +678,29 @@ VALUES
 
 
 -- engagementAnalytics Data
-INSERT INTO engagementAnalytics (featureID, empID, usageCount, date)
+-- engagementAnalytics Data with Feature Column
+INSERT INTO engagementAnalytics (featureID, empID, usageCount, date, feature)
 VALUES
-(1, 18, 174, '2024-01-30 14:48:01'),
-(2, 5, 46, '2023-12-14 16:56:09'),
-(3, 3, 362, '2024-04-08 11:56:11'),
-(4, 18, 175, '2024-01-31 01:37:57'),
-(5, 5, 397, '2024-04-21 07:48:03'),
-(6, 27, 262, '2024-03-02 20:20:11'),
-(7, 7, 494, '2024-05-26 20:23:37'),
-(8, 24, 533, '2024-06-10 06:03:51'),
-(9, 30, 618, '2024-07-11 02:26:34'),
-(10, 28, 606, '2024-07-06 18:25:53'),
-(11, 22, 594, '2024-07-02 07:23:02'),
-(12, 12, 543, '2024-06-13 19:44:31'),
-(13, 8, 415, '2024-04-27 18:09:54'),
-(14, 22, 490, '2024-05-25 08:27:23'),
-(15, 22, 807, '2024-09-18 07:37:54'),
-(16, 6, 210, '2024-02-12 20:59:41'),
-(17, 28, 749, '2024-08-28 07:07:10'),
-(18, 6, 966, '2024-11-15 12:03:39'),
-(19, 19, 273, '2024-03-07 00:55:06'),
-(20, 20, 50, '2023-12-16 10:22:56'),
-(21, 5, 635, '2024-07-17 10:05:33'),
-(22, 30, 570, '2024-06-23 15:58:10'),
-(23, 21, 269, '2024-03-13 11:57:21'),
-(24, 28, 644, '2024-10-29 03:57:07'),
-(25, 28, 291, '2024-02-09 05:37:43'),
-(26, 28, 918, '2024-08-02 23:31:10'),
-(27, 30, 200, '2024-09-16 00:31:44'),
-(28, 20, 680, '2024-03-07 21:17:13'),
-(29, 5, 801, '2024-11-01 13:15:39'),
-(30, 6, 276, '2024-07-02 00:21:32'),
-(31, 5, 928, '2024-06-07 11:11:36'),
-(32, 5, 593, '2024-04-21 05:30:04'),
-(33, 20, 526, '2024-05-18 02:10:19'),
-(34, 2, 397, '2024-09-30 09:35:36'),
-(35, 22, 470, '2024-08-25 21:03:15'),
-(36, 13, 840, '2024-06-21 08:10:51'),
-(37, 12, 743, '2023-12-04 14:53:05'),
-(38, 3, 229, '2023-12-01 12:22:16'),
-(39, 5, 564, '2024-02-15 01:38:15'),
-(40, 30, 689, '2024-01-12 08:40:07');
+(1, 18, 174, '2024-01-30 14:48:01', 'Login'),
+(2, 5, 46, '2023-12-14 16:56:09', 'Profile Update'),
+(3, 3, 362, '2024-04-08 11:56:11', 'Mentorship Forum'),
+(4, 18, 175, '2024-01-31 01:37:57', 'Message Center'),
+(5, 5, 397, '2024-04-21 07:48:03', 'Program Rating'),
+(6, 27, 262, '2024-03-02 20:20:11', 'Search Programs'),
+(7, 7, 494, '2024-05-26 20:23:37', 'Resource Downloads'),
+(8, 24, 533, '2024-06-10 06:03:51', 'Course Evaluations'),
+(9, 30, 618, '2024-07-11 02:26:34', 'Safety Alerts'),
+(10, 28, 606, '2024-07-06 18:25:53', 'Peer Reviews'),
+(11, 22, 594, '2024-07-02 07:23:02', 'Dashboard Usage'),
+(12, 12, 543, '2024-06-13 19:44:31', 'Event Registrations'),
+(13, 8, 415, '2024-04-27 18:09:54', 'Login'),
+(14, 22, 490, '2024-05-25 08:27:23', 'Profile Update'),
+(15, 22, 807, '2024-09-18 07:37:54', 'Mentorship Forum'),
+(16, 6, 210, '2024-02-12 20:59:41', 'Message Center'),
+(17, 28, 749, '2024-08-28 07:07:10', 'Program Rating'),
+(18, 6, 966, '2024-11-15 12:03:39', 'Search Programs'),
+(19, 19, 273, '2024-03-07 00:55:06', 'Resource Downloads'),
+(20, 20, 50, '2023-12-16 10:22:56', 'Course Evaluations');
 
 
 -- studentAbroadProgram Bridge Inserts
@@ -1127,9 +1109,9 @@ WHERE programID = 2;
 # VALUES (00000000001, 'IT Administrator', 'Timothee', 'Chalamet', 'timmychal@gmail.com', 00000000001),
 #        (00000000002, 'Global Advice Personnel', 'James', 'Bond', 'bond.james@gmail.com', 00000000002);
 #
-# INSERT INTO engagementAnalytics(featureID, empID, usageCount)
-# VALUES (00000000001, 00000000002, 3),
-#        (00000000002, 00000000001, 8);
+# INSERT INTO engagementAnalytics(featureID, empID, usageCount, feature)
+# VALUES (00000000001, 00000000002, 3, 'Login'),
+#        (00000000002, 00000000001, 8, 'Dashboard');
 #
 # INSERT INTO Course(courseID, courseName, courseDescription, programID, professorID)
 # VALUES (00000000001, 'Introduction to Databases',
@@ -1320,10 +1302,10 @@ WHERE programID = 2;
 # ORDER BY datePosted DESC;
 #
 # -- 4.3: track app usage over monthly periods
-# SELECT empID, featureID, usageCount, DATE_FORMAT(date, '%Y-%m') AS usageMonth
+# SELECT empID, featureID, usageCount, DATE_FORMAT(date, '%Y-%m'), feature AS usageMonth
 # FROM engagementAnalytics
 # WHERE date >= '2023-11-18'
-# GROUP BY empID, featureID, usageMonth
+# GROUP BY empID, featureID, usageMonth, feature
 # ORDER BY usageMonth DESC;
 #
 # -- 4.4: moderate alerts

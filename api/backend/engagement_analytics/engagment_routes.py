@@ -50,7 +50,32 @@ def get_analytics_by_feature(feature):
 
 # ------------------------------------------------------------
 # get engagement analytics for a specific date range
-
+@engagement_analytics.route('/engagementAnalytics/date', methods=['GET'])
+def get_analytics_by_date():
+    start_date = request.args.get('start_date')
+    end_date = request.args.get('end_date')
+    
+    if not start_date or not end_date:
+        response = make_response("start_date and end_date query parameters are required", 400)
+        return response
+    
+    query = f'''
+       SELECT featureID, 
+               empID, 
+               usageCount, 
+               date 
+        FROM engagementAnalytics
+        WHERE date BETWEEN '{start_date}' AND '{end_date}'
+    '''
+    
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    theData = cursor.fetchall()
+    
+    current_app.logger.info(f'GET /engagementAnalytics/date - Query: {query} - Results: {theData}')
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
 
 # ------------------------------------------------------------
 # add a new engagement analytics record
