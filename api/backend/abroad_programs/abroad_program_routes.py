@@ -249,3 +249,24 @@ def add_question():
     the_response = make_response(jsonify(locations))
     the_response.status_code = 200
     return the_response
+
+#------------------------------------------------------------
+# Get Alerts from a programID
+@abroad_programs.route('/get_alerts/<programID>', methods=['GET'])
+def get_alerts(programID):
+
+    cursor = db.get_db().cursor()
+    query = f'''
+        SELECT Alerts.message, Alerts.datePosted 
+        FROM Alerts
+        JOIN Location ON Location.locationID = Alerts.locationID
+        JOIN abroadProgram ON abroadProgram.locationID = Location.locationID
+        WHERE abroadProgram.programID = {str(programID)}
+        ORDER BY datePosted DESC'''
+    cursor.execute(query)
+    
+    locations = cursor.fetchall()
+    
+    the_response = make_response(jsonify(locations))
+    the_response.status_code = 200
+    return the_response
