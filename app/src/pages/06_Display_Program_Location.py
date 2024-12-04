@@ -113,3 +113,48 @@ if question_list:
             st.write("No replies yet.")        
 else:
     st.write("No questions asked yet.")        
+
+
+st.subheader("Ask a question!")
+
+
+# Create a Streamlit form widget
+with st.form("add_question_form"):
+    
+    # Create the various input widgets needed for 
+    # each piece of information you're eliciting from the user
+    question_content = st.text_input("Question Content")
+    sID = st.session_state['userID']
+    isAproved = False
+    abroadProgram = programID
+    
+    # Add the submit button (which every form needs)
+    submit_button = st.form_submit_button("Ask Question")
+    
+    if submit_button:
+        
+        # Package the data up that the user entered into 
+        # a dictionary (which is just like JSON in this case)
+        question_data = {
+            "question_content": question_content,
+            "sID": sID,
+            "abroadProgram": abroadProgram
+        }
+        
+        # printing out the data - will show up in the Docker Desktop logs tab
+        # for the web-app container 
+        logger.info(f"Question form submitted with data: {question_data}")
+        
+        # Now, we try to make a POST request to the proper end point
+        try:
+            # using the requests library to POST to /p/product.  Passing
+            # product_data to the endpoint through the json parameter.
+            # This particular end point is located in the products_routes.py
+            # file found in api/backend/products folder. 
+            response = requests.post('http://api:4000/ap/postAQuestion', json=question_data)
+            if response.status_code == 200:
+                st.success("Product added successfully!")
+            else:
+                st.error(f"Error adding product: {response.text}")
+        except requests.exceptions.RequestException as e:
+            st.error(f"Error connecting to server: {str(e)}")
