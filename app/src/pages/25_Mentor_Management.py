@@ -5,7 +5,7 @@ import requests
 
 logger = logging.getLogger(__name__)
 
-# initialize session state for mentor if not already set
+# Initialize session state for mentor if not already set
 if 'mentor' not in st.session_state:
     st.session_state['mentor'] = -1
 
@@ -15,9 +15,9 @@ SideBarLinks()
 
 st.title('Mentor Management')
 
-# fetch mentor data from the backend
+# Fetch mentor data from the backend
 try:
-    mentor_data = requests.get('http://localhost:4000/s/mentors').json()  # Adjust URL to match your API
+    mentor_data = requests.get('http://api:4000/s/mentors').json()  # Adjusted URL
     if not mentor_data:
         st.warning("No mentors found.")
 except Exception as e:
@@ -25,57 +25,56 @@ except Exception as e:
     logger.error(f"Error fetching mentors: {e}")
     mentor_data = []
 
-# build a dictionary for mentor buttons
+# Build a dictionary for mentor buttons
 buttons = {}
 for mentor in mentor_data:
-    mentor_id = mentor['MentorID']
-    name = mentor['Name']
-    email = mentor['Email']
-    # Expertise and Availability are placeholders unless implemented in the backend
-    expertise = mentor.get('Expertise', 'N/A')
-    availability = mentor.get('Availability', 'N/A')
+    mentor_id = mentor['sID']  # Use 'sID' as it matches the Student table's structure
+    name = f"{mentor['fName']} {mentor['lName']}"  # Combine first and last name
+    email = mentor['email']
+    blurb = mentor['blurb']
     buttons[name] = {
         "mentor_id": mentor_id,
         "email": email,
         "blurb": blurb
     }
 
-# search bar for mentors
+# Search bar for mentors
 st.subheader("Search Mentors")
 search_query = st.text_input("Type to search mentors:")
 
-# filter mentor list based on search query (case-insensitive)
+# Filter mentor list based on search query (case-insensitive)
 button_titles = list(buttons.keys())
 filtered_titles = [title for title in button_titles if search_query.lower() in title.lower()]
 
-# display filtered mentor buttons
+# Display filtered mentor buttons
 st.subheader("View/Edit Mentors")
 if filtered_titles:
     for title in filtered_titles:
         if st.button(title):
-            # set the mentor session state and navigate to the details page
+            # Set the mentor session state and navigate to the details page
             st.session_state['mentor'] = buttons[title]["mentor_id"]
             st.switch_page('pages/27_Display_Mentor_Info.py')
 else:
     st.info("No mentors match your search.")
 
-# add a new mentor
+# Add a new mentor
 st.subheader("Add New Mentor")
 with st.form("add_mentor_form"):
-    name = st.text_input("Mentor Name (First Last)")
-    email = st.text_input("Mentor Email")
+    f_name = st.text_input("First Name")
+    l_name = st.text_input("Last Name")
+    email = st.text_input("Email")
     blurb = st.text_area("Blurb (optional)")
     submit = st.form_submit_button("Add Mentor")
 
     if submit:
-        if name and email:
+        if f_name and l_name and email:
             payload = {
-                "Name": name,
+                "Name": f"{f_name} {l_name}",
                 "Email": email,
                 "Blurb": blurb
             }
             try:
-                response = requests.post('http://localhost:4000/s/mentors', json=payload)
+                response = requests.post('http://api:4000/s/mentors', json=payload)
                 if response.status_code == 201:
                     st.success("Mentor added successfully!")
                     st.experimental_rerun()  # Refresh the page to show the new mentor
@@ -85,9 +84,9 @@ with st.form("add_mentor_form"):
                 st.error("Error adding mentor. Please check the logs.")
                 logger.error(f"Error adding mentor: {e}")
         else:
-            st.error("Name and Email are required to add a mentor.")
+            st.error("All fields are required to add a mentor.")
 
-# edit / delete mentors
+# Edit or Delete Mentors
 st.subheader("Edit or Delete Mentors")
 for title in filtered_titles:
     mentor_details = buttons[title]
@@ -95,19 +94,20 @@ for title in filtered_titles:
     with st.expander(f"Manage Mentor: {title}"):
         col1, col2 = st.columns(2)
 
-        # edit mentor details
+        # Edit mentor details
         with col1:
-            new_name = st.text_input(f"Edit Name (ID: {mentor_id})", value=title)
+            new_f_name = st.text_input(f"Edit First Name (ID: {mentor_id})", value=title.split()[0])
+            new_l_name = st.text_input(f"Edit Last Name (ID: {mentor_id})", value=title.split()[1])
             new_email = st.text_input(f"Edit Email (ID: {mentor_id})", value=mentor_details["email"])
             new_blurb = st.text_area(f"Edit Blurb (ID: {mentor_id})", value=mentor_details["blurb"])
             if st.button(f"Save Changes (ID: {mentor_id})"):
                 payload = {
-                    "Name": new_name,
+                    "Name": f"{new_f_name} {new_l_name}",
                     "Email": new_email,
                     "Blurb": new_blurb
                 }
                 try:
-                    response = requests.put(f'http://localhost:4000/s/mentors/{mentor_id}', json=payload)
+                    response = requests.put(f'http://api:4000/s/mentors/{mentor_id}', json=payload)
                     if response.status_code == 200:
                         st.success("Mentor updated successfully!")
                         st.experimental_rerun()
@@ -117,11 +117,11 @@ for title in filtered_titles:
                     st.error("Error updating mentor. Please check the logs.")
                     logger.error(f"Error updating mentor: {e}")
 
-        # delete mentor
+        # Delete mentor
         with col2:
             if st.button(f"Delete Mentor (ID: {mentor_id})"):
                 try:
-                    response = requests.delete(f'http://localhost:4000/s/mentors/{mentor_id}')
+                    response = requests.delete(f'http://api:4000/s/mentors/{mentor_id}')
                     if response.status_code == 200:
                         st.success("Mentor deleted successfully!")
                         st.experimental_rerun()
