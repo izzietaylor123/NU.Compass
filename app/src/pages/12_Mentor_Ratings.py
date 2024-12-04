@@ -31,21 +31,41 @@ atmosphereRating = float(atmosphereRating)
 locationRating = float(locationRating)
 professorRating = float(professorRating)
 
-st.write('')
-lr = 'Location rating: ' + str(round((locationRating), 2)) + ' '
-for i in range (int(locationRating)):
-    lr = lr + '⭐️'
-st.write(lr)
+# Add some spacing
+st.header("Program Ratings")
 
-st.write('')
+st.markdown("---")
 
-pr = 'Professor rating: ' + str(round((professorRating), 2)) + ' '
-for i in range (int(professorRating)):
-    pr = pr + '⭐️'
-st.write(pr)
+# Location Rating Section
+st.subheader("📍 Location Rating")
+location_text = f"**Location rating:** {round(locationRating, 2)}"
+st.markdown(location_text)
 
-st.write('')
-ar = 'Atmosphere rating: ' + str(round((atmosphereRating), 2)) + ' '
-for i in range (int(atmosphereRating)):
-    ar = ar + '⭐️'
-st.write(ar)
+# Display stars for location
+location_stars = "⭐️" * int(locationRating)
+st.markdown(f"<span style='font-size: 24px; color: #FFD700;'>{location_stars}</span>", unsafe_allow_html=True)
+
+st.markdown("---")
+
+# Professor Rating Section
+st.subheader("👨‍🏫 Professor Rating")
+professor_text = f"**Professor rating:** {round(professorRating, 2)}"
+st.markdown(professor_text)
+
+
+# Display stars for professor
+professor_stars = "⭐️" * int(professorRating)
+st.markdown(f"<span style='font-size: 24px; color: #FFD700;'>{professor_stars}</span>", unsafe_allow_html=True)
+
+st.markdown("---")
+
+# Atmosphere Rating Section
+st.subheader("🌤️ Atmosphere Rating")
+atmosphere_text = f"**Atmosphere rating:** {round(atmosphereRating, 2)}"
+st.markdown(atmosphere_text)
+
+
+# Display stars for atmosphere
+atmosphere_stars = "⭐️" * int(atmosphereRating)
+st.markdown(f"<span style='font-size: 24px; color: #FFD700;'>{atmosphere_stars}</span>", unsafe_allow_html=True)
+
