@@ -33,12 +33,13 @@ for mentor in mentor_data:
 for mentee in mentee_data:
      user_counts["Mentee"] += 1
 
-st.write(f"Number of Mentees: {user_counts['Mentee']}, Number of Mentors: {user_counts['Mentor']}")
-plt.bar(user_counts.keys(), user_counts.values(), color=['blue', 'red'])
-plt.title('Mentor vs Mentee')
-plt.xlabel('Category')
-plt.ylabel('Count')
-st.pyplot(plt)
+with st.container():
+     st.write(f"Number of Mentees: {user_counts['Mentee']}, Number of Mentors: {user_counts['Mentor']}")
+     plt.bar(user_counts.keys(), user_counts.values(), color=['blue', 'red'])
+     plt.title('Mentor vs Mentee')
+     plt.xlabel('Category')
+     plt.ylabel('Count')
+     st.pyplot(plt)
 
 # Make a pie chart of abroad programs separated by country
 location_counts = {}
@@ -47,9 +48,23 @@ for location in locations:
      if country: 
             location_counts[country] = location_counts.get(country, 0) + 1
 
-st.write(f"{location_counts}")
-labels = location_counts.keys()
-sizes = location_counts.values()
-fig, ax = plt.subplots()
-ax.pie(sizes, labels=labels, autopct='%1.1f%%', pctdistance=.85, labeldistance=1.4)
-st.pyplot(plt)
+with st.container():
+     labels = location_counts.keys()
+     sizes = location_counts.values()
+     fig, ax = plt.subplots()
+     ax.pie(sizes, labels=labels, autopct='%1.1f%%', pctdistance=.85, labeldistance=1.4)
+     st.pyplot(plt)
+
+# Make a bar chart comparing the number of different types of abroad programs
+program_type_counts = {}
+for program in abroad_programs_data:
+     type = program["programType"]
+     if type:
+          program_type_counts[type] = program_type_counts.get(type, 0) + 1
+
+with st.container():
+     plt.bar(program_type_counts.keys(), program_type_counts.values())
+     plt.title('Count per Abroad Program Type')
+     plt.xlabel('Program Type')
+     plt.ylabel('Count')
+     st.pyplot(plt)
