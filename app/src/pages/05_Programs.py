@@ -23,7 +23,14 @@ st.title('Find a location!')
 
 location_list = requests.get('http://api:4000/ap/get_all_program_ids').json()
 
+# Add button to switch to page in order to add new location
+with st.container(): 
+     if st.button('Add New Location/Program', 
+                type='primary',
+                use_container_width=True):
+         st.switch_page('pages/07_Add_Program_Location.py')
 
+# get all locations
 buttons = {}
 for programID in location_list: 
     programID = programID['programID']
@@ -55,25 +62,3 @@ for title in filtered_titles:
         st.session_state['program'] = buttons[title]
         st.switch_page('pages/06_Display_Program_Location.py')
 
-def submit_location():
-    st.write("Enter new location information below:")
-
-    location_id = st.text_input("Location ID", "")
-    city = st.text_input("City", "")
-    country = st.text_input("Country", "")
-    description = st.text_area("Description", "")
-
-    if st.button("Submit Location"):
-        location_data = {
-            "locationID": location_id, "city": city, 
-            "country": country, "description": description       
-        }
-        try:
-            response = requests.post("http://api:4000/l/locations", json=location_data)
-            
-            if response.status_code == 200:
-                st.success("Location added successfully!")
-            else:
-                st.error(f"Error: {response.status_code}, {response.text}")
-        except requests.exceptions.RequestException as e:
-            st.error(f"Request failed: {e}")
