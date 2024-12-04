@@ -23,12 +23,13 @@ st.title('Find a location!')
 
 location_list = requests.get('http://api:4000/ap/get_all_program_ids').json()
 
-# Add button to switch to page in order to add new location
-with st.container(): 
-     if st.button('Add New Location/Program', 
-                type='primary',
-                use_container_width=True):
-         st.switch_page('pages/07_Add_Program_Location.py')
+# Add button to switch to page in order to add new location if the role is an admin
+if st.session_state['role'] == 'administrator':
+    with st.container(): 
+        if st.button('Add New Location/Program', 
+                    type='primary',
+                    use_container_width=True):
+            st.switch_page('pages/07_Add_Program_Location.py')
 
 # get all locations
 buttons = {}
