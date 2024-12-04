@@ -25,6 +25,8 @@ st.session_state['authenticated'] = False
 
 st.session_state['program'] = -1
 
+st.session_state['userID'] = -1
+
 # Use the SideBarLinks function from src/modules/nav.py to control
 # the links displayed on the left-side panel. 
 # IMPORTANT: ensure src/.streamlit/config.toml sets
@@ -52,6 +54,7 @@ if st.button('Act as Tim Walz, an abroad alum student looking to be a mentor',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'mentor_student'
     st.session_state['first_name'] = 'Tim'
+    st.session_state['userID'] = 31
     st.switch_page('pages/10_Mentor.py')
     
 if st.button("Act as Tom Holland, an incoming abroad student looking to be a mentee", 
@@ -64,6 +67,7 @@ if st.button("Act as Tom Holland, an incoming abroad student looking to be a men
     # we add the first name of the user (so it can be displayed on 
     # subsequent pages). 
     st.session_state['first_name'] = 'Tom'
+    st.session_state['userID'] = 32
     # finally, we ask streamlit to switch to another page, in this case, the 
     # landing page for this particular user type
     logger.info("Logging in as Mentee Student Persona")

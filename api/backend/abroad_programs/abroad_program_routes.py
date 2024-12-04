@@ -193,3 +193,30 @@ def get_replies(qID):
     the_response = make_response(jsonify(locations))
     the_response.status_code = 200
     return the_response
+
+#------------------------------------------------------------
+# Post a question
+@abroad_programs.route('/postAQuestion', methods=['POST'])
+def add_question(sID):
+
+    # In a POST request, there is a 
+    # collecting data from the request object 
+    the_data = request.json
+    current_app.logger.info(the_data)
+
+    #extracting the variable
+    sID = the_data['sID']
+    content = the_data['question_content']
+    abroad_program = the_data['abroadProgram']
+
+    cursor = db.get_db().cursor()
+    query = f'''
+        INSERT INTO Questions(sID, content, abroadProgram, isApproved)
+        VALUES({sID}, {content}, {abroad_program}, 0)'''
+    cursor.execute(query)
+    
+    locations = cursor.fetchall()
+    
+    the_response = make_response(jsonify(locations))
+    the_response.status_code = 200
+    return the_response
