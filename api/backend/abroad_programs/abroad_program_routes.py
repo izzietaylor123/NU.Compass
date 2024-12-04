@@ -226,7 +226,7 @@ def get_replies(qID):
 #------------------------------------------------------------
 # Post a question
 @abroad_programs.route('/postAQuestion', methods=['POST'])
-def add_question(sID):
+def add_question():
 
     # In a POST request, there is a 
     # collecting data from the request object 
@@ -240,8 +240,8 @@ def add_question(sID):
 
     cursor = db.get_db().cursor()
     query = f'''
-        INSERT INTO Questions(sID, content, abroadProgram, isApproved)
-        VALUES({sID}, {content}, {abroad_program}, 0)'''
+        INSERT INTO Question(sID, content, abroadProgram, isApproved)
+        VALUES({sID}, "{content}", {abroad_program}, 0)'''
     cursor.execute(query)
     
     locations = cursor.fetchall()
