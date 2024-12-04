@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS abroadProgram
     prgmDescription LONGTEXT       NOT Null,
     locationID      INT(11) UNIQUE NOT NULL,
     programType     VARCHAR(100)   NOT NULL,
-    empID           INT(11) UNIQUE NOT NULL,
+    empID           INT(11)  NOT NULL,
     CONSTRAINT location_fk FOREIGN KEY (locationID)
         REFERENCES Location (locationID)
 );
@@ -273,7 +273,7 @@ INSERT INTO Location (locationID, city, country, description) VALUES
 (28, 'Lyon', 'France', 'Known for its historical and architectural landmarks and gastronomy.'),
 (29, 'Marseille', 'France', 'A port city with a rich maritime history and multicultural vibe.'),
 (30, 'Naples', 'Italy', 'Renowned for its rich history, art, gastronomy, and the nearby Amalfi Coast.');
-
+-- (31, 'Oakland', 'United States', 'Nestled between the coast and Silicon Valley, Oakland is the perfect mix of business and pleasure.');
 
 -- abroadProgram Data
 INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, programType, empID) VALUES
@@ -307,6 +307,8 @@ INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, 
 (28, 'Lyon', 'Dive into the rich cultural scene of Lyon with courses in music, history, and the arts.', 28, 'NU.in', 28),
 (29, 'Marseille', 'Study fashion and culture in the bustling city of Marseille, a global hub for design and creativity.', 29, 'Dialogue of Civilizations', 29),
 (30, 'Naples', 'Experience the unique blend of tradition and modernity in Naples with courses in history, culture, and politics.', 30, 'Traditional Study Abroad', 30);
+-- abroadProgram #31 should not have any connected ratings or questions, and will test how the program reacts to empty json calls
+-- (31, 'Oakland', 'Explore your academic interests on our sunny California campus!', 31, 'Semester.in', 30);
 
 -- Student Data
 INSERT INTO Student (sID, fName, lName, email, blurb, role) VALUES
@@ -829,19 +831,19 @@ INSERT INTO mentorshipMatch (matchID, menteeID, mentorID, dateMatched) VALUES
 (15, 22, 8, '2024-03-10 08:47:31'),
 (16, 22, 8, '2024-06-30 01:30:01'),
 (17, 23, 9, '2024-09-06 03:22:33'),
-(18, 23, 9, '2024-10-12 05:04:32'),
+(18, 23, 31, '2024-10-12 05:04:32'),
 (19, 24, 10, '2024-05-09 23:22:26'),
-(20, 24, 10, '2024-01-02 22:36:07'),
+(20, 24, 31, '2024-01-02 22:36:07'),
 (21, 25, 11, '2024-10-16 05:58:43'),
-(22, 25, 11, '2024-04-20 06:36:07'),
+(22, 25, 31, '2024-04-20 06:36:07'),
 (23, 26, 12, '2024-04-11 00:20:35'),
-(24, 26, 12, '2023-12-16 09:37:43'),
+(24, 26, 31, '2023-12-16 09:37:43'),
 (25, 27, 13, '2024-09-18 21:12:21'),
-(26, 27, 13, '2024-04-13 10:17:18'),
+(26, 27, 31, '2024-04-13 10:17:18'),
 (27, 28, 14, '2024-03-23 04:01:03'),
-(28, 28, 14, '2024-06-25 11:18:28'),
+(28, 28, 31, '2024-06-25 11:18:28'),
 (29, 29, 15, '2024-11-12 17:42:34'),
-(30, 29, 15, '2024-11-23 14:53:42'),
+(30, 29, 31, '2024-11-23 14:53:42'),
 (31, 32, 31, '2024-11-23 14:53:42');
 
 

@@ -17,7 +17,9 @@ students = Blueprint('students', __name__)
 def get_all_students():
 
     cursor = db.get_db().cursor()
-    query = '''SELECT sID, fName, lName, email, blurb, role FROM Student'''
+    query = '''
+        SELECT sID, fName, lName, email, blurb, role 
+        FROM Student'''
     cursor.execute(query)
     
     theData = cursor.fetchall()
@@ -99,3 +101,21 @@ def tom():
     return the_response
 
 
+
+# #------------------------------------------------------------
+# # Get all of tim's mentees from the system
+# @students.route('/tim/matches', methods=['GET'])
+# def get_tim_matches():
+
+#     cursor = db.get_db().cursor()
+#     query = '''
+#         SELECT menteeID
+#         FROM mentorshipMatch
+#         WHERE mentorID = 31 '''
+#     cursor.execute(query)
+    
+#     mentors = cursor.fetchall()
+    
+#     the_response = make_response(jsonify(mentors))
+#     the_response.status_code = 200
+#     return the_response

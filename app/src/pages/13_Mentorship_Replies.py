@@ -20,33 +20,48 @@ replies = requests.get(repliesRoute).json()
 questionsRoute = "http://api:4000/qr/tom/questions"
 questions = requests.get(questionsRoute).json()
 
-logger.info(replies)
+if not isinstance(questions, list) or not isinstance(replies, list):
+    st.error("Unexpected API response. Please check the data structure.")
+    st.stop()
 
-st.write('')
-st.header("Mentee Questions:")
-st.dataframe(questions)
+if 'current_question_index' not in st.session_state:
+    st.session_state.current_question_index = 0
 
-st.write('')
-st.header("My Replies:")
-st.dataframe(replies)
+def next_question():
+    if st.session_state.current_question_index < len(questions) - 1:
+        st.session_state.current_question_index += 1
 
+def previous_question():
+    if st.session_state.current_question_index > 0:
+        st.session_state.current_question_index -= 1
 
+current_index = st.session_state.current_question_index
+current_question = questions[current_index]
+current_reply = (
+    replies[current_index]
+    if current_index < len(replies)
+    else {"reply_text": "No reply available"}
+)
 
-# # Iterate through the questions and replies
-# for idx, qa in enumerate(questions):
-#     st.subheader(f"Question {idx + 1}")
-#     st.markdown(f"**Question:** {qa['question']}")
-#     st.markdown(
-#         f"<div style='font-size: 1.2em; font-weight: bold; color: #333;'>Reply: {qa['reply']}</div>",
-#         unsafe_allow_html=True
-#     )
-#     st.markdown("---")  # Separator for clarity
+st.title("Question and Reply Viewer")
 
-# for idx, qa in enumerate(replies):
-#     st.subheader(f"Question {idx + 1}")
-#     st.markdown(f"**Question:** {qa['question']}")
-#     st.markdown(
-#         f"<div style='font-size: 1.2em; font-weight: bold; color: #333;'>Reply: {qa['reply']}</div>",
-#         unsafe_allow_html=True
-#     )
-#     st.markdown("---")  # Separator for clarity
+st.subheader(f"Question {current_index + 1} of {len(questions)}")
+st.write("### Question Details:")
+for key, value in current_question.items():
+    st.write(f"**{key.capitalize()}:** {value}")
+
+st.write("### Reply Details:")
+for key, value in current_reply.items():
+    st.write(f"**{key.capitalize()}:** {value}")
+
+col1, col2 = st.columns([1, 1])
+with col1:
+    st.button("Previous", on_click=previous_question, disabled=current_index == 0)
+with col2:
+    st.button("Next", on_click=next_question, disabled=current_index == len(questions) - 1)
+
+with st.expander("View All Questions and Replies"):
+    st.subheader("Questions")
+    st.dataframe(questions)
+    st.subheader("Replies")
+    st.dataframe(replies)
