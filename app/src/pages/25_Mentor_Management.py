@@ -28,13 +28,13 @@ except Exception as e:
 # build a dictionary for mentor buttons
 buttons = {}
 for mentor in mentor_data:
-    mentor_id = mentor['sID']
-    first_name = mentor['fName']
-    last_name = mentor['lName']
-    full_name = f"{last_name}, {first_name}"
-    email = mentor['email']
-    blurb = mentor.get('blurb', 'No blurb provided')
-    buttons[full_name] = {
+    mentor_id = mentor['MentorID']
+    name = mentor['Name']
+    email = mentor['Email']
+    # Expertise and Availability are placeholders unless implemented in the backend
+    expertise = mentor.get('Expertise', 'N/A')
+    availability = mentor.get('Availability', 'N/A')
+    buttons[name] = {
         "mentor_id": mentor_id,
         "email": email,
         "blurb": blurb

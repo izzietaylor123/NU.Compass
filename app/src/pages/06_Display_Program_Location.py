@@ -52,37 +52,38 @@ with cent_co:
     atmosphereRating = atmosphereRating[0]['AVG(atmosphereRating)']
 
 
+    if locationRating and professorRating and atmosphereRating:
+        averageRating = round(((float(locationRating) + float(professorRating) + float(atmosphereRating)) / 3), 2)
+        atmosphereRating = float(atmosphereRating)
+        locationRating = float(locationRating)
+        professorRating = float(professorRating)
 
-    averageRating = round(((float(locationRating) + float(professorRating) + float(atmosphereRating)) / 3), 2)
+        st.write('')
+        avgR = 'Average rating: ' + str(averageRating) + ' '
+        for i in range (int(averageRating)):
+            avgR = avgR + '⭐️'
+        st.write('###', avgR)
 
-    atmosphereRating = float(atmosphereRating)
-    locationRating = float(locationRating)
-    professorRating = float(professorRating)
+        st.write('')
+        lr = 'Location rating: ' + str(round((locationRating), 2)) + ' '
+        for i in range (int(locationRating)):
+            lr = lr + '⭐️'
+        st.write(lr)
 
-    st.write('')
-    avgR = 'Average rating: ' + str(averageRating) + ' '
-    for i in range (int(averageRating)):
-        avgR = avgR + '⭐️'
-    st.write('###', avgR)
+        st.write('')
 
-    st.write('')
-    lr = 'Location rating: ' + str(round((locationRating), 2)) + ' '
-    for i in range (int(locationRating)):
-        lr = lr + '⭐️'
-    st.write(lr)
+        pr = 'Professor rating: ' + str(round((professorRating), 2)) + ' '
+        for i in range (int(professorRating)):
+            pr = pr + '⭐️'
+        st.write(pr)
 
-    st.write('')
-
-    pr = 'Professor rating: ' + str(round((professorRating), 2)) + ' '
-    for i in range (int(professorRating)):
-        pr = pr + '⭐️'
-    st.write(pr)
-
-    st.write('')
-    ar = 'Atmosphere rating: ' + str(round((atmosphereRating), 2)) + ' '
-    for i in range (int(atmosphereRating)):
-        ar = ar + '⭐️'
-    st.write(ar)
+        st.write('')
+        ar = 'Atmosphere rating: ' + str(round((atmosphereRating), 2)) + ' '
+        for i in range (int(atmosphereRating)):
+            ar = ar + '⭐️'
+        st.write(ar)
+    else:
+        st.write("This program hasn't been rated yet!")
 
 # Accesses and writes the program description based on the programID of the session_state
 descriptionRoute = f'http://api:4000/ap/program_description/{programID}'
@@ -95,21 +96,65 @@ st.subheader("Program FAQs")
 # get all questions
 questionsroute = f'http://api:4000/ap/all_questions/{programID}'
 
-try: 
-    question_list = requests.get(questionsroute).json()
-except:
-    question_list = {}
+question_list = requests.get(questionsroute).json()
 
-for question in question_list: 
-    question_content = question['content']
-    st.write(question_content)
-    qID = question['qID']
-    replies_route = f'http://api:4000/ap/replies/{qID}'
-    try:
+if question_list: 
+    for question in question_list: 
+        question_content = "Q: " + str(question['content'])
+        st.write(question_content)
+        qID = question['qID']
+        replies_route = f'http://api:4000/ap/replies/{qID}'
         replies_list = requests.get(replies_route).json()
-    except: 
-        replies_list = {}
-    for replies in replies_list:
-        reply = ">>>>>>>   " + str(replies['content'])
-        st.text(reply)
+        if replies_list:
+            for replies in replies_list:
+                reply = ">>>   A: " + str(replies['content'])
+                st.write(reply)
+        else:
+            st.write("No replies yet.")        
+else:
+    st.write("No questions asked yet.")        
+
+
+st.subheader("Ask a question!")
+
+
+# Create a Streamlit form widget
+with st.form("add_question_form"):
     
+    # Create the various input widgets needed for 
+    # each piece of information you're eliciting from the user
+    question_content = st.text_input("Question Content")
+    sID = st.session_state['userID']
+    isAproved = False
+    abroadProgram = programID
+    
+    # Add the submit button (which every form needs)
+    submit_button = st.form_submit_button("Ask Question")
+    
+    if submit_button:
+        
+        # Package the data up that the user entered into 
+        # a dictionary (which is just like JSON in this case)
+        question_data = {
+            "question_content": question_content,
+            "sID": sID,
+            "abroadProgram": abroadProgram
+        }
+        
+        # printing out the data - will show up in the Docker Desktop logs tab
+        # for the web-app container 
+        logger.info(f"Question form submitted with data: {question_data}")
+        
+        # Now, we try to make a POST request to the proper end point
+        try:
+            # using the requests library to POST to /p/product.  Passing
+            # product_data to the endpoint through the json parameter.
+            # This particular end point is located in the products_routes.py
+            # file found in api/backend/products folder. 
+            response = requests.post('http://api:4000/ap/postAQuestion', json=question_data)
+            if response.status_code == 200:
+                st.success("Question added successfully!")
+            else:
+                st.error(f"Error adding product: {response.text}")
+        except requests.exceptions.RequestException as e:
+            st.error(f"Error connecting to server: {str(e)}")

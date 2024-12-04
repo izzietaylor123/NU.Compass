@@ -5,6 +5,8 @@ import streamlit as st
 from modules.nav import SideBarLinks
 import requests
 import matplotlib.pyplot as plt
+import pandas as pd
+
 
 from st_keyup import st_keyup
 
@@ -13,17 +15,22 @@ st.set_page_config(layout = 'wide')
 # Show appropriate sidebar links for the role of the currently logged in user
 SideBarLinks()
 
-st.title('User Statistics')
+st.title('User & Data Statistics')
 st.write('')
 st.write('')
 st.write('### Welcome to the hub for usage and data statistics. Click below to view current app data.')
 
+st.write('')
+st.write('User Stats:')
 # Importing the data
 mentor_data = requests.get('http://api:4000/s/mentors').json()
 mentee_data = requests.get('http://api:4000/s/mentees').json()
 
+mentorship_match_data = requests.get('http://api:4000/s/mmMatch').json()
+
 abroad_programs_data = requests.get('http://api:4000/ap/abroad_programs').json()
 locations = requests.get('http://api:4000/l/locations').json()
+
 
 # Make a bar chart comparing the number of mentors to mentees
 with st.expander("View Data on User Counts"):
@@ -45,7 +52,27 @@ with st.expander("View Data on User Counts"):
      st.pyplot(plt)
      plt.close()
 
+# Plot monthly mentorship matches as a line graph
+with st.expander("View Mentor/Mentee Match Data"):
 
+     matches = pd.DataFrame(mentorship_match_data)
+     matches['dateMatched'] = pd.to_datetime(matches['dateMatched'], errors="coerce")
+     matches['Year-Month'] = matches['dateMatched'].dt.to_period('M')
+     match_counts = matches.groupby('Year-Month').size().reset_index(name="MatchCount")                                                            
+     # match_counts = match_counts.sort_values('dateMatched')
+     
+     plt.plot(match_counts['Year-Month'].astype(str), match_counts["MatchCount"], marker="o", color="b")
+     plt.title('Mentorship Match History by Month and Year')
+     plt.xlabel('Month-Year')
+     plt.ylabel('Number of Matches')
+     plt.xticks(rotation=45)
+     plt.grid(True)
+     plt.tight_layout()
+     st.pyplot(plt)
+     plt.close()
+
+st.write('')
+st.write('Program Stats:')
 # Make a pie chart of abroad programs separated by country
 col1, col2 = st.columns(2)
 

@@ -46,6 +46,34 @@ def update_locations():
     return 'location updated!'
 
 #------------------------------------------------------------
+# Add a new location to the database
+
+@locations.route('/locations', methods=['POST'])
+def add_locations():
+
+    loc_data = request.json
+
+    # extract variables
+    loc_id = loc_data['locationID']
+    city = loc_data['city']
+    country = loc_data['country']
+    description = loc_data['description']
+
+    query = '''INSERT INTO Location (locationID, city, country, description)
+    VALUES (%s, %s, %s, %s)'''
+
+    current_app.logger.info('Inserting location with ID: %s', loc_id)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (loc_id, city, country, description))
+    db.get_db().commit()
+
+    response = make_response("Successfully added new location")
+    response.status_code = 200
+    return 'location created!'
+
+
+#------------------------------------------------------------
 # Get location details for location with particular locationID
 
 @locations.route('/locations/<locationID>', methods=['GET'])
@@ -61,19 +89,3 @@ def get_locations(locationID):
     return the_response
 
 #------------------------------------------------------------
-# Makes use of the very simple ML model in to predict a value
-# and returns it to the user - NOT SURE IF WE NEED THIS FOR OUR PROJ
-''''
-@customers.route('/prediction/<var01>/<var02>', methods=['GET'])
-def predict_value(var01, var02):
-    current_app.logger.info(f'var01 = {var01}')
-    current_app.logger.info(f'var02 = {var02}')
-
-    returnVal = predict(var01, var02)
-    return_dict = {'result': returnVal}
-
-    the_response = make_response(jsonify(return_dict))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-    return the_response
-'''
