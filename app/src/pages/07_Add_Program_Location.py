@@ -39,7 +39,8 @@ def submit_location():
 
 st.title("Location Form")
 st.write("Fill in the details below and submit to add a new location.")
-submit_location()
+with st.expander("Add Location"):
+    submit_location()
 
 
 # Add a section to add a new program to the database
@@ -70,4 +71,5 @@ def submit_abroad_program():
 
 st.title("Abroad Program Form")
 st.write("Fill in the details below and submit to add a new program.")
-submit_abroad_program()
+with st.expander("Add Program"):
+    submit_abroad_program()
