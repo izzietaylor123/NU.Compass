@@ -6,6 +6,7 @@ from backend.questions_replies.questions import questions_replies
 from backend.students.students_routes import students
 from backend.locations.location_routes import locations
 from backend.engagement_analytics.engagment_routes import engagement_analytics
+from backend.alerts_mgmt.alerts_mgmt_routes import alerts
 import os
 from dotenv import load_dotenv
 
@@ -46,6 +47,7 @@ def create_app():
     app.register_blueprint(questions_replies,   url_prefix='/qr')
     app.register_blueprint(students,   url_prefix='/s')
     app.register_blueprint(engagement_analytics,    url_prefix='/ea')
+    app.register_blueprint(alerts,      url_prefix='/am')
     
 
     # Don't forget to return the app object
