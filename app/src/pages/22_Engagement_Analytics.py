@@ -15,7 +15,7 @@ st.title('Engagement Analytics')
 
 engagement_data = requests.get('http://api:4000/ea/engagementAnalytics')
 
-st.dataframe(engagement_data)
+#st.dataframe(engagement_data)
 # Load Engagement Analytics Data from API
 
 def load_engagement_data():
@@ -33,8 +33,8 @@ def load_engagement_data():
 data = load_engagement_data()
 
 # Debug: Show raw data
-if st.checkbox("Show Raw Data"):
-    st.dataframe(data)
+#if st.checkbox("Show Raw Data"):
+ #   st.dataframe(data)
 
 # Ensure the DataFrame is not empty
 if data.empty:
