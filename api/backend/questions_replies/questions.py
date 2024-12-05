@@ -128,3 +128,24 @@ def add_reply():
     response = make_response("Successfully added new location")
     response.status_code = 200
     return 'location created!'
+
+#------------------------------------------------------------
+# Delete a reply
+@questions_replies.route('/delete_reply/<reply_id>/<sID>', methods=['DELETE'])
+def delete_reply(reply_id, sID):
+    try:
+        cursor = db.get_db().cursor()
+        query = f'''
+            DELETE FROM Reply
+            WHERE replyID = {reply_id} AND sID = {sID}
+        '''
+        cursor.execute(query)
+        db.get_db().commit()
+
+        response = make_response("Reply deleted successfully.")
+        response.status_code = 200
+        return response
+    except Exception as e:
+        current_app.logger.error(f"Error deleting reply: {e}")
+        response = make_response("Failed to delete reply.", 500)
+        return response
