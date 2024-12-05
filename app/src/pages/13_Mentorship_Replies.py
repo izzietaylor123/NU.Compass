@@ -24,23 +24,30 @@ questions = requests.get(questions_route).json()
 replies_route = f"http://api:4000/qr/get_replies/{userID}"
 replies = requests.get(replies_route).json()
 
-if len(questions) == 0:
+st.write("### Questions:")
+if questions:
+    for question in questions:
+        st.write(f"- {question['content']}")
+else:
     st.warning("No questions available for this user.")
 
-if len(replies) == 0:
+st.write("### Replies:")
+if replies:
+    for reply in replies:
+        st.write(f"- {reply['content']}")
+else:
     st.warning("No replies available for this user.")
 
 
 with st.expander("Add a New Question"):
     with st.form(key="question_form"):
-        question_title = st.text_input("Question Title")
-        question_body = st.text_area("Question Body")
+        question_body = st.text_area("Question")
         
         submit_question = st.form_submit_button("Submit Question")
         
         if submit_question:
             new_question = {
-                "student_id": userID,
+                "sID": userID,
                 "body": question_body
             }
             
@@ -55,15 +62,16 @@ with st.expander("Add a New Question"):
 with st.expander("Add a New Reply"):
     with st.form(key="reply_form"):
         reply_body = st.text_area("Reply Body")
-        question_id = st.selectbox("Select Question to Reply To", [q['title'] for q in questions])
+        question_id = st.selectbox("Select Question to Reply To", [q['content'] for q in questions])
         
         submit_reply = st.form_submit_button("Submit Reply")
         
         if submit_reply:
-            question_id_selected = next(q['id'] for q in questions if q['title'] == question_id) 
+            question_id_selected = next(q['qID'] for q in questions if q['content'] == question_id) 
             new_reply = {
                 "student_id": userID,
-                "body": reply_body
+                "body": reply_body,
+                "qID" : question_id_selected
             }
 
             response = requests.post(f"http://api:4000/qr/add_reply", json=new_reply)
@@ -73,17 +81,17 @@ with st.expander("Add a New Reply"):
             else:
                 st.error("There was an error submitting your reply.")
 
-st.subheader(f"Questions/Replies")
-for i, question in enumerate(questions, start=1):
-    st.write(f"### Question {i}")
-    for key, value in question.items():
-        st.write(f"**{key.capitalize()}:** {value}")
-        st.subheader(f"Questions/Replies")
+# st.subheader(f"Questions/Replies")
+# for i, question in enumerate(questions, start=1):
+#     st.write(f"### Question {i}")
+#     for key, value in question.items():
+#         st.write(f"**{key.capitalize()}:** {value}")
+#         st.subheader(f"Questions/Replies")
 
-for i, replies in enumerate(replies, start=1):
-    st.write(f"### Reply {i}")
-    for key, value in replies.items():
-        st.write(f"**{key.capitalize()}:** {value}")
+# for i, replies in enumerate(replies, start=1):
+#     st.write(f"### Reply {i}")
+#     for key, value in replies.items():
+#         st.write(f"**{key.capitalize()}:** {value}")
 
 
         
