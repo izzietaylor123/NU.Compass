@@ -105,7 +105,7 @@ for title in filtered_titles:
                     response = requests.put(f'http://api:4000/s/mentors/{mentee_id}', json=payload)
                     if response.status_code == 200:
                         st.success("Mentee updated successfully!")
-                        st.experimental_rerun()
+                        # st.experimental_rerun()
                     else:
                         st.error("Failed to update mentee. Please try again.")
                 except Exception as e:
@@ -119,7 +119,7 @@ for title in filtered_titles:
                     response = requests.delete(f'http://api:4000/s/mentees/{mentee_id}')
                     if response.status_code == 200:
                         st.success("Mentee deleted successfully!")
-                        st.experimental_rerun()
+                        # st.experimental_rerun()
                     else:
                         st.error("Failed to delete mentee. Please try again.")
                 except Exception as e:
