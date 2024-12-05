@@ -21,7 +21,7 @@ mentees = requests.get(menteeRoute).json()
 mentorRoute = f'http://api:4000/s/mentors'
 mentors = requests.get(mentorRoute).json()
 
-with st.expander("Mentees"):
+with st.expander("Tim's Mentees"):
     if mentees:
         mentees_df = pd.DataFrame(mentees)
         for index, row in mentees_df.iterrows():
@@ -33,7 +33,7 @@ with st.expander("Mentees"):
     else:
         st.error("No mentee data available at the moment.")
 
-with st.expander("Mentors"):
+with st.expander("Other Mentors"):
     if mentors:
         mentors_df = pd.DataFrame(mentors)
         for index, row in mentors_df.iterrows():
