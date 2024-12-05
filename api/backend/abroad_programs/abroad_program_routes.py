@@ -366,3 +366,21 @@ def get_program_pic(programID):
     the_response = make_response(jsonify(locations))
     the_response.status_code = 200
     return the_response
+
+#------------------------------------------------------------
+# Get comments from programID
+@abroad_programs.route('/get_comments/<programID>', methods=['GET'])
+def get_comments(programID):
+
+    cursor = db.get_db().cursor()
+    query = f'''
+        SELECT comment, sID
+        FROM Rating
+        WHERE programID = {str(programID)}'''
+    cursor.execute(query)
+    
+    locations = cursor.fetchall()
+    
+    the_response = make_response(jsonify(locations))
+    the_response.status_code = 200
+    return the_response

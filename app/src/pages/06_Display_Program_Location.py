@@ -91,6 +91,11 @@ with cent_co:
         st.write(ar)
     else:
         st.write("This program hasn't been rated yet!")
+
+    if st.button('View comments', 
+                    type='secondary',
+                    use_container_width=True):
+            st.switch_page('pages/04_View_Program_Comments.py')        
     
     if st.button('Add a rating for this program!', 
                     type='secondary',
