@@ -95,8 +95,12 @@ with center_col:
     st.write("#### *The Pack Goes Global*")
 
 st.write('')
+st.write('')
 
-st.markdown("### Welcome! Which user would you like to log in as?")
+st.write('')
+
+
+st.markdown("#### Welcome! Which user would you like to log in as?")
 
 # For each of the user personas for which we are implementing
 # functionality, we put a button on the screen that the user 
