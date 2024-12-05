@@ -317,3 +317,21 @@ def get_alerts(programID):
     the_response = make_response(jsonify(locations))
     the_response.status_code = 200
     return the_response
+
+#------------------------------------------------------------
+# Get city from programID
+@abroad_programs.route('/get_program_pic/<programID>', methods=['GET'])
+def get_program_pic(programID):
+
+    cursor = db.get_db().cursor()
+    query = f'''
+        SELECT prgmPhotoPath 
+        FROM abroadProgram
+        WHERE programID = {str(programID)}'''
+    cursor.execute(query)
+    
+    locations = cursor.fetchall()
+    
+    the_response = make_response(jsonify(locations))
+    the_response.status_code = 200
+    return the_response
