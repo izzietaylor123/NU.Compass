@@ -67,8 +67,8 @@ if st.session_state['role'] == 'mentor_student':
     mentees = requests.get(mentees_route).json()
     if mentees:
         for mentee in mentees:
-            m = mentee['menteeID']
-            questions_route = f"http://api:4000/qr/get_questions/{mentee['menteeID']}"
+            m = mentee['sID']
+            questions_route = f"http://api:4000/qr/get_questions/{mentee['sID']}"
             questions = requests.get(questions_route).json()
             with st.expander(f"Add a New Reply For Mentee {m}"):
                 with st.form(key=f"reply_form_for_{m}"):
