@@ -92,6 +92,10 @@ with cent_co:
     else:
         st.write("This program hasn't been rated yet!")
     
+    if st.button('Add a rating for this program!', 
+                    type='secondary',
+                    use_container_width=True):
+            st.switch_page('pages/09_Add_Program_Rating.py')
 
 st.write('')    
 st.write('')    

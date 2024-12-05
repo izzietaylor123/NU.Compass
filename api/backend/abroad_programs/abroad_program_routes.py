@@ -99,6 +99,36 @@ def add_programs():
     return 'abroad program created!'
 
 #------------------------------------------------------------
+# Add a new rating for an abroad program to the database
+
+@abroad_programs.route('/add_rating', methods=['POST'])
+def add_rating():
+
+    rating_data = request.json
+
+    # extract variables
+    locR = rating_data['location_rating']
+    profR = rating_data['professor_rating']
+    atmR = rating_data['atmosphere_rating']
+    comment = rating_data['comment']
+    sID = rating_data['sID']
+    program = rating_data['abroadProgram']
+
+    query = f'''INSERT INTO Rating (programID, sID, locRating, profRating, atmosphereRating, comment)
+    VALUES ({program}, {sID}, {locR}, {profR}, {atmR}, "{comment}")'''
+
+    current_app.logger.info('Inserting location with ID: %s', program)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query) #, (prog_ID, name, description, loc_ID, ptype, emp_ID, image))
+    db.get_db().commit()
+
+    response = make_response("Successfully added new abroad program")
+    response.status_code = 200
+    return 'abroad program created!'
+
+
+#------------------------------------------------------------
 # Delete a location from the database
 
 @abroad_programs.route('/abroad_programs/<programID>', methods=['DELETE'])
