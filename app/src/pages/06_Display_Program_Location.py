@@ -163,3 +163,4 @@ with st.form("add_question_form"):
                 st.error(f"Error adding product: {response.text}")
         except requests.exceptions.RequestException as e:
             st.error(f"Error connecting to server: {str(e)}")
+

@@ -6,7 +6,7 @@ import streamlit as st
 from modules.nav import SideBarLinks
 import requests
 
-# from backend.customers.location_routes.py import get_locations 
+user_role = st.session_state.get("role", "guest")
 
 from st_keyup import st_keyup
 
@@ -63,3 +63,19 @@ for title in filtered_titles:
         st.session_state['program'] = buttons[title]
         st.switch_page('pages/06_Display_Program_Location.py')
 
+# Delete a location, given a locationID
+def delete_location(locationID):
+    response = requests.delete('http://api:4000/location/')
+    if response.status_code == 200:
+        st.write("Location with ID {locationID} has been deleted.")
+
+if user_role == 'administrator':
+    st.subheader("Delete a Location")
+    locationID = st.text_input("Enter Location ID to delete:")
+
+    # Delete location once button is pressed
+    if st.button("Delete Location"):
+        if locationID:
+            delete_location(locationID)
+        else:
+            st.write("Please provide a valid Location ID")

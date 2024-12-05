@@ -89,3 +89,23 @@ def get_locations(locationID):
     return the_response
 
 #------------------------------------------------------------
+# Delete a location from the database
+
+@locations.route('/location/<locationID>', methods=['DELETE'])
+def delete_locations(locationID):
+
+    query = '''DELETE FROM Location WHERE locationID = %s'''
+
+    current_app.logger.info('Attempting to delete location with ID: %s', locationID)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (locationID))
+    db.get_db().commit()
+
+    # handle cases where no location is found
+    if cursor.rowcount == 0:
+        return make_response(f"Location not found", 404)
+
+    response = make_response(f"Location with ID {locationID} deleted successfully")
+    response.status_code = 200
+    return 'location deleted!'
