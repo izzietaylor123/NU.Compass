@@ -54,6 +54,7 @@ if st.button('Act as Tim Walz, an abroad alum student looking to be a mentor',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'mentor_student'
     st.session_state['first_name'] = 'Tim'
+    st.session_state['full_name'] = 'Tim Walz'
     st.session_state['userID'] = 31
     st.switch_page('pages/10_Mentor.py')
     
@@ -67,6 +68,7 @@ if st.button("Act as Tom Holland, an incoming abroad student looking to be a men
     # we add the first name of the user (so it can be displayed on 
     # subsequent pages). 
     st.session_state['first_name'] = 'Tom'
+    st.session_state['full_name'] = 'Tom Holland'
     st.session_state['userID'] = 32
     # finally, we ask streamlit to switch to another page, in this case, the 
     # landing page for this particular user type
@@ -80,6 +82,7 @@ if st.button('Act as Andy Samberg, a Northeastern IT Administrator',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
     st.session_state['first_name'] = 'Andy'
+    st.session_state['full_name'] = 'Andy Samberg'
     st.switch_page('pages/20_IT_Admin_Home.py')
 
 
@@ -89,4 +92,5 @@ if st.button('Act as Adam Brody, a Northeastern Global Experience Staff Member a
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'GESM'
     st.session_state['first_name'] = 'Adam'
+    st.session_state['full_name'] = 'Adam Brody'
     st.switch_page('pages/26_GEOAdmin_Home.py')
