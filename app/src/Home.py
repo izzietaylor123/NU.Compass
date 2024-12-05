@@ -89,9 +89,9 @@ st.markdown(
 # set the title of the page and provide a simple prompt. 
 logger.info("Loading the Home page of the app")
 
-left_col, center_col, right_col = st.columns([1, 2, 1])
+left_col, center_col, right_col = st.columns([2, 3, 2])
 with center_col:
-    st.write("# NU.Compass")
+    st.title(" :red[NU.Compass]")
     st.write("#### *The Pack Goes Global*")
 
 st.write('')
