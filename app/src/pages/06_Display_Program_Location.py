@@ -165,19 +165,6 @@ with st.form("add_question_form"):
         except requests.exceptions.RequestException as e:
             st.error(f"Error connecting to server: {str(e)}")
 
-# Delete abroad program (only if administrator)
-def delete_program():
-    response = requests.delete('http://api:4000/abroad_programs/{programID}') 
-    if response.status_code == 200:
-        st.write("Program has been deleted.")
-
-if user_role == 'administrator':
-    # Delete location once button is pressed
-    if st.button('Delete Location', 
-            type='primary',
-            use_container_width=True):
-        delete_program()
-       
 def update_program():
     with st.form("update_program_form"):
         program_name = st.text_input("Program Name")
