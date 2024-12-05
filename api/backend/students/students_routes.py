@@ -116,22 +116,23 @@ def mentor_mentee_match():
     return the_response
 
 # #------------------------------------------------------------
-# # Get all of tim's mentees from the system
-# @students.route('/tim/matches', methods=['GET'])
-# def get_tim_matches():
+# Get all of of a mentor's mentees from the system
+@students.route('/mentors/mentees/<sID>', methods=['GET'])
+def get_mentors_mentees(sID):
 
-#     cursor = db.get_db().cursor()
-#     query = '''
-#         SELECT menteeID
-#         FROM mentorshipMatch
-#         WHERE mentorID = 31 '''
-#     cursor.execute(query)
+    cursor = db.get_db().cursor()
+    query = f'''
+        SELECT email, fName, lName, blurb, role
+        FROM mentorshipMatch JOIN Student
+        WHERE role = 'mentee' AND matchID = {str(sID)}
+        '''
+    cursor.execute(query)
     
-#     mentors = cursor.fetchall()
+    mentors = cursor.fetchall()
     
-#     the_response = make_response(jsonify(mentors))
-#     the_response.status_code = 200
-#     return the_response
+    the_response = make_response(jsonify(mentors))
+    the_response.status_code = 200    
+    return the_response
 
 # #------------------------------------------------------------
 # Get student blurb data 
