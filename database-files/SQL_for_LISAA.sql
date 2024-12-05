@@ -1030,8 +1030,8 @@ INSERT INTO Question (qID, sID, content, datePosted, isApproved, abroadProgram) 
 INSERT INTO Reply (replyID, sID, qID, content, datePosted, isApproved) VALUES
 (1, 1, 1, 'The city culture is vibrant and diverse! Attend local events, explore community spaces, and connect with locals to integrate smoothly.', '2023-12-21 18:00:01', 1),
 (2, 1, 2, 'To open a bank account, you will need your passport, visa, I-20/DS-2019, proof of address, and sometimes a Social Security number or ITIN.', '2024-04-14 03:54:34', 1),
-(3, 2, 3, 'Yes, cultural norms like punctuality, individualism, and direct communication are common—observing and asking questions can help you adapt.', '2024-10-31 10:17:30', 1),
-(4, 2, 4, 'Yes, international students can access internships or jobs through CPT, OPT, or on-campus roles—check your visa restrictions first.', '2024-06-11 06:49:42', 1),
+(3, 2, 3, 'Yes, cultural norms like punctuality, individualism, and direct communication are common! Observing and asking questions can help you adapt.', '2024-10-31 10:17:30', 1),
+(4, 2, 4, 'Yes, international students can access internships or jobs through CPT, OPT, or on-campus roles! Check your visa restrictions first.', '2024-06-11 06:49:42', 1),
 (5, 3, 5, 'The general attitude is welcoming, with support networks in place, though experiences may vary depending on location and community.', '2024-06-30 07:13:39', 1),
 (6, 3, 6, 'The city culture is vibrant and diverse—attend local events, explore community spaces, and connect with locals to integrate smoothly.', '2024-11-08 11:06:11', 1),
 (7, 4, 7, 'Yes, local banks like Chase, Wells Fargo, and regional credit unions often offer no-fee student accounts—check specific terms.', '2024-07-15 01:30:55', 1),
