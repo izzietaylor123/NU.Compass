@@ -9,6 +9,12 @@ import streamlit as st
 def HomeNav():
     st.sidebar.page_link("Home.py", label="Home", icon="🏠")
 
+def HomeNav():
+    st.sidebar.markdown(
+        "<span style='color: #c0392b; font-size: 1.2em;'>🏠 Home</span>",
+        unsafe_allow_html=True
+    )
+
 
 def AboutPageNav():
     st.sidebar.page_link("pages/30_About.py", label="About NU.Connect", icon="🧠")
@@ -45,7 +51,14 @@ def ClassificationNav():
 
 #### ------------------------ Global Experience Staff Member ------------------------
 def AdminPageNav():
+<<<<<<< HEAD
+    st.sidebar.page_link("Home.py", label="Home", icon="🏠")
+    st.sidebar.page_link(
+        "pages/21_ML_Model_Mgmt.py", label="ML Model Management", icon="🏢"
+    )
+=======
     st.sidebar.page_link("pages/20_IT_Admin_Home.py", label="System Admin", icon="🖥️")
+>>>>>>> 9b37d7bb4ad8e630ab55d182f9f67527e6794a96
 
 
 # --------------------------------Links Function -----------------------------------------------

@@ -7,6 +7,7 @@ from backend.students.students_routes import students
 from backend.locations.location_routes import locations
 from backend.engagement_analytics.engagment_routes import engagement_analytics
 from backend.alerts_mgmt.alerts_mgmt_routes import alerts
+from backend.mentor_mgmt.mentor_mgmt_routes import mentors
 import os
 from dotenv import load_dotenv
 
@@ -46,6 +47,7 @@ def create_app():
     app.register_blueprint(locations,   url_prefix='/l')
     app.register_blueprint(questions_replies,   url_prefix='/qr')
     app.register_blueprint(students,   url_prefix='/s')
+    app.register_blueprint(mentors, url_prefix='/s')
     app.register_blueprint(engagement_analytics,    url_prefix='/ea')
     app.register_blueprint(alerts,      url_prefix='/am')
     

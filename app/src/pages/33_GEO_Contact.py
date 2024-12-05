@@ -21,7 +21,7 @@ adam_info = {
         "any questions you may have about studying abroad, including housing, academics, "
         "or adjusting to life in a new country. Don't hesitate to reach out!"
     ),
-    "photo_url": "assets/Adam_Headshot.jpg",  # Path to the photo
+    "photo_url": "assets/Adam_Headshot.jpg",
 }
 
 # Page Layout

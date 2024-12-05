@@ -77,7 +77,7 @@ with st.form("add_mentor_form"):
                 response = requests.post('http://api:4000/s/mentors', json=payload)
                 if response.status_code == 201:
                     st.success("Mentor added successfully!")
-                    st.experimental_rerun()  # Refresh the page to show the new mentor
+                    #st.experimental_rerun()  # Refresh the page to show the new mentor
                 else:
                     st.error("Failed to add mentor. Please try again.")
             except Exception as e:
@@ -110,7 +110,7 @@ for title in filtered_titles:
                     response = requests.put(f'http://api:4000/s/mentors/{mentor_id}', json=payload)
                     if response.status_code == 200:
                         st.success("Mentor updated successfully!")
-                        st.experimental_rerun()
+                        #st.experimental_rerun()
                     else:
                         st.error("Failed to update mentor. Please try again.")
                 except Exception as e:
@@ -124,7 +124,7 @@ for title in filtered_titles:
                     response = requests.delete(f'http://api:4000/s/mentors/{mentor_id}')
                     if response.status_code == 200:
                         st.success("Mentor deleted successfully!")
-                        st.experimental_rerun()
+                        #st.experimental_rerun()
                     else:
                         st.error("Failed to delete mentor. Please try again.")
                 except Exception as e:

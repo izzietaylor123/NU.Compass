@@ -14,9 +14,9 @@ logger = logging.getLogger(__name__)
 import streamlit as st
 from modules.nav import SideBarLinks
 
-# streamlit supports reguarl and wide layout (how the controls
+# streamlit supports regular and wide layout (how the controls
 # are organized/displayed on the screen).
-st.set_page_config(layout = 'wide')
+st.set_page_config(layout='wide')
 
 # If a user is at this page, we assume they are not 
 # authenticated.  So we change the 'authenticated' value
@@ -37,19 +37,69 @@ SideBarLinks(show_home=True)
 #    The major content of this page
 # ***************************************************
 
+# for aesthetics
+st.markdown(
+    """
+    <style>
+        body {
+            background: linear-gradient(to bottom, #f7f8fa, #e9ecef);
+        }
+        .main-title {
+            font-size: 2.8em;
+            color: #c0392b;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1.5em;
+        }
+        .subtitle {
+            font-size: 1.6em;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 2em;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .button {
+            background-color: #c0392b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 400px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # set the title of the page and provide a simple prompt. 
 logger.info("Loading the Home page of the app")
-st.title('NU.Connect')
-st.write('\n\n')
-st.write('### Welcome! Which user would you like to log in as?')
+st.markdown("<div class='main-title'>NU.Connect</div>", unsafe_allow_html=True)
+st.markdown("<div class='subtitle'>Welcome! Which user would you like to log in as?</div>", unsafe_allow_html=True)
 
 # For each of the user personas for which we are implementing
 # functionality, we put a button on the screen that the user 
 # can click to MIMIC logging in as that mock user. 
 
+# Button container
+st.markdown("<div class='button-container'>", unsafe_allow_html=True)
 
 if st.button('Act as Tim Walz, an abroad alum student looking to be a mentor', 
-            type = 'primary', 
+            type='primary', 
             use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'mentor_student'
@@ -59,7 +109,7 @@ if st.button('Act as Tim Walz, an abroad alum student looking to be a mentor',
     st.switch_page('pages/10_Mentor.py')
     
 if st.button("Act as Tom Holland, an incoming abroad student looking to be a mentee", 
-            type = 'primary', 
+            type='primary', 
             use_container_width=True):
     # when user clicks the button, they are now considered authenticated
     st.session_state['authenticated'] = True
@@ -75,9 +125,8 @@ if st.button("Act as Tom Holland, an incoming abroad student looking to be a men
     logger.info("Logging in as Mentee Student Persona")
     st.switch_page('pages/00_Mentee_Home.py')
 
-
 if st.button('Act as Andy Samberg, a Northeastern IT Administrator', 
-            type = 'primary', 
+            type='primary', 
             use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
@@ -85,14 +134,15 @@ if st.button('Act as Andy Samberg, a Northeastern IT Administrator',
     st.session_state['full_name'] = 'Andy Samberg'
     st.switch_page('pages/20_IT_Admin_Home.py')
 
-
 if st.button('Act as Adam Brody, a Northeastern Global Experience Staff Member and Data Analyst',
-             type = 'primary',
-             use_container_width = True):
+             type='primary',
+             use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'GESM'
     st.session_state['first_name'] = 'Adam'
     st.session_state['full_name'] = 'Adam Brody'
     st.switch_page('pages/26_GEOAdmin_Home.py')
 
-st.image("assets/Home.png", use_container_width=True)
+# image for home
+#st.markdown("</div>", unsafe_allow_html=True)
+#st.image("assets/home.png", width=500)
