@@ -9,55 +9,63 @@ st.set_page_config(layout = 'wide')
 # Show appropriate sidebar links for the role of the currently logged in user
 SideBarLinks()
 
-st.title("Mentor Tim Ratings for Rome Dialoge of Civilations")
+sID = st.session_state['userID']
 
-programID = 9
+studentroute = f'http://api:4000/s/get_student/{sID}'
+student = requests.get(studentroute).json()
 
-locRatRoute = f'http://api:4000/ap/location_rating/{programID}'
-locationRating = requests.get(locRatRoute).json()
-locationRating = locationRating[0]['AVG(locRating)']
+st.dataframe(student)
 
+title = "Mentor " + str(student[0]['fName']) + " " + str(student[0]['lName']) + "\'s Ratings:"
 
-profRatRoute = f'http://api:4000/ap/professor_rating/{programID}'
-professorRating = requests.get(profRatRoute).json()
-professorRating = professorRating[0]['AVG(profRating)']
+st.title(title)
 
-
-atmRatRoute = f'http://api:4000/ap/atmosphereRating/{programID}'
-atmosphereRating = requests.get(atmRatRoute).json()
-atmosphereRating = atmosphereRating[0]['AVG(atmosphereRating)']
-
-atmosphereRating = float(atmosphereRating)
-locationRating = float(locationRating)
-professorRating = float(professorRating)
-
-st.header("Program Ratings")
-
-st.markdown("---")
-
-st.subheader("📍 Location Rating")
-location_text = f"**Location rating:** {round(locationRating, 2)}"
-st.markdown(location_text)
-
-location_stars = "⭐️" * int(locationRating)
-st.markdown(f"<span style='font-size: 24px; color: #FFD700;'>{location_stars}</span>", unsafe_allow_html=True)
-
-st.markdown("---")
-
-st.subheader("👨‍🏫 Professor Rating")
-professor_text = f"**Professor rating:** {round(professorRating, 2)}"
-st.markdown(professor_text)
+ratings_route = f'http://api:4000/s/get_ratings/{sID}'
+ratings_list = requests.get(ratings_route).json()
 
 
-professor_stars = "⭐️" * int(professorRating)
-st.markdown(f"<span style='font-size: 24px; color: #FFD700;'>{professor_stars}</span>", unsafe_allow_html=True)
+if ratings_list:
+    for rating in ratings_list:
+        programID = rating['programID']
+        cityroute = f'http://api:4000/ap/get_city/{programID}'
+        city = requests.get(cityroute).json()
+        city = city[0]['city']
+        countryroute = f'http://api:4000/ap/get_country/{programID}'
+        country = requests.get(countryroute).json()
+        country = country[0]['country']
 
-st.markdown("---")
+        st.write("Rating for program in ", str(city), ", ", str(country), ":")
 
-st.subheader("🌤️ Atmosphere Rating")
-atmosphere_text = f"**Atmosphere rating:** {round(atmosphereRating, 2)}"
-st.markdown(atmosphere_text)
+        atmosphereRating = float(rating['atmosphereRating'])
+        locationRating = float(rating['locRating'])
+        professorRating = float(rating['profRating'])
 
-atmosphere_stars = "⭐️" * int(atmosphereRating)
-st.markdown(f"<span style='font-size: 24px; color: #FFD700;'>{atmosphere_stars}</span>", unsafe_allow_html=True)
+
+        st.subheader("📍 Location Rating")
+        location_text = f"**Location rating:** {round(locationRating, 2)}"
+        st.markdown(location_text)
+
+        location_stars = "⭐️" * int(locationRating)
+        st.markdown(f"<span style='font-size: 24px; color: #FFD700;'>{location_stars}</span>", unsafe_allow_html=True)
+
+
+        st.subheader("👨‍🏫 Professor Rating")
+        professor_text = f"**Professor rating:** {round(professorRating, 2)}"
+        st.markdown(professor_text)
+
+
+        professor_stars = "⭐️" * int(professorRating)
+        st.markdown(f"<span style='font-size: 24px; color: #FFD700;'>{professor_stars}</span>", unsafe_allow_html=True)
+
+        st.subheader("🌤️ Atmosphere Rating")
+        atmosphere_text = f"**Atmosphere rating:** {round(atmosphereRating, 2)}"
+        st.markdown(atmosphere_text)
+
+        atmosphere_stars = "⭐️" * int(atmosphereRating)
+        st.markdown(f"<span style='font-size: 24px; color: #FFD700;'>{atmosphere_stars}</span>", unsafe_allow_html=True)
+        st.markdown("---")
+
+else:
+    st.write('No ratings written yet!')
+
 

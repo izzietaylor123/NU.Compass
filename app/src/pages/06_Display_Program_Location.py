@@ -7,6 +7,7 @@ import requests
 
 from st_keyup import st_keyup
 
+user_role = st.session_state.get("role", "guest")
 st.set_page_config(layout = 'wide')
 
 # Show appropriate sidebar links for the role of the currently logged in user
@@ -163,3 +164,38 @@ with st.form("add_question_form"):
                 st.error(f"Error adding product: {response.text}")
         except requests.exceptions.RequestException as e:
             st.error(f"Error connecting to server: {str(e)}")
+
+# Delete abroad program (only if administrator)
+def delete_program():
+    response = requests.delete('http://api:4000/abroad_programs/{programID}') 
+    if response.status_code == 200:
+        st.write("Program has been deleted.")
+
+if user_role == 'administrator':
+    # Delete location once button is pressed
+    if st.button('Delete Location', 
+            type='primary',
+            use_container_width=True):
+        delete_program()
+       
+def update_program():
+    with st.form("update_program_form"):
+        program_name = st.text_input("Program Name")
+        prog_desc = st.text_area("Program Description")
+        loc_id = st.text_input("Location ID")
+        prog_type = st.text_input("Program Type")
+        emp_id = st.text_input("Employee ID")
+        if st.form_submit_button("Update Abroad Program"):
+            updated_program_data = {"programName": program_name, 
+            "prgm Description": prog_desc, "locationID": loc_id, 
+            "empID": emp_id
+            }
+            response = requests.put(f'http://api:4000/abroad_programs/{programID}', json=updated_program_data)
+    
+# Update abroad program (only if administrator)
+if user_role == 'administrator':
+    # Delete location once button is pressed
+    if st.button('Update Location', 
+            type='primary',
+            use_container_width=True):
+        update_program()

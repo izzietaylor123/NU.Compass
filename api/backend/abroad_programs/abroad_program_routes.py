@@ -27,6 +27,31 @@ def get_all_programs():
     the_response.status_code = 200
     return the_response
 
+#------------------------------------------------------------
+@abroad_programs.route('/abroad_programs/<program_id>', methods=['PUT'])
+def update_program(program_id):
+    
+    program_data = request.json 
+
+    # extract variables
+    prog_ID = program_data['programID']
+    name = program_data['programName']
+    description = program_data['prgmDescription']
+    loc_ID = program_data['locationID']
+    ptype = program_data['programType']
+    emp_ID = program_data['empID']
+
+    query = '''UPDATE abroadProgram SET programName = %s, prgmDescription = %s, 
+    locationID = %s, programType = %s WHERE programID = %s'''
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (prog_ID, name, description, loc_ID, ptype, emp_ID))
+    db.get_db().commit()
+    
+    response = make_response("Successfully updated abroad program")
+    response.status_code = 200
+    
+    return 'abroad program created!'
 
 #------------------------------------------------------------
 # Get all program names from the system
@@ -72,6 +97,29 @@ def add_programs():
     response = make_response("Successfully added new abroad program")
     response.status_code = 200
     return 'abroad program created!'
+
+#------------------------------------------------------------
+# Delete a location from the database
+
+@abroad_programs.route('/abroad_programs/<programID>', methods=['DELETE'])
+def delete_abroad_program(programID):
+
+    query = '''DELETE FROM abroadProgram WHERE programID = %s'''
+
+    current_app.logger.info('Attempting to delete program with ID: %s', programID)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (programID))
+    db.get_db().commit()
+
+    # handle cases where no program is found
+    if cursor.rowcount == 0:
+        return make_response(f"Program not found", 404)
+
+    response = make_response(f"Program with ID {programID} deleted successfully")
+    response.status_code = 200
+    return 'program deleted!'
+
 
 #------------------------------------------------------------
 # Get location rating from the system

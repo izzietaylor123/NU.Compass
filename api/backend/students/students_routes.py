@@ -66,14 +66,14 @@ def get_all_mentees():
 
 #------------------------------------------------------------
 # Get tim mentor from the system
-@students.route('/tim', methods=['GET'])
-def tim():
+@students.route('/get_student/<sID>', methods=['GET'])
+def get_student(sID):
 
     cursor = db.get_db().cursor()
-    query = '''
-        SELECT blurb
+    query = f'''
+        SELECT fName, lName, email, role, blurb
         FROM Student
-        WHERE sID = 31 '''
+        WHERE sID = {str(sID)} '''
     cursor.execute(query)
     
     theData = cursor.fetchall()
@@ -133,3 +133,54 @@ def mentor_mentee_match():
 #     the_response = make_response(jsonify(mentors))
 #     the_response.status_code = 200
 #     return the_response
+
+# #------------------------------------------------------------
+# Get student blurb data 
+@students.route('/get_blurb/<sID>', methods=['GET'])
+def get_student_blurb(sID):
+
+    cursor = db.get_db().cursor()
+    query = f'''SELECT blurb
+    FROM Student
+    WHERE sID = {str(sID)}'''
+    cursor.execute(query)
+    
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
+
+# #------------------------------------------------------------
+# Get student email data 
+@students.route('/get_email/<sID>', methods=['GET'])
+def get_student_email(sID):
+
+    cursor = db.get_db().cursor()
+    query = f'''SELECT email
+    FROM Student
+    WHERE sID = {str(sID)}'''
+    cursor.execute(query)
+    
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
+
+# #------------------------------------------------------------
+# Get student ratings data 
+@students.route('/get_ratings/<sID>', methods=['GET'])
+def get_student_ratings(sID):
+
+    cursor = db.get_db().cursor()
+    query = f'''SELECT programID, locRating, profRating, atmosphereRating, comment
+    FROM Rating
+    WHERE sID = {str(sID)}'''
+    cursor.execute(query)
+    
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response

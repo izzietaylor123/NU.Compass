@@ -377,7 +377,9 @@ INSERT INTO Rating (ratingID, programID, sID, datePosted, locRating, profRating,
 (27, 27, 12, '2025-02-15', 5, 5, 5, 'Fantastic program with excellent facilities.'),
 (28, 28, 13, '2025-02-25', 4, 4, 4, 'Enjoyable program with knowledgeable speakers.'),
 (29, 29, 14, '2025-03-05', 5, 5, 5, 'I gained valuable knowledge and skills.'),
-(30, 30, 15, '2025-03-15', 3, 4, 3, 'The program was good but needed more activities.');
+(30, 30, 15, '2025-03-15', 3, 4, 3, 'The program was good but needed more activities.'),
+(31, 29, 31, '2025-03-15', 3, 4, 3, 'The program was good but needed more activities.');
+
 
 
 -- Alerts Data
