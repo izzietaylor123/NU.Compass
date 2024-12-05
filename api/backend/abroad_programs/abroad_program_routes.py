@@ -27,7 +27,7 @@ def get_all_programs():
     return the_response
 
 #------------------------------------------------------------
-@abroad_programs.route('/abroad_programs/<program_id>', methods=['PUT'])
+@abroad_programs.route('/abroad_programs/<programID>', methods=['PUT'])
 def update_program(program_id):
     
     program_data = request.json 
