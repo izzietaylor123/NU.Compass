@@ -64,7 +64,7 @@ def get_all_mentees():
     return the_response
 
 #------------------------------------------------------------
-# Get tim mentor from the system
+# Get a student from the system
 @students.route('/get_student/<sID>', methods=['GET'])
 def get_student(sID):
 
@@ -73,24 +73,6 @@ def get_student(sID):
         SELECT fName, lName, email, role, blurb
         FROM Student
         WHERE sID = {str(sID)} '''
-    cursor.execute(query)
-    
-    theData = cursor.fetchall()
-    
-    the_response = make_response(jsonify(theData))
-    the_response.status_code = 200
-    return the_response
-
-#------------------------------------------------------------
-# Get tom mentee from the system
-@students.route('/tom', methods=['GET'])
-def tom():
-
-    cursor = db.get_db().cursor()
-    query = '''
-        SELECT fName, lName, email, blurb
-        FROM Student
-        WHERE sID = 32 '''
     cursor.execute(query)
     
     theData = cursor.fetchall()
@@ -187,14 +169,14 @@ def get_student_ratings(sID):
 
 
 # #------------------------------------------------------------
-# Get student ratings data 
-@students.route('/get_mentor_id/<menteeID>', methods=['GET'])
-def get_mentor_id(menteeID):
+# Get a mentee's mentor
+@students.route('/get_mentor_id/<sID>', methods=['GET'])
+def get_mentor_id(sID):
 
     cursor = db.get_db().cursor()
     query = f'''SELECT mentorID
     FROM mentorshipMatch
-    WHERE menteeID = {str(menteeID)}'''
+    WHERE menteeID = {str(sID)}'''
     cursor.execute(query)
     
     theData = cursor.fetchall()
@@ -202,3 +184,8 @@ def get_mentor_id(menteeID):
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
+
+
+
+
+
