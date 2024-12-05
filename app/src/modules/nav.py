@@ -51,9 +51,9 @@ def ClassificationNav():
 
 #### ------------------------ Global Experience Staff Member ------------------------
 def AdminPageNav():
-    st.sidebar.page_link("Home.py", label="Home", icon="🏠")
-    st.sidebar.page_link("pages/21_ML_Model_Mgmt.py", label="ML Model Management", icon="🏢")
+
     st.sidebar.page_link("pages/20_IT_Admin_Home.py", label="System Admin", icon="🖥️")
+
 
 # --------------------------------Links Function -----------------------------------------------
 def SideBarLinks(show_home=False):
@@ -62,7 +62,7 @@ def SideBarLinks(show_home=False):
     """
 
     # add a logo to the sidebar always
-    st.sidebar.image("assets/neulogo.png", width=150)
+    st.sidebar.image("assets/compass.png", width=150)
 
     # If there is no logged in user, redirect to the Home (Landing) page
     if "authenticated" not in st.session_state:
