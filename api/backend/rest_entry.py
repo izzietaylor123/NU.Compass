@@ -47,7 +47,7 @@ def create_app():
     app.register_blueprint(locations,   url_prefix='/l')
     app.register_blueprint(questions_replies,   url_prefix='/qr')
     app.register_blueprint(students,   url_prefix='/s')
-    app.register_blueprint(mentors, url_prefix='/s')
+    app.register_blueprint(mentors, url_prefix='/m')
     app.register_blueprint(engagement_analytics,    url_prefix='/ea')
     app.register_blueprint(alerts,      url_prefix='/am')
     
