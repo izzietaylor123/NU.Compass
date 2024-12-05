@@ -24,12 +24,54 @@ questions = requests.get(questions_route).json()
 replies_route = f"http://api:4000/qr/get_replies/{userID}"
 replies = requests.get(replies_route).json()
 
-
 if len(questions) == 0:
     st.warning("No questions available for this user.")
 
 if len(replies) == 0:
     st.warning("No replies available for this user.")
+
+
+with st.expander("Add a New Question"):
+    with st.form(key="question_form"):
+        question_title = st.text_input("Question Title")
+        question_body = st.text_area("Question Body")
+        
+        submit_question = st.form_submit_button("Submit Question")
+        
+        if submit_question:
+            new_question = {
+                "student_id": userID,
+                "body": question_body
+            }
+            
+            response = requests.post(f"http://api:4000/qr/add_question", json=new_question)
+            
+            if response.status_code == 200:
+                st.success("Your question was submitted successfully!")
+
+            else:
+                st.error("There was an error submitting your question.")
+
+with st.expander("Add a New Reply"):
+    with st.form(key="reply_form"):
+        reply_body = st.text_area("Reply Body")
+        question_id = st.selectbox("Select Question to Reply To", [q['title'] for q in questions])
+        
+        submit_reply = st.form_submit_button("Submit Reply")
+        
+        if submit_reply:
+            question_id_selected = next(q['id'] for q in questions if q['title'] == question_id) 
+            new_reply = {
+                "student_id": userID,
+                "body": reply_body
+            }
+
+            response = requests.post(f"http://api:4000/qr/add_reply", json=new_reply)
+            
+            if response.status_code == 200:
+                st.success("Your reply was submitted successfully!")
+            else:
+                st.error("There was an error submitting your reply.")
 
 st.subheader(f"Questions/Replies")
 for i, question in enumerate(questions, start=1):
@@ -42,3 +84,6 @@ for i, replies in enumerate(replies, start=1):
     st.write(f"### Reply {i}")
     for key, value in replies.items():
         st.write(f"**{key.capitalize()}:** {value}")
+
+
+        
