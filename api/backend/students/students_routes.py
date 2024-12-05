@@ -184,3 +184,21 @@ def get_student_ratings(sID):
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
+
+
+# #------------------------------------------------------------
+# Get student ratings data 
+@students.route('/get_mentor_id/<menteeID>', methods=['GET'])
+def get_mentor_id(menteeID):
+
+    cursor = db.get_db().cursor()
+    query = f'''SELECT mentorID
+    FROM mentorshipMatch
+    WHERE menteeID = {str(menteeID)}'''
+    cursor.execute(query)
+    
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
