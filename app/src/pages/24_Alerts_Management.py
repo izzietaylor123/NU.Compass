@@ -60,10 +60,10 @@ if filtered_titles:
                         "message": new_message
                     }
                     try:
-                        response = requests.put(f'http://localhost:4000/am/alerts/{alert_id}', json=payload)
+                        response = requests.put(f'http://api:4000/am/alerts/{alert_id}', json=payload)
                         if response.status_code == 200:
                             st.success("Alert updated successfully!")
-                            st.experimental_rerun()
+                            #st.experimental_rerun()
                         else:
                             st.error("Failed to update alert. Please try again.")
                     except Exception as e:
@@ -74,10 +74,10 @@ if filtered_titles:
             with col2:
                 if st.button(f"Delete Alert (ID: {alert_id})"):
                     try:
-                        response = requests.delete(f'http://localhost:4000/am/alerts/{alert_id}')
+                        response = requests.delete(f'http://api:4000/am/alerts/{alert_id}')
                         if response.status_code == 200:
                             st.success("Alert deleted successfully!")
-                            st.experimental_rerun()
+                            #st.experimental_rerun()
                         else:
                             st.error("Failed to delete alert. Please try again.")
                     except Exception as e:
@@ -100,10 +100,10 @@ with st.form("add_alert_form"):
                 "message": new_message
             }
             try:
-                response = requests.post('http://localhost:4000/am/alerts', json=payload)
+                response = requests.post('http://api:4000/am/alerts', json=payload)
                 if response.status_code == 201:
                     st.success("Alert added successfully!")
-                    st.experimental_rerun()  # Refresh the page to show the new alert
+                    #st.experimental_rerun()  # Refresh the page to show the new alert
                 else:
                     st.error("Failed to add alert. Please try again.")
             except Exception as e:

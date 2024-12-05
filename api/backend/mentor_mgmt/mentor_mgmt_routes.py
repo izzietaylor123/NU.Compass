@@ -109,20 +109,28 @@ def update_mentor(mentor_id):
         response = make_response("Error updating mentor", 500)
     return response
 
-# delete a mentor
 @mentors.route('/mentors/<mentor_id>', methods=['DELETE'])
 def delete_mentor(mentor_id):
     try:
-        query = '''
+        current_app.logger.info(f"Attempting to delete mentor with ID: {mentor_id}")
+        
+        # SQL query to delete the mentor
+        query = f'''
             DELETE FROM Student
-            WHERE sID = %s AND role = 'mentor'
+            WHERE sID = {mentor_id} AND role = 'mentor'
         '''
         cursor = db.get_db().cursor()
-        cursor.execute(query, (mentor_id,))
+        cursor.execute(query)
         db.get_db().commit()
 
-        response = make_response("Mentor deleted successfully", 200)
+        # Check if a row was deleted
+        if cursor.rowcount == 0:
+            current_app.logger.info(f"No mentor found with ID {mentor_id}")
+            return make_response(f"No mentor found with ID {mentor_id}", 404)
+
+        current_app.logger.info(f"Mentor with ID {mentor_id} deleted successfully")
+        return make_response("Mentor deleted successfully", 200)
+
     except Exception as e:
         current_app.logger.error(f"Error deleting mentor: {e}")
-        response = make_response("Error deleting mentor", 500)
-    return response
+        return make_response(f"An error occurred: {str(e)}", 500)
