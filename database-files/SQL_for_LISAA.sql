@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS abroadProgram
     locationID      INT(11) UNIQUE NOT NULL,
     programType     VARCHAR(100)   NOT NULL,
     empID           INT(11)  NOT NULL,
+    prog_image      VARCHAR(50)
     CONSTRAINT location_fk FOREIGN KEY (locationID)
         REFERENCES Location (locationID)
 );
@@ -276,12 +277,12 @@ INSERT INTO Location (locationID, city, country, description) VALUES
 (31, 'Oakland', 'United States', 'Nestled between the coast and Silicon Valley, Oakland is the perfect mix of business and pleasure.');
 
 -- abroadProgram Data
-INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, programType, empID) VALUES
+INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, programType, empID, prog_image) VALUES
 (1, 'Vienna', 'Experience innovation in Vienna with a focus on startups, venture capital, and entrepreneurship.', 1, 'Dialogue of Civilizations', 1),
 (2, 'Brussels', 'Immerse yourself in the healthcare system of Brussels, with practical sessions in public health and medical ethics.', 2, 'Semester.in', 2),
 (3, 'Copenhagen', 'Investigate the advancements in AI and robotics in Copenhagen, alongside industry leaders and academic mentors.', 3, 'Traditional Study Abroad', 3),
 (4, 'Helsinki', 'Analyze the economic landscape of Helsinki while studying international economics and development.', 4, 'Traditional Study Abroad', 4),
-(5, 'Paris', 'Live and learn in Paris while exploring central and Western European studies through a historical lens.', 5, 'Semester.in', 5),
+(5, 'Paris', 'Live and learn in Paris while exploring central and Western European studies through a historical lens.', 5, 'Semester.in', 5, 'eiffel_tower.png'),
 (6, 'Berlin', 'Experience the unique blend of tradition and modernity in Berlin with courses in history, culture, and politics.', 6, 'Traditional Study Abroad', 6),
 (7, 'Athens', 'Study marine biology in the coastal city of Athens and engage with local conservation projects.', 7, 'Dialogue of Civilizations', 7),
 (8, 'Dublin', 'Study the art and architecture of Dublin while taking courses in design thinking and innovation.', 8, 'NU.in', 8),
@@ -302,10 +303,10 @@ INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, 
 (23, 'Cologne', 'Participate in wildlife conservation efforts in Cologne, focusing on ecosystem management and biology studies.', 23, 'Dialogue of Civilizations', 23),
 (24, 'Düsseldorf', 'Experience innovation in Düsseldorf with a focus on startups, venture capital, and entrepreneurship.', 24, 'Dialogue of Civilizations', 24),
 (25, 'Leipzig', 'Study fashion and culture in the bustling city of Leipzig, a global hub for design and creativity.', 25, 'Traditional Study Abroad', 25),
-(26, 'Bordeaux', 'Participate in Bordeaux''s economic growth story with a focus on entrepreneurship and international business.', 26, 'Semester.in', 26),
-(27, 'Nice', 'Explore Nice''s approach to sustainability with courses in renewable energy and environmental management.', 27, 'Traditional Study Abroad', 27),
-(28, 'Lyon', 'Dive into the rich cultural scene of Lyon with courses in music, history, and the arts.', 28, 'NU.in', 28),
-(29, 'Marseille', 'Study fashion and culture in the bustling city of Marseille, a global hub for design and creativity.', 29, 'Dialogue of Civilizations', 29),
+(26, 'Bordeaux', 'Participate in Bordeaux''s economic growth story with a focus on entrepreneurship and international business.', 26, 'Semester.in', 26, 'eiffel_tower.png'),
+(27, 'Nice', 'Explore Nice''s approach to sustainability with courses in renewable energy and environmental management.', 27, 'Traditional Study Abroad', 27), 'eiffel_tower.png',
+(28, 'Lyon', 'Dive into the rich cultural scene of Lyon with courses in music, history, and the arts.', 28, 'NU.in', 28, 'eiffel_tower.png'),
+(29, 'Marseille', 'Study fashion and culture in the bustling city of Marseille, a global hub for design and creativity.', 29, 'Dialogue of Civilizations', 29, 'eiffel_tower.png'),
 (30, 'Naples', 'Experience the unique blend of tradition and modernity in Naples with courses in history, culture, and politics.', 30, 'Traditional Study Abroad', 30),
 -- abroadProgram #31 should not have any connected ratings or questions, and will test how the program reacts to empty json calls
 (31, 'Oakland', 'Explore your academic interests on our sunny California campus!', 31, 'Semester.in', 30);
