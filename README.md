@@ -49,6 +49,7 @@ Running the application
 
 Flask Blueprints Ordering 
     - The ordering of the flask blueprints is by table. This means that each table corresponds to its own blueprint, so students, locations, abroad_programs, etc each have their own blueprint.  
+    - By ordering the blueprint this way, it makes it easier to extend or modify parts of the application independently. 
 
 Team Members
     - Sarah Wang 
