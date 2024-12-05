@@ -83,14 +83,15 @@ def add_programs():
     loc_ID = program_data['locationID']
     ptype = program_data['programType']
     emp_ID = program_data['empID']
+    image = 'generic_loc_image.png'
 
-    query = '''INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, programType, empID)
-    VALUES (%s, %s, %s, %s, %s, %s, %s)'''
+    query = '''INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, programType, empID, prgmPhotoPath)
+    VALUES ({prog_ID}, "{name}"), "{description}", {loc_ID}, "{ptype}", {emp_ID}, "{image}")'''
 
     current_app.logger.info('Inserting location with ID: %s', prog_ID)
 
     cursor = db.get_db().cursor()
-    cursor.execute(query, (prog_ID, name, description, loc_ID, ptype, emp_ID))
+    cursor.execute(query) #, (prog_ID, name, description, loc_ID, ptype, emp_ID, image))
     db.get_db().commit()
 
     response = make_response("Successfully added new abroad program")
