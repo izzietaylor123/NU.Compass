@@ -6,7 +6,7 @@ Overview:
 
     The application utilizes a containerized architecture with Docker, allowing for easy deployment and scalability. It interacts with a database, and all necessary SQL files will be executed on startup to initialize the database schema, ensuring the system is always ready to store and retrieve the data it needs to function effectively.
 
-    NU.Connect serves four major user categories: students going abroad, who need guidance and preparation before departure; study-abroad alumni, who wish to mentor or network with peers after completing their time abroad; Northeastern global experience staff, who seek to engage and support students effectively; and Northeastern IT staff, who are responsible for maintaining the app, ensuring it stays updated, and monitoring user behavior to ensure adherence to community guidelines. Key features of NU.Connect include an experience ratings system, mentorship matching, an interactive Q&A forum, and the ability to favorite study abroad locations for easier decision-making. These features combine to help students access personalized mentorship, share experiences, and make confident choices about their study abroad journey.
+    NU.Connect serves four major user categories: students going abroad, who need guidance and preparation before departure; study-abroad alumni, who wish to mentor or network with peers after completing their time abroad; Northeastern global experience staff, who seek to engage and support students effectively; and Northeastern IT staff, who are responsible for maintaining the app, ensuring it stays updated, and monitoring user behavior to ensure adherence to community guidelines. Key features of NU.Connect include an experience ratings system, mentorship matching, and an interactive Q&A forum. These features combine to help students access personalized mentorship, share experiences, and make confident choices about their study abroad journey.
 
     Ultimately, NU.Connect is more than just an app—it's a transformative tool that promotes informed choices, fosters peer support, and creates lasting connections in the global study abroad experience. By improving communication and providing valuable resources, NU.Connect helps ensure that students are well-prepared and supported throughout their global academic endeavors.
 
@@ -15,8 +15,10 @@ Table of Contents:
     1. Prequisites 
     2. Setup Instructions 
     3. Running the Application 
-    4. Team Members 
-    5. Controlling the Containers  
+    4. Flask Blueprints Ordering 
+    5. Team Members 
+    6. Controlling the Containers 
+     
 
 Prerequisites: 
     - Docker is required to build and run the containers. 
@@ -45,6 +47,9 @@ Running the application
     3. Access the Application 
         Once containers are running, the application should be accessiblee via http://localhost:8501 or the port defined in your .env file
 
+Flask Blueprints Ordering 
+    - The ordering of the flask blueprints is by table. This means that each table corresponds to its own blueprint, so students, locations, abroad_programs, etc each have their own blueprint.  
+
 Team Members
     - Sarah Wang 
     - Ava Toren 
@@ -57,4 +62,5 @@ Controlling the Containers
     - `docker compose down` to shutdown and delete the containers
     - `docker compose up db -d` only start the database container (replace db with the other services as needed)
     - `docker compose stop` to "turn off" the containers but not delete them. 
+
 
