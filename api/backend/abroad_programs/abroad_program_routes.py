@@ -74,6 +74,29 @@ def add_programs():
     return 'abroad program created!'
 
 #------------------------------------------------------------
+# Delete a location from the database
+
+@abroad_programs.route('/abroad_programs/<programID>', methods=['DELETE'])
+def delete_abroad_program(programID):
+
+    query = '''DELETE FROM abroadProgram WHERE programID = %s'''
+
+    current_app.logger.info('Attempting to delete program with ID: %s', programID)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (programID))
+    db.get_db().commit()
+
+    # handle cases where no program is found
+    if cursor.rowcount == 0:
+        return make_response(f"Program not found", 404)
+
+    response = make_response(f"Program with ID {programID} deleted successfully")
+    response.status_code = 200
+    return 'program deleted!'
+
+
+#------------------------------------------------------------
 # Get location rating from the system
 @abroad_programs.route('/location_rating/<programID>', methods=['GET'])
 def get_location_rating(programID):
