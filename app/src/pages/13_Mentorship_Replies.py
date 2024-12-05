@@ -36,10 +36,9 @@ for i, question in enumerate(questions, start=1):
     st.write(f"### Question {i}")
     for key, value in question.items():
         st.write(f"**{key.capitalize()}:** {value}")
+        st.subheader(f"Questions/Replies")
 
-with st.expander("View All Questions and Replies"):
-    st.subheader("All Questions")
-    st.dataframe(pd.DataFrame(questions))
-
-    st.subheader("All Replies")
-    st.dataframe(pd.DataFrame(replies))
+for i, replies in enumerate(replies, start=1):
+    st.write(f"### Reply {i}")
+    for key, value in replies.items():
+        st.write(f"**{key.capitalize()}:** {value}")
