@@ -1064,7 +1064,7 @@ SELECT avg(locRating)
 FROM Rating
 WHERE programID = 2;
 
-# ## Making the data entries
+# ## Below is all data entries from previous phases of the project. They have been commented out because they have been replaced by the generated mock data.
 # INSERT INTO abroadProgram(programID, programName, prgmDescription, locationID, programType, empID)
 # VALUES ( 00000000001, 'NUin.ROME', 'Embark on a transformative academic journey in the heart of Rome, Italy: a city where history, art, philosophy, and culture converge. The NUIN Rome program offers a curated selection of humanities courses designed to immerse students in the richness of Western civilization while fostering a deep appreciation for global perspectives.
 # Through an interdisciplinary approach, students explore the historical, cultural, and philosophical dimensions of Rome as a living classroom. Courses are taught by distinguished faculty and emphasize critical thinking, analytical writing, and intercultural understanding. Students have the opportunity to engage directly with the city''s iconic landmarks, from the Colosseum to the Vatican, as part of their coursework, connecting theory to real-world experience.'
