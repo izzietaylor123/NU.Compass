@@ -20,13 +20,13 @@ if st.button('Reach Out to Your Mentor',
              type='primary',
              use_container_width= True):
              st.session_state['view self'] = False
-             st.switch_page('pages/11_Mentor_Blurb.py')
+             st.switch_page('pages/11_Student_Blurb.py')
 
 if st.button('View my Blurb', 
             type='primary',
             use_container_width= True):
             st.session_state['view self'] = True
-            st.switch_page('pages/11_Mentor_Blurb.py')
+            st.switch_page('pages/11_Student_Blurb.py')
 
 if st.button('See my Questions', 
             type='primary',
