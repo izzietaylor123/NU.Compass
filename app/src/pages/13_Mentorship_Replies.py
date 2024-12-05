@@ -11,57 +11,79 @@ import json
 
 SideBarLinks()
 
-# Page title
-st.title("My Replies to Mentee Questions, from Mentee Tom")
-
-repliesRoute = "http://api:4000/qr/tim/replies"
-replies = requests.get(repliesRoute).json()
-
-questionsRoute = "http://api:4000/qr/tom/questions"
-questions = requests.get(questionsRoute).json()
-
-if not isinstance(questions, list) or not isinstance(replies, list):
-    st.error("Unexpected API response. Please check the data structure.")
+st.title("My Questions and/or Replies")
+if 'userID' not in st.session_state:
+    st.error("User not logged in. Please log in to continue.")
     st.stop()
 
-if 'current_question_index' not in st.session_state:
-    st.session_state.current_question_index = 0
+userID = st.session_state['userID']
 
-def next_question():
-    if st.session_state.current_question_index < len(questions) - 1:
-        st.session_state.current_question_index += 1
+questions_route = f"http://api:4000/qr/get_questions/{userID}"
+questions = requests.get(questions_route).json()
 
-def previous_question():
-    if st.session_state.current_question_index > 0:
-        st.session_state.current_question_index -= 1
+replies_route = f"http://api:4000/qr/get_replies/{userID}"
+replies = requests.get(replies_route).json()
 
-current_index = st.session_state.current_question_index
-current_question = questions[current_index]
-current_reply = (
-    replies[current_index]
-    if current_index < len(replies)
-    else {"reply_text": "No reply available"}
-)
+if len(questions) == 0:
+    st.warning("No questions available for this user.")
 
-st.title("Question and Reply Viewer")
+if len(replies) == 0:
+    st.warning("No replies available for this user.")
 
-st.subheader(f"Question {current_index + 1} of {len(questions)}")
-st.write("### Question Details:")
-for key, value in current_question.items():
-    st.write(f"**{key.capitalize()}:** {value}")
 
-st.write("### Reply Details:")
-for key, value in current_reply.items():
-    st.write(f"**{key.capitalize()}:** {value}")
+with st.expander("Add a New Question"):
+    with st.form(key="question_form"):
+        question_title = st.text_input("Question Title")
+        question_body = st.text_area("Question Body")
+        
+        submit_question = st.form_submit_button("Submit Question")
+        
+        if submit_question:
+            new_question = {
+                "student_id": userID,
+                "body": question_body
+            }
+            
+            response = requests.post(f"http://api:4000/qr/add_question", json=new_question)
+            
+            if response.status_code == 200:
+                st.success("Your question was submitted successfully!")
 
-col1, col2 = st.columns([1, 1])
-with col1:
-    st.button("Previous", on_click=previous_question, disabled=current_index == 0)
-with col2:
-    st.button("Next", on_click=next_question, disabled=current_index == len(questions) - 1)
+            else:
+                st.error("There was an error submitting your question.")
 
-with st.expander("View All Questions and Replies"):
-    st.subheader("Questions")
-    st.dataframe(questions)
-    st.subheader("Replies")
-    st.dataframe(replies)
+with st.expander("Add a New Reply"):
+    with st.form(key="reply_form"):
+        reply_body = st.text_area("Reply Body")
+        question_id = st.selectbox("Select Question to Reply To", [q['title'] for q in questions])
+        
+        submit_reply = st.form_submit_button("Submit Reply")
+        
+        if submit_reply:
+            question_id_selected = next(q['id'] for q in questions if q['title'] == question_id) 
+            new_reply = {
+                "student_id": userID,
+                "body": reply_body
+            }
+
+            response = requests.post(f"http://api:4000/qr/add_reply", json=new_reply)
+            
+            if response.status_code == 200:
+                st.success("Your reply was submitted successfully!")
+            else:
+                st.error("There was an error submitting your reply.")
+
+st.subheader(f"Questions/Replies")
+for i, question in enumerate(questions, start=1):
+    st.write(f"### Question {i}")
+    for key, value in question.items():
+        st.write(f"**{key.capitalize()}:** {value}")
+        st.subheader(f"Questions/Replies")
+
+for i, replies in enumerate(replies, start=1):
+    st.write(f"### Reply {i}")
+    for key, value in replies.items():
+        st.write(f"**{key.capitalize()}:** {value}")
+
+
+        

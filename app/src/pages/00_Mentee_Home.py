@@ -18,8 +18,21 @@ st.write('### What would you like to do today?')
 
 if st.button('Reach Out to Your Mentor', 
              type='primary',
-             use_container_width=True):
-  st.switch_page('pages/11_Mentor_Blurb.py')
+             use_container_width= True):
+             st.session_state['view self'] = False
+             st.switch_page('pages/11_Student_Blurb.py')
+
+if st.button('View my Blurb', 
+            type='primary',
+            use_container_width= True):
+            st.session_state['view self'] = True
+            st.switch_page('pages/11_Student_Blurb.py')
+
+if st.button('See my Questions', 
+            type='primary',
+            use_container_width= True):
+            st.session_state['view self'] = True
+            st.switch_page('pages/13_Mentorship_Replies.py')          
 
 if st.button('Contact the Global Experience Office', 
              type='primary',

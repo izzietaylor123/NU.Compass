@@ -19,7 +19,7 @@ st.write('### What would you like to do today?')
 if st.button('My blurb: learn about me!', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/11_Mentor_Blurb.py')
+  st.switch_page('pages/11_Student_Blurb.py')
 
 if st.button('Take a look at my course, accomodations, and atmosphere ratings!', 
              type='primary',

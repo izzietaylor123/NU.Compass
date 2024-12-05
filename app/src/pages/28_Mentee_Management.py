@@ -53,7 +53,6 @@ if filtered_titles:
 else:
     st.info("No mentees match your search.")
 
-# Add a new mentor
 st.subheader("Add New Mentee")
 with st.form("add_mentee_form"):
     f_name = st.text_input("First Name")

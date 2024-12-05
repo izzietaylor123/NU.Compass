@@ -4,7 +4,6 @@ from flask import jsonify
 from flask import make_response
 from flask import current_app
 from backend.db_connection import db
-from backend.ml_models.model01 import predict
 
 #------------------------------------------------------------
 # Create a new Blueprint object, which is a collection of 
@@ -28,7 +27,7 @@ def get_all_programs():
     return the_response
 
 #------------------------------------------------------------
-@abroad_programs.route('/abroad_programs/<program_id>', methods=['PUT'])
+@abroad_programs.route('/abroad_programs/<programID>', methods=['PUT'])
 def update_program(program_id):
     
     program_data = request.json 
@@ -244,7 +243,7 @@ def get_program_questions(programID):
     query = f'''
         SELECT qID, content 
         FROM Question
-        WHERE abroadProgram = {str(programID)}'''
+        WHERE abroadProgram = {str(programID)} AND isApproved = True'''
     cursor.execute(query)
     
     locations = cursor.fetchall()
@@ -262,7 +261,7 @@ def get_replies(qID):
     query = f'''
         SELECT content 
         FROM Reply
-        WHERE qID = {str(qID)}'''
+        WHERE qID = {str(qID)} AND isApproved = True'''
     cursor.execute(query)
     
     locations = cursor.fetchall()
@@ -311,6 +310,24 @@ def get_alerts(programID):
         JOIN abroadProgram ON abroadProgram.locationID = Location.locationID
         WHERE abroadProgram.programID = {str(programID)}
         ORDER BY datePosted DESC'''
+    cursor.execute(query)
+    
+    locations = cursor.fetchall()
+    
+    the_response = make_response(jsonify(locations))
+    the_response.status_code = 200
+    return the_response
+
+#------------------------------------------------------------
+# Get pic from programID
+@abroad_programs.route('/get_program_pic/<programID>', methods=['GET'])
+def get_program_pic(programID):
+
+    cursor = db.get_db().cursor()
+    query = f'''
+        SELECT prgmPhotoPath 
+        FROM abroadProgram
+        WHERE programID = {str(programID)}'''
     cursor.execute(query)
     
     locations = cursor.fetchall()
