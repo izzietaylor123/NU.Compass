@@ -319,7 +319,7 @@ def get_alerts(programID):
     return the_response
 
 #------------------------------------------------------------
-# Get city from programID
+# Get pic from programID
 @abroad_programs.route('/get_program_pic/<programID>', methods=['GET'])
 def get_program_pic(programID):
 

@@ -30,15 +30,21 @@ title = "Welcome to " + str(city) +  ", " + str(country) + "!"
 st.title(title)
 st.write('')
 
-left_co, cent_co = st.columns((1, 2))
+left_co, cent_co = st.columns((2, 3))
 with left_co:
-    st.image("assets/eiffel_tower.png")
+
+    st.write('')
+    photo_route = f'http://api:4000/ap/get_program_pic/{programID}'
+    photo = requests.get(photo_route).json()
+    photo_path = "assets/" + str(photo[0]['prgmPhotoPath'])
+    st.image(photo_path, width = 600)
+    if st.button('View Alerts for this Program', 
+                    type='secondary',
+                    use_container_width=True):
+            st.switch_page('pages/08_Display_Alerts.py')
 
 with cent_co:
 
-    st.write(' ')
-    st.write(' ')
-    st.write(' ')
 
     locRatRoute = f'http://api:4000/ap/location_rating/{programID}'
     locationRating = requests.get(locRatRoute).json()
@@ -86,16 +92,19 @@ with cent_co:
     else:
         st.write("This program hasn't been rated yet!")
     
-    if st.button('View Alerts for this Program', 
-                    type='secondary',
-                    use_container_width=True):
-            st.switch_page('pages/08_Display_Alerts.py')
+
+st.write('')    
+st.write('')    
+
+    
 
 # Accesses and writes the program description based on the programID of the session_state
 descriptionRoute = f'http://api:4000/ap/program_description/{programID}'
 description = requests.get(descriptionRoute).json()
 description = description[0]['prgmDescription']
 st.write(description)
+
+st.write('')
 
 st.subheader("Program FAQs")
 
@@ -119,6 +128,8 @@ if question_list:
             st.write("No replies yet.")        
 else:
     st.write("No questions asked yet.")        
+
+st.write('')
 
 
 st.subheader("Ask a question!")
