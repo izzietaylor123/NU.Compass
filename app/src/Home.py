@@ -88,7 +88,7 @@ st.markdown(
 
 # set the title of the page and provide a simple prompt. 
 logger.info("Loading the Home page of the app")
-st.markdown("<div class='main-title'>NU.Connect</div>", unsafe_allow_html=True)
+st.markdown("<div class='main-title'>Pack Compass</div>", unsafe_allow_html=True)
 st.markdown("<div class='subtitle'>Welcome! Which user would you like to log in as?</div>", unsafe_allow_html=True)
 
 # For each of the user personas for which we are implementing
