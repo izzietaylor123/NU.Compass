@@ -154,6 +154,6 @@ if st.button('Act as Adam Brody, a Northeastern Global Experience Staff Member a
     st.session_state['full_name'] = 'Adam Brody'
     st.switch_page('pages/26_GEOAdmin_Home.py')
 
-# image for home
-#st.markdown("</div>", unsafe_allow_html=True)
-#st.image("assets/home.png", width=500)
+# # image for home
+# st.markdown("</div>", unsafe_allow_html=True)
+# st.image("assets/home.png", width=500)
