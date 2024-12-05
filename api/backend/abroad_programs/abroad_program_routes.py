@@ -197,7 +197,7 @@ def get_city(programID):
     return the_response
 
 #------------------------------------------------------------
-# Get city from programID
+# Get country from programID
 @abroad_programs.route('/get_country/<programID>', methods=['GET'])
 def get_country(programID):
 
