@@ -13,11 +13,11 @@ SideBarLinks()
 
 st.title('Engagement Analytics')
 
-engagement_data = requests.get('http://api:4000/ea/engagementAnalytics')
+# Initialize session state for selected_feature if not already set
+if 'selected_feature' not in st.session_state:
+    st.session_state['selected_feature'] = None
 
-#st.dataframe(engagement_data)
 # Load Engagement Analytics Data from API
-
 def load_engagement_data():
     try:
         response = requests.get('http://api:4000/ea/engagementAnalytics')
@@ -34,7 +34,7 @@ data = load_engagement_data()
 
 # Debug: Show raw data
 #if st.checkbox("Show Raw Data"):
- #   st.dataframe(data)
+#    st.dataframe(data)
 
 # Ensure the DataFrame is not empty
 if data.empty:
@@ -46,7 +46,12 @@ features = data['feature'].unique()
 
 # Sidebar Filters
 st.sidebar.subheader("Filters")
-selected_feature = st.sidebar.selectbox("Select Feature", features, index=0)
+selected_feature = st.sidebar.selectbox(
+    "Select Feature", 
+    features, 
+    index=0 if st.session_state['selected_feature'] is None else features.tolist().index(st.session_state['selected_feature']),
+    key='filter_feature'
+)
 selected_date_range = st.sidebar.date_input(
     "Select Date Range",
     value=[
@@ -54,6 +59,9 @@ selected_date_range = st.sidebar.date_input(
         pd.to_datetime(data['date']).max()
     ]
 )
+
+# Update selected feature in session state
+st.session_state['selected_feature'] = selected_feature
 
 # Filter data based on user selections
 filtered_data = data[
@@ -92,16 +100,21 @@ else:
 st.subheader("Search Feature Engagement")
 search_query = st.text_input("Search Features: ")
 
-# filter features based on the search query
-# extract unique features from the 'feature' column in the data
-features = data['feature'].unique()
-
-# filter features based on the search query
+# Filter features based on the search query
 filtered_features = [f for f in features if search_query.lower() in f.lower()]
 
-# display matching features as buttons
+# Display matching features as buttons
 for f in filtered_features:
     if st.button(f"View Analytics for {f}"):
         st.session_state['selected_feature'] = f
-        st.experimental_rerun()
+
+# Check if a feature is selected
+if "selected_feature" in st.session_state and st.session_state['selected_feature']:
+    st.write(f"Showing analytics for: {st.session_state['selected_feature']}")
+    # Dynamically update the page based on the selected feature
+    selected_data = data[data['feature'] == st.session_state['selected_feature']]
+    if not selected_data.empty:
+        st.dataframe(selected_data)
+    else:
+        st.warning("No data found for this feature.")
 

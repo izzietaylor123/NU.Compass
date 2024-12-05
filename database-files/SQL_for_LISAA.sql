@@ -680,7 +680,6 @@ VALUES
 
 
 -- engagementAnalytics Data
--- engagementAnalytics Data with Feature Column
 INSERT INTO engagementAnalytics (featureID, empID, usageCount, date, feature)
 VALUES
 (1, 18, 174, '2024-01-30 14:48:01', 'Login'),
