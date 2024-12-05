@@ -88,8 +88,15 @@ st.markdown(
 
 # set the title of the page and provide a simple prompt. 
 logger.info("Loading the Home page of the app")
-st.markdown("<div class='main-title'>NU Compass</div>", unsafe_allow_html=True)
-st.markdown("<div class='subtitle'>Welcome! Which user would you like to log in as?</div>", unsafe_allow_html=True)
+
+left_col, center_col, right_col = st.columns([1, 2, 1])
+with center_col:
+    st.write("# NU.Compass")
+    st.write("#### *The Pack Goes Global*")
+
+st.write('')
+
+st.markdown("### Welcome! Which user would you like to log in as?")
 
 # For each of the user personas for which we are implementing
 # functionality, we put a button on the screen that the user 
