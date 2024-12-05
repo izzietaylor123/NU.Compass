@@ -11,94 +11,137 @@ st.set_page_config(layout='wide')
 
 SideBarLinks()
 
-st.title('Engagement Analytics')
-
-# Initialize session state for selected_feature if not already set
-if 'selected_feature' not in st.session_state:
-    st.session_state['selected_feature'] = None
+# Page Title
+st.markdown(
+    "<h1 style='color: #c0392b;'>Engagement Analytics</h1>",
+    unsafe_allow_html=True,
+)
 
 # Load Engagement Analytics Data from API
 def load_engagement_data():
     try:
         response = requests.get('http://api:4000/ea/engagementAnalytics')
-        response.raise_for_status()  # Raise an exception for HTTP errors
+        response.raise_for_status()
         data = response.json()
-        return pd.DataFrame(data)  # Convert JSON data to pandas DataFrame
+        return pd.DataFrame(data)
     except requests.exceptions.RequestException as e:
         logger.error(f"Failed to fetch engagement analytics data: {e}")
         st.error("Failed to load data from the server. Please try again later.")
-        return pd.DataFrame()  # Return an empty DataFrame as fallback
+        return pd.DataFrame()
 
 # Load data
 data = load_engagement_data()
-
-# Debug: Show raw data
-#if st.checkbox("Show Raw Data"):
-#    st.dataframe(data)
 
 # Ensure the DataFrame is not empty
 if data.empty:
     st.error("No data available. Please check your backend or database.")
     st.stop()
 
-# Extract unique features for filtering
-features = data['feature'].unique()
+# Extract unique features and calculate top 3 most used features
+top_features = (
+    data.groupby("feature")["usageCount"]
+    .sum()
+    .sort_values(ascending=False)
+    .head(3)
+    .index.tolist()
+)
+
+# Top Features Overview Section
+st.markdown(
+    "<h3 style='color: #c0392b;'>Top 3 Engagement Features Overview</h3>",
+    unsafe_allow_html=True,
+)
+
+top_cols = st.columns(3)  # Create 3 columns for side-by-side graphs
+
+for i, feature in enumerate(top_features):
+    feature_data = data[data["feature"] == feature]
+    with top_cols[i]:
+        # Plot feature graph
+        plt.figure(figsize=(4, 3))
+        plt.plot(
+            pd.to_datetime(feature_data["date"]),
+            feature_data["usageCount"],
+            marker="o",
+            linestyle="-",
+            label=feature,
+            color="#c0392b",
+        )
+        plt.title(f"{feature}", fontsize=14, color="#c0392b")
+        plt.xlabel("Date", fontsize=10, color="#c0392b")
+        plt.ylabel("Usage Count", fontsize=10, color="#c0392b")
+        plt.grid(color="gray", linestyle="--", linewidth=0.5, alpha=0.7)
+        plt.xticks(fontsize=8)
+        plt.yticks(fontsize=8)
+        plt.tight_layout()
+        st.pyplot(plt)
 
 # Sidebar Filters
-st.sidebar.subheader("Filters")
+st.sidebar.markdown(
+    "<h3 style='color: #c0392b;'>Filters</h3>",
+    unsafe_allow_html=True,
+)
+features = data['feature'].unique()
 selected_feature = st.sidebar.selectbox(
-    "Select Feature", 
-    features, 
-    index=0 if st.session_state['selected_feature'] is None else features.tolist().index(st.session_state['selected_feature']),
-    key='filter_feature'
+    "Select Feature",
+    features,
+    index=0,
 )
 selected_date_range = st.sidebar.date_input(
     "Select Date Range",
     value=[
         pd.to_datetime(data['date']).min(),
-        pd.to_datetime(data['date']).max()
-    ]
+        pd.to_datetime(data['date']).max(),
+    ],
 )
-
-# Update selected feature in session state
-st.session_state['selected_feature'] = selected_feature
 
 # Filter data based on user selections
 filtered_data = data[
-    (data['feature'] == selected_feature) &
-    (pd.to_datetime(data['date']) >= pd.to_datetime(selected_date_range[0])) &
-    (pd.to_datetime(data['date']) <= pd.to_datetime(selected_date_range[1]))
+    (data["feature"] == selected_feature)
+    & (pd.to_datetime(data["date"]) >= pd.to_datetime(selected_date_range[0]))
+    & (pd.to_datetime(data["date"]) <= pd.to_datetime(selected_date_range[1]))
 ]
 
 # Display filtered data
-st.subheader(f"Filtered Engagement Data for '{selected_feature}'")
+st.markdown(
+    f"<h3 style='color: #c0392b;'>Filtered Engagement Data for '{selected_feature}'</h3>",
+    unsafe_allow_html=True,
+)
 if not filtered_data.empty:
     st.dataframe(filtered_data)
 else:
     st.warning("No data found for the selected filters.")
 
 # Visualize engagement trends
-st.subheader("Engagement Trends")
+st.markdown(
+    f"<h3 style='color: #c0392b;'>Engagement Trends</h3>",
+    unsafe_allow_html=True,
+)
 if not filtered_data.empty:
     plt.figure(figsize=(10, 5))
     plt.plot(
-        pd.to_datetime(filtered_data['date']),
-        filtered_data['usageCount'],
-        marker='o',
-        linestyle='-',
-        label=selected_feature
+        pd.to_datetime(filtered_data["date"]),
+        filtered_data["usageCount"],
+        marker="o",
+        linestyle="-",
+        label=selected_feature,
+        color="#c0392b",
     )
-    plt.title(f"Engagement Trends for '{selected_feature}'")
-    plt.xlabel("Date")
-    plt.ylabel("Usage Count")
+    plt.title(f"Engagement Trends for '{selected_feature}'", color="#c0392b")
+    plt.xlabel("Date", fontsize=12, color="#c0392b")
+    plt.ylabel("Usage Count", fontsize=12, color="#c0392b")
+    plt.grid(color="gray", linestyle="--", linewidth=0.5, alpha=0.7)
     plt.legend()
     st.pyplot(plt)
 else:
     st.warning("No data to visualize for the selected filters.")
 
 # Search for Features
-st.subheader("Search Feature Engagement")
-search_query = st.text_input("Search Features: ")
+st.markdown(
+    "<h3 style='color: #c0392b;'>Search Feature Engagement</h3>",
+    unsafe_allow_html=True,
+)
+search_query = st.text_input("Search Features:")
 
 # Filter features based on the search query
 filtered_features = [f for f in features if search_query.lower() in f.lower()]
@@ -106,15 +149,78 @@ filtered_features = [f for f in features if search_query.lower() in f.lower()]
 # Display matching features as buttons
 for f in filtered_features:
     if st.button(f"View Analytics for {f}"):
-        st.session_state['selected_feature'] = f
+        selected_feature = f
+        st.experimental_set_query_params(feature=selected_feature)  # Save state
+        st.experimental_rerun()
 
-# Check if a feature is selected
-if "selected_feature" in st.session_state and st.session_state['selected_feature']:
-    st.write(f"Showing analytics for: {st.session_state['selected_feature']}")
-    # Dynamically update the page based on the selected feature
-    selected_data = data[data['feature'] == st.session_state['selected_feature']]
-    if not selected_data.empty:
-        st.dataframe(selected_data)
+# ADD NEW RECORD
+st.markdown("<h3 style='color: #c0392b;'>Add New Engagement Record</h3>", unsafe_allow_html=True)
+with st.form("add_record_form"):
+    new_feature = st.text_input("Feature")
+    new_date = st.date_input("Date")
+    new_usage_count = st.number_input("Usage Count", min_value=0, step=1)
+    add_submit = st.form_submit_button("Add Record")
+
+    if add_submit:
+        if new_feature and new_date and new_usage_count >= 0:
+            payload = {
+                "feature": new_feature,
+                "date": new_date.strftime("%Y-%m-%d"),
+                "usageCount": new_usage_count
+            }
+            try:
+                response = requests.post('http://api:4000/ea/engagementAnalytics', json=payload)
+                if response.status_code == 201:
+                    st.success("Record added successfully!")
+                    st.experimental_rerun()
+                else:
+                    st.error("Failed to add record. Please try again.")
+            except Exception as e:
+                st.error("Error adding record. Please check the logs.")
+                logger.error(f"Error adding record: {e}")
+        else:
+            st.error("All fields are required.")
+
+# UPDATE RECORD
+st.markdown("<h3 style='color: #c0392b;'>Update Existing Engagement Record</h3>", unsafe_allow_html=True)
+update_id = st.number_input("Enter Analytics ID to Update", min_value=1, step=1)
+update_feature = st.text_input("Updated Feature", value="")
+update_date = st.date_input("Updated Date")
+update_usage_count = st.number_input("Updated Usage Count", min_value=0, step=1)
+if st.button("Update Record"):
+    payload = {}
+    if update_feature:
+        payload["feature"] = update_feature
+    if update_date:
+        payload["date"] = update_date.strftime("%Y-%m-%d")
+    if update_usage_count >= 0:
+        payload["usageCount"] = update_usage_count
+
+    if payload:
+        try:
+            response = requests.put(f'http://api:4000/ea/engagementAnalytics/{update_id}', json=payload)
+            if response.status_code == 200:
+                st.success("Record updated successfully!")
+                st.experimental_rerun()
+            else:
+                st.error("Failed to update record. Please try again.")
+        except Exception as e:
+            st.error("Error updating record. Please check the logs.")
+            logger.error(f"Error updating record: {e}")
     else:
-        st.warning("No data found for this feature.")
+        st.error("At least one field is required to update.")
 
+# DELETE RECORD
+st.markdown("<h3 style='color: #c0392b;'>Delete Engagement Record</h3>", unsafe_allow_html=True)
+delete_id = st.number_input("Enter Analytics ID to Delete", min_value=1, step=1)
+if st.button("Delete Record"):
+    try:
+        response = requests.delete(f'http://api:4000/ea/engagementAnalytics/{delete_id}')
+        if response.status_code == 200:
+            st.success("Record deleted successfully!")
+            st.experimental_rerun()
+        else:
+            st.error("Failed to delete record. Please try again.")
+    except Exception as e:
+        st.error("Error deleting record. Please check the logs.")
+        logger.error(f"Error deleting record: {e}")

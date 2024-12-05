@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS employeeAbroadProgram
 DROP TABLE IF EXISTS engagementAnalytics;
 CREATE TABLE IF NOT EXISTS engagementAnalytics
 (
-    featureID  INT(11) PRIMARY KEY,
+    featureID  INT(11) PRIMARY KEY AUTO_INCREMENT,
     empID      INT(11)  NOT NULL,
     usageCount INT      NOT NULL,
     date       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -686,10 +686,10 @@ INSERT INTO engagementAnalytics (featureID, empID, usageCount, date, feature)
 VALUES
 (1, 18, 174, '2024-01-30 14:48:01', 'Login'),
 (2, 5, 46, '2023-12-14 16:56:09', 'Profile Update'),
-(3, 3, 362, '2024-04-08 11:56:11', 'Mentorship Forum'),
+(3, 3, 362, '2024-01-30 11:56:11', 'Mentorship Forum'),
 (4, 18, 175, '2024-01-31 01:37:57', 'Message Center'),
-(5, 5, 397, '2024-04-21 07:48:03', 'Program Rating'),
-(6, 27, 262, '2024-03-02 20:20:11', 'Search Programs'),
+(5, 5, 397, '2024-01-30 07:48:03', 'Program Rating'),
+(6, 27, 262, '2024-01-30 20:20:11', 'Search Programs'),
 (7, 7, 494, '2024-05-26 20:23:37', 'Resource Downloads'),
 (8, 24, 533, '2024-06-10 06:03:51', 'Course Evaluations'),
 (9, 30, 618, '2024-07-11 02:26:34', 'Safety Alerts'),
@@ -698,10 +698,10 @@ VALUES
 (12, 12, 543, '2024-06-13 19:44:31', 'Event Registrations'),
 (13, 8, 415, '2024-04-27 18:09:54', 'Login'),
 (14, 22, 490, '2024-05-25 08:27:23', 'Profile Update'),
-(15, 22, 807, '2024-09-18 07:37:54', 'Mentorship Forum'),
+(15, 22, 807, '2024-12-30 07:37:54', 'Mentorship Forum'),
 (16, 6, 210, '2024-02-12 20:59:41', 'Message Center'),
-(17, 28, 749, '2024-08-28 07:07:10', 'Program Rating'),
-(18, 6, 966, '2024-11-15 12:03:39', 'Search Programs'),
+(17, 28, 749, '2024-12-30 07:07:10', 'Program Rating'),
+(18, 6, 966, '2024-12-30 12:03:39', 'Search Programs'),
 (19, 19, 273, '2024-03-07 00:55:06', 'Resource Downloads'),
 (20, 20, 50, '2023-12-16 10:22:56', 'Course Evaluations');
 
