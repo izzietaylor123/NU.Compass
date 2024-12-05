@@ -88,8 +88,19 @@ st.markdown(
 
 # set the title of the page and provide a simple prompt. 
 logger.info("Loading the Home page of the app")
-st.markdown("<div class='main-title'>NU Compass</div>", unsafe_allow_html=True)
-st.markdown("<div class='subtitle'>Welcome! Which user would you like to log in as?</div>", unsafe_allow_html=True)
+
+left_col, center_col, right_col = st.columns([2, 3, 2])
+with center_col:
+    st.title(" :red[NU.Compass]")
+    st.write("#### *The Pack Goes Global*")
+
+st.write('')
+st.write('')
+
+st.write('')
+
+
+st.markdown("#### Welcome! Which user would you like to log in as?")
 
 # For each of the user personas for which we are implementing
 # functionality, we put a button on the screen that the user 
@@ -143,6 +154,6 @@ if st.button('Act as Adam Brody, a Northeastern Global Experience Staff Member a
     st.session_state['full_name'] = 'Adam Brody'
     st.switch_page('pages/26_GEOAdmin_Home.py')
 
-# image for home
-#st.markdown("</div>", unsafe_allow_html=True)
-#st.image("assets/home.png", width=500)
+# # image for home
+# st.markdown("</div>", unsafe_allow_html=True)
+# st.image("assets/home.png", width=500)

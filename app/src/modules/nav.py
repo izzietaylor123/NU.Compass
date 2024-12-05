@@ -17,7 +17,7 @@ def HomeNav():
 
 
 def AboutPageNav():
-    st.sidebar.page_link("pages/30_About.py", label="About NU.Connect", icon="🧠")
+    st.sidebar.page_link("pages/30_About.py", label="About NU.Compass", icon="🧠")
 
 
 #### ------------------------ Examples for Role of mentee_student ------------------------
