@@ -28,6 +28,12 @@ if st.button('View my Blurb',
             st.session_state['view self'] = True
             st.switch_page('pages/11_Mentor_Blurb.py')
 
+if st.button('See my Questions', 
+            type='primary',
+            use_container_width= True):
+            st.session_state['view self'] = True
+            st.switch_page('pages/13_Mentorship_Replies.py')          
+
 if st.button('Contact the Global Experience Office', 
              type='primary',
              use_container_width=True):

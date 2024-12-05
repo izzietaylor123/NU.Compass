@@ -342,7 +342,7 @@ INSERT INTO Student (sID, fName, lName, email, blurb, role) VALUES
 (28, 'Fanchon', 'Quarry', 'fanchon.quarry@hotmail.com',  'Video games are my favorite pastime. I enjoy strategy games that challenge my mind and continuously seek to improve my skills.', 'mentee'),
 (29, 'Cahra', 'Wooster', 'cahra.wooster@wanadoo.fr',   'Acting is my passion, and I participate in school plays and local theater productions. I thrive on stage and love bringing characters to life.', 'mentee'),
 (30, 'Amy', 'McAviy', 'amy.mcaviy@msn.com', 'Outdoor adventures are what I live for. Whether it is hiking, camping, or rock climbing, being in nature gives me peace and brings out the best in me.', 'mentee'),
-(31, 'Tim', 'Waltz', 't.waltz@northeastern.edu', 'I am a second-year Northeastern student studying Business who recently returned from my transformative Dialogue of Civilizations in Rome. When I am not mentoring, I enjoy tennis, Stardew Valley, and chocolate chip cookies.  I look forward to connecting with you, feel free to reach out to me at w.tim@northeastern.edu!', 'mentor'),
+(31, 'Tim', 'Waltz', 't.waltz@northeastern.edu', 'I am a second-year Northeastern student studying Business who recently returned from my transformative Dialogue of Civilizations in Marseille, France. When I am not mentoring, I enjoy tennis, Stardew Valley, and chocolate chip cookies.  I look forward to connecting with you, feel free to reach out to me at w.tim@northeastern.edu!', 'mentor'),
 (32, 'Tom', 'Holland', 't.holland@northeastern.edu', 'I am a Northeastern Business student looking to go on a Dialogue of Civilations for business! Looking for mentors!', 'mentee');
 
 

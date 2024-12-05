@@ -14,8 +14,6 @@ sID = st.session_state['userID']
 studentroute = f'http://api:4000/s/get_student/{sID}'
 student = requests.get(studentroute).json()
 
-st.dataframe(student)
-
 title = "Mentor " + str(student[0]['fName']) + " " + str(student[0]['lName']) + "\'s Ratings:"
 
 st.title(title)

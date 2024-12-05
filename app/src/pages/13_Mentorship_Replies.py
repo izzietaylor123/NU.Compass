@@ -11,7 +11,7 @@ import json
 
 SideBarLinks()
 
-st.title("My Replies to Mentee Questions")
+st.title("My Questions and/or Replies")
 if 'userID' not in st.session_state:
     st.error("User not logged in. Please log in to continue.")
     st.stop()
@@ -30,9 +30,8 @@ if len(questions) == 0:
 
 if len(replies) == 0:
     st.warning("No replies available for this user.")
-    st.stop()
 
-st.subheader(f"Questions for User ID: {userID}")
+st.subheader(f"Questions/Replies")
 for i, question in enumerate(questions, start=1):
     st.write(f"### Question {i}")
     for key, value in question.items():

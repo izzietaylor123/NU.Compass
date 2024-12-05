@@ -27,7 +27,6 @@ if mentees:
         st.write(f"**First Name:** {row['fName']}")
         st.write(f"**Last Name:** {row['lName']}")
         st.write(f"**Blurb:** {row['blurb']}")
-        st.write(f"**Email:** {row['email']}")
 
         st.markdown("---")
 else:
