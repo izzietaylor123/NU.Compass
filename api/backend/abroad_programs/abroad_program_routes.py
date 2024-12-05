@@ -83,15 +83,15 @@ def add_programs():
     loc_ID = program_data['locationID']
     ptype = program_data['programType']
     emp_ID = program_data['empID']
-    image = 'generic_loc_image.png'
 
     query = f'''INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, programType, empID, prgmPhotoPath)
-    VALUES ({prog_ID}, "{name}", "{description}", {loc_ID}, "{ptype}", {emp_ID}, '{image}')'''
+    VALUES ({prog_ID}, "{name}", "{description}", {loc_ID}, "{ptype}", {emp_ID}, 'generic_loc_image.png')'''
 
-    current_app.logger.info('Inserting location with ID: %s', prog_ID)
+    current_app.logger.info(query)
+    
 
     cursor = db.get_db().cursor()
-    cursor.execute(query) #, (prog_ID, name, description, loc_ID, ptype, emp_ID, image))
+    cursor.execute(query) #(prog_ID, name, description, loc_ID, ptype, emp_ID, 'generic_loc_image.png'))
     db.get_db().commit()
 
     response = make_response("Successfully added new abroad program")
@@ -358,12 +358,12 @@ def get_program_pic(programID):
     query = f'''
         SELECT prgmPhotoPath 
         FROM abroadProgram
-        WHERE programID = {str(programID)}'''
+        WHERE programID = {programID}'''
     cursor.execute(query)
     
-    locations = cursor.fetchall()
+    data = cursor.fetchall()
     
-    the_response = make_response(jsonify(locations))
+    the_response = make_response(jsonify(data))
     the_response.status_code = 200
     return the_response
 
