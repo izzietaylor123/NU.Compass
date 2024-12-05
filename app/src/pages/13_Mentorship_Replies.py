@@ -29,22 +29,7 @@ if len(questions) == 0:
 
 if len(replies) == 0:
     st.warning("No replies available for this user.")
-    
-# Show replies with delete functionality
-st.subheader("My Replies")
-for reply in replies:
-    st.write(f"**Reply ID:** {reply['replyID']}")
-    st.write(f"**Content:** {reply['content']}")
 
-    if st.button(f"Delete Reply {reply['replyID']}"):
-        delete_url = f"http://api:4000/qr/delete_reply/{reply['replyID']}/{userID}"
-        response = requests.delete(delete_url)
-
-        if response.status_code == 200:
-            st.success("Reply deleted successfully!")
-            st.experimental_rerun()  # Refresh the page to reflect the changes
-        else:
-            st.error("Failed to delete reply. Please try again.")
 
 with st.expander("Add a New Question"):
     with st.form(key="question_form"):
