@@ -304,7 +304,7 @@ INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, 
 (25, 'Leipzig', 'Study fashion and culture in the bustling city of Leipzig, a global hub for design and creativity.', 25, 'Traditional Study Abroad', 25),
 (26, 'Bordeaux', 'Participate in Bordeaux''s economic growth story with a focus on entrepreneurship and international business.', 26, 'Semester.in', 26),
 (27, 'Nice', 'Explore Nice''s approach to sustainability with courses in renewable energy and environmental management.', 27, 'Traditional Study Abroad', 27),
-(28, 'Lyon', 'Dive into the rich cultural scene of Lyon with courses in music, history, and the arts.', 28, 'NU.in', 28, 'eiffel_tower.png'),
+(28, 'Lyon', 'Dive into the rich cultural scene of Lyon with courses in music, history, and the arts.', 28, 'NU.in', 28),
 (29, 'Marseille', 'Study fashion and culture in the bustling city of Marseille, a global hub for design and creativity.', 29, 'Dialogue of Civilizations', 29),
 (30, 'Naples', 'Experience the unique blend of tradition and modernity in Naples with courses in history, culture, and politics.', 30, 'Traditional Study Abroad', 30),
 -- abroadProgram #31 should not have any connected ratings or questions, and will test how the program reacts to empty json calls

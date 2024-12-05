@@ -13,55 +13,56 @@ SideBarLinks()
 
 # Page title
 st.title("My Replies to Mentee Questions, from Mentee Tom")
-
-repliesRoute = "http://api:4000/qr/tim/replies"
-replies = requests.get(repliesRoute).json()
-
-questionsRoute = "http://api:4000/qr/tom/questions"
-questions = requests.get(questionsRoute).json()
-
-if not isinstance(questions, list) or not isinstance(replies, list):
-    st.error("Unexpected API response. Please check the data structure.")
+# Check if userID exists in session state
+if 'userID' not in st.session_state:
+    st.error("User not logged in. Please log in to continue.")
     st.stop()
 
-if 'current_question_index' not in st.session_state:
-    st.session_state.current_question_index = 0
+# Get userID from session state
+userID = st.session_state['userID']
 
-def next_question():
-    if st.session_state.current_question_index < len(questions) - 1:
-        st.session_state.current_question_index += 1
+# Define API endpoints
+questions_route = f"http://api:4000/qr/get_questions/{userID}"
+questions = requests.get(questions_route).json()
 
-def previous_question():
-    if st.session_state.current_question_index > 0:
-        st.session_state.current_question_index -= 1
+replies_route = f"http://api:4000/qr/get_replies/{userID}"
+replies = requests.get(replies_route).json()
 
-current_index = st.session_state.current_question_index
-current_question = questions[current_index]
-current_reply = (
-    replies[current_index]
-    if current_index < len(replies)
-    else {"reply_text": "No reply available"}
-)
+# Fetch data from APIs
+def fetch_data(route):
+    try:
+        response = requests.get(route)
+        response.raise_for_status()  # Raise HTTPError for bad responses (4xx and 5xx)
+        data = response.json()  # Parse JSON response
+        if not isinstance(data, list):
+            raise ValueError("Invalid data format received from API.")
+        return data
+    except requests.exceptions.RequestException as e:
+        st.error(f"Failed to fetch data from {route}. Please try again later.")
+        st.stop()
+    except ValueError as e:
+        st.error(f"Unexpected data format from API: {e}")
+        st.stop()
 
-st.title("Question and Reply Viewer")
+# Filter and display questions
+if len(questions) == 0:
+    st.warning("No questions available for this user.")
 
-st.subheader(f"Question {current_index + 1} of {len(questions)}")
-st.write("### Question Details:")
-for key, value in current_question.items():
-    st.write(f"**{key.capitalize()}:** {value}")
+if len(replies) == 0:
+    st.warning("No replies available for this user.")
+    st.stop()
 
-st.write("### Reply Details:")
-for key, value in current_reply.items():
-    st.write(f"**{key.capitalize()}:** {value}")
+# Display questions
+st.subheader(f"Questions for User ID: {userID}")
+for i, question in enumerate(questions, start=1):
+    st.write(f"### Question {i}")
+    for key, value in question.items():
+        st.write(f"**{key.capitalize()}:** {value}")
 
-col1, col2 = st.columns([1, 1])
-with col1:
-    st.button("Previous", on_click=previous_question, disabled=current_index == 0)
-with col2:
-    st.button("Next", on_click=next_question, disabled=current_index == len(questions) - 1)
-
+# Expandable section for all data
 with st.expander("View All Questions and Replies"):
-    st.subheader("Questions")
-    st.dataframe(questions)
-    st.subheader("Replies")
-    st.dataframe(replies)
+    st.subheader("All Questions")
+    st.dataframe(pd.DataFrame(questions))
+
+    st.subheader("All Replies")
+    st.dataframe(pd.DataFrame(replies))

@@ -46,39 +46,37 @@ def get_approved_replies():
     the_response.status_code = 200
     return the_response
 
-
-#------------------------------------------------------------
-# Get all approved replies from the system
-@questions_replies.route('/tim/replies', methods=['GET'])
-def tim_replies():
+# #------------------------------------------------------------
+# Get student replies data 
+@questions_replies.route('/get_replies/<sID>', methods=['GET'])
+def get_student_replies(sID):
 
     cursor = db.get_db().cursor()
-    query = '''
-        SELECT content
+    query = f'''SELECT content
         FROM Reply
-        Where sID = 31 '''
+        WHERE sID = {str(sID)}'''
     cursor.execute(query)
-    
+
     theData = cursor.fetchall()
-    
+
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
 
-#------------------------------------------------------------
-# Get all approved replies from the system
-@questions_replies.route('/tom/questions', methods=['GET'])
-def tom_questions():
+# #------------------------------------------------------------
+# Get student question data 
+@questions_replies.route('/get_questions/<sID>', methods=['GET'])
+def get_student_questions(sID):
 
     cursor = db.get_db().cursor()
-    query = '''
-        SELECT content
+    query = f'''SELECT content
         FROM Question
-        Where sID = 32 '''
+        WHERE sID = {str(sID)}'''
+
     cursor.execute(query)
     
     theData = cursor.fetchall()
-    
+
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
