@@ -244,7 +244,7 @@ def get_program_questions(programID):
     query = f'''
         SELECT qID, content 
         FROM Question
-        WHERE abroadProgram = {str(programID)}'''
+        WHERE abroadProgram = {str(programID)} AND isApproved = True'''
     cursor.execute(query)
     
     locations = cursor.fetchall()
@@ -262,7 +262,7 @@ def get_replies(qID):
     query = f'''
         SELECT content 
         FROM Reply
-        WHERE qID = {str(qID)}'''
+        WHERE qID = {str(qID)} AND isApproved = True'''
     cursor.execute(query)
     
     locations = cursor.fetchall()
