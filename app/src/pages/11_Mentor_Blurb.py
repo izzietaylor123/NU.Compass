@@ -39,7 +39,10 @@ if role == 'Mentor':
     st.subheader("🌟 Meet Your Mentor 🌟")
 left_col, center_col, right_col = st.columns([1, 2, 1])
 with center_col:
-    st.image("assets/Tim_Waltz_headshot.png", use_container_width=True)
+    photo_route = f'http://api:4000/s/get_student_pfp/{sID}'
+    photo = requests.get(photo_route).json()
+    photo_path = "assets/" + str(photo[0]['pfpPath'])
+    st.image(photo_path, use_container_width= True)
 
 st.markdown(f"### 📖 About {full_name}")
 st.write(f"**Role:** {role}")

@@ -185,7 +185,23 @@ def get_mentor_id(sID):
     the_response.status_code = 200
     return the_response
 
+#------------------------------------------------------------
+# Get pic from programID
+@students.route('/get_student_pfp/<sID>', methods=['GET'])
+def get_student_pic(sID):
 
+    cursor = db.get_db().cursor()
+    query = f'''
+        SELECT pfpPath 
+        FROM Student
+        WHERE sID = {str(sID)}'''
+    cursor.execute(query)
+    
+    locations = cursor.fetchall()
+    
+    the_response = make_response(jsonify(locations))
+    the_response.status_code = 200
+    return the_response
 
 
 
