@@ -43,7 +43,7 @@ button_titles = list(buttons.keys())
 filtered_titles = [title for title in button_titles if search_query.lower() in title.lower()]
 
 # Display filtered buttons
-st.subheader("View/Edit Mentees")
+st.subheader("View Mentees")
 if filtered_titles:
     for title in filtered_titles:
         if st.button(title):
