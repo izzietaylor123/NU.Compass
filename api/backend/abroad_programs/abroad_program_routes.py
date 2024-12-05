@@ -71,7 +71,7 @@ def get_all_program_ids():
 #------------------------------------------------------------
 # Add a new abroad program to the database
 
-@abroad_programs.route('/abroad_programs', methods=['POST'])
+@abroad_programs.route('/add_abroad_programs', methods=['POST'])
 def add_programs():
 
     program_data = request.json
@@ -85,8 +85,8 @@ def add_programs():
     emp_ID = program_data['empID']
     image = 'generic_loc_image.png'
 
-    query = '''INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, programType, empID, prgmPhotoPath)
-    VALUES ({prog_ID}, "{name}"), "{description}", {loc_ID}, "{ptype}", {emp_ID}, "{image}")'''
+    query = f'''INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, programType, empID, prgmPhotoPath)
+    VALUES ({prog_ID}, "{name}", "{description}", {loc_ID}, "{ptype}", {emp_ID}, '{image}')'''
 
     current_app.logger.info('Inserting location with ID: %s', prog_ID)
 

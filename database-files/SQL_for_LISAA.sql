@@ -1059,10 +1059,14 @@ INSERT INTO Reply (replyID, sID, qID, content, datePosted, isApproved) VALUES
 (29, 15, 29, 'Yo Mama!', '2023-12-21 21:11:44', 0),
 (30, 15, 30, 'PlEASE DO NOT BOTHER ME!', '2024-08-13 11:24:25', 0);
 
+SELECT *
+FROM Question;
 
-SELECT avg(locRating)
-FROM Rating
-WHERE programID = 2;
+SELECT *
+FROM abroadProgram;
+
+SELECT *
+FROM Location;
 
 # ## Below is all data entries from previous phases of the project. They have been commented out because they have been replaced by the generated mock data.
 # INSERT INTO abroadProgram(programID, programName, prgmDescription, locationID, programType, empID)

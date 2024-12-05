@@ -60,7 +60,7 @@ def submit_abroad_program():
             "locationID": loc_ID, "programType": ptype, "empID": emp_ID
         }
         try:
-            response = requests.post("http://api:4000/ap/abroad_programs", json=program_data)
+            response = requests.post("http://api:4000/ap/add_abroad_programs", json=program_data)
             
             if response.status_code == 200:
                 st.success("Program added successfully!")
