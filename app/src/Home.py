@@ -94,3 +94,5 @@ if st.button('Act as Adam Brody, a Northeastern Global Experience Staff Member a
     st.session_state['first_name'] = 'Adam'
     st.session_state['full_name'] = 'Adam Brody'
     st.switch_page('pages/26_GEOAdmin_Home.py')
+
+st.image("assets/Home.png", use_container_width=True)
