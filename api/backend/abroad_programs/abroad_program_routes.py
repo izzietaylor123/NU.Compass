@@ -27,6 +27,31 @@ def get_all_programs():
     the_response.status_code = 200
     return the_response
 
+#------------------------------------------------------------
+@abroad_programs.route('/abroad_programs/<program_id>', methods=['PUT'])
+def update_program(program_id):
+    
+    program_data = request.json 
+
+    # extract variables
+    prog_ID = program_data['programID']
+    name = program_data['programName']
+    description = program_data['prgmDescription']
+    loc_ID = program_data['locationID']
+    ptype = program_data['programType']
+    emp_ID = program_data['empID']
+
+    query = '''UPDATE abroadProgram SET programName = %s, prgmDescription = %s, 
+    locationID = %s, programType = %s WHERE programID = %s'''
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (prog_ID, name, description, loc_ID, ptype, emp_ID))
+    db.get_db().commit()
+    
+    response = make_response("Successfully updated abroad program")
+    response.status_code = 200
+    
+    return 'abroad program created!'
 
 #------------------------------------------------------------
 # Get all program names from the system
