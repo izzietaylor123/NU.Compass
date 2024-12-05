@@ -313,7 +313,7 @@ INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, 
 (31, 'Oakland', 'Explore your academic interests on our sunny California campus!', 31, 'Semester.in', 30, 'us.png');
 
 -- Student Data
-INSERT INTO Student (sID, fName, lName, email, blurb, role, pfp_path) VALUES
+INSERT INTO Student (sID, fName, lName, email, blurb, role, pfpPath) VALUES
 (1, 'Aeriel', 'Sommerton', 'aeriel.sommerton@web.de',  'Dance is my outlet for energy and creativity. I practice various styles and perform in competitions, always striving to learn new choreography.', 'mentor', 'generic_pfp.png'),
 (2, 'Meaghan', 'Le Ball', 'meaghan.leball@hotmail.com',  'Cooking and experimenting with new recipes is what I love most. I often host dinner parties for my friends to try out new dishes.', 'mentor', 'generic_pfp.png'),
 (3, 'Ondrea', 'Kinsella', 'ondrea.kinsella@yahoo.co.in',  'Video games are my favorite pastime. I enjoy strategy games that challenge my mind and continuously seek to improve my skills.', 'mentor', 'generic_pfp.png'),
