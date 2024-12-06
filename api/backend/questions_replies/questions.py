@@ -131,7 +131,7 @@ def add_reply():
 
 #------------------------------------------------------------
 # Delete a reply
-@questions_replies.route('/delete_reply', methods=['DELETE'])
+@questions_replies.route('/delete_reply/<reply_id>/<sID>', methods=['DELETE'])
 def delete_reply(reply_id, sID):
     try:
         cursor = db.get_db().cursor()

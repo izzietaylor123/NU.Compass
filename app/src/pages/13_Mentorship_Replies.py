@@ -56,7 +56,6 @@ with st.expander("Add a New Reply"):
     with st.form(key="reply_form"):
         reply_body = st.text_area("Reply Body")
         question_id = st.selectbox("Select Question to Reply To", [q['title'] for q in questions])
-        
         submit_reply = st.form_submit_button("Submit Reply")
         
         if submit_reply:
@@ -86,4 +85,3 @@ for i, replies in enumerate(replies, start=1):
         st.write(f"**{key.capitalize()}:** {value}")
 
 
-        
