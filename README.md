@@ -80,4 +80,4 @@ Ultimately, NU.Compass is more than just an app—it's a transformative tool tha
 
 ------
         
-Link to Project Demo: https://youtu.be/u9yNCsqyZM4
+Link to Project Demo: https://youtu.be/nNH2XmrH75o
