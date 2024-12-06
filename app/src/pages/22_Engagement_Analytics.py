@@ -136,23 +136,6 @@ if not filtered_data.empty:
 else:
     st.warning("No data to visualize for the selected filters.")
 
-# Search for Features
-st.markdown(
-    "<h3 style='color: #c0392b;'>Search Feature Engagement</h3>",
-    unsafe_allow_html=True,
-)
-search_query = st.text_input("Search Features:")
-
-# Filter features based on the search query
-filtered_features = [f for f in features if search_query.lower() in f.lower()]
-
-# Display matching features as buttons
-for f in filtered_features:
-    if st.button(f"View Analytics for {f}"):
-        selected_feature = f
-        st.experimental_set_query_params(feature=selected_feature)  # Save state
-        #st.experimental_rerun()
-
 # ADD NEW RECORD
 st.markdown("<h3 style='color: #c0392b;'>Add New Engagement Record</h3>", unsafe_allow_html=True)
 with st.form("add_record_form"):
@@ -172,7 +155,6 @@ with st.form("add_record_form"):
                 response = requests.post('http://api:4000/ea/engagementAnalytics', json=payload)
                 if response.status_code == 201:
                     st.success("Record added successfully!")
-                    #st.experimental_rerun()
                 else:
                     st.error("Failed to add record. Please try again.")
             except Exception as e:
@@ -201,7 +183,6 @@ if st.button("Update Record"):
             response = requests.put(f'http://api:4000/ea/engagementAnalytics/{update_id}', json=payload)
             if response.status_code == 200:
                 st.success("Record updated successfully!")
-                #st.experimental_rerun()
             else:
                 st.error("Failed to update record. Please try again.")
         except Exception as e:
@@ -218,7 +199,6 @@ if st.button("Delete Record"):
         response = requests.delete(f'http://api:4000/ea/engagementAnalytics/{delete_id}')
         if response.status_code == 200:
             st.success("Record deleted successfully!")
-            #st.experimental_rerun()
         else:
             st.error("Failed to delete record. Please try again.")
     except Exception as e:
