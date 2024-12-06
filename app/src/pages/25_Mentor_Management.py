@@ -5,7 +5,7 @@ import requests
 
 logger = logging.getLogger(__name__)
 
-# Initialize session state for mentor if not already set
+# initialize session state for mentor if not already set
 if 'mentor' not in st.session_state:
     st.session_state['mentor'] = -1
 
@@ -15,7 +15,7 @@ SideBarLinks()
 
 st.title('Mentor Management')
 
-# Fetch mentor data from the backend
+# fetch mentor data from the backend
 try:
     mentor_data = requests.get('http://api:4000/s/mentors').json()
     if not mentor_data:
@@ -25,7 +25,7 @@ except Exception as e:
     logger.error(f"Error fetching mentors: {e}")
     mentor_data = []
 
-# Build a dictionary for mentor buttons
+# build a dictionary for mentor buttons
 buttons = {}
 for mentor in mentor_data:
     mentor_id = mentor['sID']
@@ -38,15 +38,15 @@ for mentor in mentor_data:
         "blurb": blurb
     }
 
-# Search bar for mentors
+# search bar for mentors
 st.subheader("Search Mentors")
 search_query = st.text_input("Type to search mentors:")
 
-# Filter mentor list based on search query (case-insensitive)
+# filter mentor list based on search query (case-insensitive)
 button_titles = list(buttons.keys())
 filtered_titles = [title for title in button_titles if search_query.lower() in title.lower()]
 
-# Display filtered mentor buttons
+# display filtered mentor buttons
 st.subheader("View/Edit Mentors")
 if filtered_titles:
     for title in filtered_titles:
@@ -56,7 +56,7 @@ if filtered_titles:
 else:
     st.info("No mentors match your search.")
 
-# Add a new mentor
+# add a new mentor
 st.subheader("Add New Mentor")
 with st.form("add_mentor_form"):
     f_name = st.text_input("First Name")
@@ -68,7 +68,7 @@ with st.form("add_mentor_form"):
     if submit:
         if f_name and l_name and email:
             payload = {
-        "Name": f"{f_name} {l_name}",  # Combine first and last name
+        "Name": f"{f_name} {l_name}",  # combine first and last name
         "Email": email,
         "Blurb": blurb}
             try:
@@ -83,7 +83,7 @@ with st.form("add_mentor_form"):
         else:
             st.error("All fields are required to add a mentor.")
 
-# Edit or Delete Mentors
+# edit or delete Mentors
 st.subheader("Edit or Delete Mentors")
 for title in filtered_titles:
     mentor_details = buttons[title]
@@ -114,7 +114,7 @@ for title in filtered_titles:
                     st.error("Error updating mentor. Please check the logs.")
                     logger.error(f"Error updating mentor: {e}")
 
-        # Delete mentor
+        # delete mentor
         with col2:
             if st.button(f"Delete Mentor (ID: {mentor_id})", key=f"delete_{mentor_id}"):
                 try:
