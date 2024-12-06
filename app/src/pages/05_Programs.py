@@ -65,7 +65,7 @@ for title in filtered_titles:
 
 # Delete a location, given a locationID
 def delete_location(programID):
-    delete_route = 'http://api:4000/ap/delete_program/' + str({programID})
+    delete_route = 'http://api:4000/ap/delete_program/' + str(programID)
     response = requests.delete(delete_route)
     if response.status_code == 200:
         st.write(f"Program with ID {programID} has been deleted.")
