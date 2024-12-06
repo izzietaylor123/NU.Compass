@@ -46,20 +46,25 @@ def get_all_mentors():
 def add_mentor():
     data = request.json
     try:
-        # extract fields
+        # Extract fields
         name = data.get('Name', '')
         if ' ' not in name:
             return make_response("Invalid name format. Provide both first and last name.", 400)
         fName, lName = name.split(' ', 1)
         email = data['Email']
         blurb = data.get('Blurb', 'No blurb provided')
+        pfpPath = data.get('pfpPath', 'default_profile_image.jpg')  # Handle pfpPath explicitly
 
         query = '''
-            INSERT INTO Student (fName, lName, email, role, blurb)
-            VALUES (%s, %s, %s, %s, %s)
+            INSERT INTO Student (fName, lName, email, role, blurb, pfpPath)
+            VALUES (%s, %s, %s, %s, %s, %s)
         '''
-        values = (fName, lName, email, 'mentor', blurb)
+        values = (fName, lName, email, 'mentor', blurb, pfpPath)
 
+        # Log the query and values
+        current_app.logger.info(f"Query: {query}, Values: {values}")
+
+        # Execute the query
         cursor = db.get_db().cursor()
         cursor.execute(query, values)
         db.get_db().commit()
@@ -69,6 +74,7 @@ def add_mentor():
         current_app.logger.error(f"Error adding mentor: {e}")
         response = make_response("Error adding mentor", 500)
     return response
+
 
 # update mentor
 @mentors.route('/mentors/<mentor_id>', methods=['PUT'])
@@ -119,7 +125,8 @@ def update_mentor(mentor_id):
         response = make_response("Error updating mentor", 500)
     return response
 
-# delete mentor
+
+
 @mentors.route('/mentors/<mentor_id>', methods=['DELETE'])
 def delete_mentor(mentor_id):
     try:
