@@ -7,8 +7,8 @@ NU.Compass is a web application designed to enhance the global experience for al
 The application utilizes a containerized architecture with Docker, allowing for easy deployment and scalability. It interacts with a database, and all necessary SQL files will be executed on startup to initialize the database schema, ensuring the system is always ready to store and retrieve the data it needs to function effectively.
 
 ### NU.Compass serves four major user categories. 
-        1. Study-abroad alumni, who wish to mentor or network with peers after completing their time abroad.
-        2. Students going abroad, who need guidance and preparation before departure. 
+        1. Mentors: Study-abroad alumni, who wish to mentor or network with peers after completing their time abroad.
+        2. Mentees: Students going abroad, who need guidance and preparation before departure. 
         3. Northeastern global experience staff, who seek to engage and support students effectively.
         4. Northeastern IT staff, who are responsible for maintaining the app, ensuring it stays updated, and monitoring user behavior to ensure adherence to community
         guidelines.
