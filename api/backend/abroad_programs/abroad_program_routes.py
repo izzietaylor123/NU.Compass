@@ -384,3 +384,23 @@ def get_comments(programID):
     the_response = make_response(jsonify(locations))
     the_response.status_code = 200
     return the_response
+
+#------------------------------------------------------------
+# Delete a reply
+@abroad_programs.route('/delete_program/<programID>', methods=['DELETE'])
+def delete_program(programID):
+    try:
+        cursor = db.get_db().cursor()
+        query = f'''
+            DELETE FROM abroadProgram
+            WHERE programID = (programID)'''
+        cursor.execute(query)
+        db.get_db().commit()
+
+        response = make_response("Program deleted successfully.")
+        response.status_code = 200
+        return response
+    except Exception as e:
+        current_app.logger.error(f"Error deleting program: {e}")
+        response = make_response("Failed to delete program.", 500)
+        return response

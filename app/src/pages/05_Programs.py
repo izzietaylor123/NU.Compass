@@ -64,19 +64,21 @@ for title in filtered_titles:
         st.switch_page('pages/06_Display_Program_Location.py')
 
 # Delete a location, given a locationID
-def delete_location(locationID):
-    delete_route = 'http://api:4000/location/' + str({locationID})
+def delete_location(programID):
+    delete_route = 'http://api:4000/ap/delete_program/' + str({programID})
     response = requests.delete(delete_route)
     if response.status_code == 200:
-        st.write(f"Location with ID {locationID} has been deleted.")
+        st.write(f"Program with ID {programID} has been deleted.")
+    else:
+        st.write(f"Error deleting program {programID}")
 
 if user_role == 'administrator':
-    st.subheader("Delete a Location")
-    locationID = st.text_input("Enter Location ID to delete:")
+    st.subheader("Delete a Program")
+    programID = st.text_input("Enter program ID to delete:")
 
     # Delete location once button is pressed
     if st.button("Delete Location"):
-        if locationID:
-            delete_location(locationID)
+        if programID:
+            delete_location(programID)
         else:
             st.write("Please provide a valid Location ID")

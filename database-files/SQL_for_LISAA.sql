@@ -57,9 +57,13 @@ CREATE TABLE IF NOT EXISTS Rating
     comment    LONGTEXT NOT NULL,
     PRIMARY KEY (ratingID),
     CONSTRAINT rating_fk_01 FOREIGN KEY (programID)
-        REFERENCES abroadProgram (programID),
+        REFERENCES abroadProgram (programID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     CONSTRAINT student_rating FOREIGN KEY (sID)
         REFERENCES Student (sID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
 
@@ -73,6 +77,8 @@ CREATE TABLE IF NOT EXISTS Alerts
     PRIMARY KEY (alertID),
     CONSTRAINT alerts_fk_01 FOREIGN KEY (locationID)
         REFERENCES abroadProgram (locationID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS Resources;
@@ -86,6 +92,8 @@ CREATE TABLE IF NOT EXISTS Resources
     PRIMARY KEY (resourceID),
     CONSTRAINT resources_fk_01 FOREIGN KEY (locationID)
         REFERENCES abroadProgram (locationID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS Professor;
@@ -108,10 +116,12 @@ CREATE TABLE IF NOT EXISTS Course
     programID         INT(11)        NOT NULL,
     professorID       INT(11) UNIQUE NOT NULL,
     PRIMARY KEY (courseID),
-    CONSTRAINT course_fk_01 FOREIGN KEY (programID)
-        REFERENCES abroadProgram (programID),
-    CONSTRAINT professor_fk_01 FOREIGN KEY (professorID)
-        REFERENCES Professor (profID)
+    FOREIGN KEY (programID) REFERENCES abroadProgram (programID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY (professorID) REFERENCES Professor (profID)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
 );
 
 DROP TABLE IF EXISTS adminEmployee;
@@ -126,6 +136,8 @@ CREATE TABLE IF NOT EXISTS adminEmployee
     UNIQUE(empID),
     CONSTRAINT course_fk_02 FOREIGN KEY (courseID)
         REFERENCES Course (courseID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS employeeAbroadProgram;
@@ -135,9 +147,13 @@ CREATE TABLE IF NOT EXISTS employeeAbroadProgram
     empID     INT(11) NOT NULL,
     PRIMARY KEY (programID, empID),
     CONSTRAINT eap_pk_00 FOREIGN KEY (programID)
-        REFERENCES abroadProgram (programID),
+        REFERENCES abroadProgram (programID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     CONSTRAINT eap_pk_01 FOREIGN KEY (empID)
         REFERENCES adminEmployee (empID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS engagementAnalytics;
@@ -150,6 +166,8 @@ CREATE TABLE IF NOT EXISTS engagementAnalytics
     feature VARCHAR(50),
     CONSTRAINT eng_analytics_fk_01 FOREIGN KEY (empID)
         REFERENCES adminEmployee (empID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
 
@@ -165,9 +183,13 @@ CREATE TABLE IF NOT EXISTS studentAbroadProgram
     sID       INT(11) NOT NULL,
     PRIMARY KEY (programID, sID),
     CONSTRAINT sap_pk_00 FOREIGN KEY (programID)
-        REFERENCES abroadProgram (programID),
+        REFERENCES abroadProgram (programID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     CONSTRAINT sap_pk_01 FOREIGN KEY (sID)
         REFERENCES Student (sID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
 
@@ -221,9 +243,13 @@ CREATE TABLE IF NOT EXISTS Question
     abroadProgram INT(11),
     PRIMARY KEY (qID),
     CONSTRAINT question_fk_01 FOREIGN KEY (sID)
-        REFERENCES Student (sID),
+        REFERENCES Student (sID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     CONSTRAINT question_program_fk FOREIGN KEY (abroadProgram)
         REFERENCES abroadProgram (programID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS Reply;
@@ -237,9 +263,13 @@ CREATE TABLE IF NOT EXISTS Reply
     isApproved BOOLEAN,
     PRIMARY KEY (replyID),
     CONSTRAINT reply_fk_01 FOREIGN KEY (sID)
-        REFERENCES Student (sID),
+        REFERENCES Student (sID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     CONSTRAINT reply_fk_02 FOREIGN KEY (qID)
         REFERENCES Question (qID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
 
@@ -1059,14 +1089,6 @@ INSERT INTO Reply (replyID, sID, qID, content, datePosted, isApproved) VALUES
 (29, 15, 29, 'Yo Mama!', '2023-12-21 21:11:44', 0),
 (30, 15, 30, 'PlEASE DO NOT BOTHER ME!', '2024-08-13 11:24:25', 0);
 
-SELECT *
-FROM Question;
-
-SELECT *
-FROM abroadProgram;
-
-SELECT *
-FROM Location;
 
 # ## Below is all data entries from previous phases of the project. They have been commented out because they have been replaced by the generated mock data.
 # INSERT INTO abroadProgram(programID, programName, prgmDescription, locationID, programType, empID)
