@@ -83,12 +83,41 @@ def add_programs():
     loc_ID = program_data['locationID']
     ptype = program_data['programType']
     emp_ID = program_data['empID']
-    image = 'generic_loc_image.png'
 
     query = f'''INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, programType, empID, prgmPhotoPath)
-    VALUES ({prog_ID}, "{name}", "{description}", {loc_ID}, "{ptype}", {emp_ID}, '{image}')'''
+    VALUES ({prog_ID}, "{name}", "{description}", {loc_ID}, "{ptype}", {emp_ID}, 'generic_loc_image.png')'''
 
-    current_app.logger.info('Inserting location with ID: %s', prog_ID)
+    current_app.logger.info(query)
+    
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query) #(prog_ID, name, description, loc_ID, ptype, emp_ID, 'generic_loc_image.png'))
+    db.get_db().commit()
+
+    response = make_response("Successfully added new abroad program")
+    response.status_code = 200
+    return 'abroad program created!'
+
+#------------------------------------------------------------
+# Add a new rating for an abroad program to the database
+
+@abroad_programs.route('/add_rating', methods=['POST'])
+def add_rating():
+
+    rating_data = request.json
+
+    # extract variables
+    locR = rating_data['location_rating']
+    profR = rating_data['professor_rating']
+    atmR = rating_data['atmosphere_rating']
+    comment = rating_data['comment']
+    sID = rating_data['sID']
+    program = rating_data['abroadProgram']
+
+    query = f'''INSERT INTO Rating (programID, sID, locRating, profRating, atmosphereRating, comment)
+    VALUES ({program}, {sID}, {locR}, {profR}, {atmR}, "{comment}")'''
+
+    current_app.logger.info('Inserting location with ID: %s', program)
 
     cursor = db.get_db().cursor()
     cursor.execute(query) #, (prog_ID, name, description, loc_ID, ptype, emp_ID, image))
@@ -97,6 +126,7 @@ def add_programs():
     response = make_response("Successfully added new abroad program")
     response.status_code = 200
     return 'abroad program created!'
+
 
 #------------------------------------------------------------
 # Delete a location from the database
@@ -328,6 +358,24 @@ def get_program_pic(programID):
     query = f'''
         SELECT prgmPhotoPath 
         FROM abroadProgram
+        WHERE programID = {programID}'''
+    cursor.execute(query)
+    
+    data = cursor.fetchall()
+    
+    the_response = make_response(jsonify(data))
+    the_response.status_code = 200
+    return the_response
+
+#------------------------------------------------------------
+# Get comments from programID
+@abroad_programs.route('/get_comments/<programID>', methods=['GET'])
+def get_comments(programID):
+
+    cursor = db.get_db().cursor()
+    query = f'''
+        SELECT comment, sID
+        FROM Rating
         WHERE programID = {str(programID)}'''
     cursor.execute(query)
     

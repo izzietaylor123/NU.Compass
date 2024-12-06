@@ -47,7 +47,7 @@ button_titles = list(buttons.keys())
 filtered_titles = [title for title in button_titles if search_query.lower() in title.lower()]
 
 # Display filtered mentor buttons
-st.subheader("View/Edit Mentors")
+st.subheader("View Mentors")
 if filtered_titles:
     for title in filtered_titles:
         if st.button(title):

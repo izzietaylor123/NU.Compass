@@ -15,7 +15,7 @@ st.title("Tim's mentor view")
 
 userID = st.session_state['userID']
 
-menteeRoute = f'http://api:4000/s/mentors/mentees/{userID}'
+menteeRoute = f'http://api:4000/m/get_mentees/{userID}'
 mentees = requests.get(menteeRoute).json()
 
 mentorRoute = f'http://api:4000/s/mentors'
@@ -25,7 +25,7 @@ with st.expander("Tim's Mentees"):
     if mentees:
         mentees_df = pd.DataFrame(mentees)
         for index, row in mentees_df.iterrows():
-            st.markdown(f"### Mentee {index + 1}: {row['fName']} {row['lName']}")
+            st.markdown(f"### Mentee {row['sID']}: {row['fName']} {row['lName']}")
             st.write(f"**First Name:** {row['fName']}")
             st.write(f"**Last Name:** {row['lName']}")
             st.write(f"**Blurb:** {row['blurb']}")
