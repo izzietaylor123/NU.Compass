@@ -52,7 +52,7 @@ def get_approved_replies():
 def get_student_replies(sID):
 
     cursor = db.get_db().cursor()
-    query = f'''SELECT content, replyID
+    query = f'''SELECT content
         FROM Reply
         WHERE sID = {str(sID)}'''
     cursor.execute(query)
@@ -69,7 +69,7 @@ def get_student_replies(sID):
 def get_student_questions(sID):
 
     cursor = db.get_db().cursor()
-    query = f'''SELECT content, qID
+    query = f'''SELECT content
         FROM Question
         WHERE sID = {str(sID)}'''
 
@@ -81,47 +81,26 @@ def get_student_questions(sID):
     the_response.status_code = 200
     return the_response
 
-# #------------------------------------------------------------
-# Add new question  
-@questions_replies.route('/add_question', methods=['POST'])
-def add_question():
-
-    question_data = request.json
-
-    sID = question_data['sID']
-    content = question_data['content']
-
-    query = '''INSERT INTO Question (sID, content)
-    VALUES (%s, %s)'''
-
-    current_app.logger.info('Inserting question with ID: %s', sID)
-
-    cursor = db.get_db().cursor()
-    cursor.execute(query, (sID, content))
-    db.get_db().commit()
-
-    response = make_response("Successfully added new question")
-    response.status_code = 200
-    return 'question created!'
 
 # #------------------------------------------------------------
 # Add new reply  
 @questions_replies.route('/add_reply', methods=['POST'])
 def add_reply():
 
-    reply_data = request.json
+    loc_data = request.json
 
-    sID = reply_data['student_id']
-    body = reply_data['body']
-    qID = reply_data['qID']
+    loc_id = loc_data['locationID']
+    city = loc_data['city']
+    country = loc_data['country']
+    description = loc_data['description']
 
-    query = f'''INSERT INTO Reply (sID, qID, content)
-    VALUES ({sID}, {qID}, "{body}")'''
+    query = '''INSERT INTO Location (locationID, city, country, description)
+    VALUES (%s, %s, %s, %s)'''
 
-    current_app.logger.info('Inserting question with ID: %s', qID)
+    current_app.logger.info('Inserting location with ID: %s', loc_id)
 
     cursor = db.get_db().cursor()
-    cursor.execute(query)
+    cursor.execute(query, (loc_id, city, country, description))
     db.get_db().commit()
 
     response = make_response("Successfully added new location")
