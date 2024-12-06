@@ -18,6 +18,10 @@ title = "Mentor " + str(student[0]['fName']) + " " + str(student[0]['lName']) + 
 
 st.title(title)
 
+st.write('')
+st.write('')
+
+
 ratings_route = f'http://api:4000/s/get_ratings/{sID}'
 ratings_list = requests.get(ratings_route).json()
 
@@ -32,35 +36,30 @@ if ratings_list:
         country = requests.get(countryroute).json()
         country = country[0]['country']
 
-        st.write("Rating for program in ", str(city), ", ", str(country), ":")
+        st.write(f"### Rating for program in {city}, {country}:")
 
         atmosphereRating = float(rating['atmosphereRating'])
         locationRating = float(rating['locRating'])
         professorRating = float(rating['profRating'])
 
 
-        st.subheader("📍 Location Rating")
-        location_text = f"**Location rating:** {round(locationRating, 2)}"
+        location_stars = "⭐️" * int(locationRating)
+
+        location_text = f"##### 📍 Location rating: {round(locationRating, 2)} {location_stars}" 
         st.markdown(location_text)
 
-        location_stars = "⭐️" * int(locationRating)
-        st.markdown(f"<span style='font-size: 24px; color: #FFD700;'>{location_stars}</span>", unsafe_allow_html=True)
-
-
-        st.subheader("👨‍🏫 Professor Rating")
-        professor_text = f"**Professor rating:** {round(professorRating, 2)}"
-        st.markdown(professor_text)
 
 
         professor_stars = "⭐️" * int(professorRating)
-        st.markdown(f"<span style='font-size: 24px; color: #FFD700;'>{professor_stars}</span>", unsafe_allow_html=True)
 
-        st.subheader("🌤️ Atmosphere Rating")
-        atmosphere_text = f"**Atmosphere rating:** {round(atmosphereRating, 2)}"
-        st.markdown(atmosphere_text)
+        professor_text = f"##### 👨‍🏫 Professor rating: {round(professorRating, 2)} {professor_stars}"
+        st.markdown(professor_text)
+
 
         atmosphere_stars = "⭐️" * int(atmosphereRating)
-        st.markdown(f"<span style='font-size: 24px; color: #FFD700;'>{atmosphere_stars}</span>", unsafe_allow_html=True)
+        atmosphere_text = f"##### 🌤️ Atmosphere rating: {round(atmosphereRating, 2)} {atmosphere_stars}"
+        st.markdown(atmosphere_text)
+
         st.markdown("---")
 
 else:
