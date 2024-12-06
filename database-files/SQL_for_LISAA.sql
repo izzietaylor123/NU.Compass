@@ -283,7 +283,7 @@ INSERT INTO abroadProgram (programID, programName, prgmDescription, locationID, 
 (2, 'Brussels', 'Immerse yourself in the healthcare system of Brussels, with practical sessions in public health and medical ethics.', 2, 'Semester.in', 2, 'belgium.png'),
 (3, 'Copenhagen', 'Investigate the advancements in AI and robotics in Copenhagen, alongside industry leaders and academic mentors.', 3, 'Traditional Study Abroad', 3, 'denmark.png'),
 (4, 'Helsinki', 'Analyze the economic landscape of Helsinki while studying international economics and development.', 4, 'Traditional Study Abroad', 4, 'sweden.png'),
-(5, 'Paris', 'Live and learn in Paris while exploring central and Western European studies through a historical lens.', 5, 'Semester.in', 5, 'eiffel_tower.png'),
+(5, 'Paris', 'Live and learn in Paris while exploring central and Western European studies through a historical lens.', 5, 'Semester.in', 5, 'france.png'),
 (6, 'Berlin', 'Experience the unique blend of tradition and modernity in Berlin with courses in history, culture, and politics.', 6, 'Traditional Study Abroad', 6, 'germany.png'),
 (7, 'Athens', 'Study marine biology in the coastal city of Athens and engage with local conservation projects.', 7, 'Dialogue of Civilizations', 7, 'greece.png'),
 (8, 'Dublin', 'Study the art and architecture of Dublin while taking courses in design thinking and innovation.', 8, 'NU.in', 8, 'ireland.png'),
@@ -1059,10 +1059,14 @@ INSERT INTO Reply (replyID, sID, qID, content, datePosted, isApproved) VALUES
 (29, 15, 29, 'Yo Mama!', '2023-12-21 21:11:44', 0),
 (30, 15, 30, 'PlEASE DO NOT BOTHER ME!', '2024-08-13 11:24:25', 0);
 
+SELECT *
+FROM Question;
 
-SELECT avg(locRating)
-FROM Rating
-WHERE programID = 2;
+SELECT *
+FROM abroadProgram;
+
+SELECT *
+FROM Location;
 
 # ## Below is all data entries from previous phases of the project. They have been commented out because they have been replaced by the generated mock data.
 # INSERT INTO abroadProgram(programID, programName, prgmDescription, locationID, programType, empID)

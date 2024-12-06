@@ -9,11 +9,6 @@ import streamlit as st
 def HomeNav():
     st.sidebar.page_link("Home.py", label="Home", icon="🏠")
 
-def HomeNav():
-    st.sidebar.markdown(
-        "<span style='color: #c0392b; font-size: 1.2em;'>🏠 Home</span>",
-        unsafe_allow_html=True
-    )
 
 
 def AboutPageNav():

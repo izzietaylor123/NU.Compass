@@ -47,20 +47,20 @@ with st.expander("Add Location"):
 def submit_abroad_program():
     st.write("Enter new program information below:")
 
-    prog_ID = st.text_input("Program ID", "")
+    prog_ID = st.text_input("Program ID")
     name = st.text_input("Program Name", "")
     description = st.text_input("Program Description", "")
-    loc_ID = st.text_input("Location ID", "", key="location_id_program_input")
+    loc_ID = st.text_input("Location ID", key="location_id_program_input")
     ptype = st.text_input("Program Type", "")
-    emp_ID = st.text_input("Employee ID", "")
+    emp_ID = st.text_input("Employee ID")
     
     if st.button("Submit Abroad Program"):
         program_data = {
-            "programID": prog_ID, "programName": name, "prgmDescription": description, 
-            "locationID": loc_ID, "programType": ptype, "empID": emp_ID
+            "programID": int(prog_ID), "programName": name, "prgmDescription": description, 
+            "locationID": int(loc_ID), "programType": ptype, "empID": int(emp_ID)
         }
         try:
-            response = requests.post("http://api:4000/ap/abroad_programs", json=program_data)
+            response = requests.post("http://api:4000/ap/add_abroad_programs", json=program_data)
             
             if response.status_code == 200:
                 st.success("Program added successfully!")

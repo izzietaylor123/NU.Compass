@@ -150,3 +150,21 @@ def delete_mentor(mentor_id):
         current_app.logger.error(f"Error deleting mentor: {e}")
         return make_response(f"An error occurred: {str(e)}", 500)
 
+# get all mentees for a mentor
+@mentors.route('/get_mentees/<mentorID>', methods=['GET'])
+def get_mentees(mentorID):
+
+    cursor = db.get_db().cursor()
+    query = f'''
+        SELECT sID, fName, lName, blurb
+        FROM mentorshipMatch
+        JOIN Student ON menteeID = sID
+        WHERE mentorID = {str(mentorID)}
+    '''
+    cursor.execute(query)
+    
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
