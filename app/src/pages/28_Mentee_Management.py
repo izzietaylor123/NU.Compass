@@ -72,7 +72,7 @@ with st.form("add_mentee_form"):
                 response = requests.post('http://api:4000/s/mentees', json=payload)
                 if response.status_code == 201:
                     st.success("Mentee added successfully!")
-                    st.experimental_rerun()  # Refresh the page to show the new mentor
+                    #st.experimental_rerun()
                 else:
                     st.error("Failed to add mentee. Please try again.")
             except Exception as e:
