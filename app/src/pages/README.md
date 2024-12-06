@@ -68,4 +68,4 @@ Additional Notes
         The ordering of the flask blueprints is by table. This means that each table corresponds to its own blueprint, so students, locations, abroad_programs, etc each have their own blueprint. By ordering the blueprint this way, it makes it easier to extend or modify parts of the application independently. 
     5. For CS3200 TAs and Prof Fontenot: The ER, Relational, and SQL Diagrams/Databases have been updated and improved since phase 2 of this project. 
         
-Link to Project Demo: https://youtu.be/u9yNCsqyZM4
+Link to Project Demo: https://youtu.be/nNH2XmrH75o
