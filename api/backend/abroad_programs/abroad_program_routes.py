@@ -129,29 +129,6 @@ def add_rating():
 
 
 #------------------------------------------------------------
-# Delete a location from the database
-
-@abroad_programs.route('/abroad_programs/<programID>', methods=['DELETE'])
-def delete_abroad_program(programID):
-
-    query = '''DELETE FROM abroadProgram WHERE programID = %s'''
-
-    current_app.logger.info('Attempting to delete program with ID: %s', programID)
-
-    cursor = db.get_db().cursor()
-    cursor.execute(query, (programID))
-    db.get_db().commit()
-
-    # handle cases where no program is found
-    if cursor.rowcount == 0:
-        return make_response(f"Program not found", 404)
-
-    response = make_response(f"Program with ID {programID} deleted successfully")
-    response.status_code = 200
-    return 'program deleted!'
-
-
-#------------------------------------------------------------
 # Get location rating from the system
 @abroad_programs.route('/location_rating/<programID>', methods=['GET'])
 def get_location_rating(programID):
@@ -384,25 +361,6 @@ def get_comments(programID):
     the_response = make_response(jsonify(locations))
     the_response.status_code = 200
     return the_response
-
-#------------------------------------------------------------
-# Delete a reply
-# @abroad_programs.route('/delete_program/<programID>', methods=['DELETE'])
-# def delete_program(programID):
-#     try:
-#         cursor = db.get_db().cursor()
-#         query = f'''
-#             DELETE FROM abroadProgram WHERE programID = {str(programID)}'''
-#         cursor.execute(query)
-#         db.get_db().commit()
-
-#         response = make_response("Program deleted successfully.")
-#         response.status_code = 200
-#         return response
-#     except Exception as e:
-#         current_app.logger.error(f"Error deleting program: {e}")
-#         response = make_response("Failed to delete program.", 500)
-#         return response
 
 @abroad_programs.route('/delete_program/<int:programID>', methods=['DELETE'])
 def delete_program(programID):
