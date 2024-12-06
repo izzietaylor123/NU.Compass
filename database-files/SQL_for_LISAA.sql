@@ -28,6 +28,8 @@ CREATE TABLE IF NOT EXISTS abroadProgram
     prgmPhotoPath   VARCHAR(100) NOT NULL,
     CONSTRAINT location_fk FOREIGN KEY (locationID)
         REFERENCES Location (locationID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS Student;
@@ -204,9 +206,13 @@ CREATE TABLE IF NOT EXISTS mentorshipMatch
     INDEX idx_match_id (matchID),
     PRIMARY KEY (matchID),
     CONSTRAINT mentorship_match_fk_01 FOREIGN KEY (mentorID)
-        REFERENCES Student (sID),
+        REFERENCES Student (sID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     CONSTRAINT mentorship_match_fk_02 FOREIGN KEY (menteeID)
         REFERENCES Student (sID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
 
@@ -227,9 +233,13 @@ CREATE TABLE IF NOT EXISTS studentMajor
     sID     INT(11) NOT NULL,
     PRIMARY KEY (majorID, sID),
     CONSTRAINT sm_pk_00 FOREIGN KEY (majorID)
-        REFERENCES Major (majorID),
+        REFERENCES Major (majorID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     CONSTRAINT sm_pk_01 FOREIGN KEY (sID)
         REFERENCES Student (sID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS Question;

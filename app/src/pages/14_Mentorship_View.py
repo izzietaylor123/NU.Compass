@@ -15,8 +15,8 @@ st.title("Tim's mentor view")
 
 userID = st.session_state['userID']
 
-menteeRoute = f'http://api:4000/m/get_mentees/{userID}'
-mentees = requests.get(menteeRoute).json()
+mentees_route = f"http://api:4000/s/mentors/mentees/{userID}"
+mentees = requests.get(mentees_route).json()
 
 mentorRoute = f'http://api:4000/s/mentors'
 mentors = requests.get(mentorRoute).json()

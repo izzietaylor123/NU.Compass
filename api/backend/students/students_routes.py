@@ -104,7 +104,7 @@ def get_mentors_mentees(sID):
 
     cursor = db.get_db().cursor()
     query = f'''
-        SELECT email, fName, lName, blurb, role
+        SELECT sID, email, fName, lName, blurb, role
         FROM mentorshipMatch JOIN Student
         WHERE role = 'mentee' AND matchID = {str(sID)}
         '''
