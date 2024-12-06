@@ -71,7 +71,6 @@ def add_mentor():
     return response
 
 # update mentor
-
 @mentors.route('/mentors/<mentor_id>', methods=['PUT'])
 def update_mentor(mentor_id):
     data = request.json
@@ -120,22 +119,19 @@ def update_mentor(mentor_id):
         response = make_response("Error updating mentor", 500)
     return response
 
+# delete mentor
 @mentors.route('/mentors/<mentor_id>', methods=['DELETE'])
 def delete_mentor(mentor_id):
     try:
         current_app.logger.info(f"Attempting to delete mentor with ID: {mentor_id}")
         
-        # Validate that mentor_id is numeric
-        if not mentor_id.isdigit():
-            return make_response("Invalid mentor ID format", 400)
-        
         # SQL query to delete the mentor
-        query = '''
+        query = f'''
             DELETE FROM Student
-            WHERE sID = %s AND role = 'mentor'
+            WHERE sID = {mentor_id} AND role = 'mentor'
         '''
         cursor = db.get_db().cursor()
-        cursor.execute(query, (mentor_id,))
+        cursor.execute(query)
         db.get_db().commit()
 
         # Check if a row was deleted
@@ -149,22 +145,3 @@ def delete_mentor(mentor_id):
     except Exception as e:
         current_app.logger.error(f"Error deleting mentor: {e}")
         return make_response(f"An error occurred: {str(e)}", 500)
-
-# get all mentees for a mentor
-@mentors.route('/get_mentees/<mentorID>', methods=['GET'])
-def get_mentees(mentorID):
-
-    cursor = db.get_db().cursor()
-    query = f'''
-        SELECT sID, fName, lName, blurb
-        FROM mentorshipMatch
-        JOIN Student ON menteeID = sID
-        WHERE mentorID = {str(mentorID)}
-    '''
-    cursor.execute(query)
-    
-    theData = cursor.fetchall()
-
-    the_response = make_response(jsonify(theData))
-    the_response.status_code = 200
-    return the_response
