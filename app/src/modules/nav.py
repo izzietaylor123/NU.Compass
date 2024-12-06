@@ -49,7 +49,8 @@ def AdminPageNav():
 
     st.sidebar.page_link("pages/20_IT_Admin_Home.py", label="System Admin", icon="🖥️")
 
-
+def GEOPageNav():
+    st.sidebar.page_link("pages/26_GEOAdmin_Home.py", label="GEO Admin", icon='🔍')
 # --------------------------------Links Function -----------------------------------------------
 def SideBarLinks(show_home=False):
     """
@@ -86,7 +87,7 @@ def SideBarLinks(show_home=False):
 
         # If the user is a Global Experience Staff Member
         if st.session_state["role"] == "GESM":
-            AdminPageNav()
+            GEOPageNav()
 
     # Always show the About page at the bottom of the list of links
     AboutPageNav()
