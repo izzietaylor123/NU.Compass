@@ -65,7 +65,7 @@ for title in filtered_titles:
 
 # Delete a location, given a locationID
 def delete_location(locationID):
-    delete_route = 'http://api:4000/location/' + str({locationID})
+    delete_route = f'http://api:4000/l/location/{locationID}'
     response = requests.delete(delete_route)
     if response.status_code == 200:
         st.write(f"Location with ID {locationID} has been deleted.")

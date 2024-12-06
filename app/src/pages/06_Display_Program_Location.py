@@ -194,11 +194,18 @@ def update_program():
         emp_id = st.text_input("Employee ID")
         if st.form_submit_button("Update Abroad Program"):
             updated_program_data = {"programName": program_name, 
-            "prgm Description": prog_desc, "locationID": loc_id, 
-            "empID": emp_id
+            "prgm Description": prog_desc, "locationID": int(loc_id), 
+            "empID": int(emp_id)
             }
-            response = requests.put(f'http://api:4000/abroad_programs/{programID}', json=updated_program_data)
-    
+            try: 
+                response = requests.put(f'http://api:4000/abroad_programs/{programID}', json=updated_program_data)
+                if response.status_code == 200:
+                    st.success("Program added successfully!")
+                else:
+                  st.error(f"Error: {response.status_code}, {response.text}")
+            except requests.exceptions.RequestException as e:
+                st.error(f"Request failed: {e}")
+
 # Update abroad program (only if administrator)
 if user_role == 'administrator':
     # Delete location once button is pressed
