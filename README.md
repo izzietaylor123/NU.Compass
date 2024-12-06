@@ -95,7 +95,7 @@ The ordering of the flask blueprints is by table. This means that each table cor
 - Ava Toren
 - Lara Goyal
 - Ashna Shah
-- Isabel Taylor (THE GOAT)
+- Isabel Taylor 
 
 ---
 
