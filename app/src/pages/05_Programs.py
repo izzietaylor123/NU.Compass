@@ -75,7 +75,7 @@ def delete_location(programID):
 if user_role == 'administrator':
     st.subheader("Delete a Program")
     programID = st.text_input("Enter program ID to delete:")
-
+    
     # Delete location once button is pressed
     if st.button("Delete Location"):
         if programID:
