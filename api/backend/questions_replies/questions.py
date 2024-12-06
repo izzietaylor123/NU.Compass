@@ -81,28 +81,6 @@ def get_student_questions(sID):
     the_response.status_code = 200
     return the_response
 
-# #------------------------------------------------------------
-# Add new question  
-@questions_replies.route('/add_question', methods=['POST'])
-def add_question():
-
-    question_data = request.json
-
-    sID = question_data['sID']
-    content = question_data['content']
-
-    query = '''INSERT INTO Question (sID, content)
-    VALUES (%s, %s)'''
-
-    current_app.logger.info('Inserting question with ID: %s', sID)
-
-    cursor = db.get_db().cursor()
-    cursor.execute(query, (sID, content))
-    db.get_db().commit()
-
-    response = make_response("Successfully added new question")
-    response.status_code = 200
-    return 'question created!'
 
 # #------------------------------------------------------------
 # Add new reply  

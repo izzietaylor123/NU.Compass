@@ -186,7 +186,7 @@ def get_mentor_id(sID):
     return the_response
 
 #------------------------------------------------------------
-# Get pic from programID
+# Get pic from student PFP
 @students.route('/get_student_pfp/<sID>', methods=['GET'])
 def get_student_pic(sID):
 

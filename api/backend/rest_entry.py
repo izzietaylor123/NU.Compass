@@ -21,7 +21,7 @@ def create_app():
     # commands below to see how they're being used.
     load_dotenv()
 
-    # secret key that will be used for securely signing the session 
+    # secret key that will be used for secu signing the session 
     # cookie and can be used for any other security related needs by 
     # extensions or your application
     # app.config['SECRET_KEY'] = 'someCrazyS3cR3T!Key.!'
