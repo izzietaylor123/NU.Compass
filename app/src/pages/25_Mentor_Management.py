@@ -17,7 +17,7 @@ st.title('Mentor Management')
 
 # Fetch mentor data from the backend
 try:
-    mentor_data = requests.get('http://api:4000/s/mentors').json()  # Adjusted URL
+    mentor_data = requests.get('http://api:4000/s/mentors').json()
     if not mentor_data:
         st.warning("No mentors found.")
 except Exception as e:
@@ -28,8 +28,8 @@ except Exception as e:
 # Build a dictionary for mentor buttons
 buttons = {}
 for mentor in mentor_data:
-    mentor_id = mentor['sID']  # Use 'sID' as it matches the Student table's structure
-    name = f"{mentor['fName']} {mentor['lName']}"  # Combine first and last name
+    mentor_id = mentor['sID']
+    name = f"{mentor['fName']} {mentor['lName']}"
     email = mentor['email']
     blurb = mentor['blurb']
     buttons[name] = {
@@ -47,11 +47,10 @@ button_titles = list(buttons.keys())
 filtered_titles = [title for title in button_titles if search_query.lower() in title.lower()]
 
 # Display filtered mentor buttons
-st.subheader("View Mentors")
+st.subheader("View/Edit Mentors")
 if filtered_titles:
     for title in filtered_titles:
-        if st.button(title):
-            # set the mentor session state and navigate to the details page
+        if st.button(title, key=f"view_{buttons[title]['mentor_id']}"):
             st.session_state['mentor'] = buttons[title]["mentor_id"]
             st.switch_page('pages/27_Display_Mentor_Info.py')
 else:
@@ -69,7 +68,8 @@ with st.form("add_mentor_form"):
     if submit:
         if f_name and l_name and email:
             payload = {
-                "Name": f"{f_name} {l_name}",
+                "fName": f_name,
+                "lName": l_name,
                 "Email": email,
                 "Blurb": blurb
             }
@@ -77,7 +77,7 @@ with st.form("add_mentor_form"):
                 response = requests.post('http://api:4000/s/mentors', json=payload)
                 if response.status_code == 201:
                     st.success("Mentor added successfully!")
-                    #st.experimental_rerun()  # Refresh the page to show the new mentor
+                    st.experimental_rerun()
                 else:
                     st.error("Failed to add mentor. Please try again.")
             except Exception as e:
@@ -96,13 +96,14 @@ for title in filtered_titles:
 
         # Edit mentor details
         with col1:
-            new_f_name = st.text_input(f"Edit First Name (ID: {mentor_id})", value=title.split()[0])
-            new_l_name = st.text_input(f"Edit Last Name (ID: {mentor_id})", value=title.split()[1])
-            new_email = st.text_input(f"Edit Email (ID: {mentor_id})", value=mentor_details["email"])
-            new_blurb = st.text_area(f"Edit Blurb (ID: {mentor_id})", value=mentor_details["blurb"])
-            if st.button(f"Save Changes (ID: {mentor_id})"):
+            new_f_name = st.text_input(f"Edit First Name (ID: {mentor_id})", value=title.split()[0], key=f"edit_fname_{mentor_id}")
+            new_l_name = st.text_input(f"Edit Last Name (ID: {mentor_id})", value=title.split()[1], key=f"edit_lname_{mentor_id}")
+            new_email = st.text_input(f"Edit Email (ID: {mentor_id})", value=mentor_details["email"], key=f"edit_email_{mentor_id}")
+            new_blurb = st.text_area(f"Edit Blurb (ID: {mentor_id})", value=mentor_details["blurb"], key=f"edit_blurb_{mentor_id}")
+            if st.button(f"Save Changes (ID: {mentor_id})", key=f"save_changes_{mentor_id}"):
                 payload = {
-                    "Name": f"{new_f_name} {new_l_name}",
+                    "fName": new_f_name,
+                    "lName": new_l_name,
                     "Email": new_email,
                     "Blurb": new_blurb
                 }
@@ -110,7 +111,7 @@ for title in filtered_titles:
                     response = requests.put(f'http://api:4000/s/mentors/{mentor_id}', json=payload)
                     if response.status_code == 200:
                         st.success("Mentor updated successfully!")
-                        #st.experimental_rerun()
+                        st.experimental_rerun()
                     else:
                         st.error("Failed to update mentor. Please try again.")
                 except Exception as e:
@@ -119,12 +120,12 @@ for title in filtered_titles:
 
         # Delete mentor
         with col2:
-            if st.button(f"Delete Mentor (ID: {mentor_id})"):
+            if st.button(f"Delete Mentor (ID: {mentor_id})", key=f"delete_{mentor_id}"):
                 try:
                     response = requests.delete(f'http://api:4000/s/mentors/{mentor_id}')
                     if response.status_code == 200:
                         st.success("Mentor deleted successfully!")
-                        #st.experimental_rerun()
+                        st.experimental_rerun()
                     else:
                         st.error("Failed to delete mentor. Please try again.")
                 except Exception as e:
