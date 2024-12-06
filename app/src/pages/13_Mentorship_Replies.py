@@ -63,7 +63,7 @@ with st.expander("Add a New Question"):
 
 if st.session_state['role'] == 'mentor_student':
 
-    mentees_route = f"http://api:4000/m/get_mentees/{userID}"
+    mentees_route = f"http://api:4000/s/mentors/mentees/{userID}"
     mentees = requests.get(mentees_route).json()
     if mentees:
         for mentee in mentees:
