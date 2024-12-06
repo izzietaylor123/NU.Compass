@@ -138,26 +138,29 @@ else:
 
 # ADD NEW RECORD
 st.markdown("<h3 style='color: #c0392b;'>Add New Engagement Record</h3>", unsafe_allow_html=True)
+
 with st.form("add_record_form"):
+    emp_id = st.number_input("Employee ID", min_value=1, step=1)  # Add empID input
     new_feature = st.text_input("Feature")
     new_date = st.date_input("Date")
     new_usage_count = st.number_input("Usage Count", min_value=0, step=1)
     add_submit = st.form_submit_button("Add Record")
-
+    
     if add_submit:
-        if new_feature and new_date and new_usage_count >= 0:
-            payload = {
-                "feature": new_feature,
-                "date": new_date.strftime("%Y-%m-%d"),
-                "usageCount": new_usage_count
-            }
-            try:
+        payload = {
+            "empID": emp_id,
+            "feature": new_feature,
+            "date": new_date.strftime("%Y-%m-%d"),
+            "usageCount": new_usage_count
+        }
+        # Post request to backend
+        try:
                 response = requests.post('http://api:4000/ea/engagementAnalytics', json=payload)
                 if response.status_code == 201:
                     st.success("Record added successfully!")
                 else:
                     st.error("Failed to add record. Please try again.")
-            except Exception as e:
+        except Exception as e:
                 st.error("Error adding record. Please check the logs.")
                 logger.error(f"Error adding record: {e}")
         else:
@@ -166,9 +169,11 @@ with st.form("add_record_form"):
 # UPDATE RECORD
 st.markdown("<h3 style='color: #c0392b;'>Update Existing Engagement Record</h3>", unsafe_allow_html=True)
 update_id = st.number_input("Enter Analytics ID to Update", min_value=1, step=1)
-update_feature = st.text_input("Updated Feature", value="")
+update_emp_id = st.number_input("Updated Employee ID (optional)", min_value=1, step=1)
+update_feature = st.text_input("Updated Feature")
 update_date = st.date_input("Updated Date")
 update_usage_count = st.number_input("Updated Usage Count", min_value=0, step=1)
+
 if st.button("Update Record"):
     payload = {}
     if update_feature:
@@ -177,6 +182,8 @@ if st.button("Update Record"):
         payload["date"] = update_date.strftime("%Y-%m-%d")
     if update_usage_count >= 0:
         payload["usageCount"] = update_usage_count
+    if update_emp_id:
+        payload["empID"] = update_emp_id
 
     if payload:
         try:
@@ -190,6 +197,7 @@ if st.button("Update Record"):
             logger.error(f"Error updating record: {e}")
     else:
         st.error("At least one field is required to update.")
+
 
 # DELETE RECORD
 st.markdown("<h3 style='color: #c0392b;'>Delete Engagement Record</h3>", unsafe_allow_html=True)

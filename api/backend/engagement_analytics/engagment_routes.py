@@ -12,7 +12,6 @@ engagement_analytics = Blueprint('engagement_analytics', __name__)
 def get_all_engagement_analytics():
     query = '''
         SELECT featureID, 
-               empID, 
                usageCount, 
                date,
                feature 
@@ -32,8 +31,7 @@ def get_all_engagement_analytics():
 @engagement_analytics.route('/engagementAnalytics/feature/<feature>', methods=['GET'])
 def get_analytics_by_feature(feature):
     query = f'''
-        SELECT featureID, 
-               empID, 
+        SELECT featureID,  
                usageCount, 
                date,
                feature 
@@ -63,7 +61,6 @@ def get_analytics_by_date():
     
     query = f'''
        SELECT featureID, 
-               empID, 
                usageCount, 
                date,
                feature 
@@ -85,21 +82,19 @@ def get_analytics_by_date():
 @engagement_analytics.route('/engagementAnalytics', methods=['POST'])
 def add_engagement_analytics():
     the_data = request.json
-    current_app.logger.info(the_data)
-
     feature = the_data['feature']
     date = the_data['date']
     usage_count = the_data['usageCount']
+    emp_id = the_data['empID']  # Include empID in the payload
     
     query = f'''
-        INSERT INTO engagementAnalytics (feature, date, usageCount)
-        VALUES ('{feature}', '{date}', {usage_count})
+        INSERT INTO engagementAnalytics (feature, usageCount, date, empID)
+        VALUES ('{feature}', {usage_count}, '{date}', {emp_id})
     '''
     
     cursor = db.get_db().cursor()
     cursor.execute(query)
     db.get_db().commit()
-    
     response = make_response("Successfully added analytics record")
     response.status_code = 201
     return response
@@ -109,12 +104,11 @@ def add_engagement_analytics():
 @engagement_analytics.route('/engagementAnalytics/<analytics_id>', methods=['PUT'])
 def update_engagement_analytics(analytics_id):
     the_data = request.json
-    current_app.logger.info(the_data)
-    
     feature = the_data.get('feature')
     date = the_data.get('date')
     usage_count = the_data.get('usageCount')
-    
+    emp_id = the_data.get('empID')  # Optional `empID`
+
     updates = []
     if feature:
         updates.append(f"feature = '{feature}'")
@@ -122,24 +116,24 @@ def update_engagement_analytics(analytics_id):
         updates.append(f"date = '{date}'")
     if usage_count:
         updates.append(f"usageCount = {usage_count}")
-    
+    if emp_id:
+        updates.append(f"empID = {emp_id}")
+
     if not updates:
-        response = make_response("No fields provided for update", 400)
-        return response
-    
+        return make_response("No fields provided for update", 400)
+
     query = f'''
         UPDATE engagementAnalytics
         SET {", ".join(updates)}
-        WHERE AnalyticsID = {analytics_id}
+        WHERE featureID = {analytics_id}
     '''
-    
+
     cursor = db.get_db().cursor()
     cursor.execute(query)
     db.get_db().commit()
-    
-    response = make_response("Successfully updated analytics record")
-    response.status_code = 200
-    return response
+
+    return make_response("Successfully updated analytics record", 200)
+
 
 # ------------------------------------------------------------
 # delete an engagement analytics record
@@ -147,13 +141,11 @@ def update_engagement_analytics(analytics_id):
 def delete_engagement_analytics(analytics_id):
     query = f'''
         DELETE FROM engagementAnalytics
-        WHERE AnalyticsID = {analytics_id}
+        WHERE featureID = {analytics_id}
     '''
-    
+
     cursor = db.get_db().cursor()
     cursor.execute(query)
     db.get_db().commit()
-    
-    response = make_response("Successfully deleted analytics record")
-    response.status_code = 200
-    return response
+
+    return make_response("Successfully deleted analytics record", 200)
