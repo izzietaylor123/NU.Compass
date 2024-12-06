@@ -11,7 +11,6 @@ from backend.db_connection import db
 abroad_programs = Blueprint('abroad_programs', __name__)
 
 
-
 #------------------------------------------------------------
 # Get all programs from the system
 @abroad_programs.route('/abroad_programs', methods=['GET'])
@@ -304,7 +303,7 @@ def get_replies(qID):
 
 #------------------------------------------------------------
 # Post a question
-@abroad_programs.route('/postAQuestion/', methods=['POST'])
+@abroad_programs.route('/postAQuestion', methods=['POST'])
 def add_question():
 
     # In a POST request, there is a 
@@ -322,7 +321,6 @@ def add_question():
         INSERT INTO Question(sID, content, abroadProgram, isApproved)
         VALUES({sID}, "{content}", {abroad_program}, 0)'''
     cursor.execute(query)
-    db.get_db().commit()
     
     locations = cursor.fetchall()
     
