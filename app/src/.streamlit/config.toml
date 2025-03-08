@@ -10,10 +10,11 @@
 [client]
 # Turning the default sidebar navigation off so we 
 # can use our own
-showSidebarNavigation = false
+# showSidebarNavigation = false
 
 [theme]
 # Setting some basic config options related to the theme of the app
 base="light"
-primaryColor="#f54949"
+primaryColor="#f7c3c3"
+backgroundColor="#850c0c"
 font="monospace"
